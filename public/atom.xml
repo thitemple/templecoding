@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-08-03T00:54:41-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://vintem.com.br/atom.xml" rel="self"/>
+  <link href="http://vintem.com.br/"/>
+  <updated>2013-08-03T01:03:51-04:00</updated>
+  <id>http://vintem.com.br/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     

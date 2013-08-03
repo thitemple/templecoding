@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/archives/</loc>
+        <loc>http://vintem.com.br/blog/archives/</loc>
         <lastmod>2013-08-03T00:39:28-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/</loc>
+        <loc>http://vintem.com.br/</loc>
         <lastmod>2013-08-03T00:39:28-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/robots.txt</loc>
+        <loc>http://vintem.com.br/robots.txt</loc>
         <lastmod>2013-08-03T00:39:28-04:00</lastmod>
     </url>
 </urlset>
