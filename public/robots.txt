@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://vintem.github.io/sitemap.xml 
+Sitemap: http://vintem.github.io/templecoding/sitemap.xml 
