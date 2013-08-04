@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Integração Contínua com Cruise Control .NET - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Anteriormente eu falei sobre builds automáticos com o MSBuild, bem, se você levar ao pé da letra, os builds feitos de acordo com aquele post não &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://templecoding.com/blog/2010/06/20/integracao-continua-com-cruise-control-net">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Temple Coding</a></h1>
+  
+    <h2>código, tecnologia e outras nerdices</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:templecoding.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Integração Contínua com Cruise Control .NET</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-20T00:00:00-04:00" pubdate data-updated="true">20/06/2010</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><!--:pt-->
+
+
+<p><a href="http://templecoding.com/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/" target="_blank">Anteriormente eu falei sobre builds automáticos com o MSBuild</a>, bem, se você levar ao pé da letra, os builds feitos de acordo com aquele post não eram exatamente automáticos, o que acontecia de forma automática no momento em que o build era executado eram os testes unitários e a análise de cobertura de código feita pelos testes unitários. Agora, eu vou falar sobre como fazer a integração contínua com Cruise Control .NET.</p>
+
+<p><strong>Sobre Integração Contínua</strong></p>
+
+<p>Eu não vou parar e explicar aqui sobre integração contínua, acredito que uma ótima fonte é o texto do <a href="http://martinfowler.com/" target="_blank">Martin Fowler</a> traduzido pelo <a href="http://www.blogdopedro.net/" target="_blank">Pedro Mendes</a> e que pode <a href="http://www.blogdopedro.net/2009/03/04/traducao-do-artigo-sobre-integracao-continua" target="_blank">ser encontrado aqui</a>.</p>
+
+<p>Apenas como um resumo: integração contínua é uma prática, ou melhor, um conjunto de práticas que visa, entre outras coisas, detectar problemas no código o mais rápido possível para que esse código se <em>integre </em>a um repositório de código compartilhado por outros desenvolvedores.</p>
+
+<p>Algumas dessas práticas são:</p>
+
+<ul>
+    <li>Possuir um repositório central para o código</li>
+    <li>Realização de builds automáticos</li>
+    <li>Check-in ou commit do código frequentemente</li>
+    <li>Testes executados de forma automática</li>
+    <li>Que todos os participantes tenham uma visualização do código</li>
+</ul>
+
+
+<p>Como disse, esse é apenas um resumo, eu recomendo fortemente que você leia o texto indicado acima.</p>
+
+<p><strong>O Cruise Control .NET</strong></p>
+
+<p>O Cruise Control .NET é uma ferramenta open source para implementação de integração contínua. Obviamente não é única, mas é uma das mais conhecidas no mercado juntamente com as irmãs Cruise Control (feita em java) e Cruise Control rb (feita em ruby). Segue aqui um <a href="http://sourceforge.net/projects/ccnet/files/CruiseControl.NET%20Releases/" target="_blank">link para baixar o Cruise Control .NET.</a></p>
+
+<p>A instalação é bem simples, as únicas observações são que após a instalação deve-se definir uma senha para o administrador do dashboard, para isso vá até a pasta onde está instalado o Cruise Control NETwebdashboard e abra o arquivo dashboard.config e altere a configuração com a senha escolhida:</p>
+
+<pre class="brush: xml;"></pre>
+
+
+<p>Além disso é preciso dar permissão de escrita no arquivo dashboard.config e na pasta xls para o usuário IUSR_XXX, onde XXX é o nome da máquina onde você está realizando a instalação do Cruise Control. Após a instalação do Cruise Control, um serviço é adicionado ao windows que precisa ser iniciado. <strong>Configurando o Cruise Control .NET</strong> Antes de colocar um projeto CCNet vamos configurá-lo para exibir os dados que gostaríamos que são os dados do MSBuild, do NUnit e do NCover. Se você fez uma instalação padrão deve acessar o dashboard pelo endereço <a href="http://localhost/ccnet"><a href="http://localhost/ccnet">http://localhost/ccnet</a></a> <a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2019%2021.33_2.gif"><img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Dashboard do Cruise Control" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2019%2021.33_thumb.gif" alt="Dashboard do Cruise Control" width="215" height="250" border="0" /></a> Clique em Administer Dashboard, entre com a senha configurada para o administrador e você deve ver uma lista com os Packages disponíveis. Instale os 3 que vamos usar clicando em cada um deles, MSBuild Results, NCover Results e NUnit Results. <strong>Configurando um novo projeto no Cruise Control</strong> Configurar um projeto no Cruise Control é editar um arquivo XML, não é muito amigável mas é de certa forma bem simples. O arquivo que vamos editar é o ccnet.config que fica na pasta server onde foi instalado o CCNet. <a href="http://vintem.com.br/archive/2010/06/14/builds-automaacuteticos-com-msbuild-nunit-e-ncover.aspx" target="_blank">Estou usando o projeto do post anterior sobre o MSBuild</a> e configurando ele no CCNet. Primeiro, estou assumindo que você tem o seu projeto em um repósitorio, no meu caso, estou usando o Subversion, mas o CCNet suporta diversos. Veja como ficou configurado o meu arquivo ccnet.config:</p>
+
+<pre class="brush: xml;">    
+        MSBuildDemo
+
+        c:CCNetWorkingMSBuildDemo
+        c:CCNetArtifactsMSBuildDemo
+        2
+
+            http://localhost:8181/svn/blog/MSBuildDemo
+
+                C:WINDOWSMicrosoft.NETFrameworkv3.5MSBuild.exe
+                MSBuildDemo.proj
+                /p:Configuration=Debug /v:diag
+                CoberturaTestestargets&gt;
+                C:Program FilesCruiseControl.NETserverThoughtWorks.CruiseControl.MsBuild.dll
+
+                    c:CCNetArtifactsMSBuildDemo*ResultadosTestes.xml
+                    c:CCNetArtifactsMSBuildDemo*ResumoCobertura.xml</pre>
+
+
+<p>Vamos por partes.</p>
+
+<p>Na linha 3 definimos o nome do projeto.</p>
+
+<p>Na linha 4 definimos o que o CCNet usará para determinar se deve ou não executar as atividades do projeto, no caso do nosso exemplo, o CCNet irá, em um intervalo de tempo, verificar se existe alguma modificação no repositório, e se houver, executar as atividades.</p>
+
+<p>Na linha 7 definimos uma pasta onde o CCNet vai baixar os arquivos do repositório e compilar os projetos.</p>
+
+<p>Na linha 8 definimos uma pasta onde o CCNet irá salvar os arquivos que serão gerados como produto da compilação, como os relatórios do NUnit e do NCover.</p>
+
+<p>Das linhas 10 a 12 definimos os dados do repositório, nesse caso o subversion.</p>
+
+<p>Das linhas 13 a 21 definimos as tarefas, nesse caso, que a compilação será executada pelo MSBuild, onde está o executável do MSBuild, o script do MSBuild que deve ser executado, qual o target do MSBuild e logger que será usado para as atividades do MSBuild.</p>
+
+<p>Por último das linhas 22 a 28 definimos quais arquivos gerados pelo script do MSBuild devem ser usados para gerar os relatórios do CCNet.</p>
+
+<p>Se der tudo certo, ao acessar o dashboard você deve ver algo como:</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2019%2021.36_2.gif"><img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Status do build" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2019%2021.36_thumb.gif" alt="Status do build" width="622" height="86" border="0" /></a></p>
+
+<p>Clique em MSBuildDemo e você deverá ver as compilações já feitas, e pode clicar nas compilações e ver os detalhes. O importante é que a partir de agora a cada vez que for realizado um novo check-in o CCNet irá perceber que existe uma alteração e executará o script do MSBuild que definimos novamente.</p>
+
+<p><strong>Alterando o script do MSBuild</strong></p>
+
+<p>Se você está seguindo o exemplo feito no post anterior, precisamos fazer algumas alterações no script do MSBuild. Precisamos apenas alterar o script para que salve os arquivos do NUnit e do NCover na pasta de artefatos definida no XML que configuramos o projeto do CCNet. Quanto um script do MSBuild é executado pelo CCNet uma variável CCNetArtifactDirectory é definida com o caminho da pasta de artefatos então a tarefa do NCover ficou assim:</p>
+
+<pre class="brush: xml;"></pre>
+
+
+<p>E as tarefas do NCover Explorer ficaram assim:</p>
+
+<pre class="brush: xml;"></pre>
+
+
+<p>E as tarefas do NUnit foram alteradas assim:</p>
+
+<pre class="brush: xml;"></pre>
+
+
+<p>Um detalhe importante é que os nomes dos arquivos gerados pelo NUnit e pelo NCover devem ser iguais aos nomes dos arquivos dentro da tag files no projeto configurado dentro do ccnet.config. <strong>Utilizando o CCTray</strong> O CCTray é um aplicativo que instalamos e ele fica constantemente consultando o servidor do CCNet e nos avisa se algum build ou teste unitário foi quebrado. No dashboard do CCNet tem um link para fazer download do CCTray e novamente a instalação é muito simples. <img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Download CCTray" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2019%2021.33_thumb.gif" alt="Download CCTray" width="215" height="250" border="0" /> A configuração dele também é simples, após instalado, vá em File &ndash;&gt; Settings &ndash;&gt; Build Projects clique em Add para e depois em Add Server, aponte para o endereço onde está instalado o servidor depois em OK, agora é só selecionar o seu projeto. <strong>Customizando os relatórios do NCover Explorer</strong> Quando você baixa o NCover Explorer Extras, dentro do zip existe uma pasta Cruise Control .NET, copie os arquivos .xls que estão nessa pasta para a pasta webdashboard/xls onde foi instalado o seu CCNet. Depois a abra o arquivo dashboard.config e edite para que fique assim:</p>
+
+<pre class="brush: xml;">...
+
+    ...
+    xslNCoverExplorerSummary.xslxslFile&gt;
+    ...</pre>
+
+
+<p>Entre no dashboard e clique em Force Build, depois que o build estiver completo e você entrar pelo dashboard nesse último build, você deverá ver um relatório como o abaixo:</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2020%2015.28_2.gif"><img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Relatorio de testes" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2020%2015.28_thumb.gif" alt="Relatorio de testes" width="644" height="463" border="0" /></a></p>
+
+<p><strong>Conclusão</strong></p>
+
+<p>Pronto, agora sim você tem um projeto que é compilado automaticamente a cada check-in/commit, os testes unitários são executados também de forma automática e se por acaso o projeto parar de compilar ou algum teste unitário falhar o CCTray avisará com uma mensagem e inclusive fará o trabalho de dedo duro dizendo quem foi o usuário que fez o último commit com a falha.</p>
+
+<p>O ideal é que todos do projeto tenham o CCTray e que a primeira, ou uma das primeiras atividades seja configurar o script para compilação automática.</p>
+
+<p>Com isso você pode ter mais certeza, a cada commit, que seu código não irá causar problemas a outros e se causar, você terá uma resposta imediata, o que torna a correção do problema muito mais fácil.<!--:--><!--:en--><p><a href="http://templecoding.com/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/" target="_blank">Anteriormente eu falei sobre builds automáticos com o MSBuild</a>, bem, se você levar ao pé da letra, os builds feitos de acordo com aquele post não eram exatamente automáticos, o que acontecia de forma automática no momento em que o build era executado eram os testes unitários e a análise de cobertura de código feita pelos testes unitários. Agora, eu vou falar sobre como fazer a integração contínua com Cruise Control .NET.</p></p>
+
+<p><strong>Sobre Integração Contínua</strong></p>
+
+
+<p>Eu não vou parar e explicar aqui sobre integração contínua, acredito que uma ótima fonte é o texto do <a href="http://martinfowler.com/" target="_blank">Martin Fowler</a> traduzido pelo <a href="http://www.blogdopedro.net/" target="_blank">Pedro Mendes</a> e que pode <a href="http://www.blogdopedro.net/2009/03/04/traducao-do-artigo-sobre-integracao-continua" target="_blank">ser encontrado aqui</a>.</p>
+
+
+<p>Apenas como um resumo: integração contínua é uma prática, ou melhor, um conjunto de práticas que visa, entre outras coisas, detectar problemas no código o mais rápido possível para que esse código se <em>integre </em>a um repositório de código compartilhado por outros desenvolvedores.</p>
+
+
+<p>Algumas dessas práticas são:</p>
+
+
+<ul>
+<li>Possuir um repositório central para o código</li>
+<li>Realização de builds automáticos</li>
+<li>Check-in ou commit do código frequentemente</li>
+<li>Testes executados de forma automática</li>
+<li>Que todos os participantes tenham uma visualização do código</li>
+</ul>
+
+
+<p>Como disse, esse é apenas um resumo, eu recomendo fortemente que você leia o texto indicado acima.</p>
+
+
+<p><strong>O Cruise Control .NET</strong></p>
+
+
+<p>O Cruise Control .NET é uma ferramenta open source para implementação de integração contínua. Obviamente não é única, mas é uma das mais conhecidas no mercado juntamente com as irmãs Cruise Control (feita em java) e Cruise Control rb (feita em ruby). Segue aqui um <a href="http://sourceforge.net/projects/ccnet/files/CruiseControl.NET%20Releases/" target="_blank">link para baixar o Cruise Control .NET.</a></p>
+
+
+<p>A instalação é bem simples, as únicas observações são que após a instalação deve-se definir uma senha para o administrador do dashboard, para isso vá até a pasta onde está instalado o Cruise Control NETwebdashboard e abra o arquivo dashboard.config e altere a configuração com a senha escolhida:</p>
+
+
+<pre class="brush: xml;"><administrationPlugin password="" /></pre>
+
+
+<p>Além disso é preciso dar permissão de escrita no arquivo dashboard.config e na pasta xls para o usuário IUSR_XXX, onde XXX é o nome da máquina onde você está realizando a instalação do Cruise Control. Após a instalação do Cruise Control, um serviço é adicionado ao windows que precisa ser iniciado. <strong>Configurando o Cruise Control .NET</strong> Antes de colocar um projeto CCNet vamos configurá-lo para exibir os dados que gostaríamos que são os dados do MSBuild, do NUnit e do NCover. Se você fez uma instalação padrão deve acessar o dashboard pelo endereço <a href="http://localhost/ccnet">http://localhost/ccnet</a> <a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2019%2021.33_2.gif"><img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Dashboard do Cruise Control" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2019%2021.33_thumb.gif" alt="Dashboard do Cruise Control" width="215" height="250" border="0" /></a> Clique em Administer Dashboard, entre com a senha configurada para o administrador e você deve ver uma lista com os Packages disponíveis. Instale os 3 que vamos usar clicando em cada um deles, MSBuild Results, NCover Results e NUnit Results. <strong>Configurando um novo projeto no Cruise Control</strong> Configurar um projeto no Cruise Control é editar um arquivo XML, não é muito amigável mas é de certa forma bem simples. O arquivo que vamos editar é o ccnet.config que fica na pasta server onde foi instalado o CCNet. <a href="http://vintem.com.br/archive/2010/06/14/builds-automaacuteticos-com-msbuild-nunit-e-ncover.aspx" target="_blank">Estou usando o projeto do post anterior sobre o MSBuild</a> e configurando ele no CCNet. Primeiro, estou assumindo que você tem o seu projeto em um repósitorio, no meu caso, estou usando o Subversion, mas o CCNet suporta diversos. Veja como ficou configurado o meu arquivo ccnet.config:</p>
+
+
+<pre class="brush: xml;"><cruisecontrol xmlns:cb="urn:ccnet.config.builder">
+    <project>
+        <name>MSBuildDemo</name>
+        <triggers>
+            <intervalTrigger />
+        </triggers>
+        <workingDirectory>c:CCNetWorkingMSBuildDemo</workingDirectory>
+        <artifactDirectory>c:CCNetArtifactsMSBuildDemo</artifactDirectory>
+        <modificationDelaySeconds>2</modificationDelaySeconds>
+        <sourcecontrol type="svn">
+            <trunkUrl>http://localhost:8181/svn/blog/MSBuildDemo</trunkUrl>
+        </sourcecontrol>
+        <tasks>
+            <msbuild>
+                <executable>C:WINDOWSMicrosoft.NETFrameworkv3.5MSBuild.exe</executable>
+                <projectFile>MSBuildDemo.proj</projectFile>
+                <buildArgs>/p:Configuration=Debug /v:diag</buildArgs>
+                <targets>CoberturaTestestargets>
+                <logger>C:Program FilesCruiseControl.NETserverThoughtWorks.CruiseControl.MsBuild.dll</logger>
+            </msbuild>
+        </tasks>
+        <publishers>
+            <merge>
+                <files>
+                    <file>c:CCNetArtifactsMSBuildDemo*ResultadosTestes.xml</file>
+                    <file>c:CCNetArtifactsMSBuildDemo*ResumoCobertura.xml</file>
+                </files>
+            </merge>
+            <xmllogger />
+        </publishers>
+    </project>
+</cruisecontrol></pre>
+
+
+<p>Vamos por partes.</p>
+
+
+<p>Na linha 3 definimos o nome do projeto.</p>
+
+
+<p>Na linha 4 definimos o que o CCNet usará para determinar se deve ou não executar as atividades do projeto, no caso do nosso exemplo, o CCNet irá, em um intervalo de tempo, verificar se existe alguma modificação no repositório, e se houver, executar as atividades.</p>
+
+
+<p>Na linha 7 definimos uma pasta onde o CCNet vai baixar os arquivos do repositório e compilar os projetos.</p>
+
+
+<p>Na linha 8 definimos uma pasta onde o CCNet irá salvar os arquivos que serão gerados como produto da compilação, como os relatórios do NUnit e do NCover.</p>
+
+
+<p>Das linhas 10 a 12 definimos os dados do repositório, nesse caso o subversion.</p>
+
+
+<p>Das linhas 13 a 21 definimos as tarefas, nesse caso, que a compilação será executada pelo MSBuild, onde está o executável do MSBuild, o script do MSBuild que deve ser executado, qual o target do MSBuild e logger que será usado para as atividades do MSBuild.</p>
+
+
+<p>Por último das linhas 22 a 28 definimos quais arquivos gerados pelo script do MSBuild devem ser usados para gerar os relatórios do CCNet.</p>
+
+
+<p>Se der tudo certo, ao acessar o dashboard você deve ver algo como:</p>
+
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2019%2021.36_2.gif"><img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Status do build" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2019%2021.36_thumb.gif" alt="Status do build" width="622" height="86" border="0" /></a></p>
+
+
+<p>Clique em MSBuildDemo e você deverá ver as compilações já feitas, e pode clicar nas compilações e ver os detalhes. O importante é que a partir de agora a cada vez que for realizado um novo check-in o CCNet irá perceber que existe uma alteração e executará o script do MSBuild que definimos novamente.</p>
+
+
+<p><strong>Alterando o script do MSBuild</strong></p>
+
+
+<p>Se você está seguindo o exemplo feito no post anterior, precisamos fazer algumas alterações no script do MSBuild. Precisamos apenas alterar o script para que salve os arquivos do NUnit e do NCover na pasta de artefatos definida no XML que configuramos o projeto do CCNet. Quanto um script do MSBuild é executado pelo CCNet uma variável CCNetArtifactDirectory é definida com o caminho da pasta de artefatos então a tarefa do NCover ficou assim:</p>
+
+
+<pre class="brush: xml;"><ncover ToolPath="$(CaminhoNCover)"         CommandLineExe="$(ComandoNUnit)"         CommandLineArgs="$(TestFolder)bin$(Configuration)UnitTests.dll"         WorkingDirectory="$(TestFolder)bin$(Configuration)"         CoverageFile="$(CCNetArtifactDirectory)$(ArquivoNCover)"         LogFile="$(ArquivoLogNCover)"         ExcludeAttributes="MSBuildDemo.Common.CoverageExcludeAttribute"         AssemblyList="@(CodeProjects->'%(FileName)')" /></pre>
+
+
+<p>E as tarefas do NCover Explorer ficaram assim:</p>
+
+
+<pre class="brush: xml;"><ncoverExplorer ToolPath="$(CaminhoNCoverExplorer)"     ProjectName="$(ProjectName)"     OutputDir="$(CCNetArtifactDirectory)"     CoverageFiles="$(CCNetArtifactDirectory)$(ArquivoNCover)"     SatisfactoryCoverage="80"     ReportType="3"     XmlReportName="ResumoCobertura.xml"     HtmlReportName="ResumoCobertura.html" />
+<ncoverExplorer ToolPath="$(CaminhoNCoverExplorer)"     ProjectName="$(ProjectName)"     OutputDir="$(CCNetArtifactDirectory)"     CoverageFiles="$(CCNetArtifactDirectory)$(ArquivoNCover)"     SatisfactoryCoverage="80"     ReportType="4"     XmlReportName="RelatorioCoberturaPorClasse.xml"     HtmlReportName="RelatorioCoberturaPorClasse.html" /></pre>
+
+
+<p>E as tarefas do NUnit foram alteradas assim:</p>
+
+
+<pre class="brush: xml;"><createItem Include="$(CCNetArtifactDirectory)*.$(ArquivoNUnit)">
+    <output TaskParameter="Include" ItemName="ExistingNUnitResults"/>
+</createItem>
+
+<delete Files="@(ExistingNUnitResults)"/>
+
+<copy SourceFiles="@(NUnitResults)"     DestinationFolder="$(CCNetArtifactDirectory)"     ContinueOnError="true"/></pre>
+
+
+<p>Um detalhe importante é que os nomes dos arquivos gerados pelo NUnit e pelo NCover devem ser iguais aos nomes dos arquivos dentro da tag files no projeto configurado dentro do ccnet.config. <strong>Utilizando o CCTray</strong> O CCTray é um aplicativo que instalamos e ele fica constantemente consultando o servidor do CCNet e nos avisa se algum build ou teste unitário foi quebrado. No dashboard do CCNet tem um link para fazer download do CCTray e novamente a instalação é muito simples. <img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Download CCTray" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2019%2021.33_thumb.gif" alt="Download CCTray" width="215" height="250" border="0" /> A configuração dele também é simples, após instalado, vá em File -> Settings -> Build Projects clique em Add para e depois em Add Server, aponte para o endereço onde está instalado o servidor depois em OK, agora é só selecionar o seu projeto. <strong>Customizando os relatórios do NCover Explorer</strong> Quando você baixa o NCover Explorer Extras, dentro do zip existe uma pasta Cruise Control .NET, copie os arquivos .xls que estão nessa pasta para a pasta webdashboard/xls onde foi instalado o seu CCNet. Depois a abra o arquivo dashboard.config e edite para que fique assim:</p>
+
+
+<pre class="brush: xml;">...
+<xslFileNames>
+    ...
+    <xslFile>xslNCoverExplorerSummary.xslxslFile>
+    ...
+</xslFileNames>
+<xslReportBuildPlugin description="NCover Report" actionName="NCoverBuildReport" xslFileName="xslNCoverExplorer.xsl" /></pre>
+
+
+<p>Entre no dashboard e clique em Force Build, depois que o build estiver completo e você entrar pelo dashboard nesse último build, você deverá ver um relatório como o abaixo:</p>
+
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2020%2015.28_2.gif"><img style="display: block; margin-left: auto; margin-right: auto; border: 0px none;" title="Relatorio de testes" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2020%2015.28_thumb.gif" alt="Relatorio de testes" width="644" height="463" border="0" /></a></p>
+
+
+<p><strong>Conclusão</strong></p>
+
+
+<p>Pronto, agora sim você tem um projeto que é compilado automaticamente a cada check-in/commit, os testes unitários são executados também de forma automática e se por acaso o projeto parar de compilar ou algum teste unitário falhar o CCTray avisará com uma mensagem e inclusive fará o trabalho de dedo duro dizendo quem foi o usuário que fez o último commit com a falha.</p>
+
+
+<p>O ideal é que todos do projeto tenham o CCTray e que a primeira, ou uma das primeiras atividades seja configurar o script para compilação automática.</p>
+
+
+<p>Com isso você pode ter mais certeza, a cada commit, que seu código não irá causar problemas a outros e se causar, você terá uma resposta imediata, o que torna a correção do problema muito mais fácil.</p>
+
+
+<!--:-->
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-20T00:00:00-04:00" pubdate data-updated="true">20/06/2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://templecoding.com/blog/2010/06/20/integracao-continua-com-cruise-control-net/" data-via="vintem12" data-counturl="http://templecoding.com/blog/2010/06/20/integracao-continua-com-cruise-control-net/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/06/16/selecionando-o-cdigo-que-ser-contabilizado-pelo-ncover/" title="Previous Post: Selecionando o código que será contabilizado pelo NCover">&laquo; Selecionando o código que será contabilizado pelo NCover</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/06/27/na-guerra-ou-na-programao-os-mais-rpidos-saem-na-frente/" title="Next Post: Na guerra ou na programação, os mais rápidos saem na frente">Na guerra ou na programação, os mais rápidos saem na frente &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/">Quatro bons livros para mudar a forma como você vê/escreve JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/">Análise do livro Pragmatic Thinking and Learning</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

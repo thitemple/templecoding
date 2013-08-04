@@ -1,0 +1,1224 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Bom, o ano começou, lá se foi o carnaval e agora sim podemos dizer que o ano começou. Pelo menos aqui no blog. Bora falar um pouco mais de JavaScript &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://templecoding.com/blog/page/2">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Temple Coding</a></h1>
+  
+    <h2>código, tecnologia e outras nerdices</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:templecoding.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays do JavaScript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-18T00:00:00-05:00" pubdate data-updated="true">18/02/2013</time>
+        
+         | <a href="/blog/2013/02/18/construtores-de-arrays-do-javascript/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Bom, o ano começou, lá se foi o carnaval e agora sim podemos dizer que o ano começou. Pelo menos aqui no blog. <img class="wlEmoticon wlEmoticon-smile" style="border-style: none;" src="http://templecoding.com/wp-content/uploads/2013/02/wlEmoticon-smile.png" alt="Alegre" /></p>
+
+<p>Bora falar um pouco mais de JavaScript e o que existe de estranho com os <strong>construtores de Arrays do JavaScript</strong>.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
+
+<strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li>Construtores de Arrays</li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<h2>Construtores de Arrays do JavaScript</h2>
+
+
+<p>No JavaScript podemos construir um Array da seguinte forma:</p>
+
+<pre class="brush: js;">var a = new Array("texto");
+console.log(a.length); // 1
+console.log(a[0]); // texto</pre>
+
+
+<p>Quando passamos uma string ou outro tipo de objeto para o construtor de uma Array, o JavaScript cria uma array com um item e atribui o valor passado para esse item.</p>
+
+<p>Agora vamos dar uma olhada em outro exemplo:</p>
+
+<pre class="brush: js;">var a = new Array(3);
+console.log(a.length) // 3
+console.log(a[0]); // undefined</pre>
+
+
+<p>Quando passamos um número inteiro para o construtor ele cria um array com o número de elementos informados e, todos os elementos criados não tem um valor atribuído a eles, por isso o undefined.</p>
+
+<p>Um terceiro exemplo:</p>
+
+<pre class="brush: js;">var a = new Array(3.2); // RangeError: invalid array length</pre>
+
+
+<p>Quando passamos um número decimal para o construtor, ele obviamente não cria um array decimal, mas também não cria um array com um só elemento e com o valor passado, o JavaScript retorna um erro para esse comando.</p>
+
+<h2>Uma prática um pouco melhor</h2>
+
+
+<p>A melhor forma de criar arrays no JavaScript é usando o construtor implícito dele, por exemplo:</p>
+
+<pre class="brush: js;">var a = ["texto"]; // Cria um elemento e atribui o valor a ele
+
+var b = [1, 2, 3]; // Cria um array com 3 elementos e com os valores 1, 2 e 3</pre>
+
+
+<p>Um problema simples de resolver esse, não é?</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/19/validacao-com-jquery-validation/">Validação com jQuery Validation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-19T00:00:00-05:00" pubdate data-updated="true">19/12/2012</time>
+        
+         | <a href="/blog/2012/12/19/validacao-com-jquery-validation/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/4AzSUHxW2Ww" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Validação com jQuery Validation</h2>
+
+
+<p>O jQuery validation é um plugin para fazer validações de formulários. Nesse video mostro como fazer algumas validações como:</p>
+
+<ul>
+    <li>campos obrigatórios</li>
+    <li>customizações de mensagens</li>
+    <li>validações de tipos de dados específicos como data, email e números</li>
+    <li>validações remotas usando ajax</li>
+    <li>globalização usando o plugin Globalize</li>
+</ul>
+
+
+<h2>Links</h2>
+
+
+<ul>
+    <li> <a href="http://docs.jquery.com/Plugins/Validation">jQuery validation</a></li>
+    <li><a href="https://github.com/jquery/globalize">Globalize</a></li>
+</ul>
+
+
+<!--:-->
+
+
+<!--:en-->
+
+
+
+
+<!--:-->
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-14T00:00:00-05:00" pubdate data-updated="true">14/12/2012</time>
+        
+         | <a href="/blog/2012/12/14/tratamento-de-excecoes-em-javascript/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<p>Sim, existe tratamento de exceções em JavaScript. Não é uma funcionalidade muito conhecida e, por isso talvez, não muito utilizada. Mas existem os blocos try/catch dentro do JavaScript e o comando throw. E funciona de uma forma bem similiar ao C#.</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var comErro = function() {
+    throw {
+        name: 'CustomError',
+        message: 'Um erro muito grave para ser tratado'
+    };
+};
+
+try {
+    comErro();
+}
+catch(e) {
+    console.log(e.name + ' - ' + e.message); //CustomError - Um erro muito grave para ser tratado
+}</pre>
+
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
+
+<strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li>Tratamento de exceções em JavaScript</li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<p>Apesar do JavaScript não ser tipado, existe uma convenção que diz que todo objeto de erro deve conter ao menos duas propriedades: name e message. Acho que os nomes das propriedades são auto-explicatórios.</p>
+
+<p>Obviamente, nada nos impede de adicionar outras propriedades com mais detalhes sobre o erro.</p>
+
+<h2>Tipos de erro do JavaScript</h2>
+
+
+<p>Por padrão o JavaScript tem internamente seis tipos diferentes de erro que ele pode gerar.</p>
+
+<table width="400" border="0" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td valign="top" width="100">EvalError</td>
+<td valign="top" width="300">Usado quando a função eval() é usada de uma maneira incorreta</td>
+</tr>
+<tr>
+<td valign="top" width="100">RangeError</td>
+<td valign="top" width="300">Usado quando uma variável numérica excede uma faixa de valores permitida</td>
+</tr>
+<tr>
+<td valign="top" width="100">ReferenceError</td>
+<td valign="top" width="300">Usado quando é feita uma referência invalida à um objeto</td>
+</tr>
+<tr>
+<td valign="top" width="100">SyntaxError</td>
+<td valign="top" width="300">Usado quando existe um erro de sintaxe</td>
+</tr>
+<tr>
+<td valign="top" width="100">TypeError</td>
+<td valign="top" width="300">Usado quando o tipo da variável não é o mesmo que o esperado</td>
+</tr>
+<tr>
+<td valign="top" width="100">URIError</td>
+<td valign="top" width="300">Usado quando as funções encodeURI() e decodeURI() são usadas de uma maneira incorreta.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Isso serve apenas como referência, como mostrei no exemplo anterior, podemos criar os nossos próprios tipos de erro sem problemas.</p>
+
+<h2>Construtores de objetos de erro</h2>
+
+
+<p>Por fim, o JavaScript também tem alguns construtores para os objetos que podemos usar para retornar um erro, por exemplo, eu poderia reescrever a exemplo acima da seguinte forma:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var comErro = function() {
+    var error = new Error('Um erro muito grave para ser tratado');
+    error.name = 'CustomError';
+    throw error;
+};
+
+try {
+    comErro();
+}
+catch(e) {
+    console.log(e.name + ' - ' + e.message); //CustomError - Um erro muito grave para ser tratado
+}</pre>
+
+
+<p>Esse código gera exatamente o mesmo resultado que antes, o único detalhe que quero ressaltar é que se eu não tivesse feito:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">error.name = 'CustomError';</pre>
+
+
+<p>o nome do erro seria Error.</p>
+
+<p>Como o objeto Error, temos também um construtor para cada tipo de erro do JavaScript: EvalError, TypeError, ReferenceError, etc.<!--:--></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/07/ajax-com-jquery/">Ajax com jQuery</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-07T00:00:00-05:00" pubdate data-updated="true">07/12/2012</time>
+        
+         | <a href="/blog/2012/12/07/ajax-com-jquery/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/he2k0FZBHq8" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Ajax com jQuery</h2>
+
+
+<p>Existem diversas formas de fazer ajax com jQuery. O jQuery é muito versátil e poderoso, mas também é capaz de tornar algumas atividades que antes eram tediosas em códigos simples e curtos, ainda mais com a ajuda de alguns plugins.</p>
+
+<h2>Links</h2>
+
+
+<p><a href="http://bit.ly/TWU2u6">Documentação ajax do jQuery</a>
+<a href="http://www.malsup.com/jquery/form/">jQuery Form Plugin</a>
+<a href="https://github.com/CodeSeven/toastr">Toastr Plugin</a>
+<a href="http://code.google.com/p/jquery-loadmask/">jQuery loadmask plugin</a></p>
+
+<h2>Código fonte</h2>
+
+
+<p><a href="https://github.com/vintem/TodoDemo">O código está disponível no meu GitHub.</a><!--:--><!--:en--></p>
+
+<!--:-->
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback no JavaScript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-05T00:00:00-05:00" pubdate data-updated="true">05/12/2012</time>
+        
+         | <a href="/blog/2012/12/05/funes-de-callback-no-javascript/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<h2>O que são funções de callback?</h2>
+
+
+<p>Uma função no JavaScript é um objeto, isso quer dizer que a gente pode passar uma função como parâmetro para outra função. Quando passamos uma função como parâmetro para outra, a função passada como parâmetro é uma função de callback.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
+
+<strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li>Funções de callback</li>
+    <li><a href="http://templecoding.com/tratamento-excecoes-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<p>Por exemplo:</p>
+
+<pre class="brush: js;">var pessoa = function(nome, dizerOla) {
+    dizerOla(nome);
+};
+var olaNoConsole = function(nome) {
+    console.log(nome); // 
+}
+pessoa('Thiago', olaNoConsole);</pre>
+
+
+<p>No código acima, eu defini uma função chamada pessoa e outra olaNoConsole. A função pessoa recebe uma string com um nome e uma função de callback que ela vai usar para fazer uma saudação. Repare que, quando passo a função olaNoConsole como parâmetro, eu não utilizo parêntesis. Os parêntesis executam a função, então nesse momento que eu não quero executar a função, eu não os utilizo.
+A função de callback pode ser também uma função anônima como no exemplo abaixo:</p>
+
+<pre class="brush: js;">var pessoa = function(nome, dizerOla) {
+    dizerOla(nome);
+};
+pessoa('Thiago', function(nome) {
+    alert('Ola ' + nome);
+});</pre>
+
+
+<p>A mesma função pessoa agora recebendo uma função anônima que faz um alert como saudação.</p>
+
+<h2>Por quê?</h2>
+
+
+<p>Por que fazer uso de funções de callback? Acho que o exemplo acima deixa claro que a principal vantagem é o reuso sem causar acoplamento. No caso a função pessoa nunca sabe como é feita a saudação, tudo o que ela sabe é que tem que chamar a função de callback passando um parâmetro. Foi possível trocar a saudação de console para alert sem alterar a função pessoa.</p>
+
+<p>Um exemplo um pouco mais útil é quando fazemos loops de elementos, por exemplo, vamos supor que eu queira consultar todos os meus campos texto na página, fazer alguma coisa com cada um deles e no fim retornar a lista de campos.</p>
+
+<pre class="brush: js;">var listaCampos = function() {
+    var campos = document.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+    for (i = 0; i &lt; totalItens; i++) { 
+        // algo bem complexo com cada campo
+    }
+    return campos;
+};</pre>
+
+
+<p>Depois disso eu decido que eu quero que cada campo tenha uma borda vermelha, porque eu quero destacar esses campos. Eu poderia pegar o retorno dessa função, fazer um for em cada item de novo e adicionar a borda.</p>
+
+<pre class="brush: js;">var campos = listaCampos();
+var totalItens = campos.length, i;
+for (i = 0; i &lt; totalItens; i++) { 
+    campos[i].setAttribute("style", "border: 1px solid red");
+}</pre>
+
+
+<p>O problema com essa solução é que eu fiz dois loops, um quando peguei os campos e um quando quis deixá-los com a borda vermelha. É possível ser mais simples (e mais rápido) do que isso, eu poderia alterar dentro do for original da função listaCampos e adicionar a linha para deixar os campos com a borda vermelha.</p>
+
+<pre class="brush: js;">var listaCampos = function() {
+    var campos = document.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+    for (i = 0; i &lt; totalItens; i++) { 
+        // algo bem complexo com cada campo
+        campos[i].setAttribute("style", "border: 1px solid red");
+    }
+    return campos;
+};</pre>
+
+
+<p>O problema dessa segunda opção é que se eu quiser usar essa função listaCampos em outra parte no meu código, eu sempre vou ter os campos com a borda vermelha. E nem sempre eu quero vermelho, pode ser que em outro ponto eu queria azul! Aí entra o callback.</p>
+
+<pre class="brush: js;">var campoVermelho = function(campo) {
+    campo.setAttribute("style", "border: 1px solid red");
+};
+
+var listaCampos = function(callback) {
+    var campos = document.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) { 
+        // algo bem complexo com cada campo
+        if(callback) {
+            callback(campos[i]);
+        }
+    }
+    return campos;
+};
+
+listaCampos(campoVermelho);</pre>
+
+
+<p>No código acima, a primeira coisa que eu fiz foi criar a função de callback que espera um campo como parâmetro e faz com que a borda desse campo fique vermelha. Depois, na função listaCampos eu alterei a função para que ela receba um parâmetro, que vai ser uma função de callback.</p>
+
+<p>Em seguida eu testo para ver se uma função foi realmente passada (já que no JavaScript os parâmetros não são obrigatórios). Dentro do loop, se a função de callback foi passada como parâmetro, eu a executo.</p>
+
+<p>Nesse caso agora se eu quisesse que os campos tivessem a borda azul era só criar uma outra função que fizesse isso e passar como parâmetro para a função listaCampos. A função listaCampos continua sendo genérica e pode ser utilizada por outras. Melhor que isso, é uma função que faz uma coisa só e não está com a funcionalidade acoplada a ela.</p>
+
+<h2>Funções de callback e escopo</h2>
+
+
+<p>Dito isso, agora vem a parte um pouco mais complicada que é a parte do escopo com as funções de callback. Imagine que ao invés de passar uma função, eu tenho um objeto e eu passo um método desse objeto como callback para a função listaCampos.</p>
+
+<pre class="brush: js;">var listaCampos = function(callback) {
+    var campos = documente.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) {
+        // algo bem complexo com cada campo
+        if(callback) {
+            callback(campos[i]);
+        }
+    }
+
+    return campos;
+};
+
+var customCampo = {
+    'cor': 'red',
+    'defineCor': function(campo){
+        campo.setAttribute('style', 'border: 1px solid ' + this.cor);
+    }
+};
+
+listaCampos(customCampo.defineCor);</pre>
+
+
+<p>No exemplo acima, o objeto customCampo tem um método defineCor que eu passo como callback para a função listaCampos. O problema é que o método defineCor usa this para fazer acesso ao valor da propriedade cor. Mas, a função listaCampos faz parte do objeto global e portanto nesse momento this vai fazer acesso ao objeto global também.</p>
+
+<p>A solução para esse caso é sempre que passar uma função de callback, passar também o objeto que será o contexto da função de callback.</p>
+
+<pre class="brush: js;">listaCampos(customCampo.defineCor, customCampo);</pre>
+
+
+<p>E aí eu preciso modificar também a função listaCampos</p>
+
+<pre class="brush: js; highlight: [1, 11, 12];">var listaCampos = function(callback, ctx) {
+    var campos = documente.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) {
+        // algo bem complexo com cada campo
+        if(typeof callback === 'function') {
+            callback.call(ctx, campos[i]);
+        }
+    }
+
+    return campos;
+};</pre>
+
+
+<p>Isso resolve o problema, mas quando chamamos a função listaCampos temos que informar duas vezes o objeto customCampo:</p>
+
+<pre class="brush: js;">listaCampos(customCampo.defineCor, customCampo);</pre>
+
+
+<p>Existe uma forma um pouco mais elegante para isso, a gente pode chamar a função listaCampos dessa forma:</p>
+
+<pre class="brush: js;">listaCampos('defineCor', customCampo);</pre>
+
+
+<p>E aí alteramos a função listaCampos para:</p>
+
+<pre class="brush: js; highlight: [5, 6, 7];">var listaCampos = function(callback, ctx) {
+    var campos = documente.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback === 'string') {
+        callback = ctx[callback];
+    }
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) {
+        // algo bem complexo com cada campo
+
+        if(typeof callback === 'function') {
+            callback.call(ctx, campos[i]);
+        }
+    }
+
+    return campos;
+};
+
+var customCampo = {
+    'cor': 'red',
+    'defineCor': function(campo){
+        campo.setAttribute('style', 'border: 1px solid ' + this.cor);
+    }
+};</pre>
+
+
+<p>Um pouco mais elegante.</p>
+
+<p>Por hoje é só, espero que tenha sido útil!<!--:--></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/03/analise-do-livro-technical-blogging/">Se você tem ou quer ter um blog, você precisa ler esse livro</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-03T00:00:00-05:00" pubdate data-updated="true">03/12/2012</time>
+        
+         | <a href="/blog/2012/12/03/analise-do-livro-technical-blogging/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<p>Eu terminei de ler há alguns dias e resolvi fazer uma análise do livro <a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Technical Blogging: </a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="attachment wp-att-1024" target="_blank"><img class="size-full wp-image-1024 alignright" title="Technical Blogging" src="http://templecoding.com/wp-content/uploads/2012/11/actb_xlargecover.jpg" alt="Technical Blogging" width="190" height="228" /></a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Turn Your Expertise into a Remarkable Online Presence</a> por <a href="http://antoniocangiano.com/" target="_blank">Antonio Cangiano</a>. Ainda estou digerindo tudo que aprendi nesse livro e já pondo em prática <del>algumas</del> várias coisas.</p>
+
+<p>É um dos livros com a maior quantidade de dicas praticas que já li. Diversas dicas e ideias de uso imediato. Para quem usa, ou planeja usar, o WordPress como plataforma é ainda mais útil. O livro apresenta vários plug-ins que vão facilitar a vida na hora de escrever, ajudar a trazer mais performance para o site, trazer mais facilidade e valor para os usuários que vão ler o blog.</p>
+
+<h2>Produzindo conteúdo</h2>
+
+
+<p>Os capitulos 5 e 6 &ldquo;Creating Remarkable Content&rdquo; e &ldquo;Producing Content Regularly&rdquo; são ótimos para dar ideias e abrir a mente para a produção de conteúdo diversificado e com regularidade.</p>
+
+<h2>Promovendo seu blog</h2>
+
+
+<p>As dicas para promover o blog do capitulo 7 foram extremamente valiosas. Eu sempre tive pra mim que <a href="https://pt.wikipedia.org/wiki/Otimiza%C3%A7%C3%A3o_para_motores_de_busca">SEO</a> era uma daquelas coisas irrelevantes, que simplesmente funciona e pronto, bom, não é exatamente assim. Além disso, eu passei a olhar as estatísticas de visita do site de uma outra forma.</p>
+
+<h2>Para empresas e blogs em grupo</h2>
+
+
+<p>Se você faz um blog para sua empresa ou grupo, essa parte também não foi esquecida, embora, para blogs como esse isso não faça tanta diferença.</p>
+
+<p>Para concluir essa breve análise do livro Technical Blogging; esse foi um livro que eu comprei sem esperar muita coisa dele, achando que não ia tirar muito proveito. Me enganei. Eu comecei a ler e não parei enquanto não terminei. Ótimo, eu recomendo.<!--:--><!--:en--></p>
+
+<p>&nbsp;</p>
+
+<!--:-->
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/30/seletores-jquery/">Seletores jQuery</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-30T00:00:00-05:00" pubdate data-updated="true">30/11/2012</time>
+        
+         | <a href="/blog/2012/11/30/seletores-jquery/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/aY3aVX1mDGY" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Seletores jQuery</h2>
+
+
+<p>Para selecionar elementos do DOM o jQuery faz uso dos seletores do CSS e também possui alguns seletores próprios. Nesse video eu mostro alguns exemplos desses seletores, de forma individual e combinando tanto seletores CSS como seletores jQuery.</p>
+
+<h2>Links</h2>
+
+
+<p><a href="http://bit.ly/113M34I" target="_blank">Documentação dos seletores jQuery</a><!--:--><!--:en--></p>
+
+<!--:-->
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-28T00:00:00-05:00" pubdate data-updated="true">28/11/2012</time>
+        
+         | <a href="/blog/2012/11/28/escopo-no-javascript/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<p>Existem duas questões importantes com relação ao escopo no JavaScript.  Declaração de variáveis e o valor de this.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;"><strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li>Escopo no JavaScript: esse this não é daqui</li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/tratamento-excecoes-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<p>A primeira parte é fácil, eu já falei um pouco disso quando falei de <a href="http://templecoding.com/declarao-de-variveis-com-javascript/">declaração de variáveis</a>. Toda variável declarada com a palavra chave var tem o escopo da função em que foi declarada. Portanto, na função abaixo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var func1 = function() { 
+    var i = 100; 
+    for(var i = 0; i &lt; 10; i++) { 
+        // qualquer coisa aqui 
+    } 
+    console.log(i); // 10 
+}</pre>
+
+
+<p>A variável i vai ser 10 no fim do método, porque dentro de um método, não importa onde a variável é declarada, ela sempre faz parte do escopo da função. E claro, não pode ser acessada fora da função.</p>
+
+<p>Agora o this é um pouco mais complicado. O this sempre faz referência ao objeto que a função faz parte. Por exemplo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var pessoa = { 
+    'nome': 'Thiago', 
+    'getNome': function(){ 
+        console.log('Olá, ' + this.nome); 
+    } 
+}; 
+pessoa.getNome(); // Olá, Thiago</pre>
+
+
+<p>No exemplo acima, eu declaro um objeto e atribuo à variável pessoa. E getNome é definido com uma função, portanto essa função é um método desse objeto. Dessa forma o contexto de this dentro desse método é o objeto em que ele foi definido e chamada de getNome funciona como o esperado.</p>
+
+<p>Já no exemplo abaixo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var pessoa = {  
+    'nome': 'Thiago',  
+    'getNome': function(){  
+        var fx = function() { 
+            console.log('Olá, ' + this.nome); 
+        }; 
+        fx(); 
+    }  
+};  
+pessoa.getNome(); // Olá, undefined</pre>
+
+
+<p>Dentro do método, fx é apenas uma variável que recebe uma função, não é um método que faz parte de um objeto, por isso, this nesse caso faz referência ao escopo global, que no caso do browser, quer dizer o objeto window.</p>
+
+<h2>Trocando o escopo de uma função</h2>
+
+
+<p>A última coisa que eu quero dizer sobre o escopo e this é que no JavaScript nós podemos alterar a referência this. Veja o exemplo abaixo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var dizOla = function() { 
+    console.log('Ola, ' + this.nome); 
+}; 
+
+var pessoa = { 
+    'nome': 'Thiago Temple' 
+} 
+
+dizOla.call(pessoa);</pre>
+
+
+<p>A função dizOla nao faz parte de nenhum objeto, portanto this dentro daquela função faz referencia ao objeto window. Mas, quando executo a função usando o método call, eu passo o objeto pessoa como parâmetro. Nesse momento estou dizendo para a função dizOla usar o objeto pessoa como contexto.</p>
+
+<p>Alterar o escopo no JavaScript é uma característica muito importante e muito utilizada, porque é uma forma bem simples e eficaz de fazer reuso de funções.</p>
+
+<p>É isso aí por hoje. Até a próxima!<!--:--></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/26/menu-iniciar-no-windows-8/">O menu iniciar no Windows 8 mudou, você pode mudar também</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T00:00:00-05:00" pubdate data-updated="true">26/11/2012</time>
+        
+         | <a href="/blog/2012/11/26/menu-iniciar-no-windows-8/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<p>Na semana passada eu estava ouvindo um podcast (não me lembro qual, escutei vários) e no meio do podcast o entrevistado cita que algumas pessoas tem reclamado da falta do menu iniciar no Windows 8. O que me parece é que alguém andou <a href="http://www.amazon.com/gp/product/B002ALFT6C/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B002ALFT6C&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">mexendo no queijo dos outros</a>.</p>
+
+<p>Honestamente eu não tinha me dado conta direito que ele não estava lá. Claro, pude ver que ele não estava presente. É que eu uso ele tão pouco que eu nem sinto falta.</p>
+
+<p>O Windows 8 acabou de ser lançado, não tem nem um mês. Eu atualizei o meu notebook no final de semana seguinte ao lançamento e, posso dizer que foi a atualização mais tranquila que eu já fiz. Baixei um executável pequeno, ele analisou o computador, paguei a atualização por ali mesmo e pronto. Foi só esperar ele baixar o Windows 8 e instalar.</p>
+
+<p>Eu gostei tanto que até já comprei também um <a href="http://templecoding.com/2012/11/14/analise-do-surface/">Tablet Surface e fiz uma análise sobre ele</a>.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2012/11/evol-windows.jpg"><img style="background-image: none; float: left; padding-top: 0px; padding-left: 0px; margin: 0px 10px 0px 0px; display: inline; padding-right: 0px; border: 0px;" title="Evolução do Windows" src="http://templecoding.com/wp-content/uploads/2012/11/evol-windows_thumb.jpg" alt="Evolução do Windows" width="244" height="191" align="left" border="0" /></a>Na minha opinião o Windows 8 é a melhor novidade em termos de sistemas operacionais desde o Windows 95, quando a gente saiu do Windows 3.11. Olha só, me entendam bem, eu uso Windows, mas eu tenho um Mac há quase 5 anos e gosto muito do Mac OS X. Também uso ocasionalmente o Linux e gosto do Ubuntu (menos que os outros). Ah sim, e por enquanto, pelo menos, eu ainda tenho um celular com Android.</p>
+
+<p>Eu acho que todos esses sistemas operacionais tem seus pontos fortes, no caso do Mac OS, mais precisamente, eu acho que ele sempre foi o mais intuitivo dos sistemas operacionais. Foi.</p>
+
+<p>Nesse mundo de aparelhos e <a href="http://www.codinghorror.com/blog/2012/11/touch-laptops.html" target="_blank">notebooks com suporte ao toque</a> e, especificamente, num mundo onde a computação deixa de ser voltada para nós &ndash; os nerds e técnicos, e o foco está no consumidor final, a Microsoft acertou em cheio fazendo um sistema operacional voltado para o cliente e principalmente beneficiando esse novo mercado de toque.</p>
+
+<h2>Ok, mas o que isso tem a ver com o meu menu iniciar no Windows 8?</h2>
+
+
+<p>Quando estou com meu tablet na mão, ou simplesmente usando a internet, eu praticamente só uso o modo &ldquo;metro&rdquo; do Windows 8 e para isso ele está perfeito. Mas quando estou trabalhando, ou seja, usando o Visual Studio, o SQL, outros editores de texto, etc., eu estou no modo desktop, ou, o modo que teria o menu iniciar.</p>
+
+<p>Só que nesse &ldquo;modo trabalho&rdquo;, eu quero ser o mais produtivo possível e pra mim ser produtivo significa ficar com os mãos no teclado. O que me traz para o seguinte ponto: para que usamos o menu iniciar? Só para abrir aplicações, certo? Aplicações, o Painel de Controle, Configurações do Computador, etc…</p>
+
+<p>Bom, eu faço isso tudo com um pequeno aplicativo <strong>gratuito</strong> chamado <a href="http://www.launchy.net/" target="_blank">Launchy</a>. Com o Launchy instalado, eu pressiono Alt + Espaço, digito o nome da aplicação e abro. Por exemplo, se eu quiser abrir o Google Chrome, eu digito Alt + Espaço e ch.</p>
+
+<p align="center"><a href="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Chrome.png"><img style="background-image: none; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border: 0px;" title="Launchy Chrome" src="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Chrome_thumb.png" alt="Launchy Chrome" width="304" height="149" border="0" /></a></p>
+
+
+<p>Ou então para abrir o SQL Management Studio, Alt + Espaço e sql.</p>
+
+<p align="center"><a href="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Sql.png"><img style="background-image: none; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border: 0px;" title="Launchy SQL Management Studio" src="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Sql_thumb.png" alt="Launchy SQL Management Studio" width="304" height="149" border="0" /></a></p>
+
+
+<p>Muito mais rápido do que navegar por qualquer menu iniciar.</p>
+
+<p>Além disso, o Windows tem diversas teclas de atalho muito úteis. Por exemplo a tecla Windows + E, abre o Windows Explorer, Windows + R, abre o Run, Windows + F, abre a Procura e existem vários outros atalhos. Um atalho bem útil para nós, usuários avançados, é o Windows + X que abre um menu no lugar do menu iniciar. De uma olhada aqui se você quer uma <a href="http://darktips.com/windows-8-keyboard-shortcuts/" target="_blank">lista mais completada dos atalhos do Windows 8</a>.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2012/11/windowsx_menu.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="Menu Windows + X" src="http://templecoding.com/wp-content/uploads/2012/11/windowsx_menu_thumb.png" alt="Menu Windows + X" width="241" height="378" border="0" /></a></p>
+
+<p>Então ok, se você não gosta dele por outras razões diga quais são elas, mas não venha reclamar que não tem um menu iniciar no Windows 8.</p>
+
+<p>Nota: Se você absolutamente quer o menu iniciar no Windows 8, <a href="http://tecnoblog.net/112123/windows-8-menu-iniciar-classico/" target="_blank">existem já alternativas pra isso disponíveis na internet</a>.<!--:--></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/23/introducao-ao-jquery-videocast/">Introdução ao jQuery | VideoCast</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-23T00:00:00-05:00" pubdate data-updated="true">23/11/2012</time>
+        
+         | <a href="/blog/2012/11/23/introducao-ao-jquery-videocast/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/R1HW8TsWRaQ" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Introdução ao jQuery</h2>
+
+
+<p>O jQuery é hoje um dos frameworks feitos em JavaScript mais populares que existe, se não o mais popular. Simples e intuitivo, ele é de fácil compreensão e essa é também uma razão para a sua alta utilização.</p>
+
+<p>Esse vídeo é realmente só uma introdução ao jQuery, porque apesar de sua simplicidade, ele é também um framework bastante extenso.</p>
+
+<p>Nessa breve introdução ao jQuery mostro algumas de suas principais funcionalidades, como:</p>
+
+<ul>
+    <li>Seleção de elementos</li>
+    <li>Manipulação de elementos</li>
+    <li>Captura de eventos</li>
+    <li>Ajax</li>
+    <li>Animação</li>
+</ul>
+
+
+<p>Para mais informações confira também a <a href="http://docs.jquery.com">documentação do jQuery</a><!--:--></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/">Quatro bons livros para mudar a forma como você vê/escreve JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/">Análise do livro Pragmatic Thinking and Learning</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

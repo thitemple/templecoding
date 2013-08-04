@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Converter números em JavaScript é uma droga - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Ok, essa é eu confesso, converter números em JavaScript é uma droga. Não tem nada de bom, nada de lógico (pelo menos, não pra minha mente limitada &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Temple Coding</a></h1>
+  
+    <h2>código, tecnologia e outras nerdices</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:templecoding.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Converter números em JavaScript é uma droga</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-12T00:00:00-05:00" pubdate data-updated="true">12/11/2012</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><!--:pt-->
+
+
+<p>Ok, essa é eu confesso, converter números em JavaScript é uma droga. Não tem nada de bom, nada de lógico (pelo menos, não pra minha mente limitada).</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2012/11/article-new_ehow_images_a08_5u_hc_use-javascript-display-prime-factors-800x800.jpg"><img style="border: 0px currentColor; padding-top: 0px; padding-right: 0px; padding-left: 0px; margin-right: auto; margin-left: auto; display: block; background-image: none;" title="Converter números em JavaScript" src="http://templecoding.com/wp-content/uploads/2012/11/article-new_ehow_images_a08_5u_hc_use-javascript-display-prime-factors-800x800_thumb.jpg" alt="Converter números em JavaScript" width="404" height="271" border="0" /></a></p>
+
+<p>O JavaScript tenta ajudar adivinhando o que a gente quer fazer com base nos parâmetros passados, mas é uma verdadeira lástima. Enfim, esse é um trabalho que a gente volta e meia tem que fazer, então o melhor, pelo menos, é saber como isso funciona.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;"><strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li>Converter números em JavaScript é uma droga</li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/tratamento-excecoes-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<h2>Converter números em JavaScript com parseInt</h2>
+
+
+<p>A função mais comum para converter números em JavaScript é a parseInt. A função parseInt aceita dois parâmetros, o primeiro é a string para ser convertida, e o segundo é a base. A segundo parâmetro não é o obrigatório e, nesse caso, o JavaScript vai tentar adivinhar qual a base que estamos tentando usar com base na string passada.</p>
+
+<p><em>** Alguns browsers já corrigem o problema abaixo, mas na especificação do JavaScript é assim que funciona e, por exemplo, a versão atual do FireFox (16) funciona assim.</em></p>
+
+<p>Por exemplo:</p>
+
+<pre class="brush: js;">console.log(parseInt("10")); // 10
+console.log(parseInt("010")); // 8</pre>
+
+
+<p>No exemplo acima a gente espera que o número gerado seja 10 nos dois casos, mas no segundo caso, por causa do zero inicial, o JavaScript entende que é um número de base 8.</p>
+
+<p>Ainda por causa do zero no início da string, a conversão abaixo retorna zero porque não existe 9 na base 8.</p>
+
+<pre class="brush: js;">console.log(parseInt("09")); // 0</pre>
+
+
+<p>Seguindo esse mesmo raciocínio, no exemplo abaixo a interpretação é de que se trata de um número na base 16. O 0x diz que se trata de um número na base 16.</p>
+
+<pre class="brush: js;">console.log(parseInt("0x10")); // 16</pre>
+
+
+<p>Outra coisa bem peculiar do parseInt; é que ele para de fazer análise da string no momento em que encontrar algum caracter não numérico, por exemplo o exemplo abaixo retorna 12, mesmo tendo caracteres não numéricos na string.</p>
+
+<pre class="brush: js;">console.log(parseInt("12 das")); //12</pre>
+
+
+<p>Por causa de todos essas questões, a forma mais segura de converter números em JavaScript usando o parseInt é sempre informar a base desejada:</p>
+
+<pre class="brush: js;">console.log(parseInt("10", 10)); // 10
+console.log(parseInt("010", 10)); // 10
+console.log(parseInt("09", 10)); // 9</pre>
+
+
+<h2>Usando operadores + - * /</h2>
+
+
+<p>É possível converter uma string fazendo uma operação dela com outro número. Se eu fizer:</p>
+
+<pre class="brush: js;">console.log("10" * 2); // 20
+console.log("10" - 2); // 8
+console.log("10" / 2); // 5</pre>
+
+
+<p>Eu vou obter o resultado esperado, o JavaScript vai converter o texto para um número e retornar o resultado correto. Mas se eu usar o operador +:</p>
+
+<pre class="brush: js;">console.log("10" + 2) // 102</pre>
+
+
+<p>Quando se usa o operador + com uma string, o JavaScript vai sempre concatenar, mesmo que o segundo parâmetro seja um número.</p>
+
+<h2>A função Number</h2>
+
+
+<p>Mais uma opção para converter números é com a função Number, o problema com a função Number é que ela não mantém <span style="text-decoration: line-through;">a mesma loucura</span> o mesmo padrão de parseInt, Number usa sempre a base 10, por exemplo:</p>
+
+<pre class="brush: js;">console.log(Number("10")); // 10
+console.log(Number("010")); // 10
+console.log(Number("09")); // 9</pre>
+
+
+<p>E claro, no caso de uma string que tenha números e textos, a função Number não analisa a string até achar um caracter não numérico, ela retorna NaN (Not a Number).</p>
+
+<pre class="brush: js;">console.log(Number("12 das")); //NaN</pre>
+
+
+<p>É isso ai pessoal, espero ter jogado uma luz na questão de converter números em JavaScript. Até a próxima!<!--:--></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-12T00:00:00-05:00" pubdate data-updated="true">12/11/2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/" data-via="vintem12" data-counturl="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/11/11/bdd-com-specflow/" title="Previous Post: 004 - VideoCast - BDD com SpecFlow">&laquo; 004 - VideoCast - BDD com SpecFlow</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/14/analise-do-surface/" title="Next Post: O Surface é um ótimo Tablet e um bom Notebook">O Surface é um ótimo Tablet e um bom Notebook &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/">Quatro bons livros para mudar a forma como você vê/escreve JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/">Análise do livro Pragmatic Thinking and Learning</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

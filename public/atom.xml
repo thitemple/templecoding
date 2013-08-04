@@ -2,15 +2,1239 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Temple Coding]]></title>
-  <link href="http://vintem.com.br/atom.xml" rel="self"/>
-  <link href="http://vintem.com.br/"/>
-  <updated>2013-08-03T16:15:38-04:00</updated>
-  <id>http://vintem.com.br/</id>
+  <link href="http://templecoding.com/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-08-04T14:36:35-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Só é uma bagunça se você deixar. Responsabilidade única com JavaScript]]></title>
+    <link href="http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
+    <updated>2013-07-30T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
+    <content type="html"><![CDATA[<p>Muita gente que reclama de JavaScript mas não se dá ao mínimo trabalho de entender a linguagem e, boa parte das vezes, não trata o código desenvolvido como um código de verdade, afinal de contas &ldquo;é só JavaScript mesmo&rdquo;.</p>
+
+<p>Mas esse é só uma das razões de boa parte dos problemas enfrentados quando a gente tem que dar manutenção em um código já existente. O bom e velho spaguetti de código.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2013/07/spagett.jpg"><img class="aligncenter size-full wp-image-1399" alt="Código spaghetti" src="http://templecoding.com/wp-content/uploads/2013/07/spagett.jpg" width="425" height="282" /></a></p>
+
+<p>Tenho que admitir que eu já contribui para bastante código spaguetti (como do exemplo que vou mostrar aqui). Exatamente porque não tratei esse código como um programa sério e não apliquei princípios básicos como o da <a href="http://robsoncastilho.com.br/2013/02/06/principios-solid-principio-da-responsabilidade-unica-srp/" target="_blank">responsabilidade única</a>.</p>
+
+<p>Vamos imaginar uma cesta de compras como a da imagem abaixo, que tem um link para atualizar a quantidade de itens do carrinho. O código que vou mostrar, captura o click no link usando o jQuery e faz uma validação de que o valor informado no campo é numérico. A regra de negócio diz ainda que tem que ser uma quantidade entre 0 e 10. Não posso vender mais do que 10 unidades de um mesmo item.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2013/07/shopping_basket.png"><img class="aligncenter size-full wp-image-1392" alt="shopping_basket" src="http://templecoding.com/wp-content/uploads/2013/07/shopping_basket.png" width="413" height="69" /></a></p>
+
+<p>Um código que faria isso é esse:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">  $(document).ready(function() {
+    $(".update_cart").click(function(e) {
+      e.preventDefault();
+      var itemsCount = $(this).closest("td").prev()
+        .children(".quantity").val();
+      if(isNaN(itemsCount) || parseInt(itemsCount, 10) &lt; 0 ||          parseInt(itemsCount, 10) &gt; 10) {
+          showError("Nao é numero valido");
+          return;
+      }
+      $.ajax({
+        url: '/updatecart',
+        data: {
+          // lógica para formatar os dados a serem enviados para o servidor
+        },
+        success: function(data) {
+          // update table with cart data
+        },
+        error: function(xhr, status, error) {
+          // handle error
+        }
+      });
+    });
+  });</pre>
+
+
+<p>Embora esse seja um código simples &ndash; e que está pouco mais curto do que realmente seria já que eu omiti alguns detalhes da implementação &ndash; ele viola um dos princípios de desenvolvimento mais importantes na minha opinião, que é o princípio da responsabilidade única. Mas, é um código que nós vemos com bastante facilidade em muitos aplicações na web.</p>
+
+<p>Mesmo que a gente não tenha classes em JavaScript, as funções são usadas para fazer separações de responsabilidades. Veja, no exemplo acima, a função responsável por responder ao evento de click de atualização faz a validação, faz a chamada ajax e também atualiza a página após o resultado, seja com sucesso ou não.</p>
+
+<p>Fazendo uma breve analogia, a chamada ajax como essa acima, pode ser comparada a uma chamada de um web service feito por um código C# ou Java. Ou seja, é um serviço externo ao código que está sendo executado, ou melhor ainda, é uma dependência externa que está gerando acoplamento no código. Taí a primeira separação que a gente pode fazer.</p>
+
+<p>Outra ponto, o script acima lê informações da página (DOM) e depois atualiza informações nessa mesma página de acordo com o retorno do processamento. Então, em uma outra analogia, pode-se dizer que o DOM nesse caso, é uma forma de banco de dados do programa, portanto, é outra dependência externa que a gente pode separar no código.</p>
+
+<p>Então vamos ver o que seria um código melhor estruturado para esse caso.</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">$(document).ready(function() {
+
+  function BasketUpdater (basketView, basketService) {
+    this.init = function() {
+      basketView.handleUpdate(this.update);
+    }
+
+    this.isValid = function(item) {
+      var quantity = item.quantity;
+      return !isNaN(itemsCount) &amp;&amp; 
+        parseInt(itemsCount, 10) &gt;= 0 &amp;&amp; parseInt(itemsCount, 10) &lt;= 10
+    }
+
+    this.update = function(item) {
+      if(this.isValid(item)) {
+        basketService.update(item, 
+          basketView.refreshViewSuccess, basketView.refreshViewError)
+      }
+    }
+  }
+
+  function BasketView() {
+    this.handleUpdate = function(callback) {
+      $(".update_cart").click(function(e) {
+        e.preventDefault();
+        // logica para formatar um objeto com os dados do item no formulario
+        callback(item);
+      }
+    }
+
+    this.refreshViewSuccess = function() {
+      // 
+    }
+
+    this.refreshViewError = function() {
+      // 
+    }
+  }
+
+  function BasketService(url) {
+    this.update = function(item, callbackSuccess, callbackError) {
+      $.ajax({
+        url: url,
+        data: item,
+        success: function(data) {
+          algum codigo para formatar os dados de retorno
+          callbackSuccess(data);
+        },
+        error: function(xhr, status, error) {
+          // algum codigo para tratar a mensagem de erro
+          callbackError(error);
+        }
+      });
+    }
+  }
+
+  var basketService = new BasketService('http://localhost/updateCart');
+  var basketView = new BasketView();
+  var basketUpdater = new BasketUpdater(basketView, basketService);
+
+  basketUpdater.init();
+
+});</pre>
+
+
+<p>Mesmo que esse código seja um tanto quanto mais extenso que o anterior, fica bem clara a divisão de responsabilidades. Temos uma função para atualizar a view <em>BasketView</em>, uma para fazer a chamada ajax <em>BasketService</em> e uma com a lógica de negócio necessária para a página <em>BasketUpdater</em>.</p>
+
+<p>Os benefícios de um código como esse (comparado com o anterior) são muitos, e bem semelhantes aos que a gente vê em códigos &ldquo;servidor&rdquo; bem estruturados.</p>
+
+<ol>
+    <li>As dependências necessárias para que um objeto funcione (sim, uma função em JavaScript é um objeto) estão claras e definidas já no construtor.</li>
+    <li>Uma função não depende explicitamente de outra, ela apenas espera um objeto que implemente determinados métodos</li>
+    <li>É possível testar as funções isoladamente com um framework de testes</li>
+    <li>É possível utilizar injeção de dependência e no caso dos testes, usar mocks</li>
+    <li>É possível alterar uma função sem interferir na outra (desde que os nomes dos métodos se mantenham os mesmos)</li>
+</ol>
+
+
+<p>Para concluir, temos um código muito mais organizado, de fácil manutenção e com responsabilidades claras. Para chegar nesse resultado, fiz uso apenas de técnicas já conhecidas de outras linguagens e sem inventar muita coisa. Então da próxima vez que você for dizer que é muito difícil dar manutenção em código JavaScript, pense se você está contribuindo para um código sustentável ou só preparando o almoço do próximo domingo.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2013/07/Spaghetti.gif"><img class="aligncenter size-full wp-image-1401" alt="Spaghetti" src="http://templecoding.com/wp-content/uploads/2013/07/Spaghetti.gif" width="245" height="184" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Meu TED Talk favorito]]></title>
+    <link href="http://templecoding.com/blog/2013/07/23/meu-ted-talk-favorito/"/>
+    <updated>2013-07-23T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/07/23/meu-ted-talk-favorito</id>
+    <content type="html"><![CDATA[<p>Ainda hoje, depois de muitos TEDs ouvidos e assistidos, o meu favorito ainda é um de 2007.</p>
+
+<p><strong><a href="http://vintem.me/12Hzg5h" target="_blank">Ben Dunlap</a> fala sobre uma vida apaixonada.</strong></p>
+
+<p>Assista primeiro, depois a gente conversa:</p>
+
+<p>[ted id=208 lang=pt-br]</p>
+
+<p>Diversas lições podem ser tiradas desse vídeo. Eu poderia focar na superação de um sobrevivente do holocausto, na forma como uma pessoa decidiu lidar com alguém que estava roubando suas coisas e como decidiu ver o melhor das pessoas, ou até sobre como lidar com diferenças culturais no mundo corporativo.</p>
+
+<p>Mas eu fico mesmo com a lição mais clara que é a lição final. Se duas pessoas com tanto conhecimento e, no estágio da vida em que se encontravam na historia contada, podem ter tanta paixão pelo conhecimento, não importando o tipo do conhecimento, porque eu, que não sei quase nada da vida vou agir de forma diferente?</p>
+
+<blockquote>Viva cada dia como se fosse o último, aprenda como se fosse viver para sempre.
+<strong>Mahatma Ghandi</strong></blockquote>
+
+
+<p>Então é isso, de tempos em tempos, eu gosto de assistir à esse vídeo para me lembrar disso.</p>
+
+<p><a class="bbli" href="http://sledge.boo-box.com/list/page/XyMjX2Jhcl8jI190YWdnaW5nLXRvb2wtd3BfIyNfMTYzMzEwMg==-52"><img class="bbic" alt="[bb]" src="http://boo-box.com/bbli" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Programação orientada à coincidência]]></title>
+    <link href="http://templecoding.com/blog/2013/07/16/programacao-orientada-a-coincidencia/"/>
+    <updated>2013-07-16T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/07/16/programacao-orientada-a-coincidencia</id>
+    <content type="html"><![CDATA[<p>Eu gosto muito de programar, gosto dos desafios técnicos que programar que traz. Mas o que eu mais gosto é do constante aprendizado que faz parte da profissão de programador.</p>
+
+<p>Por causa de tudo isso eu nunca entendi ou gostei de frases como &ldquo;se esta funcionando não mexe&rdquo; ou &ldquo;não encosta nesse código porque senão para de funcionar&rdquo;. Como alguém que gosta de aprender, minha primeira pergunta é: porque para de funcionar? Ou, porque não pode mexer? Ou, o que vai estragar?</p>
+
+<p>Informações sobre os mais diversos assuntos estão disponíveis de forma muito fácil (para uns até um pouco mais que para outros, não é NSA?) então não vejo sentido de não buscar se aprofundar nos assuntos. <a href="http://www.hanselman.com/">Scott Hanselman</a>, em um ótimo post, já disse que <a href="http://vintem.me/1dAms6P" target="_blank">a internet não é uma caixa preta</a>. Citando uma frase desse post que resume o que eu quero dizer:</p>
+
+<blockquote>When coding on the web, remember that effectively NOTHING is hidden from you.</blockquote>
+
+
+<p>NADA esta escondido de você, enfase no NADA.</p>
+
+<p>No livro <a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=020161622X&amp;linkCode=as2&amp;tag=tempcodi0f-20">The Pragmatic Programmer</a>, Andrew Hunt e David Thomas dedicam um capitulo à programação por coincidência e eles abrem o capitulo com uma metáfora muito interessante. Eles comparam um programador que codifica por tentativa e erro, resolvendo problemas de forma aleatórias e sem conhecimento sobre o assunto à um soldado andando em um campo minado. O soldado pode dar um, dois, vários passos sem pisar em uma mina, achar que esta fazendo algo correto, mas é somente uma caminhada aleatória, uma hora ele pode pisar em uma mina e explodir.</p>
+
+<p><a href="http://templecoding.com/programacao-orientada-a-coincidencia/falklands-minefield1/" rel="attachment wp-att-1335"><img class="aligncenter size-full wp-image-1335" title="falklands-minefield1" src="http://templecoding.com/wp-content/uploads/2013/07/falklands-minefield1.jpg" alt="" width="426" height="282" /></a></p>
+
+<p>Outra coisa bem comum quando não se entende do problema, é a tendencia de resolver as coisas sempre do mesmo jeito, ou seja é o velho caso daquela frase &ldquo;se você só tem um martelo todo o problema é um prego&rdquo;. Parece que é uma formula magica, funcionou para um problema não se sabe como, deve funcionar para os outros.</p>
+
+<p>Ainda nesse sentido, pode ser que um problema seja resolvido passando dados inválidos
+para um método e que isso resulte numa resposta inesperada do programa. Mas se a sua unica fonte de analise for a resposta daquela chamada com dados inválidos, quando aquele programa for corrigido, sua chamada não vai mais funcionar porque aquela coincidência foi modificada.</p>
+
+<p>[caption id=&ldquo;attachment_1329&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;265&rdquo;]<a href="http://templecoding.com/programacao-orientada-a-coincidencia/coincidence1/" rel="attachment wp-att-1329"><img class="wp-image-1329     " title="coincidence" src="http://templecoding.com/wp-content/uploads/2013/07/coincidence1.jpg" alt="" width="265" height="235" /></a> Parece um coelho, mas&hellip;[/caption]</p>
+
+<p>E o pior na minha opinião, é a ignorância que isso gera. Até hoje ainda vejo gente que acha que POST é mais seguro do que GET só porque os dados não são enviados na URL!</p>
+
+<p><strong>Escolhendo a pilula vermelha</strong></p>
+
+<iframe src="http://templecoding.com//www.youtube.com/embed/xFhn_GUAhGU" frameborder="0" width="420" height="315"></iframe>
+
+
+<p>E sim, entender e aprender as coisas dá trabalho, toma tempo, tomar a pilula vermelha às vezes quer dizer por em prática para aprender, ou, como já disse um Yogi Berra:</p>
+
+<blockquote>Mastering knowledge alone, without experience isn&#8217;t effective</blockquote>
+
+
+<p>Ou, numa tradução livre e direta: <em>Dominar um assunto sem a pratica não é efetivo.</em></p>
+
+<p><strong>Mas até onde ir?</strong></p>
+
+<p>Essa é uma linha difícil de traçar. De uma forma geral eu tento entender o suficiente para resolver o problema que eu estou enfrentando, e qualquer outra coisa, eu deixo para ler mais tarde.</p>
+
+<p>Por exemplo, eu estava estudando Backbone.js usando <a href="http://vintem.me/12QNKkh" target="_blank">esse tutorial</a>, e nele é usado o <a href="http://vintem.me/15yM296" target="_blank">padrão AMD</a> implementado pelo <a href="http://requirejs.org/" target="_blank">Require.JS</a>. Eu podia simplesmente seguir o tutorial que isso resolveria o problema, mas o que eu decidi fazer foi ler um pouco sobre o Require.JS no seu site para entender o seu funcionamento e depois ler sobre o padrão AMD quando eu tivesse um pouco mais de tempo. Esse tutorial, também usa o Node.js, ou seja, depois eu ainda fui explorar um pouco sobre o Node.js :)</p>
+
+<p>É claro, não existe uma regra, e ninguém pode dizer até onde cada um deve ir, você é quem tem que traçar a linha entre o que é informação necessária e o que é procrastinação, sempre tentando ser pragmático.</p>
+
+<p>O mais importante de tudo é deixar a preguiça de lado e entender o que você faz. Não basta pegar a primeira resposta no StackOverflow. Afinal de contas, você também não ia gostar que um médico te receitasse um medicamento só porque esse remédio funciona para a dor de barriga de outra pessoa, você quer que ele te examine e te diga porque esse remédio vai funcionar, não é?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Quatro bons livros para mudar a forma como você vê/escreve JavaScript]]></title>
+    <link href="http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/"/>
+    <updated>2013-06-10T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript</id>
+    <content type="html"><![CDATA[<p>A maioria dos programadores que eu conheço dizem que não gostam de JavaScript. Eu entendo que a linguagem tem muitas coisas que são &ldquo;meio bizarras&rdquo;, mas eu também tenho certeza que não gostar de JavaScript, vem do fato de que as pessoas não conhecem a linguagem além da sintaxe básica e, de copy/paste de scripts prontos encontrados na internet.</p>
+
+<p>JavaScript tem chaves {}, ponto e virgula, tem Java no nome mas seu funcionamento não tem nada a ver nem com Java ou com qualquer outra linguagem derivada de C, como o C#. Por isso, para usar o JavaScript de uma maneira correta e até para começar a gostar da linguagem a gente tem que entender seu funcionamento.</p>
+
+<p>[caption id=&ldquo;attachment_1310&rdquo; align=&ldquo;aligncenter&rdquo; width=&ldquo;319&rdquo;]<a href="http://templecoding.com/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/java-javascript-sm/" rel="attachment wp-att-1310"><img class="size-full wp-image-1310" title="Java e JavaScript" src="http://templecoding.com/wp-content/uploads/2013/06/java-javascript-sm.png" alt="" width="319" height="186" /></a> Java esta para JavaScript assim como presunto esta para hamster.[/caption]</p>
+
+<p>Aqui vai uma pequena lista de quatro livros que li sobre JavaScript que vão ajudar a aprofundar seu conhecimento sobre: a linguagem, sobre as interações com o browser e até como escrever um código mais rápido, organizado e elegante usando o que o JavaScript tem de melhor.</p>
+
+<p>Os livros que vou indicar podem ter assuntos que são cobertos mais de uma vez em cada livro. Mas de uma forma geral, são livros que se complementam tratando a linguagem e o ambiente em que ela existe de formas diferentes.</p>
+
+<h2><a href="http://www.amazon.com/gp/product/0596517742/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596517742&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">JavaScript: The Good Parts</a> por <a href="http://www.crockford.com/" target="_blank">Douglas Crockford</a></h2>
+
+
+<p><a href="http://www.amazon.com/gp/product/0596517742/ref=as_li_ss_il?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596517742&amp;linkCode=as2&amp;tag=tempcodi0f-20"><img class="alignleft" style="border: 0px;" src="http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&amp;ASIN=0596517742&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=tempcodi0f-20" alt="" width="122" height="160" border="0" /></a><img style="border: none !important; margin: 0px !important;" src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&amp;l=as2&amp;o=1&amp;a=0596517742" alt="" width="1" height="1" border="0" /></p>
+
+<p>Pra mim esse livro é uma boa introdução para quem quer começar a entender um pouco além da sintaxe básica da linguagem. Não, ele não é um livro que vai aprofundar muito na linguagem, vai apenas começar a cobrir alguns tópicos de uma forma mais avançada. Mas principalmente, vai ajudar a entender um pouco melhor o que JavaScript tem de bom. Se você já entende bem a sintaxe do JavaScript, já sabe como funcionam objetos e funções no JavaScript você pode pular esse livro.</p>
+
+<h2><a href="http://www.amazon.com/gp/product/0596806752/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596806752&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">JavaScript Patterns</a> por <a href="http://www.phpied.com/" target="_blank">Stoyan Stefanov</a></h2>
+
+
+<p><a href="http://www.amazon.com/gp/product/0596806752/ref=as_li_ss_il?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596806752&amp;linkCode=as2&amp;tag=tempcodi0f-20"><img class="alignleft" style="border: 0px;" src="http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&amp;ASIN=0596806752&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=tempcodi0f-20" alt="" width="122" height="160" border="0" /></a><img style="border: none !important; margin: 0px !important;" src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&amp;l=as2&amp;o=1&amp;a=0596806752" alt="" width="1" height="1" border="0" /></p>
+
+<p>Como o nome diz, vai falar de padrões. Os padrões aqui estão relacionados às características especificas do JavaScript, como por exemplo, como fazer reuso de código usando Prototype. Fala ainda de convenções adotadas na linguagem, como resolver o problema do escopo global, como usar construtores, entre outros. O livro aborda também alguns dos <a href="https://en.wikipedia.org/wiki/Design_Patterns">padrões do GoF</a>, mas com uma visão focada nas características do JavaScript. Esse com certeza é um livro que deve ser lido por qualquer programador que queira levar o JavaScript mais a sério.</p>
+
+<h2><a href="http://www.amazon.com/gp/product/193398869X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=193398869X&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Secrets of the JavaScript Ninja</a> por <a href="http://ejohn.org/" target="_blank">John Resig</a></h2>
+
+
+<p><a href="http://www.amazon.com/gp/product/193398869X/ref=as_li_ss_il?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=193398869X&amp;linkCode=as2&amp;tag=tempcodi0f-20"><img class="alignleft" style="border: 0px;" src="http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&amp;ASIN=193398869X&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=tempcodi0f-20" alt="" width="127" height="160" border="0" /></a><img style="border: none !important; margin: 0px !important;" src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&amp;l=as2&amp;o=1&amp;a=193398869X" alt="" width="1" height="1" border="0" /></p>
+
+<p>Pra mim, o melhor livro sobre JavaScript do ponto de vista didático. Ótimos exemplos, explicações bem claras e muitos detalhes sobre a linguagem. Foi nesse livro que vi a melhor explicação do funcionamento de closures em JavaScript. Dos livros que estou indicando, é o que lida mais com as interações entre o JavaScript e o browser, inclusive demostrando estratégias para lidar com as diferenças entre os principais fabricantes de browser.</p>
+
+<h2><a href="http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321812182&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript</a> por <a href="http://calculist.org/" target="_blank">David Herman</a></h2>
+
+
+<p><a href="http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_il?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321812182&amp;linkCode=as2&amp;tag=tempcodi0f-20"><img class="alignleft" style="border: 0px;" src="http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&amp;ASIN=0321812182&amp;Format=_SL160_&amp;ID=AsinImage&amp;MarketPlace=US&amp;ServiceVersion=20070822&amp;WS=1&amp;tag=tempcodi0f-20" alt="" width="122" height="160" border="0" /></a><img style="border: none !important; margin: 0px !important;" src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&amp;l=as2&amp;o=1&amp;a=0321812182" alt="" width="1" height="1" border="0" /></p>
+
+<p>Esse é sem duvidas o livro que vai mais a fundo na linguagem. É um livro curto, mas com muitas informações. Se você deixar para ler esse livro por ultimo (eu recomendo assim), vai ver que algumas das dicas vão ser repetidas, mas a maioria das dicas vai trazer bastante informação. Alguns dos itens precisam ser lidos mais de uma vez porque são bem complexos (pelo menos para o meu cérebro limitado), mas o livro é pura informação do começo ao fim.</p>
+
+<h2><strong>Tudo isso sobre JavaScript?</strong></h2>
+
+
+<p>Pode parecer muito para uma linguagem que muitas vezes parece tão simples e, de fato, a sintaxe do JavaScript é simples. Mas alguns conceitos não são muito conhecidos especialmente para programadores acostumados com linguagens estáticas e não habituados à programação funcional. Se você não quiser/puder ler todos mas ainda assim quiser ler sobre JavaScript eu diria para ler pelo menos dois: <a href="http://www.amazon.com/gp/product/0596806752/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596806752&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">JavaScript Patterns</a> e <a href="http://www.amazon.com/gp/product/193398869X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=193398869X&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Secrets of the JavaScript Ninja</a>. Esses dois cobrem a maior parte dos assuntos que vemos no dia a dia, e com certeza já vão ajudar a sair do nível &ldquo;copy/paste&rdquo; para chegar no nível de entender o que realmente esta acontecendo quando você faz suas aplicações com JavaScript.</p>
+
+<p>Boa leitura!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Análise do livro Pragmatic Thinking and Learning]]></title>
+    <link href="http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
+    <updated>2013-06-04T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
+    <content type="html"><![CDATA[<p>Alguns livros são tão bons que você tem vontade de falar deles para todo mundo antesmesmo de terminar. Esse é um deles.</p>
+
+<p style="text-align: center;"><a href="http://vintem.me/18LjWdg"><img class="size-full wp-image-1266 aligncenter" title="Pragmatic Thinking and Learning" src="http://templecoding.com/wp-content/uploads/2013/06/ahptl_xlargecover.jpg" alt="" width="190" height="228" /></a></p>
+
+
+<p>Numa tradução livre e amadora do resumo do livro no site, diz o seguinte:</p>
+
+<blockquote>Nesse livro escrito por Andy Hunt, você vai aprender nosso cérebro é conectado e, como tirar proveito d arquitetura do seu cérebro. Você vai aprender novas dicas e truques para aprender mais, mais rápido e guardar mais do que você aprende.</blockquote>
+
+
+<p>Eu posso resumir a minha avaliação desse livro em uma frase bem curta. <strong>Eu queira ter lido antes</strong>.</p>
+
+<p>Realmente o livro traz diversas informações sobre o funcionamento do nosso cérebro, informações que, pelo menos para mim, eram novas. Ou então eram informações que eu tinha obtido e não tinha guardado. É muito interessante (e útil) as analogias que autor usa para explicar o nosso cérebro fazendo referências à arquitetura de computadores e a programação assíncrona.</p>
+
+<p>O livro não fica só na parte teórica do funcionamento de cérebro. É interessante entender o que é o modelo Dreyfus e os estágios que passamos na obtenção de conhecimento. São eles: iniciante, iniciante avançado, competente, proficiente e expert. Embora eu não ache que as pessoas possam ser categorizadas em níveis, ou melhor, só em cinco níveis, eu acho também que é uma forma de feedback e uma forma de termos parâmetros para nos guiar em como alcançar um nível mais alto de conhecimento.</p>
+
+<p>Que as pessoas aprendem de forma diferente já é bem divulgado, mas o que eu achei interessante sobre as formas que aprendemos (relacionado com o funcionamento do nosso cérebro), foi que o livro expõe de forma bem clara e, sempre usando ótimas métaforas, como podemos explorar essas diferenças com técnicas práticas.</p>
+
+<p>Uma das técnicas passadas no livro é a técnica de definição de objetivos de aprendizado
+<img class="alignright size-full wp-image-1265" title="Smart" src="http://templecoding.com/wp-content/uploads/2013/06/smart2.jpg" alt="" width="276" height="382" />chamada S.M.A.R.T. Que é o acrônimo para Specific, Measurable, Attainable, Relevant e Time-Bound. Outras incluem, carregar sempre um livro de notas, criar um wiki pessoal,desenhar mapas mentais, entre outros. Tudo sempre com um ótimo embasamento teórico.</p>
+
+<p>Eu, como leio muito, gostei muito do livro e tenho tentado por em práticas coisas que já aprendi. Espero que você aproveite a dica e leia o livro, eu gostei muito.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ASP.NET MVC Model Binding]]></title>
+    <link href="http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding/"/>
+    <updated>2013-05-20T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding</id>
+    <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/BjmRewB7tY4" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>ASP.NET MVC Model Binding</h2>
+
+
+<p>Nesse video explico o funcionamento do ASP.NET MVC Model Binding, começo com alguns exemplos básicos e depois mostro como criar um Model Binder Customizado.</p>
+
+<p>Por fim, mostro como criar um Model Binder Provider que retorna um Model Binder customizado e genérico para usar junto com o Entity Framework, mas que obviamente poderia ser qualquer outro como NHibernate.</p>
+
+<p><a href="https://github.com/vintem/ModelBindingDemo" target="_blank">O código está disponível no meu github.</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript is Sexy - dica rápida]]></title>
+    <link href="http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida/"/>
+    <updated>2013-03-25T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida</id>
+    <content type="html"><![CDATA[<p>Uma dica bem rápida. Hoje (não sei exatamente como), fui parar nesse site <a href="http://javascriptissexy.com/" target="_blank">JavaScript is Sexy</a>. E achei o site excelente, com vários &ldquo;roadmaps&rdquo; para aprender assuntos diferentes mas relacionados ao JavaScript.</p>
+
+<p>Por exemplo, tem um bom roadmap para aprender <a href="http://javascriptissexy.com/learn-node-js-completely-and-with-confidence/" target="_blank">Node.js com confiança</a> ou então, um outro para aprender <a href="http://javascriptissexy.com/learn-intermediate-and-advanced-javascript/" target="_blank">JavaScript avançado</a>.</p>
+
+<p>Bom, fica ai a dica rápida.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Integrar é traduzir, não é reproduzir]]></title>
+    <link href="http://templecoding.com/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/"/>
+    <updated>2013-03-21T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir</id>
+    <content type="html"><![CDATA[<p>Eu trabalho fazendo integrações de aplicações web com o SAP há alguns anos já. E existem &ldquo;alguns padrões&rdquo; (vou chamar de padrões), que existem no SAP que são bem particulares à esse ERP.</p>
+
+<p>Só para ambientar aqueles que não conhecem nada de SAP, o SAP é um grande ERP e ele possui todo um ecossistema próprio para customização e criação de soluções de negócio. Por exemplo, ele tem uma linguagem própria o <a href="https://en.wikipedia.org/wiki/Abap">ABAP</a>, tem um protocolo de comunicações proprietário, o <a href="https://en.wikipedia.org/wiki/Remote_function_call">RFC</a>, entre outras coisas. Fora isso, existe também toda uma cultura particular de desenvolvimento, que honestamente, eu não conheço muito, já que nunca fui um programador ABAP.</p>
+
+<p><a href="http://templecoding.com/integrar-e-traduzir-nao-e-reproduzir/system_integration/" rel="attachment wp-att-1231"><img class="alignleft size-full wp-image-1231" title="system_integration" src="http://templecoding.com/wp-content/uploads/2013/03/system_integration.jpeg" alt="" width="240" height="150" /></a>A minha questão aqui é, independente do porque, e se esta certo ou não, geralmente quando faço integrações com o SAP encontro coisas que não estou acostumado a ver quando desenvolvo minhas soluções usando outras tecnologias, como por exemplo, .NET e C#.</p>
+
+<p>Por exemplo, em muitas integrações que fiz com o SAP quando chamo uma função remota e essa gera um erro, ao invés de receber um exceção, a chamada é executada com sucesso e uma estrutura de dados (como na imagem abaixo) é retornada preenchida contendo um tipo de erro, um código e possivelmente algumas mensagens. Esse é um padrão usado e que já vi várias vezes.</p>
+
+<p><a href="http://templecoding.com/integrar-e-traduzir-nao-e-reproduzir/sap_return/" rel="attachment wp-att-1224"><img class="aligncenter  wp-image-1224" title="sap_return" src="http://templecoding.com/wp-content/uploads/2013/03/sap_return.png" alt="Retorno de erros no SAP" width="446" height="319" /></a></p>
+
+<p>Obs.: <a href="http://cc2e.com/Page.aspx?hid=147" target="_blank">Steven McConnell deve ficar tão orgulhoso disso</a>.</p>
+
+<p>OK, mas qual é o problema disso e o que tem a ver com o que eu faço?</p>
+
+<p>Bom, o problema na minha opinião, é quando esse tipo de padrão começa a vazar para outras aplicações. Tenho que admitir que eu já fiz a minha parte de permitir que isso vazasse. Shame on me!</p>
+
+<p>Mas voltando, se estamos fazendo uma integração com uma aplicação terceira, não importa qual, e ela tem uma particularidade, não precisamos expor essa particularidade, podemos encapsulá-la e mudar o padrão para algo mais genérico, ou que faça sentido para a nossa plataforma de desenvolvimento. Por exemplo, no caso de um Web Service, lançar um SoapException.</p>
+
+<p>Outro padrão comum ao SAP é a nomenclatura de estruturas. Não sei porque, mas encontramos muitas estruturas com esse tipo de nomenclatura.</p>
+
+<p><a href="http://templecoding.com/integrar-e-traduzir-nao-e-reproduzir/nomes_sap/" rel="attachment wp-att-1223"><img class="aligncenter size-full wp-image-1223" title="Nomenclatura_SAP" src="http://templecoding.com/wp-content/uploads/2013/03/nomes_sap.png" alt="Nomenclatura no SAP" width="247" height="434" /></a></p>
+
+<p>Talvez isso faça sentido na cabeça de algum alemão louco, mas, voltando ao C#, um nome de variável pode ter até 1023 bytes, isso quer dizer que podemos ser bem mais descritivos que isso. E no caso de um Web Service também, não ha uma limitação especifica para o nome de uma tag XML.</p>
+
+<p>Mais uma vez o ponto é, no momento em que estamos fazendo uma integração, seja qual for a tecnologia utilizada (no meu caso é o BizTalk), esse é o momento de abstrair particularidades, de aplicar boas práticas para quem vai consumir essa integração.<a href="http://templecoding.com/integrar-e-traduzir-nao-e-reproduzir/images_boo/" rel="attachment wp-att-1232"><img class="alignright size-full wp-image-1232" title="images_boo" src="http://templecoding.com/wp-content/uploads/2013/03/images_boo.jpeg" alt="" width="255" height="197" /></a></p>
+
+<p>Eu vejo uma integração como uma tradutora. Ela ouve em alemão e traduz para português, ela não traduz algumas partes para português e mantém outras no formato original. Para mim, que não falo nada de alemão, isso só me atrapalharia.</p>
+
+<p>E nem sempre é uma questão de certo ou errado, mas sim de pontos que são mais idiomáticos em uma tecnologia do que em outra. Nesse caso o problema são as traduções literais que muitas vezes não fazem sentido, temos que contextualizar para a tecnologia que estamos usando.</p>
+
+<p><a href="http://templecoding.com/integrar-e-traduzir-nao-e-reproduzir/slip/" rel="attachment wp-att-1230"><img class="aligncenter size-full wp-image-1230" title="slip" src="http://templecoding.com/wp-content/uploads/2013/03/slip.png" alt="" width="249" height="263" /></a>Mais uma vez usando o SAP como <del>bode expiatório</del> exemplo, existem alguns casos em que as strings não podem ter mais do 132 caracteres, por isso vemos estruturas como a anterior que tem campos message1, message2, message3, etc., e, embora isso funcione, é uma limitação daquela plataforma/tecnologia. Esse não é o caso de um XML ou do próprio C#, portanto, passar uma estrutura dessas adiante é simplesmente fazer uma tradução literal e não olhar para o contexto.</p>
+
+<p>Concluindo, quando for integrar duas ou mais aplicações, tenha em mente os limites tecnológicos, funcionais e semânticos de cada ponta. Leve em consideração o que é um padrão proprietário e deve ser transformado do que realmente é um padrão de integração e deve ser mantido. <a href="http://www.amazon.com/gp/product/0321200683/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321200683&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Existem inclusive livros que podem nos ajudar com isso</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Loops for in no JavaScript]]></title>
+    <link href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/"/>
+    <updated>2013-03-11T00:00:00-04:00</updated>
+    <id>http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript</id>
+    <content type="html"><![CDATA[<p>O JavaScript tem o suporte nativo a loops do tipo <em>for in</em> e, ele funciona de uma forma muito semelhante ao <em>foreach</em> do C# (por exemplo), mas temos que tomar alguns cuidados, por que como tudo no JavaScript, sempre temos uma pegadinha.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
+
+<strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li>Loops for in</li>
+</ol>
+</div>
+
+
+<p>Primeiro um exemplo. Se eu quiser iterar por todas as propriedades é métodos de um objeto o código é exatamente o que imaginamos.</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var propriedade;
+var pessoa = {
+    nome: 'Thiago',
+    sobrenome: 'Temple',
+    dizOla: function() {
+        alert('Ola');
+    }
+};
+for(propriedade in pessoa){
+    document.writeln(propriedade);
+}
+//exibe: nome sobrenome dizOla</pre>
+
+
+<p>Esse código produz um retorno com: nome sobrenome dizOla</p>
+
+<p>Se eu quiser exibir somente os atributos e não os métodos, eu preciso adicionar um filtro no loop, dessa forma:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">for(propriedade in pessoa){
+    if (typeof pessoa[propriedade] !== 'function') {
+        document.writeln(propriedade);
+    };
+}
+//exibe: nome sobrenome</pre>
+
+
+<p>Até aqui bem simples.</p>
+
+<p>O primeiro ponto a considerar é que nunca podemos garantir a ordem do retorno de um loop for in. Geralmente isso não importaria muito, como no exemplo anterior, mas no caso de um array, que é também um objeto, isso pode ser importante. Nesse momento é melhor usar mesmo um loop for do que um loop for in.</p>
+
+<p>A segundo ponto a considerar é que o JavaScript tem herança através da propriedade prototype, e que todo objeto herda de Object. Isso é importante porque o JavaScript é uma linguagem dinâmica e, portanto, se alterarmos Object isso vai refletir nos nossos objetos, não importa o momento que alteramos Object. Por exemplo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var propriedade;
+var pessoa = {
+    nome: 'Thiago',
+    sobrenome: 'Temple',
+    dizOla: function() {
+        alert('Ola');
+    }
+};
+
+Object.prototype.naoRelacionado = 'eu nao devia estar aqui';
+
+for(propriedade in pessoa){
+    document.writeln(propriedade);
+}
+
+//exibe: nome sobrenome dizOla naoRelacionado</pre>
+
+
+<p>No código acima eu defini um objeto chamado pessoa e depois disso eu adicionei um atributo chamado naoRelacionado à Object. Mesmo assim esse atributo foi exibido dentro loop for in. Isso pode vir a ser um problema quando alteramos o prototype de Object em outra parte do código que não esta relacionado ao código que estamos fazendo.</p>
+
+<p>No caso do loop for in, podemos resolver isso com o método <strong>hasOwnProperty</strong>.</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">for(propriedade in pessoa){
+    if(pessoa.hasOwnProperty(propriedade)) {
+        document.writeln(propriedade);
+    }
+}
+
+//exibe: nome sobrenome dizOla</pre>
+
+
+<p>O método hasOwnProperty verifica se a propriedade foi definida no objeto em questão.</p>
+
+<p>É isso ai.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Inversão de Controle com Castle Windsor e ASP.NET MVC]]></title>
+    <link href="http://templecoding.com/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc/"/>
+    <updated>2013-03-07T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc</id>
+    <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/zRoYsC6TkRE" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Inversão de Controle com Castle Windsor e ASP.NET MVC</h2>
+
+
+<p>Demonstração usando ASP.NET MVC e Castle Windsor como container de inversão de controle.</p>
+
+<p><a href="https://github.com/vintem/demoiocwindsor" target="_blank">O código está disponível no GitHub</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Construtores de Arrays do JavaScript]]></title>
+    <link href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/"/>
+    <updated>2013-02-18T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript</id>
+    <content type="html"><![CDATA[<p>Bom, o ano começou, lá se foi o carnaval e agora sim podemos dizer que o ano começou. Pelo menos aqui no blog. <img class="wlEmoticon wlEmoticon-smile" style="border-style: none;" src="http://templecoding.com/wp-content/uploads/2013/02/wlEmoticon-smile.png" alt="Alegre" /></p>
+
+<p>Bora falar um pouco mais de JavaScript e o que existe de estranho com os <strong>construtores de Arrays do JavaScript</strong>.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
+
+<strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li>Construtores de Arrays</li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<h2>Construtores de Arrays do JavaScript</h2>
+
+
+<p>No JavaScript podemos construir um Array da seguinte forma:</p>
+
+<pre class="brush: js;">var a = new Array("texto");
+console.log(a.length); // 1
+console.log(a[0]); // texto</pre>
+
+
+<p>Quando passamos uma string ou outro tipo de objeto para o construtor de uma Array, o JavaScript cria uma array com um item e atribui o valor passado para esse item.</p>
+
+<p>Agora vamos dar uma olhada em outro exemplo:</p>
+
+<pre class="brush: js;">var a = new Array(3);
+console.log(a.length) // 3
+console.log(a[0]); // undefined</pre>
+
+
+<p>Quando passamos um número inteiro para o construtor ele cria um array com o número de elementos informados e, todos os elementos criados não tem um valor atribuído a eles, por isso o undefined.</p>
+
+<p>Um terceiro exemplo:</p>
+
+<pre class="brush: js;">var a = new Array(3.2); // RangeError: invalid array length</pre>
+
+
+<p>Quando passamos um número decimal para o construtor, ele obviamente não cria um array decimal, mas também não cria um array com um só elemento e com o valor passado, o JavaScript retorna um erro para esse comando.</p>
+
+<h2>Uma prática um pouco melhor</h2>
+
+
+<p>A melhor forma de criar arrays no JavaScript é usando o construtor implícito dele, por exemplo:</p>
+
+<pre class="brush: js;">var a = ["texto"]; // Cria um elemento e atribui o valor a ele
+
+var b = [1, 2, 3]; // Cria um array com 3 elementos e com os valores 1, 2 e 3</pre>
+
+
+<p>Um problema simples de resolver esse, não é?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Validação com jQuery Validation]]></title>
+    <link href="http://templecoding.com/blog/2012/12/19/validacao-com-jquery-validation/"/>
+    <updated>2012-12-19T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/12/19/validacao-com-jquery-validation</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/4AzSUHxW2Ww" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Validação com jQuery Validation</h2>
+
+
+<p>O jQuery validation é um plugin para fazer validações de formulários. Nesse video mostro como fazer algumas validações como:</p>
+
+<ul>
+    <li>campos obrigatórios</li>
+    <li>customizações de mensagens</li>
+    <li>validações de tipos de dados específicos como data, email e números</li>
+    <li>validações remotas usando ajax</li>
+    <li>globalização usando o plugin Globalize</li>
+</ul>
+
+
+<h2>Links</h2>
+
+
+<ul>
+    <li> <a href="http://docs.jquery.com/Plugins/Validation">jQuery validation</a></li>
+    <li><a href="https://github.com/jquery/globalize">Globalize</a></li>
+</ul>
+
+
+<!--:-->
+
+
+<!--:en-->
+
+
+
+
+<!--:-->
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tratamento de exceções em JavaScript]]></title>
+    <link href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/"/>
+    <updated>2012-12-14T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<p>Sim, existe tratamento de exceções em JavaScript. Não é uma funcionalidade muito conhecida e, por isso talvez, não muito utilizada. Mas existem os blocos try/catch dentro do JavaScript e o comando throw. E funciona de uma forma bem similiar ao C#.</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var comErro = function() {
+    throw {
+        name: 'CustomError',
+        message: 'Um erro muito grave para ser tratado'
+    };
+};
+
+try {
+    comErro();
+}
+catch(e) {
+    console.log(e.name + ' - ' + e.message); //CustomError - Um erro muito grave para ser tratado
+}</pre>
+
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
+
+<strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li>Tratamento de exceções em JavaScript</li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<p>Apesar do JavaScript não ser tipado, existe uma convenção que diz que todo objeto de erro deve conter ao menos duas propriedades: name e message. Acho que os nomes das propriedades são auto-explicatórios.</p>
+
+<p>Obviamente, nada nos impede de adicionar outras propriedades com mais detalhes sobre o erro.</p>
+
+<h2>Tipos de erro do JavaScript</h2>
+
+
+<p>Por padrão o JavaScript tem internamente seis tipos diferentes de erro que ele pode gerar.</p>
+
+<table width="400" border="0" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td valign="top" width="100">EvalError</td>
+<td valign="top" width="300">Usado quando a função eval() é usada de uma maneira incorreta</td>
+</tr>
+<tr>
+<td valign="top" width="100">RangeError</td>
+<td valign="top" width="300">Usado quando uma variável numérica excede uma faixa de valores permitida</td>
+</tr>
+<tr>
+<td valign="top" width="100">ReferenceError</td>
+<td valign="top" width="300">Usado quando é feita uma referência invalida à um objeto</td>
+</tr>
+<tr>
+<td valign="top" width="100">SyntaxError</td>
+<td valign="top" width="300">Usado quando existe um erro de sintaxe</td>
+</tr>
+<tr>
+<td valign="top" width="100">TypeError</td>
+<td valign="top" width="300">Usado quando o tipo da variável não é o mesmo que o esperado</td>
+</tr>
+<tr>
+<td valign="top" width="100">URIError</td>
+<td valign="top" width="300">Usado quando as funções encodeURI() e decodeURI() são usadas de uma maneira incorreta.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Isso serve apenas como referência, como mostrei no exemplo anterior, podemos criar os nossos próprios tipos de erro sem problemas.</p>
+
+<h2>Construtores de objetos de erro</h2>
+
+
+<p>Por fim, o JavaScript também tem alguns construtores para os objetos que podemos usar para retornar um erro, por exemplo, eu poderia reescrever a exemplo acima da seguinte forma:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var comErro = function() {
+    var error = new Error('Um erro muito grave para ser tratado');
+    error.name = 'CustomError';
+    throw error;
+};
+
+try {
+    comErro();
+}
+catch(e) {
+    console.log(e.name + ' - ' + e.message); //CustomError - Um erro muito grave para ser tratado
+}</pre>
+
+
+<p>Esse código gera exatamente o mesmo resultado que antes, o único detalhe que quero ressaltar é que se eu não tivesse feito:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">error.name = 'CustomError';</pre>
+
+
+<p>o nome do erro seria Error.</p>
+
+<p>Como o objeto Error, temos também um construtor para cada tipo de erro do JavaScript: EvalError, TypeError, ReferenceError, etc.<!--:--></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ajax com jQuery]]></title>
+    <link href="http://templecoding.com/blog/2012/12/07/ajax-com-jquery/"/>
+    <updated>2012-12-07T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/12/07/ajax-com-jquery</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/he2k0FZBHq8" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Ajax com jQuery</h2>
+
+
+<p>Existem diversas formas de fazer ajax com jQuery. O jQuery é muito versátil e poderoso, mas também é capaz de tornar algumas atividades que antes eram tediosas em códigos simples e curtos, ainda mais com a ajuda de alguns plugins.</p>
+
+<h2>Links</h2>
+
+
+<p><a href="http://bit.ly/TWU2u6">Documentação ajax do jQuery</a>
+<a href="http://www.malsup.com/jquery/form/">jQuery Form Plugin</a>
+<a href="https://github.com/CodeSeven/toastr">Toastr Plugin</a>
+<a href="http://code.google.com/p/jquery-loadmask/">jQuery loadmask plugin</a></p>
+
+<h2>Código fonte</h2>
+
+
+<p><a href="https://github.com/vintem/TodoDemo">O código está disponível no meu GitHub.</a><!--:--><!--:en--></p>
+
+<!--:-->
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Funções de callback no JavaScript]]></title>
+    <link href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/"/>
+    <updated>2012-12-05T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<h2>O que são funções de callback?</h2>
+
+
+<p>Uma função no JavaScript é um objeto, isso quer dizer que a gente pode passar uma função como parâmetro para outra função. Quando passamos uma função como parâmetro para outra, a função passada como parâmetro é uma função de callback.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
+
+<strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li>Funções de callback</li>
+    <li><a href="http://templecoding.com/tratamento-excecoes-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<p>Por exemplo:</p>
+
+<pre class="brush: js;">var pessoa = function(nome, dizerOla) {
+    dizerOla(nome);
+};
+var olaNoConsole = function(nome) {
+    console.log(nome); // 
+}
+pessoa('Thiago', olaNoConsole);</pre>
+
+
+<p>No código acima, eu defini uma função chamada pessoa e outra olaNoConsole. A função pessoa recebe uma string com um nome e uma função de callback que ela vai usar para fazer uma saudação. Repare que, quando passo a função olaNoConsole como parâmetro, eu não utilizo parêntesis. Os parêntesis executam a função, então nesse momento que eu não quero executar a função, eu não os utilizo.
+A função de callback pode ser também uma função anônima como no exemplo abaixo:</p>
+
+<pre class="brush: js;">var pessoa = function(nome, dizerOla) {
+    dizerOla(nome);
+};
+pessoa('Thiago', function(nome) {
+    alert('Ola ' + nome);
+});</pre>
+
+
+<p>A mesma função pessoa agora recebendo uma função anônima que faz um alert como saudação.</p>
+
+<h2>Por quê?</h2>
+
+
+<p>Por que fazer uso de funções de callback? Acho que o exemplo acima deixa claro que a principal vantagem é o reuso sem causar acoplamento. No caso a função pessoa nunca sabe como é feita a saudação, tudo o que ela sabe é que tem que chamar a função de callback passando um parâmetro. Foi possível trocar a saudação de console para alert sem alterar a função pessoa.</p>
+
+<p>Um exemplo um pouco mais útil é quando fazemos loops de elementos, por exemplo, vamos supor que eu queira consultar todos os meus campos texto na página, fazer alguma coisa com cada um deles e no fim retornar a lista de campos.</p>
+
+<pre class="brush: js;">var listaCampos = function() {
+    var campos = document.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+    for (i = 0; i &lt; totalItens; i++) { 
+        // algo bem complexo com cada campo
+    }
+    return campos;
+};</pre>
+
+
+<p>Depois disso eu decido que eu quero que cada campo tenha uma borda vermelha, porque eu quero destacar esses campos. Eu poderia pegar o retorno dessa função, fazer um for em cada item de novo e adicionar a borda.</p>
+
+<pre class="brush: js;">var campos = listaCampos();
+var totalItens = campos.length, i;
+for (i = 0; i &lt; totalItens; i++) { 
+    campos[i].setAttribute("style", "border: 1px solid red");
+}</pre>
+
+
+<p>O problema com essa solução é que eu fiz dois loops, um quando peguei os campos e um quando quis deixá-los com a borda vermelha. É possível ser mais simples (e mais rápido) do que isso, eu poderia alterar dentro do for original da função listaCampos e adicionar a linha para deixar os campos com a borda vermelha.</p>
+
+<pre class="brush: js;">var listaCampos = function() {
+    var campos = document.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+    for (i = 0; i &lt; totalItens; i++) { 
+        // algo bem complexo com cada campo
+        campos[i].setAttribute("style", "border: 1px solid red");
+    }
+    return campos;
+};</pre>
+
+
+<p>O problema dessa segunda opção é que se eu quiser usar essa função listaCampos em outra parte no meu código, eu sempre vou ter os campos com a borda vermelha. E nem sempre eu quero vermelho, pode ser que em outro ponto eu queria azul! Aí entra o callback.</p>
+
+<pre class="brush: js;">var campoVermelho = function(campo) {
+    campo.setAttribute("style", "border: 1px solid red");
+};
+
+var listaCampos = function(callback) {
+    var campos = document.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) { 
+        // algo bem complexo com cada campo
+        if(callback) {
+            callback(campos[i]);
+        }
+    }
+    return campos;
+};
+
+listaCampos(campoVermelho);</pre>
+
+
+<p>No código acima, a primeira coisa que eu fiz foi criar a função de callback que espera um campo como parâmetro e faz com que a borda desse campo fique vermelha. Depois, na função listaCampos eu alterei a função para que ela receba um parâmetro, que vai ser uma função de callback.</p>
+
+<p>Em seguida eu testo para ver se uma função foi realmente passada (já que no JavaScript os parâmetros não são obrigatórios). Dentro do loop, se a função de callback foi passada como parâmetro, eu a executo.</p>
+
+<p>Nesse caso agora se eu quisesse que os campos tivessem a borda azul era só criar uma outra função que fizesse isso e passar como parâmetro para a função listaCampos. A função listaCampos continua sendo genérica e pode ser utilizada por outras. Melhor que isso, é uma função que faz uma coisa só e não está com a funcionalidade acoplada a ela.</p>
+
+<h2>Funções de callback e escopo</h2>
+
+
+<p>Dito isso, agora vem a parte um pouco mais complicada que é a parte do escopo com as funções de callback. Imagine que ao invés de passar uma função, eu tenho um objeto e eu passo um método desse objeto como callback para a função listaCampos.</p>
+
+<pre class="brush: js;">var listaCampos = function(callback) {
+    var campos = documente.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) {
+        // algo bem complexo com cada campo
+        if(callback) {
+            callback(campos[i]);
+        }
+    }
+
+    return campos;
+};
+
+var customCampo = {
+    'cor': 'red',
+    'defineCor': function(campo){
+        campo.setAttribute('style', 'border: 1px solid ' + this.cor);
+    }
+};
+
+listaCampos(customCampo.defineCor);</pre>
+
+
+<p>No exemplo acima, o objeto customCampo tem um método defineCor que eu passo como callback para a função listaCampos. O problema é que o método defineCor usa this para fazer acesso ao valor da propriedade cor. Mas, a função listaCampos faz parte do objeto global e portanto nesse momento this vai fazer acesso ao objeto global também.</p>
+
+<p>A solução para esse caso é sempre que passar uma função de callback, passar também o objeto que será o contexto da função de callback.</p>
+
+<pre class="brush: js;">listaCampos(customCampo.defineCor, customCampo);</pre>
+
+
+<p>E aí eu preciso modificar também a função listaCampos</p>
+
+<pre class="brush: js; highlight: [1, 11, 12];">var listaCampos = function(callback, ctx) {
+    var campos = documente.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) {
+        // algo bem complexo com cada campo
+        if(typeof callback === 'function') {
+            callback.call(ctx, campos[i]);
+        }
+    }
+
+    return campos;
+};</pre>
+
+
+<p>Isso resolve o problema, mas quando chamamos a função listaCampos temos que informar duas vezes o objeto customCampo:</p>
+
+<pre class="brush: js;">listaCampos(customCampo.defineCor, customCampo);</pre>
+
+
+<p>Existe uma forma um pouco mais elegante para isso, a gente pode chamar a função listaCampos dessa forma:</p>
+
+<pre class="brush: js;">listaCampos('defineCor', customCampo);</pre>
+
+
+<p>E aí alteramos a função listaCampos para:</p>
+
+<pre class="brush: js; highlight: [5, 6, 7];">var listaCampos = function(callback, ctx) {
+    var campos = documente.getElementsByTagName("input");
+    var totalItens = campos.length, i;
+
+    if (typeof callback === 'string') {
+        callback = ctx[callback];
+    }
+
+    if (typeof callback !== 'function') {
+        callback = false;
+    }
+
+    for (i = 0; i &lt; totalItens; i++) {
+        // algo bem complexo com cada campo
+
+        if(typeof callback === 'function') {
+            callback.call(ctx, campos[i]);
+        }
+    }
+
+    return campos;
+};
+
+var customCampo = {
+    'cor': 'red',
+    'defineCor': function(campo){
+        campo.setAttribute('style', 'border: 1px solid ' + this.cor);
+    }
+};</pre>
+
+
+<p>Um pouco mais elegante.</p>
+
+<p>Por hoje é só, espero que tenha sido útil!<!--:--></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Se você tem ou quer ter um blog, você precisa ler esse livro]]></title>
+    <link href="http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
+    <updated>2012-12-03T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<p>Eu terminei de ler há alguns dias e resolvi fazer uma análise do livro <a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Technical Blogging: </a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="attachment wp-att-1024" target="_blank"><img class="size-full wp-image-1024 alignright" title="Technical Blogging" src="http://templecoding.com/wp-content/uploads/2012/11/actb_xlargecover.jpg" alt="Technical Blogging" width="190" height="228" /></a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Turn Your Expertise into a Remarkable Online Presence</a> por <a href="http://antoniocangiano.com/" target="_blank">Antonio Cangiano</a>. Ainda estou digerindo tudo que aprendi nesse livro e já pondo em prática <del>algumas</del> várias coisas.</p>
+
+<p>É um dos livros com a maior quantidade de dicas praticas que já li. Diversas dicas e ideias de uso imediato. Para quem usa, ou planeja usar, o WordPress como plataforma é ainda mais útil. O livro apresenta vários plug-ins que vão facilitar a vida na hora de escrever, ajudar a trazer mais performance para o site, trazer mais facilidade e valor para os usuários que vão ler o blog.</p>
+
+<h2>Produzindo conteúdo</h2>
+
+
+<p>Os capitulos 5 e 6 &ldquo;Creating Remarkable Content&rdquo; e &ldquo;Producing Content Regularly&rdquo; são ótimos para dar ideias e abrir a mente para a produção de conteúdo diversificado e com regularidade.</p>
+
+<h2>Promovendo seu blog</h2>
+
+
+<p>As dicas para promover o blog do capitulo 7 foram extremamente valiosas. Eu sempre tive pra mim que <a href="https://pt.wikipedia.org/wiki/Otimiza%C3%A7%C3%A3o_para_motores_de_busca">SEO</a> era uma daquelas coisas irrelevantes, que simplesmente funciona e pronto, bom, não é exatamente assim. Além disso, eu passei a olhar as estatísticas de visita do site de uma outra forma.</p>
+
+<h2>Para empresas e blogs em grupo</h2>
+
+
+<p>Se você faz um blog para sua empresa ou grupo, essa parte também não foi esquecida, embora, para blogs como esse isso não faça tanta diferença.</p>
+
+<p>Para concluir essa breve análise do livro Technical Blogging; esse foi um livro que eu comprei sem esperar muita coisa dele, achando que não ia tirar muito proveito. Me enganei. Eu comecei a ler e não parei enquanto não terminei. Ótimo, eu recomendo.<!--:--><!--:en--></p>
+
+<p>&nbsp;</p>
+
+<!--:-->
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Seletores jQuery]]></title>
+    <link href="http://templecoding.com/blog/2012/11/30/seletores-jquery/"/>
+    <updated>2012-11-30T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/11/30/seletores-jquery</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/aY3aVX1mDGY" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Seletores jQuery</h2>
+
+
+<p>Para selecionar elementos do DOM o jQuery faz uso dos seletores do CSS e também possui alguns seletores próprios. Nesse video eu mostro alguns exemplos desses seletores, de forma individual e combinando tanto seletores CSS como seletores jQuery.</p>
+
+<h2>Links</h2>
+
+
+<p><a href="http://bit.ly/113M34I" target="_blank">Documentação dos seletores jQuery</a><!--:--><!--:en--></p>
+
+<!--:-->
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Escopo no JavaScript: esse this não é daqui]]></title>
+    <link href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/"/>
+    <updated>2012-11-28T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/11/28/escopo-no-javascript</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<p>Existem duas questões importantes com relação ao escopo no JavaScript.  Declaração de variáveis e o valor de this.</p>
+
+<div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;"><strong>Sofrendo menos com JavaScript</strong>
+Esse post faz parte de uma série, confira os outros já feitos:
+<ol>
+    <li><a href="http://templecoding.com/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li>Escopo no JavaScript: esse this não é daqui</li>
+    <li><a href="http://templecoding.com/funcoes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/tratamento-excecoes-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/loops-for-in-no-javascript/">Loops for in</a></li>
+</ol>
+</div>
+
+
+<p>A primeira parte é fácil, eu já falei um pouco disso quando falei de <a href="http://templecoding.com/declarao-de-variveis-com-javascript/">declaração de variáveis</a>. Toda variável declarada com a palavra chave var tem o escopo da função em que foi declarada. Portanto, na função abaixo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var func1 = function() { 
+    var i = 100; 
+    for(var i = 0; i &lt; 10; i++) { 
+        // qualquer coisa aqui 
+    } 
+    console.log(i); // 10 
+}</pre>
+
+
+<p>A variável i vai ser 10 no fim do método, porque dentro de um método, não importa onde a variável é declarada, ela sempre faz parte do escopo da função. E claro, não pode ser acessada fora da função.</p>
+
+<p>Agora o this é um pouco mais complicado. O this sempre faz referência ao objeto que a função faz parte. Por exemplo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var pessoa = { 
+    'nome': 'Thiago', 
+    'getNome': function(){ 
+        console.log('Olá, ' + this.nome); 
+    } 
+}; 
+pessoa.getNome(); // Olá, Thiago</pre>
+
+
+<p>No exemplo acima, eu declaro um objeto e atribuo à variável pessoa. E getNome é definido com uma função, portanto essa função é um método desse objeto. Dessa forma o contexto de this dentro desse método é o objeto em que ele foi definido e chamada de getNome funciona como o esperado.</p>
+
+<p>Já no exemplo abaixo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var pessoa = {  
+    'nome': 'Thiago',  
+    'getNome': function(){  
+        var fx = function() { 
+            console.log('Olá, ' + this.nome); 
+        }; 
+        fx(); 
+    }  
+};  
+pessoa.getNome(); // Olá, undefined</pre>
+
+
+<p>Dentro do método, fx é apenas uma variável que recebe uma função, não é um método que faz parte de um objeto, por isso, this nesse caso faz referência ao escopo global, que no caso do browser, quer dizer o objeto window.</p>
+
+<h2>Trocando o escopo de uma função</h2>
+
+
+<p>A última coisa que eu quero dizer sobre o escopo e this é que no JavaScript nós podemos alterar a referência this. Veja o exemplo abaixo:</p>
+
+<pre class="brush: js; ruler: true; smart-tabs: false;">var dizOla = function() { 
+    console.log('Ola, ' + this.nome); 
+}; 
+
+var pessoa = { 
+    'nome': 'Thiago Temple' 
+} 
+
+dizOla.call(pessoa);</pre>
+
+
+<p>A função dizOla nao faz parte de nenhum objeto, portanto this dentro daquela função faz referencia ao objeto window. Mas, quando executo a função usando o método call, eu passo o objeto pessoa como parâmetro. Nesse momento estou dizendo para a função dizOla usar o objeto pessoa como contexto.</p>
+
+<p>Alterar o escopo no JavaScript é uma característica muito importante e muito utilizada, porque é uma forma bem simples e eficaz de fazer reuso de funções.</p>
+
+<p>É isso aí por hoje. Até a próxima!<!--:--></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[O menu iniciar no Windows 8 mudou, você pode mudar também]]></title>
+    <link href="http://templecoding.com/blog/2012/11/26/menu-iniciar-no-windows-8/"/>
+    <updated>2012-11-26T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/11/26/menu-iniciar-no-windows-8</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<p>Na semana passada eu estava ouvindo um podcast (não me lembro qual, escutei vários) e no meio do podcast o entrevistado cita que algumas pessoas tem reclamado da falta do menu iniciar no Windows 8. O que me parece é que alguém andou <a href="http://www.amazon.com/gp/product/B002ALFT6C/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B002ALFT6C&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">mexendo no queijo dos outros</a>.</p>
+
+<p>Honestamente eu não tinha me dado conta direito que ele não estava lá. Claro, pude ver que ele não estava presente. É que eu uso ele tão pouco que eu nem sinto falta.</p>
+
+<p>O Windows 8 acabou de ser lançado, não tem nem um mês. Eu atualizei o meu notebook no final de semana seguinte ao lançamento e, posso dizer que foi a atualização mais tranquila que eu já fiz. Baixei um executável pequeno, ele analisou o computador, paguei a atualização por ali mesmo e pronto. Foi só esperar ele baixar o Windows 8 e instalar.</p>
+
+<p>Eu gostei tanto que até já comprei também um <a href="http://templecoding.com/2012/11/14/analise-do-surface/">Tablet Surface e fiz uma análise sobre ele</a>.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2012/11/evol-windows.jpg"><img style="background-image: none; float: left; padding-top: 0px; padding-left: 0px; margin: 0px 10px 0px 0px; display: inline; padding-right: 0px; border: 0px;" title="Evolução do Windows" src="http://templecoding.com/wp-content/uploads/2012/11/evol-windows_thumb.jpg" alt="Evolução do Windows" width="244" height="191" align="left" border="0" /></a>Na minha opinião o Windows 8 é a melhor novidade em termos de sistemas operacionais desde o Windows 95, quando a gente saiu do Windows 3.11. Olha só, me entendam bem, eu uso Windows, mas eu tenho um Mac há quase 5 anos e gosto muito do Mac OS X. Também uso ocasionalmente o Linux e gosto do Ubuntu (menos que os outros). Ah sim, e por enquanto, pelo menos, eu ainda tenho um celular com Android.</p>
+
+<p>Eu acho que todos esses sistemas operacionais tem seus pontos fortes, no caso do Mac OS, mais precisamente, eu acho que ele sempre foi o mais intuitivo dos sistemas operacionais. Foi.</p>
+
+<p>Nesse mundo de aparelhos e <a href="http://www.codinghorror.com/blog/2012/11/touch-laptops.html" target="_blank">notebooks com suporte ao toque</a> e, especificamente, num mundo onde a computação deixa de ser voltada para nós &ndash; os nerds e técnicos, e o foco está no consumidor final, a Microsoft acertou em cheio fazendo um sistema operacional voltado para o cliente e principalmente beneficiando esse novo mercado de toque.</p>
+
+<h2>Ok, mas o que isso tem a ver com o meu menu iniciar no Windows 8?</h2>
+
+
+<p>Quando estou com meu tablet na mão, ou simplesmente usando a internet, eu praticamente só uso o modo &ldquo;metro&rdquo; do Windows 8 e para isso ele está perfeito. Mas quando estou trabalhando, ou seja, usando o Visual Studio, o SQL, outros editores de texto, etc., eu estou no modo desktop, ou, o modo que teria o menu iniciar.</p>
+
+<p>Só que nesse &ldquo;modo trabalho&rdquo;, eu quero ser o mais produtivo possível e pra mim ser produtivo significa ficar com os mãos no teclado. O que me traz para o seguinte ponto: para que usamos o menu iniciar? Só para abrir aplicações, certo? Aplicações, o Painel de Controle, Configurações do Computador, etc…</p>
+
+<p>Bom, eu faço isso tudo com um pequeno aplicativo <strong>gratuito</strong> chamado <a href="http://www.launchy.net/" target="_blank">Launchy</a>. Com o Launchy instalado, eu pressiono Alt + Espaço, digito o nome da aplicação e abro. Por exemplo, se eu quiser abrir o Google Chrome, eu digito Alt + Espaço e ch.</p>
+
+<p align="center"><a href="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Chrome.png"><img style="background-image: none; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border: 0px;" title="Launchy Chrome" src="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Chrome_thumb.png" alt="Launchy Chrome" width="304" height="149" border="0" /></a></p>
+
+
+<p>Ou então para abrir o SQL Management Studio, Alt + Espaço e sql.</p>
+
+<p align="center"><a href="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Sql.png"><img style="background-image: none; padding-top: 0px; padding-left: 0px; display: inline; padding-right: 0px; border: 0px;" title="Launchy SQL Management Studio" src="http://templecoding.com/wp-content/uploads/2012/11/Launchy-Sql_thumb.png" alt="Launchy SQL Management Studio" width="304" height="149" border="0" /></a></p>
+
+
+<p>Muito mais rápido do que navegar por qualquer menu iniciar.</p>
+
+<p>Além disso, o Windows tem diversas teclas de atalho muito úteis. Por exemplo a tecla Windows + E, abre o Windows Explorer, Windows + R, abre o Run, Windows + F, abre a Procura e existem vários outros atalhos. Um atalho bem útil para nós, usuários avançados, é o Windows + X que abre um menu no lugar do menu iniciar. De uma olhada aqui se você quer uma <a href="http://darktips.com/windows-8-keyboard-shortcuts/" target="_blank">lista mais completada dos atalhos do Windows 8</a>.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2012/11/windowsx_menu.png"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin-left: auto; display: block; padding-right: 0px; margin-right: auto; border: 0px;" title="Menu Windows + X" src="http://templecoding.com/wp-content/uploads/2012/11/windowsx_menu_thumb.png" alt="Menu Windows + X" width="241" height="378" border="0" /></a></p>
+
+<p>Então ok, se você não gosta dele por outras razões diga quais são elas, mas não venha reclamar que não tem um menu iniciar no Windows 8.</p>
+
+<p>Nota: Se você absolutamente quer o menu iniciar no Windows 8, <a href="http://tecnoblog.net/112123/windows-8-menu-iniciar-classico/" target="_blank">existem já alternativas pra isso disponíveis na internet</a>.<!--:--></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Introdução ao jQuery | VideoCast]]></title>
+    <link href="http://templecoding.com/blog/2012/11/23/introducao-ao-jquery-videocast/"/>
+    <updated>2012-11-23T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2012/11/23/introducao-ao-jquery-videocast</id>
+    <content type="html"><![CDATA[<!--:pt-->
+
+
+<iframe src="http://www.youtube.com/embed/R1HW8TsWRaQ" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Introdução ao jQuery</h2>
+
+
+<p>O jQuery é hoje um dos frameworks feitos em JavaScript mais populares que existe, se não o mais popular. Simples e intuitivo, ele é de fácil compreensão e essa é também uma razão para a sua alta utilização.</p>
+
+<p>Esse vídeo é realmente só uma introdução ao jQuery, porque apesar de sua simplicidade, ele é também um framework bastante extenso.</p>
+
+<p>Nessa breve introdução ao jQuery mostro algumas de suas principais funcionalidades, como:</p>
+
+<ul>
+    <li>Seleção de elementos</li>
+    <li>Manipulação de elementos</li>
+    <li>Captura de eventos</li>
+    <li>Ajax</li>
+    <li>Animação</li>
+</ul>
+
+
+<p>Para mais informações confira também a <a href="http://docs.jquery.com">documentação do jQuery</a><!--:--></p>
+]]></content>
+  </entry>
   
 </feed>

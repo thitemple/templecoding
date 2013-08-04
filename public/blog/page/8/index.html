@@ -1,0 +1,1314 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Customizar os templates padrão do Asp.Net MVC2 é muito fácil. Já mostrei antes como usar os templates, agora vou mostrar como customizar. A primeira &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://templecoding.com/blog/page/8">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Temple Coding</a></h1>
+  
+    <h2>código, tecnologia e outras nerdices</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:templecoding.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/06/customizando-templates-no-asp-net-mvc2/">Customizando Templates no Asp.Net MVC2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-06T00:00:00-05:00" pubdate data-updated="true">06/03/2010</time>
+        
+         | <a href="/blog/2010/03/06/customizando-templates-no-asp-net-mvc2/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Customizar os templates padrão do Asp.Net MVC2 é muito fácil. Já mostrei antes <a href="/blog/2010/03/02/templates-no-asp-net-mvc2/">como usar os templates</a>, agora vou mostrar como customizar.</p>
+
+<p>A primeira coisa que é preciso saber para customizar é que quando o MVC2 busca por customizações ele busca nas seguintes pastas:</p>
+
+<ul>
+    <li>~/Areas/NomeDaArea/Views/NomeDoController/DisplayTemplates/TemplateName.aspx &amp; .ascx</li>
+    <li>~/Areas/NomeDaArea/Views/Shared/DisplayTemplates/TemplateName.aspx &amp; .ascx</li>
+    <li>~/Views/NomeDoController/DisplayTemplates/TemplateName.aspx &amp; .ascx</li>
+    <li>~/Views/Shared/DisplayTemplates/TemplateName.aspx &amp; .ascx</li>
+    <li>~/Areas/NomeDaArea/Views/NomeDoController/EditTemplates/TemplateName.aspx &amp; .ascx</li>
+    <li>~/Areas/NomeDaArea/Views/Shared/EditTemplates/TemplateName.aspx &amp; .ascx</li>
+    <li>~/Views/NomeDoController/EditTemplates/TemplateName.aspx &amp; .ascx</li>
+    <li>~/Views/Shared/EditTemplates/TemplateName.aspx &amp; .ascx</li>
+</ul>
+
+
+<p>Veja que são principalmente duas pastas DisplayTemplates para os templates de exibição e EditTemplates para os de edição dispostas em alguns locais específicos.</p>
+
+<p>Só para facilitar vou continuar o exemplo feito no post anterior que tinha as views Index.aspx e Edit.aspx e classe de model Cliente.cs como mostrados abaixo:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/Index_thumb.png" title="Index" ></p>
+
+<p><img class="aligncenter" src="/images/2010/03/Edit_thumb.png" title="Edit" ></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">bool</span> <span class="n">Ativo</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [DisplayName(&quot;Data de Nascimento&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">DataNascimento</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Credito</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="n">Cliente</span> <span class="nf">Criar</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">new</span> <span class="n">Cliente</span> <span class="p">{</span>
+</span><span class='line'>             <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Thiago Temple&quot;</span><span class="p">,</span>
+</span><span class='line'>             <span class="n">Ativo</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+</span><span class='line'>             <span class="n">Credito</span> <span class="p">=</span> <span class="m">1000</span><span class="p">,</span>
+</span><span class='line'>             <span class="n">DataNascimento</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">1981</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Existem alguns templates pré-definidos no MVC2, são eles: String, Html, Boolean, Decimal, EmailAddress, HiddenInput, Html, Object, String, Text, Url e DateTime. Então para se customizar um desses campos tudo o que temos que fazer é criar um arquivo com o nome do template na pasta específica. Vamos imaginar que a idéia fosse que toda que vez que tivéssemos uma propriedade do tipo DateTime e ela fosse editável nós gostaríamos que o textbox fosse exibido com uma classe css específica e ao lado do campo aparecesse uma imagem para que o usuário pudesse clicar e selecionar a data de um calendário em javascript, por exemplo.</p>
+
+<p>Temos então que criar um arquivo DateTime.ascx na pasta ~/Views/Shared/EditTemplates/ assim esse template estará disponível para todas as propriedades DateTime do nosso projeto. Veja como ficaria esse arquivo:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/DataTimeEdit_thumb.png" title="DataTime Edit" ></p>
+
+<p>Isso vale para todos os tipos de templates pré-definidos. Seguindo o exemplo do post passado, se quisermos modificar a exibição da nossa classe cliente para que ela fique dentro de uma tabela, veja como ficará o template do arquivo ~/Views/Shared/DisplayTemplates/Object.ascx</p>
+
+<p><img class="aligncenter" src="/images/2010/03/DisplayObject_thumb.png" title="Display Object" ></p>
+
+<p>Dentro do objeto ViewData agora temos um objeto ModelMetadata que contém informações sobre a classe do Model que está sendo usada na view. Entre outras informações o que temos ali é uma coleção com todas as propriedades do model.</p>
+
+<p>No exemplo acima primeiro exibimos o nome do model e depois fazemos um loop entre as propriedades do model exibindo as que estão marcadas com a opção ShowForDisplay = true, que é o padrão. Isso deve gerar uma página assim:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/ClienteDisplay_thumb.png" title="Cliente Display" ></p>
+
+<p>Para o template de edit não é muito diferente, veja o arquivo ~/Views/Shared/EditTemplates/Object.ascx:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/ObjectEdit_thumb.png" title="Object Edit" ></p>
+
+<p>Da mesma forma fazemos um loop nas propriedades do objeto ModelMetada que estão marcados com a propriedade ShowForEdit = true, novamente, esse é o padrão. Além disso, verifiquei se a propriedade é obrigatória e coloquei um * na frente do label. Veja o resultado:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/ClientEdit_thumb.png" title="Client Edit" ></p>
+
+<p>Veja também que a modificação feita para o campo DateTime continuou valendo para a propriedade Data de Nascimento que foi exibida com a imagem do calendário ao lado do campo.</p>
+
+<p><strong>Conclusão</strong></p>
+
+<p>Os templates do MVC2 são uma forma simples e prática de exibir dados. Mas, o mais importante, são também muito poderosos para que sejam customizados da melhor forma possível para as necessidades específicas de cada projeto.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/02/templates-no-asp-net-mvc2/">Templates no Asp.Net MVC2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-02T00:00:00-05:00" pubdate data-updated="true">02/03/2010</time>
+        
+         | <a href="/blog/2010/03/02/templates-no-asp-net-mvc2/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Uma das grandes novidades do Asp.Net MVC2 são os templates. Quem já fez algum projeto usando o Dynamic Data do WebForms vai ver que essa funcionalidade é bem parecida com a do Dynamic Data.</p>
+
+<p>O framework agora é capaz de exibir um dado em um formato específico de acordo com o tipo de dados (integer, decimal, boolean, ou mesmo uma classe).</p>
+
+<p>Como isso funciona? A forma mais simples é utililando o método <strong>Html.DisplayForModel. </strong>Vejamos, dado a classe de modelo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">bool</span> <span class="n">Ativo</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">DataNascimento</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Credito</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="n">Cliente</span> <span class="nf">Criar</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">new</span> <span class="n">Cliente</span> <span class="p">{</span>
+</span><span class='line'>            <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Thiago Temple&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">Email</span> <span class="p">=</span> <span class="s">&quot;eu@vintem.com.br&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">Ativo</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">Credito</span> <span class="p">=</span> <span class="m">1000</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">DataNascimento</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="p">(</span><span class="m">1981</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">};</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Uma view dessa forma:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/Html-Index.png" title="Html Index" ></p>
+
+<p>E um controller:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ViewResult</span> <span class="nf">Index</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">Cliente</span><span class="p">.</span><span class="n">Criar</span><span class="p">());</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ViewResult</span> <span class="nf">Edit</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">Cliente</span><span class="p">.</span><span class="n">Criar</span><span class="p">());</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [HttpPost]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ViewResult</span> <span class="nf">Edit</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">cliente</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">&quot;Index&quot;</span><span class="p">,</span> <span class="n">cliente</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">cliente</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Então ao chamarmos a Action Index do nosso controller veremos:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/Template-Index.png" title="Template Index" >
+<img class="aligncenter size-full wp-image-228" title="Template Index" src="http://templecoding.com/wp-content/uploads/2010/03/Template-Index.png" alt="" width="355" height="374" /></p>
+
+<p>Veja que os nomes das propriedades aparecem nos labels e os campos já estão formatados como o booleano, data e decimal.</p>
+
+<p>Para a action Edit, temos um método similar <strong>Html.EditForModel</strong></p>
+
+<p><img class="aligncenter" src="/images/2010/03/Html-Edit.png" title="Html Edit" ></p>
+
+<p>Que vai exibir um visualização assim:</p>
+
+<p><img class="aligncenter" src="/images/2010/03/Template-Edit.png" title="Template Edit" ></p>
+
+<p>Simples não? Mas e se eu quiser exibir &ldquo;Data de Nascimento&rdquo; ao invés de DataNascimento no label? Basta decorar a propriedade com o atributo DisplayName do namespace System.ComponentModel assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">bool</span> <span class="n">Ativo</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [DisplayName(&quot;Data de Nascimento&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">DataNascimento</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Credito</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Existem alguns atributos disponíveis para customizar o modelo, são eles:</p>
+
+<ul>
+    <li>[HiddenInput] (System.Web.Mvc) - usando esse atributo será gerado um campo hidden no modo Edit</li>
+    <li>[DataType] (System.ComponentModel.DataAnnotations) - Define o tipo de dados da propriedade</li>
+    <li>[ReadOnly] (System.ComponentModel) - Deixará a propriedade como ReadOnly</li>
+    <li>[DisplayFormat] (System.ComponentModel.DataAnnotations) - Definir a propriedade NullDisplayText exibe um texto para quando o valor for nulo.  Informar a propriedade DataFormatString define em qual formato o texto deverá ser exibido. Informar a propriedade ApplyFormatInEditMode como true irá usar o formato também no modo Edit. Informar a propriedade ConvertEmptyStringToNull irá converter uma string vazia para  nulo.</li>
+    <li>[DisplayName] (System.ComponentModel) - Define o nome da propriedade</li>
+</ul>
+
+
+<p><strong>Exibindo campos específicos</strong></p>
+
+<p>Se for o caso de exibir ou editar apenas alguns campos do modelo, pode-se utililzar os métodos <strong>Html.DisplayFor(model =&gt; model.Propriedade) </strong>e <strong>Html.EditFor(model =&gt; model.Propriedade)</strong>.</p>
+
+<p><strong>Conclusão</strong></p>
+
+<p>É muito simples gerar uma visualização a partir dos assistentes do visual studio, mas isso irá gerar um código estático. Se você quiser uma forma mais prática com base nas propriedades do modelo basta usar os novos métodos. Existe também uma forma de customizar a exibição das propriedades. Vou mostrar isso num próximo post.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/22/validacao-com-asp-net-mvc2-parte-3-input-vs-model-validation/">Validação com Asp.Net MVC2 parte 3 - Input vs Model validation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-22T00:00:00-05:00" pubdate data-updated="true">22/02/2010</time>
+        
+         | <a href="/blog/2010/02/22/validacao-com-asp-net-mvc2-parte-3-input-vs-model-validation/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Obs.: Esse post está baseado na versão RC2 do Asp.Net MVC2.</p>
+
+<p>O Asp.Net MVC 1 já possuía uma forma de realizar validações, como as validações Required ou Regular Expression que <a href="/blog/2010/02/07/validacao-com-asp-net-mvc2/">eu já mostrei aqui em outros posts</a>, além dessa validação o framework também avisaria/perceberia erros ao submeter um formulário com dados inválidos, exemplo: enviar uma string com &ldquo;xxxxx&rdquo; para uma propriedade de data ou não enviar um valor para um campo que não fosse nullable, como, por exemplo, um campo int.</p>
+
+<p>Vamos olhar uma classe de modelo como a classe Cliente abaixo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">IdCliente</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o nome&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha a idade&quot;)]</span>
+</span><span class='line'><span class="na">    [Range(0, 150, ErrorMessage=&quot;Idade inválida&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int?</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o email&quot;)]</span>
+</span><span class='line'><span class="na">    [RegularExpression(@&quot;^[A-Za-z0-9._%+-]</span><span class="p">+</span><span class="err">@</span><span class="p">[</span><span class="n">A</span><span class="p">-</span><span class="n">Za</span><span class="p">-</span><span class="n">z0</span><span class="p">-</span><span class="m">9.</span><span class="p">-]+.[</span><span class="n">A</span><span class="p">-</span><span class="n">Za</span><span class="p">-</span><span class="n">z</span><span class="p">]{</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">}</span><span class="err">$</span><span class="s">&quot;, ErrorMessage = &quot;</span><span class="n">Email</span> <span class="n">inválido</span><span class="s">&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage=&quot;Preencha o Cpf&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Cpf</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E um formuário como o abaixo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%: Html.ValidationSummary() %&gt;
+</span><span class='line'><span class="nt">&lt;fieldset&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;legend&gt;</span>Fields<span class="nt">&lt;/legend&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.LabelFor(model =&gt; model.Nome) %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.TextBoxFor(model =&gt; model.Nome) %&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.ValidationMessageFor(model =&gt; model.Nome) %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.LabelFor(model =&gt; model.Idade) %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.TextBoxFor(model =&gt; model.Idade) %&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.ValidationMessageFor(model =&gt; model.Idade) %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.LabelFor(model =&gt; model.Email) %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.TextBoxFor(model =&gt; model.Email) %&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%: Html.ValidationMessageFor(model =&gt; model.Email) %&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Create&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fieldset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Repare que o modelo tem uma propriedade Cpf decorada com o atributo Required e no formulário essa propriedade não existe. No MVC1 ou até o RC1 do MVC2, se submetêssemos esse formulário, o campo Cpf não seria exigido. Isso é o que é conhecido como Input validation, ou seja, apenas os dados que são submetidos pelo formulário são validados. A partir do MVC RC2, esse campo também é validado, e isso é conhecido como Model validation.</p>
+
+<p>Vou alterar a classe Cliente para ter um Endereco, como abaixo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">IdCliente</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o nome&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha a idade&quot;)]</span>
+</span><span class='line'><span class="na">    [Range(0, 150, ErrorMessage=&quot;Idade inválida&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int?</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o email&quot;)]</span>
+</span><span class='line'><span class="na">    [RegularExpression(@&quot;^[A-Za-z0-9._%+-]</span><span class="p">+</span><span class="err">@</span><span class="p">[</span><span class="n">A</span><span class="p">-</span><span class="n">Za</span><span class="p">-</span><span class="n">z0</span><span class="p">-</span><span class="m">9.</span><span class="p">-]+.[</span><span class="n">A</span><span class="p">-</span><span class="n">Za</span><span class="p">-</span><span class="n">z</span><span class="p">]{</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">}</span><span class="err">$</span><span class="s">&quot;, ErrorMessage = &quot;</span><span class="n">Email</span> <span class="n">inválido</span><span class="s">&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage=&quot;Preencha o Cpf&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Cpf</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">Endereco</span> <span class="n">Endereco</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Endereco</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="na">    [Required]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Logradouro</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Cidade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Bairro</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Veja que a propriedade Endereco não é obrigatória na classe Cliente. O que isso quer dizer? Que no Model Validation, se eu não informar nenhum atributo da classe Endereco, o endereço pode ser nulo.</p>
+
+<p>Se eu mantiver o formulário como estava e não adicionar nenhuma outra caixa de texto ao enviar o formulário ele não vai validar o endereço. Agora vou alterar o formulário para que ele tenha o Cpf e a Cidade do Cliente. Assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="err">&lt;</span>%= Html.ValidationSummary()%&gt;
+</span><span class='line'><span class="nt">&lt;fieldset&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;legend&gt;</span>Fields<span class="nt">&lt;/legend&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.LabelFor(model =&gt; model.Nome)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.TextBoxFor(model =&gt; model.Nome)%&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.ValidationMessageFor(model =&gt; model.Nome)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.LabelFor(model =&gt; model.Idade)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.TextBoxFor(model =&gt; model.Idade)%&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.ValidationMessageFor(model =&gt; model.Idade)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.LabelFor(model =&gt; model.Email)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.TextBoxFor(model =&gt; model.Email)%&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.ValidationMessageFor(model =&gt; model.Email)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.LabelFor(model =&gt; model.Cpf)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.TextBoxFor(model =&gt; model.Cpf)%&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.ValidationMessageFor(model =&gt; model.Cpf)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-label&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.LabelFor(model =&gt; model.Endereco.Cidade)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;editor-field&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.TextBoxFor(model =&gt; model.Endereco.Cidade)%&gt;
+</span><span class='line'>    <span class="err">&lt;</span>%= Html.ValidationMessageFor(model =&gt; model.Endereco.Cidade)%&gt;
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;p&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">value=</span><span class="s">&quot;Create&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fieldset&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Apenas o campo Cidade foi adicionada, mas ao submeter o formulário as propriedades Logradouro e Bairro também são validados.</p>
+
+<p>Ou seja, agora a validação é feita sempre no Model e não mais de acordo com os dados que são informados.</p>
+
+<p>Por que isso é importante? Principalmente porque alguém mal intensionado poderia tentar enviar um request de post com apenas parte dos dados. Nas versões anteriores do MVC isso não seria validado automaticamente.</p>
+
+<p>Um ponto importante a se considerar são os atributos que não podem ser nulos como no caso do Int. Imagine que na nossa classe Cliente a propriedade Idade não fosse decorada com o atributo Required. Nas versões anteriores do MVC se o campo Idade não fosse preenchido um erro &ldquo;A value is required&rdquo; seria retornado, isso acontece no momento do model-binding, quando framework tenta identificar se existe um valor submetido para uma propriedade, no caso idade, que por padrão não pode ser nula.</p>
+
+<p>A partir do MVC RC2 essa propriedade seria preenchida com o seu valor padrão, que no caso do int é 0.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/18/validacao-com-asp-net-mvc2-parte-2-validacoes-customizadas/">Validação com Asp.NET MVC2 parte 2 - validações customizadas</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-18T00:00:00-05:00" pubdate data-updated="true">18/02/2010</time>
+        
+         | <a href="/blog/2010/02/18/validacao-com-asp-net-mvc2-parte-2-validacoes-customizadas/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dando sequência no<a href="/blog/2010/02/07/validacao-com-asp-net-mvc2/"> post anterior sobre a validação no MVC2</a>, vou mostrar como é simples fazer uma validação customizada além das existentes no namespace System.ComponenteModel.DataAnnotations.</p>
+
+<p>Para fazer uma validação customizada tudo que precisamos fazer é herdar a classe ValidationAttribute do namespace System.ComponentModel.DataAnnotations, isso, claro, para fazer uma validação genérica, é possível também herdar as outras classes de validação desse namespace como RequiredAttribute, RegularExpressionAttribute e assim por diante.</p>
+
+<p>Por exemplo, e seguindo o exemplo do post anterior, vamos imaginar que para cadastrar um novo cliente em nossa base, além das validações que já estamos fazendo, queremos garantir que o email do cliente seja único na base. Podemos fazer o seguinte, criamos uma classe ClienteUnicoAttribute que herda de ValidationAttribute e ai decoramos o atributo email da classe cliente com o nosso validador.</p>
+
+<p>A classe ClienteUnicoAttribute fica assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteUnicoAttribute</span> <span class="p">:</span> <span class="n">ValidationAttribute</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="nf">IsValid</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// validação real vai aqui</span>
+</span><span class='line'>        <span class="k">return</span> <span class="p">(!</span><span class="k">value</span><span class="p">.</span><span class="n">ToString</span><span class="p">().</span><span class="n">Equals</span><span class="p">(</span><span class="s">&quot;teste@teste.com&quot;</span><span class="p">));</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Simples, o importante aqui é sobrescrever o método IsValid com a lógica que queremos, no caso aqui, para manter simples, estou apenas verificando se o email é igual <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#116;&#101;&#x73;&#x74;&#101;&#64;&#116;&#x65;&#x73;&#116;&#x65;&#46;&#x63;&#111;&#109;">&#116;&#x65;&#115;&#x74;&#x65;&#64;&#x74;&#x65;&#x73;&#116;&#101;&#x2e;&#x63;&#111;&#x6d;</a> então retorno false, caso contrário retorno true.</p>
+
+<p>Na classe Cliente vamos decorar o atributo Email com o novo validador e fica assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">IdCliente</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o nome&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha a idade&quot;)]</span>
+</span><span class='line'><span class="na">    [Range(0, 150, ErrorMessage=&quot;Idade inválida&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int?</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o email&quot;)]</span>
+</span><span class='line'><span class="na">    [RegularExpression(@&quot;^[A-Za-z0-9._%+-]</span><span class="p">+</span><span class="err">@</span><span class="p">[</span><span class="n">A</span><span class="p">-</span><span class="n">Za</span><span class="p">-</span><span class="n">z0</span><span class="p">-</span><span class="m">9.</span><span class="p">-]+.[</span><span class="n">A</span><span class="p">-</span><span class="n">Za</span><span class="p">-</span><span class="n">z</span><span class="p">]{</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">}</span><span class="err">$</span><span class="s">&quot;, ErrorMessage = &quot;</span><span class="n">Email</span> <span class="n">inválido</span><span class="s">&quot;)]</span>
+</span><span class='line'><span class="na">    [ClienteUnico(ErrorMessage=&quot;Email de cliente já cadastrado&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora, se tentarmos cadastrar um cliente com email <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#116;&#x65;&#115;&#116;&#101;&#64;&#116;&#101;&#x73;&#116;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#116;&#101;&#115;&#116;&#101;&#x40;&#x74;&#101;&#x73;&#x74;&#101;&#46;&#99;&#111;&#109;</a> veremos o erro:</p>
+
+<p><img class="aligncenter" src="/images/2010/02/Email-ja-cadastrado.png" title="Email já cadastrado" ></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/10/a-historia-sem-fim/">A história sem fim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-10T00:00:00-05:00" pubdate data-updated="true">10/02/2010</time>
+        
+         | <a href="/blog/2010/02/10/a-historia-sem-fim/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ademar, um novo (e bom) desenvolvedor foi contratado, apresentado à equipe com a qual ele vai trabalhar, a integração com a equipe do RH foi feita, estão todos (ele e a equipe) felizes e empolgados, afinal de contas ele vai trabalhar em um novo projeto e ter novos desafios e a equipe ganha mais um reforço para dar vazão em tudo o que estão fazendo.</p>
+
+<p>Roberto, o líder da atual equipe de desenvolvimento, faz as devidas apresentações da equipe e traz para Ademar “algumas” documentações do produto em que ele terá que trabalhar, diagramas de classe, especificações funcionais e técnicas, visão do produto, etc. Essa documentação, levando-se em conta que a equipe já trabalha no produto há mais de um ano, tem algumas várias páginas, digamos, umas 200.</p>
+
+<p>Pergunta: Será que ao ler toda a documentação Ademar já saberá tudo o que ele precisa para começar a desenvolver? Entendendo, é claro, que essa documentação esteja devidamente atualizada. Outra coisa, quanto tempo será que ele vai levar para ler tudo isso? Um <strong>bom </strong>livro com mais ou menos umas duzentas páginas, me toma uns dois ou três dias. E uma documentação, que não é exatamente uma leitura agradável?</p>
+
+<p>Honestamente, não seria muito mais fácil alguém gastar, digamos, umas 4 horas explicando o que é o sistema e onde estão as coisas? Na prática, a gente sabe que mesmo lendo documentos, é no olhando para o código que vamos realmente descobrir as coisas, que vamos ver quais classes dependem de quais, qual a arquitetura do sistema. Um documento pode ajudar, mas depois dele sempre vão sobrar as mesmas dúvidas que teremos quando olhamos para o código.</p>
+
+<p>Não estou dizendo que nenhum documento é necessário, por exemplo, eu acredito que um diagrama de classes me ajuda a pensar na solução que vou desenvolver. Mas, dificilmente, depois de meses de projeto, posso dizer que aquele diagrama inicial representa fielmente o sistema que eu estou trabalhando. E quem pode? :&ndash;)</p>
+
+<p>Eu acredito que um mínimo de documentação deve ser feita para um sistema, contendo coisas como: os projetos que fazem parte de uma solução, as entidades envolvidas (Servidor Web, DB, Web Services, etc), usuários e senhas de serviços e servidores, a arquitetura macro da solução, ou seja, coisas bem genéricas. Do código? No máximo um diagrama de sequência como modelo. Pra mim, testes unitários bem feitos, são capazes de documentar as regras de negócio implementadas.</p>
+
+<p>Infelizmente, não é isso que eu tenho visto, cada vez mais as empresas (principalmente as grandes), pedem cada vez mais documentos que nunca leem, e pior, parece que fazem isso somente como forma de ter alguém para colocar a culpa se algo der errado.</p>
+
+<p>Honestamente, com o mundo todo querendo cada vez prazos mais curtos e/ou agilidade, será que temos mesmo que ficar presos a tanta burocracia que só faz com que as entregas sejam mais lentas? Se ainda esses documentos fossem realmente lidos como no caso acima, mas o que se vê, é que muitas vezes essas documentações nem lidas são.</p>
+
+<p>Na minha opinião esse tempo de escrita de documentação seria muito melhor gasto, se ao invés de escrever documentos, estivéssemos codificando e conversando com outros desenvolvedores sobre o código e como melhorá-lo ou até lendo um bom livro técnico. Qualquer leitura é melhor do que esse tempo perdido.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/07/validacao-com-asp-net-mvc2/">Validação com Asp.Net MVC2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-07T00:00:00-05:00" pubdate data-updated="true">07/02/2010</time>
+        
+         | <a href="/blog/2010/02/07/validacao-com-asp-net-mvc2/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>OK, eu mal terminei meu primeiro projeto real com o Asp.Net MVC e o Asp.Net MVC já está quase na segunda versão que deve sair em março, junto com o Visual Studio 2010 e o .Net 4.</p>
+
+<p>De qualquer forma, já é hora de começar a se atualizar e estava eu lendo e testando o Asp.Net MVC 2 e uma das coisas que eu mais gostei é a forma de validação usando o namespace System.ComponentModel.DataAnnotations que agora já faz parte do .Net Framework. Mas melhor ainda é ver como a validação por javascript ficou simples, e muito importante, seguindo os principios do DRY.</p>
+
+<p>Eu estou testando o MVC2 no Visual Studio 2010 beta2, mas não é obrigatório fazer dessa forma, é possível utilizar o Visual Studio 2008 também. A partir do momento que o MVC2 está instalado é possível criar um projeto do tipo Asp.Net MVC2 Web Application.</p>
+
+<p>Criado o projeto a primeira coisa que vamos fazer é criar uma classe de model:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">IdCliente</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int?</span> <span class="n">Idade</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Depois disso precisamos definir o que será validado. Vamos definir isso direto na classe do model. Para isso primeiro temos que dizer que nossa classe está usando o namespace System.ComponentModel.DataAnnotations.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Cliente</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int</span> <span class="n">IdCliente</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o nome&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha a idade&quot;)]</span>
+</span><span class='line'><span class="na">    [Range(0, 150, ErrorMessage=&quot;Idade inválida&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">int?</span> <span class="n">Idade</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="na">    [Required(ErrorMessage = &quot;Preencha o email&quot;)]</span>
+</span><span class='line'><span class="na">    [RegularExpression(@&quot;^[A-Z0-9._%+-]</span><span class="p">+</span><span class="err">@</span><span class="p">[</span><span class="n">A</span><span class="p">-</span><span class="n">Z0</span><span class="p">-</span><span class="m">9.</span><span class="p">-]+.[</span><span class="n">A</span><span class="p">-</span><span class="n">Z</span><span class="p">]{</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">}</span><span class="err">$</span><span class="s">&quot;, ErrorMessage = &quot;</span><span class="n">Email</span> <span class="n">inválido</span><span class="s">&quot;)]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Como vimos, basta decorar os métodos com os atributos de validação e colocar as mensagens de erro. É possível também, ao invés de colocar as mensagens de erro diretamente, colocar uma referência para um Resource e, portanto, utilizar a internacionalização.</p>
+
+<p>Agora vamos criar uma classe de controller com o método de Create.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="k">new</span> <span class="n">Cliente</span><span class="p">());</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">    [HttpPost]</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Create</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">novoCliente</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="c1">// Salvar no Banco de Dados</span>
+</span><span class='line'>            <span class="k">return</span> <span class="nf">Redirect</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">novoCliente</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Dois métodos create, um para exibir o formulário vazio e outro para processar a criação do nosso cliente. Veja que agora temos um atributo HttpPost para decorar os métodos que só serão acessados via post, não é mais feito usando AcceptVerbs(HttpVerbs.Post).</p>
+
+<p>De resto, esse método funciona como no MVC1, ao submeter o formulário o MVC faz o binding dos campos e cria o objeto Cliente e também executa a validação. Se não for encontrado nenhum erro, podemos salvar no banco de dados, caso tenha algum erro o formulário é apresentado novamente com os campos já preenchidos, por isso passamos o objeto criado de volta ao formulário.</p>
+
+<p>Vamos criar a View como fazemos normalmente no MVC. Botão direito dentro do método Create &ndash;&gt; Add View, selecionar Create a strongly-typed view, a nossa classe Cliente e no View Content: a opção Create:</p>
+
+<p><img class="aligncenter" src="/images/2010/02/AddView.png" title="Add View" ></p>
+
+<p>Deve ser gerado uma View como a abaixo:</p>
+
+<p><img class="aligncenter" src="/images/2010/02/View.png" title="View Create Cliente" ></p>
+
+<p>Agora, ao acessar a página de criação de cliente e tentar criar um novo cliente sem preencher nada veremos o seguinte:</p>
+
+<p><img class="aligncenter" src="/images/2010/02/Validacao-Criacao-do-Cliente.png" title="Validação Criação do Cliente" ></p>
+
+<p>Fácil não? Agora só falta fazer a validação por javascript. Existe duas formas de fazer isso, usando a biblioteca de ajax da Microsoft ou usando jQuery. No fim, não muda muito, só as referências que são adicionadas  na página. Vou fazer aqui usando o jQuery. Vamos alterar a view de criação de cliente para que fique assim:</p>
+
+<p><img class="aligncenter" src="/images/2010/02/View-com-Javascript.png" title="View com Javascript" ></p>
+
+<p>Pronto. Isso é tudo que precisa ser feito para que a validação funcione com javascript, adicionar as referências às bibliotecas do jQuery e à biblioteca MicrosoftMvcJQueryValidation.js e por fim, habilitar a validação no cliente chamando o método Html.EnableClientValidation.</p>
+
+<p>É possível também criar uma validação customizada, mas eu vou mostrar isso num próximo post.</p>
+
+<p>Existem outras mudanças na forma de validação do MVC2 como, por exemplo, agora é possível utilizar o Enterprise Library Validation Block para fazer a validação. Além disso, o modelo de validação também mudou, mas isso também vale um outro post.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/01/saindo-da-media/">Saindo da média</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-01T00:00:00-05:00" pubdate data-updated="true">01/02/2010</time>
+        
+         | <a href="/blog/2010/02/01/saindo-da-media/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Então, o que faz uma pessoa sair da média? Ou para fins desse post, o que faz uma pessoa sair da média? Eu sempre achei que algumas pessoas tinham algo de muito especial para conseguir o que elas conseguiam. Tinham um talento natural, um dom, uma pré-disposição para o sucesso ou coisa assim. Ler o livro <a href="http://www.submarino.com.br/produto/1/21575022/outliers:+the+story+of+success" target="_blank">Outliers &ndash; Fora de Série</a>, me ajudou a ver que muitas das pessoas consideradas fora de série foram pessoas normais, que tiveram chances muito importantes e souberam aproveita-lás, foram pessoas que se dedicaram.<br /><br />Sim, é ingênuo achar que alguns &ldquo;Fora de série&rdquo; não tiveram o favorecimento genético com suas mentes privilegiadas, mas, como é possível constatar no livro, somente uma mente privilegiada não garante um sucesso. É importante saber que nem todos chegam ao topo sozinhos.<br /><br />Além disso, contam também as oportunidades que nos são oferecidas, por exemplo o livro conta a história de Bill Gates que teve acesso há um computador quando quase ninguém tinha. O nosso legado cultural também conta muito, por exemplo os orientais descendentes de famílias que cultivavam arroz costumam ser melhores em matemática que o resto do mundo. Por que? Porque o cultivo do arroz antigamente exigia muita dedicação, esforço, concentração e detalhes, e isso ficou de legado para os descendentes. Outra fator importante é a oportunidade história, o próprio Bill Gates se desenvolveu em uma época onde os computadores estavam ficando cada vez mais acessíveis.<br /><br />Mas e pra nós, o que isso traz de bom? A principal lição que eu tirei do livro foi a lição das 10.000 horas. E qual é essa lição? É que geralmente as pessoas atingem um bom, ou melhor dizendo, um ótimo nível, em uma determinada área depois de 10.000 horas de prática naquele assunto, vários exemplos são citados no livro, pra ficar nos mais conhecidos vou citar aqui novamente o Bill Gates e os Beatles.<br /><br />A prática por si só não faz ninguém ser genial, mas sem ela não vamos atingir nenhum grau bom de conhecimento daquilo que fazemos, então se temos que começar por alguma coisa que seja praticando. E por praticar, não basta simplesmente fazer, temos que fazer direito. Na área de codificação é muito fácil ficar por anos codificando de formas que não levam a nenhum conhecimento, ou a muito pouco conhecimento. Por isso, é preciso muita leitura, leitura de bons códigos, de códigos de projetos open source, ou de fontes reconhecidas.<br /><br />Um outro fato interessante é que nem é necessário ter um QI de um gênio para se destacar. Estudos mostram que pessoas com QI acima de 100 tem a mesma capacidade. É claro, algumas tem mais facilidades, mas ter um QI 180 não é requisito para se fazer coisas fora de série.<br /><br />Uma última coisa que gostaria de compartilhar do livro é que é sempre necessário saber lidar com as pessoas, afinal de contas é com elas que lidamos sempre, são pessoas que nos oferecem ou negam oportunidades. Não basta praticar e ter conhecimento se não for possível esse conhecimento dar frutos que as pessoas possam utilizar.<br /><br />Bom, fica a dica, um ótimo livro e de uma ótima leitura.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/18/requisitos-minimos-para-uma-contratacao/">Requisitos mínimos para uma contratação</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-18T00:00:00-05:00" pubdate data-updated="true">18/01/2010</time>
+        
+         | <a href="/blog/2010/01/18/requisitos-minimos-para-uma-contratacao/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Fale a verdade. Quantas pessoas você ou sua empresa já contrataram que não duraram muito no emprego? Ou então, quantas vezes a pessoa até durou no emprego, mas nunca foi aquele desenvolvedor em quem você confiava, alguém que você nunca precisava conferir o que ele estava fazendo.</p>
+
+<p>Saber reconhecer características tanto técnicas como pessoais que fazem um bom profissional não é uma coisa fácil, mas com certeza existem algumas diretrizes que podemos tomar.</p>
+
+<p>Eu fui solicitado a traçar um perfil de um estagiário para trabalhar comigo. Em minha opinião, contratar um estagiário é ainda mais difícil, já que eu não posso exigir muito. Tenho que escolher alguém que me pareça um profissional promissor. Quando seleciono um profissional já formado, gosto de pedir que ele faça uma atividade prática (um mini-programa por assim dizer), posso perguntar coisas técnicas, agora no caso do estagiário a idéia é diferente, a questão é formação.</p>
+
+<p>Após gastar um tempo, consegui chegar em uma lista que eu classifico como mínimas para se contratar alguém:</p>
+
+<ul>
+    <li><strong> Estar cursando a partir do segundo semestre de faculdade</strong> – já que pela lei é obrigatório estar em uma faculdade, que pelo menos o 1º semestre esteja concluído. Geralmente é nesse semestre que as faculdades ensinam lógica de programação e algumas já começam com algumas linguagens.</li>
+
+    <li><strong>Saber lógica de programação</strong> – conseqüência talvez do 1º item, mas não necessariamente. Queremos formar alguém, mas não ensinar do zero.</li>
+    <li><strong>Já ter estudado ou trabalhado com alguma linguagem de programação</strong> – pode ser na faculdade, mas se for antes disso melhor, mostra que a pessoa fuçadora, que corre atrás, que sabe se virar. É muito importante isso, porque convenhamos, nem sempre a gente pode parar e ensinar cada detalhe. Outra coisa, se a pessoa já sabe uma linguagem, aprender outra é muito mais fácil.</li>
+    <li><strong>Saber inglês</strong> – não adianta querer enganar, a maioria da documentação e livros nessa área é em inglês, alguns nunca chegam a sair em português e quando saem, demoram muito. Não saber inglês, é restringir as opções de busca de informação e conseqüentemente ficar para trás.</li>
+    <li><strong>Gostar e ter o hábito de ler</strong> – é possível aprender muita coisa procurando exemplos na  internet, vendo o que os outros fizeram  ou com alguém explicando, mas eu quero um profissional que se destaque, que não seja mais um no mesmo e honestamente, se a pessoa não tem o hábito de ler, deixa de aprender muita coisa. Muitos detalhes não são conhecidos pela maioria, detalhes que podem diferenciar um desenvolvedor mediano de um cara que é admirado por todos e principalmente de alguém em quem se pode confiar. Ler é uma questão fundamental para o crescimento.</li>
+    <li><strong>Que me convença que não está na área apenas pelo dinheiro</strong> – quero alguém que seja conhecido como nerd, que respire tecnologia, que tenha hobbies de um nerd :-). Não que bons desenvolvedores não possam gostar ou fazer outras cosias, mas é muito mais fácil você achar alguém que realmente gosta de desenvolver e não esta ali apenas pelo dinheiro, quando a pessoa já demonstra que gosta de viver nesse “mundo nerd”.</li>
+</ul>
+
+
+<p>OK parece uma lista difícil para um estagiário, principalmente nesse nosso mercado onde as pessoas acreditam que “mexer com computador dá dinheiro”, mas eu insisto, não quero alguém que seja mais no meio, se essa pessoa virar um desenvolvedor melhor do que eu vou ficar muito feliz e principalmente, se eu puder sair de férias e não tiver que me preocupar porque sei que deixei tudo na mão de quem eu confio, vou ficar mais feliz ainda.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/12/lista-de-leitura-1o-trimestre-de-2010/">Lista de Leitura - 1o Trimestre de 2010</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-12T00:00:00-05:00" pubdate data-updated="true">12/01/2010</time>
+        
+         | <a href="/blog/2010/01/12/lista-de-leitura-1o-trimestre-de-2010/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Para esse ano de 2010 eu e meu amigo <a href="http://lucattelli.com" target="_blank">Bruno</a>, resolvemos fazer um projeto de leitura, não sei ainda se isso vai dar certo, mas eu me propus a ler alguns livros para o 1o trimestre de 2010.</p>
+
+<p>Escolhi 4 livros que não são muito grandes, 3 deles estão aqui:</p>
+
+<p><img class="aligncenter" src="/images/2009/12/21122009045-e1261943856185.jpg" title="Lista de leitura" ></p>
+
+<p>O outro, que o Bruno vai gentilmente me emprestar, é o <a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=020161622X&linkCode=as2&tag=tempcodi0f-20">The Pragmatic Programmer: From Journeyman to Master</a><img src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&l=as2&o=1&a=020161622X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, que segundo dizem por aí, é leitura obrigatória para todo o desenvolvedor.</p>
+
+<p><a href="http://www.amazon.com/gp/product/1933988363/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1933988363&linkCode=as2&tag=tempcodi0f-20">C# in Depth: What you need to master C# 2 and 3</a><img src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&l=as2&o=1&a=1933988363" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, talvez eu tenha demorado pra ler um pouco esse livro, mas mesmo quando a gente acha que sabe bastante de uma coisa, sempre tem mais pra aprender e esse livro fala muito sobre C# e vai além do básico, mas é focado na linguagem, nada de se aprofundar no .net framework com ele.</p>
+
+<p><a href="http://www.amazon.com/gp/product/0131177052/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0131177052&linkCode=as2&tag=tempcodi0f-20">Working Effectively with Legacy Code</a><img src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&l=as2&o=1&a=0131177052" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, esse eu já comecei a ler, apenas preciso continuar. O que eu posso dizer é que uma leitura de uso imediato, excelente para quem tem que dar manutenção em qualquer sistema orientado a objetos que não tem testes unitários.</p>
+
+<p><a href="http://www.amazon.com/gp/product/0316017930/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0316017930&linkCode=as2&tag=tempcodi0f-20">Outliers: The Story of Success</a><img src="http://www.assoc-amazon.com/e/ir?t=tempcodi0f-20&l=as2&o=1&a=0316017930" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> &ndash; só citando a contra capa do livro: O que torna algumas pessoas capazes de atingir um sucesso tão extraordinário e peculiar a ponto de serem chamadas de &ldquo;fora de série &rdquo; ?</p>
+
+<p>No ano de 2010 eu espero ter um ano de muito mais aprendizado do que em 2009, que já foi muito bom. Estou começando selecionando minha leitura, espero que fiquem algumas dicas também.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/04/testes-integrados-com-o-selenium-ii/">Testes integrados com o Selenium II</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-04T00:00:00-05:00" pubdate data-updated="true">04/01/2010</time>
+        
+         | <a href="/blog/2010/01/04/testes-integrados-com-o-selenium-ii/#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/">Eu já falei anteriormente do Selenium</a> mas usando um outro enfoque, hoje eu queria falar sobre uma prática que adotamos na <a href="http://www.golive.com.br" target="_blank">GoLive</a> para testar os aplicativos web.</p>
+
+<p>Nada muito complicado, nem do outro mundo, mas ao invés de longos documentos com print screens de telas, ou formulários que são mal preenchidos, estamos gravando os testes de aplicações web com o Selenium. Quando um erro é encontrado, o bug é registrado no relatório de bugs e o arquivo do Selenium é anexado (na verdade hoje ele ainda é enviado por email).</p>
+
+<p>Pra reproduzir o erro, basta abrir o arquivo no firefox e debugar :&ndash;).</p>
+
+<p>Uma mudança simples no processo, mas que na minha opinião facilitou bastante a correção de erros.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/9/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/7/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/">Quatro bons livros para mudar a forma como você vê/escreve JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/">Análise do livro Pragmatic Thinking and Learning</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

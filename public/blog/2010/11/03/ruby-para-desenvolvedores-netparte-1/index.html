@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ruby para desenvolvedores .NET–parte 1 - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Eu tenho usado Ruby já há algum tempo, principalmente em alguns desenvolvimentos pessoais usando o Rails. Mas eu trabalho com C# já há mais de 8 anos &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://templecoding.com/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Temple Coding</a></h1>
+  
+    <h2>código, tecnologia e outras nerdices</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:templecoding.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ruby para desenvolvedores .NET–parte 1</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-03T00:00:00-04:00" pubdate data-updated="true">03/11/2010</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Eu tenho usado Ruby já há algum tempo, principalmente em alguns desenvolvimentos pessoais usando o Rails. Mas eu trabalho com C# já há mais de 8 anos e vivi fechado nesse mundo .NET por muito tempo, muito mais do que eu gostaria. De qualquer forma, ruby já tem feito parte do meu dia a dia, então eu gostaria de compartilhar algumas coisas que já aprendi sobre ruby, para aqueles, que como eu, vivem no mundo .NET.</p>
+
+
+<p>  <p><strong>Motivação</strong></p>  <p>Ruby é e deve ser considerada uma linguagem de primeira classe, é possível hoje realizar aplicativos de diversos fins com Ruby e não somente aplicações web usando Rails. Mas, muitas vezes as empresas preferem ficar com linguagens mais conhecidas no mercado como Java ou C# para suas aplicações.</p>  <p>Ok, se você não pode usar Ruby para construir suas aplicações é bem provável que possa usar Ruby como uma linguagem de scripting (que ela é), para ajudar em trabalhos marginais porém importantes que muitas vezes não são feitos, ou são feitos usando outras coisas como XML, como por exemplo realizar Builds e Deploys, fazer testes de aplicativos, entre outros.</p>  <p>Se você pode escolher qual a linguagem quer usar, melhor pra você, Ruby pode ser uma ótima escolha, como veremos.</p>  <p><strong>Interpretador</strong></p>  <p>A primeira coisa que precisamos para usar Ruby é um interpretador de Ruby. Existem vários interpretadores por ai, o que eu vou usar aqui é o <a href="http://ironruby.codeplex.com/" target="_blank">IronRuby</a>. O IronRuby é um interpretador do Ruby que permite usar Ruby sobre a plataforma .NET, ou seja, vai permitir que você use os assemblies que já está costumado. É Ruby, segue a especificação de Ruby, com o adicional do .NET. Ótimo não é?</p>  <p>Eu recomento instalar a versão 1.0 que é compatível com o Ruby 1.8.7, andei fazendo uns testes com a versão 1.1 do IronRuby e ainda dá vários paus (pelo menos na data atual). A vantagem dessa versão 1.1 é que ela já vem com <a href="http://viniciusquaiato.com/blog/ironruby-tools-for-visual-studio-2010/" target="_blank">ferramentas para o Visual Studio 2010</a>.</p>  <p><strong>O Console</strong></p>  <p>Uma vez com o IronRuby instalado, você deve ter o IronRuby Console no seu menu iniciar, ou então pode executar o console a partir de um prompt padrão com o comando iirb.</p>  <p>O console permite que você execute qualquer instrução ruby, vá e faça um teste simples:</p>  <p><a href="http://templecoding.com/wp-content/uploads/2010/11/console.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="console" border="0" alt="console" src="http://templecoding.com/wp-content/uploads/2010/11/console_thumb.png" width="511" height="339" /></a></p>  <p>Uma outra vantagem do Ruby é a “falta de cerimônia” no código como os {}, ;, () e afins. Aliando isso ao fato de ser uma linguagem interpretada, veja a diferença de um Hello World feito em C# para uma aplicação console e uma em Ruby.</p>  <pre class="brush: csharp;">using System;
+namespace ConsoleApplication1
+{</p>
+
+<pre><code>class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine(string.Format(&amp;quot;Hello World, {0}&amp;quot;, args[0]));
+    }
+}
+</code></pre>
+
+<p>}</pre></p>
+
+<p>E agora em Ruby:</p>
+
+
+
+
+<pre class="brush: ruby;">puts "Hello World, #{ARGV[0]}"</pre>
+
+
+
+
+<p>Considere, que além da diferença da linguagem, para rodar o aplicativo no .NET é preciso compilar, gerar um executável e então rodá-lo. E para rodar o script Ruby, considerando que ele foi salvo num arquivo chamado hello_world.rb basta executar o comando:</p>
+
+
+
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/11/comando_ruby.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="comando_ruby" border="0" alt="comando_ruby" src="http://templecoding.com/wp-content/uploads/2010/11/comando_ruby_thumb.png" width="407" height="83" /></a></p>
+
+
+
+
+<p><strong>Fortemente, Estaticamente e Dinamicamente tipado</strong></p>
+
+
+
+
+<p>Falando da linguagem realmente, Ruby é uma linguagem fortemente e dinamicamente tipada. O que isso quer dizer?</p>
+
+
+
+
+<p>Quer dizer as variáveis tem um tipo bem definido, por exemplo uma variável do tipo String não pode ser somada a uma variável do tipo Fixnum veja:</p>
+
+
+
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/11/tipos.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="tipos" border="0" alt="tipos" src="http://templecoding.com/wp-content/uploads/2010/11/tipos_thumb.png" width="647" height="346" /></a></p>
+
+
+
+
+<p>Veja que apenas por atribuir um valor às variáveis os tipos foram definidos como Fixnum e String, isso é definir uma tipagem dinamicamente, ou seja, no seu primeiro uso. Nos casos acima as variáveis texto e numero são instâncias das classes String e Fixnum respectivamente e por isso tem acessos aos seus métodos, então se você quiser concatenar as duas variáveis em uma string pode fazer o seguinte:</p>
+
+
+
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/11/concat.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="concat" border="0" alt="concat" src="http://templecoding.com/wp-content/uploads/2010/11/concat_thumb.png" width="365" height="56" /></a></p>
+
+
+
+
+<p>Veja que chamei o método to_s que converte para string e então foi gerado o texto “VinTem12”</p>
+
+
+
+
+<p>Linguagens, estaticamente tipadas, como o C#, tem seu tipo definido em tempo de compilação, ou seja, antes da execução.</p>
+
+
+
+
+<p><strong>Usando o .NET</strong></p>
+
+
+
+
+<p>Como um exemplo simples de como é possível usar as classes do .NET a partir do IronRuby, vou mostrar um código básico de um MessageBox do Windows Forms.</p>
+
+
+
+
+<p><a href="http://templecoding.com/wp-content/uploads/2010/11/clr.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="clr" border="0" alt="clr" src="http://templecoding.com/wp-content/uploads/2010/11/clr_thumb.png" width="650" height="363" /></a></p>
+
+
+
+
+<p>O princípio é o mesmo para qualquer classe do .NET Framework. <img style="border-bottom-style: none; border-right-style: none; border-top-style: none; border-left-style: none" class="wlEmoticon wlEmoticon-smile" alt="Alegre" src="http://templecoding.com/wp-content/uploads/2010/11/wlEmoticon-smile.png" /></p>
+
+
+
+
+<p><strong>Concluindo</strong></p>
+
+
+
+
+<p>Essa foi apenas uma apresentação inicial de como instalar um ambiente Ruby no Windows, do console do Ruby e da diferença mais básica entre Ruby e C# que é a tipagem.</p>
+
+
+
+
+<p>Nos próximos vou falar um pouco mais a fundo das características do Ruby e quais as diferenças para o C#.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-03T00:00:00-04:00" pubdate data-updated="true">03/11/2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://templecoding.com/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/" data-via="vintem12" data-counturl="http://templecoding.com/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby/" title="Previous Post: Convertendo um texto ISO-8859-1 para UTF-8 em Ruby">&laquo; Convertendo um texto ISO-8859-1 para UTF-8 em Ruby</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/" title="Next Post: Ruby para desenvolvedores .NET–parte 2">Ruby para desenvolvedores .NET–parte 2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/">Quatro bons livros para mudar a forma como você vê/escreve JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/">Análise do livro Pragmatic Thinking and Learning</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

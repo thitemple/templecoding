@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: firebug | Temple Coding]]></title>
+  <link href="http://templecoding.com/blog/categories/firebug/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-08-04T14:36:35-04:00</updated>
+  <id>http://templecoding.com/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[O Firebug é seu amigo]]></title>
+    <link href="http://templecoding.com/blog/2009/12/14/o-firebug-e-seu-amigo/"/>
+    <updated>2009-12-14T00:00:00-05:00</updated>
+    <id>http://templecoding.com/blog/2009/12/14/o-firebug-e-seu-amigo</id>
+    <content type="html"><![CDATA[<p>Se você, assim como eu, redescobriu o javascript ultimamente (por mim principalmente por causa do jQuery), então você vai gostar de usar (se ainda não usa) o <a href="https://addons.mozilla.org/en-US/firefox/addon/1843" target="_blank">Firebug</a>.<br /><br />O Firebug é um add-on para o Firefox que permite debugar o javascript, analisar o que foi enviado em Requests e Responses de chamada ajax.<br /><br />É só instalar o add-on e abrir o console dentro do Firefox e pronto. Na aba Script é onde coloca-se os breakpoints e faz a execução do script passo a passo, inclusive com a janela Watch para ver o valor das variáveis.<br /><br />Na aba console é possível executar comandos javascript em tempo de execução. Uma mão na roda pra quem usa o javascript. E ele ainda exibe a árvore DOM, o HTML gerado, o CSS, enfim, uma série de funcionalidades que fazem dele uma ferramenta obrigatória.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Criando Snippets para o Visual Studio 2010 - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Motivação Apesar de ser e gostar muito de ser um desenvolvedor, sou totalmente a favor de escrever a menor quantidade de código possível. Porque &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://templecoding.com/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Temple Coding</a></h1>
+  
+    <h2>código, tecnologia e outras nerdices</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:templecoding.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Criando Snippets para o Visual Studio 2010</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-04T00:00:00-04:00" pubdate data-updated="true">04/08/2011</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>Motivação</strong></p>
+
+<p>Apesar de ser e gostar muito de ser um desenvolvedor, sou totalmente a favor de escrever a menor quantidade de código possível. Porque menos código, geralmente quer dizer menos erros. Com isso em mente eu resolvi criar Snippets de código no Visual Studio 2010. Você pode até não saber o que é um snippet mas com certeza já usou um. Um snippet é uma pequena porção de código que é reutilizável. Por exemplo, entre no seu Visual Studio, e dentro de um método digite <em>foreach</em> e aperte <strong>Tab</strong>. Pronto, isso é um snippet.</p>
+
+<p>Seguindo essa mentalidade e fazendo testes unitários eu me peguei escrevendo diversas vezes esse código:</p>
+
+<pre class="brush: csharp;">[Test]
+public void Meuteste()
+{
+
+}</pre>
+
+
+<p>Meu objetivo era que digitasse apenas um comando de atalho (nesse caso escolhi <em>ntest</em>) e que esse código fosse gerado pra mim, permitindo que eu apenas alterasse o nome do método.</p>
+
+<p><strong>Snippet Designer</strong></p>
+
+<p>O Visual Studio 2010 permite que você crie snippets através do seu editor de XML, que é o padrão, afinal de contas um snippet nada mais é do que um arquivo xml. Mas existe uma extensão para o VS2010 chamada Snippet Desiner que facilita um pouco o trabalho. Então vá em Tools –&gt; Extension Manager e adicione a extensão.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2011/08/Snippet-Designer.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; margin-left: auto; margin-right: auto; padding-top: 0px; border-style: initial; border-color: initial; border-width: 0px;" title="Snippet Designer" src="http://templecoding.com/wp-content/uploads/2011/08/Snippet-Designer_thumb.png" alt="Snippet Designer" width="569" height="397" border="0" /></a></p>
+
+<p><strong>Criando o Snippet</strong></p>
+
+<p>Crie um novo projeto no VS2010 e adicione um arquivo do tipo XML. Dê o nome que quiser, mas use a extensão .snippet. No meu caso o nome do arquivo é NUnitTest.snippet.</p>
+
+<p>Ao criar o arquivo ele estará vazio e, portanto, o Snippet Designer não irá abri-lo. Clique com o botão direito no arquivo e me Open With, selecione o XML (Text) Editor e clique em OK.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2011/08/EditorXml.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; margin-left: auto; margin-right: auto; padding-top: 0px; border-style: initial; border-color: initial; border-width: 0px;" title="EditorXml" src="http://templecoding.com/wp-content/uploads/2011/08/EditorXml_thumb.png" alt="EditorXml" width="346" height="229" border="0" /></a></p>
+
+<p>Dentro do documento XML clique com o botão direito e selecione a opção Insert Snipet</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2011/08/Inser-.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 0px; border: 0px;" title="Inser" src="http://templecoding.com/wp-content/uploads/2011/08/Inser-_thumb.png" alt="Inser " width="382" height="170" border="0" /></a></p>
+
+<p>Em seguida selecione a opção Snippet.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2011/08/Inserir-Snippet.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 0px; border: 0px;" title="Inserir Snippet" src="http://templecoding.com/wp-content/uploads/2011/08/Inserir-Snippet_thumb.png" alt="Inserir Snippet" width="463" height="173" border="0" /></a></p>
+
+<p>O xml necessário para a criação do snippet será gerado, como você pode perceber ele mesmo é um snippet. #inception #feelings :)</p>
+
+<p>É possível editar ali mesmo o xml, ou então podemos usar o Snippet Designer que acabos de instalar. Salve o arquivo e feche-o. No Solution Explorer, mais uma vez clique com o botão direito no arquivo e em Open With e dessa vez selecione a opção Snippet Desiger, uma tela como a abaixo deverá aparecer.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2011/08/Snippet-Designer2.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; margin-left: auto; margin-right: auto; padding-top: 0px; border-style: initial; border-color: initial; border-width: 0px;" title="Snippet Designer2" src="http://templecoding.com/wp-content/uploads/2011/08/Snippet-Designer2_thumb.png" alt="Snippet Designer2" width="555" height="350" border="0" /></a></p>
+
+<p>Algumas coisas que precisam ser alteradas, no topo do lado esquerdo, dê um título e selecione a linguangem, no meu caso foi NUnit Test e C#. As proprieades do arquivo são bem claras, mas o que você deve ter uma atenção é pra propriedade <strong>Shortcut. </strong>O que você colocar ali é o que você vai digitar antes do Tab na hora de codificar. Eu preenchi o meu como <em>ntest.</em></p>
+
+<p>Na parte de baixo é onde você define a parte do código que é customizável quando você fica dando tabs no seu snippet, no meu caso eu queria customizar apenas o nome do método, então alterei o item que vem ali para <em>testName</em> e deixei campo Defaults to para <em>testName</em> também.</p>
+
+<p>Por fim, a principal e maior parte da tela é onde você coloca o seu código do snippet, apenas preencha o código que você quer ali normalmente e substituia a parte customizável pelas variáveis que você criou, prestando atenção que o nome dessa variável deve estar entre $$, assim: <em>$testName$. </em>Veja como ficou meu snippet após as mudanças.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2011/08/Snippet-Editado.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; margin-left: auto; margin-right: auto; padding-top: 0px; border-style: initial; border-color: initial; border-width: 0px;" title="Snippet Editado" src="http://templecoding.com/wp-content/uploads/2011/08/Snippet-Editado_thumb.png" alt="Snippet Editado" width="556" height="355" border="0" /></a></p>
+
+<p><strong>Utilizando o Snippet</strong></p>
+
+<p>O VS2010 usa diversos snippets, mas obviamente é muito fácil adicionar aqueles que foram criados pelos usuários. Basta carregar os arquivos .snippet criados por você dentro dele.</p>
+
+<p>Por padrão quando se instala o VS2010 ele cria uma pasta dentro da pasta Meus Documentos chamada Visual Studio 2010, ali navegue para –&gt; Code Snippets –&gt; Visual C# –&gt; My Code Snippets. Copie o(s) arquivo(s) .snippet que você criou e cole dentro dessa pasta. Isso é claro, considerando que são snippets de C#, caso contrário coloque na pasta correta.</p>
+
+<p>É provável que tudo já esteja funcionando, mas para ter certeza, dentro do VS2010 vá em Tools –&gt; Code Snippets Manager, selecione a linguagem e deve aparecer algo assim.</p>
+
+<p><a href="http://templecoding.com/wp-content/uploads/2011/08/Code-Snippet-Manager.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; margin-left: auto; margin-right: auto; padding-top: 0px; border-style: initial; border-color: initial; border-width: 0px;" title="Code Snippet Manager" src="http://templecoding.com/wp-content/uploads/2011/08/Code-Snippet-Manager_thumb.png" alt="Code Snippet Manager" width="374" height="280" border="0" /></a></p>
+
+<p>Se não aparecer ali, basta clicar em Add, navegar e selecionar a pasta onde estão os arquivos .snippet. Pronto! Isso é tudo que você precisa.</p>
+
+<p>Agora é só testar. Vá até uma classe, digite <em>ntest</em> e aperte <strong>Tab. </strong>O código do snippet deve aparecer e o cursor deve estar posicionado no nome do método, pronto para que este seja alterado.</p>
+
+<p><strong>Finalizando</strong></p>
+
+<p>O snippet que eu criei é bem simples, mas de um código que eu faço toda hora, se você tem alguma coisa desse tipo e quer facilitar, esse é o caminho. :)</p>
+
+<p><a href="https://github.com/vintem/VS2010Snippets" target="_blank">O código desse projeto está diposnível para download aqui.</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-04T00:00:00-04:00" pubdate data-updated="true">04/08/2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://templecoding.com/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010/" data-via="vintem12" data-counturl="http://templecoding.com/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/" title="Previous Post: Análise: Growing Object-Oriented Software, Guided by Tests">&laquo; Análise: Growing Object-Oriented Software, Guided by Tests</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/08/16/tornando-o-acesso-a-dados-simples-com-o-simple-data/" title="Next Post: Tornando o acesso a dados simples com o Simple.Data">Tornando o acesso a dados simples com o Simple.Data &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/">Quatro bons livros para mudar a forma como você vê/escreve JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/">Análise do livro Pragmatic Thinking and Learning</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
