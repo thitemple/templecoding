@@ -3,25 +3,25 @@ layout: post
 title: Na guerra ou na programação, os mais rápidos saem na frente
 categories:
 - Carreira
-tags: []
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  dsq_thread_id: '159268438'
-  _yoast_wpseo_linkdex: '0'
-  _edit_last: '2'
 ---
 <p>Liderar ou gerenciar um time não é uma tarefa fácil, não é a toa que vemos tantos livros sobre liderança. Muitas vezes caímos no risco de querer controlar tudo o que os liderados/gerenciados fazem, o que pode ser conhecido como micro gerenciamento. Isso, claro, pode acontecer porque não confiamos no julgamento ou capacidade alheia, mas também pode ser pela crença errada de que quanto mais informações tivermos, melhor poderemos tomar uma decisão.</p>
 <p>Paul Van Riper, ex-comandante de um batalhão no Vietnã disse:</p>
-<blockquote style="border: 1px solid gray; padding: 5px; background-color: rgb(243, 243, 243); margin-top: 10px; margin-bottom: 10px;">
-<p align="left"><em><font color="#808080">"Um comandante não precisa saber a pressão barométrica, os ventos ou mesmo a temperatura. Ele precisa saber a previsão. Se você se envolver demais na produção de informações irá se afogar nos dados." </font></em></p>
-</blockquote>
+
+{% blockquote Paul Van Riper %}
+Um comandante não precisa saber a pressão barométrica, os ventos ou mesmo a temperatura. Ele precisa saber a previsão. Se você se envolver demais na produção de informações irá se afogar nos dados."
+{% endblockquote %}
+
 <p>Quando eu li essa citação, não pude deixar de ligar com várias experiências que já tive, sendo um líder ou sendo liderado. Não precisamos saber os mínimos detalhes técnicos para saber se algo vai dar certo ou não, precisamos primeiro de tudo confiar nos nossos liderados. Ou então, teremos que tomar muito mais decisões do que realmente precisamos. Além do mais, existem diversos estudos que comprovam que precisamos de bem menos informações para tomar uma decisão do que realmente acreditamos.</p>
 <p>Quanto mais informações exigimos, ou melhor, em quanto mais detalhes tentamos nos envolver, mais burocráticos e lentos nos tornamos. Citando novamente Van Riper:</p>
-<blockquote style="border: 1px solid gray; padding: 5px; background-color: rgb(243, 243, 243); margin-top: 10px; margin-bottom: 10px;">
-<p align="left"><em><font color="#808080">"É como As viagens de Gulliver, o gigante é amarrado por aquelas pequenas regras, regulamentos e procedimentos. E o baixinho? Ele simplesmente dá a volta e faz o que quer."  </font></em></p>
-</blockquote>
+
+{% blockquote Paul Van Riper %}
+"É como As viagens de Gulliver, o gigante é amarrado por aquelas pequenas regras, regulamentos e procedimentos. E o baixinho? Ele simplesmente dá a volta e faz o que quer."
+{% endblockquote %}
+
 <p>Delegar não é uma tarefa fácil, por isso é uma das questões mais exploradas quando se fala em liderança, mas com certeza vale o esforço.</p>
 <p>Apenas para contextualizar, Van Riper participou de um treinamento no Pentágono em 2002 chamado de O Desafio do Milênio, onde ele liderava uma equipe, chamada de equipe vermelha que enfrentava a equipe azul. A idéia era fazer uma simulação de uma guerra do golfo para poder testar um time todo informatizado. </p>
 <p>A equipe azul tinha diversos estudos, acesso a várias informações e um programa de computador que equacionava informações militares, políticas e econômicas do inimigo. Antes de disparar um tiro, ou tomar uma iniciativa a equipe azul devia trocar mensagens e discutir cada decisão com seu comando. </p>

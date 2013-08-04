@@ -3,14 +3,11 @@ layout: post
 title: Aprenda de forma ágil
 categories:
 - Carreira
-tags: []
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  dsq_thread_id: '852482643'
-  _yoast_wpseo_linkdex: '0'
-  _edit_last: '2'
+alias: /aprenda-de-forma-gil/index.html
 ---
 <p>Eu acredito nas metodologias ágeis. Acredito principalmente porque cada vez mais o mundo é mais ágil.   <br />
 As coisas mudam com uma freqüência muito mais rápida do que conseguimos acompanhar e isso é óbvio para qualquer pessoa que não passe a maior parte do tempo dormindo ou dentro de sua própria bolha.</p>

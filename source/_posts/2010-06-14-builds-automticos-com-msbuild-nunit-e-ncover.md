@@ -3,31 +3,16 @@ layout: post
 title: Builds automáticos com MSBuild, NUnit e NCover
 categories:
 - Desenvolvimento
-tags:
 - build
 - build automatico
 - msbuild
 - ncover
 - nunit
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  dsq_thread_id: '162286280'
-  _edit_last: '2'
-  _yoast_wpseo_linkdex: '0'
-  _yoast_wpseo_focuskw: ''
-  _yoast_wpseo_title: ''
-  _yoast_wpseo_metadesc: ''
-  _yoast_wpseo_meta-robots-noindex: '0'
-  _yoast_wpseo_meta-robots-nofollow: '0'
-  _yoast_wpseo_meta-robots-adv: none
-  _yoast_wpseo_sitemap-include: ! '-'
-  _yoast_wpseo_sitemap-prio: ! '-'
-  _yoast_wpseo_canonical: ''
-  _yoast_wpseo_redirect: ''
-  _yoast_wpseo_opengraph-description: ''
-  _yoast_wpseo_google-plus-description: ''
+alias: /builds-automticos-com-msbuild-nunit-e-ncover/index.html
 ---
 O MSBuild é a ferramenta da Microsoft usada em conjunto com o Visual Studio para compilar os projetos. Toda vez que compilamos um projeto no Visual Studio (a partir da versão 2005 pelo menos), o que acontece é que o VS chama o MSBuild para executar a tarefa de compilar os projetos da solução.
 
@@ -37,7 +22,7 @@ O bom disso é que podemos customizar a compilação/deploy para executar divers
 
 Para começar, criei um solução usando o ASP.NET MVC, com um componente para acesso a dados separado do projeto de Web. Apenas como forma de mostrar o MSBuild compilando projetos diferentes.
 
-<a href="http://templecoding.com/wp-content/uploads/2010/06/Diagrama%20Componentes_2.png"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="Diagrama Componentes" src="http://templecoding.com/wp-content/uploads/2010/06/Diagrama%20Componentes_thumb.png" alt="Diagrama Componentes" width="408" height="179" border="0" /></a>
+{% img aligncenter /images/2010/06/Diagrama%20Componentes_2.png Diagrama Componentes %}
 
 O projeto é bem simples, a idéia mesmo é conectar no intergalaxialmente famoso banco de dados Northwind e exibir os dados da tabela de categorias. Uau!!! Uma tarefa que consumirá horas, mas, como eu disse o foco é mostrar um pouco do funcionamento do MSBuild. <a href="https://github.com/vintem/MSBuildDemo" target="_blank">O código da aplicação está disponível aqui.</a>
 
@@ -60,37 +45,41 @@ Pronto, isso é tudo o que é necessário para rodar o MSBuild.
 
 Depois de baixar, olhar o código e os testes unitários abra o arquivo MSBuildDemo.proj.
 
-<a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2011%2018.09_2.gif"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="ScreenHunter_01 Jun. 11 18.09" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_01%20Jun.%2011%2018.09_thumb.gif" alt="ScreenHunter_01 Jun. 11 18.09" width="217" height="145" border="0" /></a>
+{% img aligncenter /images/2010/06/ScreenHunter_01%20Jun.%2011%2018.09_2.gif %}
 
 O arquivo MSBuildDemo.proj nada mais é do que um arquivo xml. Então vamos começar a entendê-lo.
-<pre class="brush: xml;">&lt;Project DefaultTargets="Build"
+
+{% codeblock lang:xml %}
+<Project DefaultTargets="Build"
 ToolsVersion="3.5"
 InitialTargets="BuscaProjetos"
-xmlns="http://schemas.microsoft.com/developer/msbuild/2003"&gt;
+xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-&lt;!--
+<!--
 Baixar MSBuildCommunity tasks de http://msbuildtasks.tigris.org/
---&gt;
-&lt;Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/&gt;
+-->
+<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
 
-&lt;PropertyGroup&gt;
-&lt;SolutionName&gt;MSBuildDemo.sln&lt;/SolutionName&gt;
-&lt;CodeFolder&gt;$(MSBuildProjectDirectory)&lt;/CodeFolder&gt;&lt;!-- Variavel do MSBuild com diretorio do projeto --&gt;
-&lt;TestFolder&gt;$(MSBuildProjectDirectory)\tests\UnitTests&lt;/TestFolder&gt;
-&lt;ResultsFolder&gt;$(MSBuildProjectDirectory)\Results&lt;/ResultsFolder&gt;
-&lt;Configuration Condition=" '$(Configuration)' == '' "&gt;Debug&lt;/Configuration&gt;
-&lt;Platform Condition=" '$(Platform)' == '' "&gt;AnyCPU&lt;/Platform&gt;
-&lt;/PropertyGroup&gt;
+<PropertyGroup>
+<SolutionName>MSBuildDemo.sln</SolutionName>
+<CodeFolder>$(MSBuildProjectDirectory)</CodeFolder><!-- Variavel do MSBuild com diretorio do projeto -->
+<TestFolder>$(MSBuildProjectDirectory)\tests\UnitTests</TestFolder>
+<ResultsFolder>$(MSBuildProjectDirectory)\Results</ResultsFolder>
+<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+</PropertyGroup>
 
-&lt;PropertyGroup&gt;
-&lt;CaminhoNUnit&gt;C:\Program Files\NUnit 2.5.3\bin\net-2.0\&lt;/CaminhoNUnit&gt;
-&lt;ComandoNUnit&gt;$(CaminhoNUnit)nunit-console.exe&lt;/ComandoNUnit&gt;
-&lt;ArquivoNUnit&gt;ResultadosTestes.xml&lt;/ArquivoNUnit&gt;
-&lt;CaminhoNCover&gt;C:\Program Files\NCover&lt;/CaminhoNCover&gt;
-&lt;ArquivoNCover&gt;ResultadoNCover.xml&lt;/ArquivoNCover&gt;
-&lt;ArquivoLogNCover&gt;Coverage.log&lt;/ArquivoLogNCover&gt;
-&lt;CaminhoNCoverExplorer&gt;$(MSBuildProjectDirectory)\tools\NCoverExplorer&lt;/CaminhoNCoverExplorer&gt;
-&lt;/PropertyGroup&gt;</pre>
+<PropertyGroup>
+<CaminhoNUnit>C:\Program Files\NUnit 2.5.3\bin\net-2.0\</CaminhoNUnit>
+<ComandoNUnit>$(CaminhoNUnit)nunit-console.exe</ComandoNUnit>
+<ArquivoNUnit>ResultadosTestes.xml</ArquivoNUnit>
+<CaminhoNCover>C:\Program Files\NCover</CaminhoNCover>
+<ArquivoNCover>ResultadoNCover.xml</ArquivoNCover>
+<ArquivoLogNCover>Coverage.log</ArquivoLogNCover>
+<CaminhoNCoverExplorer>$(MSBuildProjectDirectory)\tools\NCoverExplorer</CaminhoNCoverExplorer>
+</PropertyGroup>
+{% endcodeblock %}
+
 Primeiro, veja que na linha 9 apontamos para a nossa dll instalada pelo MSBuild Community Tasks.
 
 O resto do código acima é bem fácil de entender, estamos definindo variáveis que vamos usar depois nas tarefas de deploy, algumas coisas que valem mencionar.
@@ -99,118 +88,138 @@ O resto do código acima é bem fácil de entender, estamos definindo variáveis
 	<li>Definição dos caminhos das ferramentas no bloco que vai da linha 20 a 28</li>
 </ul>
 Agora precisamos identificar os projetos da solução que serão compilados e os projetos de testes, faremos assim:
-<pre class="brush: xml;">&lt;Target Name="BuscaProjetos"&gt;
 
-&lt;!-- Busca todos os projetos da solucao --&gt;
-&lt;GetSolutionProjects Solution="$(CodeFolder)\$(SolutionName)"&gt;
-&lt;Output TaskParameter="Output" ItemName="ProjetosSolucao" /&gt;
-&lt;/GetSolutionProjects&gt;
+{% codeblock lang:xml %}
+<Target Name="BuscaProjetos">
 
-&lt;!-- Busca os projetos de Testes --&gt;
-&lt;RegexMatch Input="@(ProjetosSolucao)" Expression=".*?[\.]?(Test[s]{0,1}|IntegrationTest)[\.]csproj$"&gt;
-&lt;Output TaskParameter="Output" ItemName="ProjetosTeste"/&gt;
-&lt;/RegexMatch&gt;
+<!-- Busca todos os projetos da solucao -->
+<GetSolutionProjects Solution="$(CodeFolder)\$(SolutionName)">
+<Output TaskParameter="Output" ItemName="ProjetosSolucao" />
+</GetSolutionProjects>
 
-&lt;!-- Separa somente os projetos da solução sem os testes --&gt;
-&lt;CreateItem Include="@(ProjetosSolucao)"
-Exclude="@(ProjetosTeste)"&gt;
-&lt;Output TaskParameter="Include" ItemName="CodeProjects"/&gt;
-&lt;/CreateItem&gt;
+<!-- Busca os projetos de Testes -->
+<RegexMatch Input="@(ProjetosSolucao)" Expression=".*?[\.]?(Test[s]{0,1}|IntegrationTest)[\.]csproj$">
+<Output TaskParameter="Output" ItemName="ProjetosTeste"/>
+</RegexMatch>
 
-&lt;/Target&gt;</pre>
+<!-- Separa somente os projetos da solução sem os testes -->
+<CreateItem Include="@(ProjetosSolucao)"
+Exclude="@(ProjetosTeste)">
+<Output TaskParameter="Include" ItemName="CodeProjects"/>
+</CreateItem>
+
+</Target>
+{% endcodeblock %}
+
 Vale mencionar aqui que a propriedade ItemName de cada tag Output é uma váriavel criada que pode ser utilizada depois. Basicamente estamos buscando todos os projetos da solução, usando uma Expressão Regular para encontrar os Projetos que tenham a palavra Test ou IntegrationTest para encontrar os projetos de testes e separando os dois tipos de projetos. Agora vamos compilar os projetos que não são testes.
-<pre class="brush: xml;">&lt;Target Name="Build"&gt;
 
-&lt;Message Text="#--------- Compilando Projetos ---------#" /&gt;
+{% codeblock lang:xml %}
+<Target Name="Build">
 
-&lt;!-- Compila os assemblies --&gt;
-&lt;MSBuild Projects="@(CodeProjects)"
+<Message Text="#--------- Compilando Projetos ---------#" />
+
+<!-- Compila os assemblies -->
+<MSBuild Projects="@(CodeProjects)"
 Targets="$(BuildTargets)"
-Properties="Configuration=$(Configuration);Platform=$(Platform)"&gt;
-&lt;Output TaskParameter="TargetOutputs"
-ItemName="CodeAssemblies"/&gt;
-&lt;/MSBuild&gt;
-&lt;/Target&gt;</pre>
+Properties="Configuration=$(Configuration);Platform=$(Platform)">
+<Output TaskParameter="TargetOutputs"
+ItemName="CodeAssemblies"/>
+</MSBuild>
+</Target>
+{% endcodeblock %}
+
 E agora compilamos os projetos de Testes
 
-&lt;Target Name="BuildTests" DependsOnTargets="Build"&gt;
+{% codeblock lang:xml %}
+<Target Name="BuildTests" DependsOnTargets="Build">
 
-&lt;Message Text="#--------- Compilando Testes ---------#" /&gt;
+<Message Text="#--------- Compilando Testes ---------#" />
 
-&lt;MSBuild Projects="@(ProjetosTeste)"
+<MSBuild Projects="@(ProjetosTeste)"
 Targets="$(BuildTargets)"
-Properties="Configuration=$(Configuration);Platform=$(Platform)"&gt;
-&lt;Output TaskParameter="TargetOutputs"
-ItemName="AssembliesTeste"/&gt;
-&lt;/MSBuild&gt;
-&lt;/Target&gt;</pre>
+Properties="Configuration=$(Configuration);Platform=$(Platform)">
+<Output TaskParameter="TargetOutputs"
+ItemName="AssembliesTeste"/>
+</MSBuild>
+</Target>
+{% endcodeblock %}
 
 E a última etapa é rodar o NCover e o NCoverExplorer
 
-<pre class="brush: xml;">&lt;Target Name="Tests" DependsOnTargets="BuildTests"&gt;
-&lt;Message Text="#--------- Executando NUnit ---------#" /&gt;
+{% codeblock lang:xml %}
+<Target Name="Tests" DependsOnTargets="BuildTests">
+<Message Text="#--------- Executando NUnit ---------#" />
 
-&lt;NUnit Assemblies="@(AssembliesTeste)"
+<NUnit Assemblies="@(AssembliesTeste)"
 ToolPath="$(CaminhoNUnit)"
 WorkingDirectory="%(AssembliesTeste.RootDir)%(AssembliesTeste.Directory)"
-OutputXmlFile="@(AssembliesTeste-&gt;'%(FullPath).$(ArquivoNUnit)')"
-ContinueOnError="true"&gt;
-&lt;Output TaskParameter="ExitCode" ItemName="NUnitExitCodes"/&gt;
-&lt;/NUnit&gt;
-&lt;/Target&gt;
+OutputXmlFile="@(AssembliesTeste->'%(FullPath).$(ArquivoNUnit)')"
+ContinueOnError="true">
+<Output TaskParameter="ExitCode" ItemName="NUnitExitCodes"/>
+</NUnit>
+</Target>
 
-&lt;UsingTask TaskName="NCoverExplorer.MSBuildTasks.NCover" AssemblyFile="$(CaminhoNCover)\Build Task Plugins\NCoverExplorer.MSBuildTasks.dll" /&gt;
-&lt;UsingTask TaskName="NCoverExplorer.MSBuildTasks.NCoverExplorer" AssemblyFile="$(CaminhoNCover)\Build Task Plugins\NCoverExplorer.MSBuildTasks.dll" /&gt;
+<UsingTask TaskName="NCoverExplorer.MSBuildTasks.NCover" AssemblyFile="$(CaminhoNCover)\Build Task Plugins\NCoverExplorer.MSBuildTasks.dll" />
+<UsingTask TaskName="NCoverExplorer.MSBuildTasks.NCoverExplorer" AssemblyFile="$(CaminhoNCover)\Build Task Plugins\NCoverExplorer.MSBuildTasks.dll" />
 
-&lt;Target Name="CoberturaTestes" DependsOnTargets="Tests"&gt;
-&lt;Message Text="#--------- Executando NCover ---------#" /&gt;
+<Target Name="CoberturaTestes" DependsOnTargets="Tests">
+<Message Text="#--------- Executando NCover ---------#" />
 
-&lt;MakeDir Directories="$(ResultsFolder)" Condition="!Exists('$(ResultsFolder)')" /&gt;
+<MakeDir Directories="$(ResultsFolder)" Condition="!Exists('$(ResultsFolder)')" />
 
-&lt;NCover ToolPath="$(CaminhoNCover)"
+<NCover ToolPath="$(CaminhoNCover)"
 CommandLineExe="$(ComandoNUnit)"
 CommandLineArgs="$(TestFolder)\bin\$(Configuration)\UnitTests.dll"
 WorkingDirectory="$(TestFolder)\bin\$(Configuration)"
 CoverageFile="$(ResultsFolder)\$(ArquivoNCover)"
 LogFile="$(ArquivoLogNCover)"
 ExcludeAttributes="MSBuildDemo.Common.CoverageExcludeAttribute"
-AssemblyList="@(CodeProjects-&gt;'%(FileName)')" /&gt;
+AssemblyList="@(CodeProjects->'%(FileName)')" />
 
-&lt;!-- Resumo da Cobertura --&gt;
-&lt;NCoverExplorer ToolPath="$(CaminhoNCoverExplorer)"
+<!-- Resumo da Cobertura -->
+<NCoverExplorer ToolPath="$(CaminhoNCoverExplorer)"
 ProjectName="$(ProjectName)"
 OutputDir="$(ResultsFolder)"
 CoverageFiles="$(ResultsFolder)\$(ArquivoNCover)"
 SatisfactoryCoverage="80"
 ReportType="3"
 XmlReportName="ResumoCobertura.xml"
-HtmlReportName="ResumoCobertura.html" /&gt;
-&lt;NCoverExplorer ToolPath="$(CaminhoNCoverExplorer)"
+HtmlReportName="ResumoCobertura.html" />
+<NCoverExplorer ToolPath="$(CaminhoNCoverExplorer)"
 ProjectName="$(ProjectName)"
 OutputDir="$(ResultsFolder)"
 CoverageFiles="$(ResultsFolder)\$(ArquivoNCover)"
 SatisfactoryCoverage="80"
 ReportType="4"
 XmlReportName="RelatorioCoberturaPorClasse.xml"
-HtmlReportName="RelatorioCoberturaPorClasse.html" /&gt;
-&lt;/Target&gt;</pre>
+HtmlReportName="RelatorioCoberturaPorClasse.html" />
+</Target>
+{% endcodeblock %}
 
-No código acima mandamos gerar dois relatórios e, entre outras coisas, definimos que queremos que nosso código tenha 80% de cobertura. Pronto, temos aqui um script para compilar, executar os testes e a cobertura de testes. Agora, como rodamos isso? Abra o Visual Studio Command Prompt, pra quem não sabe, veja onde ele está: <a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2011%2018.53_2.gif"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="ScreenHunter_02 Jun. 11 18.53" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_02%20Jun.%2011%2018.53_thumb.gif" alt="ScreenHunter_02 Jun. 11 18.53" width="770" height="66" border="0" /></a> Vá até a pasta onde está o arquivo MSBuildDemo.proj e digite MSBuild MSBuildDemo.proj Se você executar isso, os projetos serão apenas compilados porque no início do script definimos como atividade padrão a target Build.
-<pre style="background-color: #dadada; margin: 0em; width: 100%; font-family: consolas,'Courier New',courier,monospace; font-size: 12px;">  1: DefaultTargets="Build"</pre>
+No código acima mandamos gerar dois relatórios e, entre outras coisas, definimos que queremos que nosso código tenha 80% de cobertura. Pronto, temos aqui um script para compilar, executar os testes e a cobertura de testes. Agora, como rodamos isso? Abra o Visual Studio Command Prompt, pra quem não sabe, veja onde ele está: 
+
+{% img aligncenter /images/2010/06/ScreenHunter_02%20Jun.%2011%2018.53_2.gif %}
+
+Vá até a pasta onde está o arquivo MSBuildDemo.proj e digite MSBuild MSBuildDemo.proj Se você executar isso, os projetos serão apenas compilados porque no início do script definimos como atividade padrão a target Build.
+
+{% codeblock lang:xml %}
+ 1: DefaultTargets="Build"
+{% endcodeblock %}
+
 Targets, são tarefas ou conjuntos de tarefas que podem ser definidas. Queremos executar a tarefa CoberturaTestes, porque se você prestar atenção no script ela depende da tarefa Tests que por sua vez depende de BuildTests que depende de Build, ou seja executando CoberturaTestes todo o script será executado, então rode o comando:
 
 MSBuild MSBuildDemo.proj /target:CoberturaTestes
 
 Se tudo der certo e sob as condições ideais de temperatura você deve ver algo como:
 
-<a href="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_03%20Jun.%2011%2019.01_2.gif"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="ScreenHunter_03 Jun. 11 19.01" src="http://templecoding.com/wp-content/uploads/2010/06/ScreenHunter_03%20Jun.%2011%2019.01_thumb.gif" alt="ScreenHunter_03 Jun. 11 19.01" width="669" height="328" border="0" /></a>
+{% img /images/2010/06/ScreenHunter_03%20Jun.%2011%2019.01_2.gif %}
 
 Além disso, de acordo com nosso script foi criada uma pasta dentro do diretório da solução chamada Results, ali você pode ver o resultado da cobertura de testes. Abrindo o arquivo RelatorioCobertura.html veremos:
 
-<a href="http://templecoding.com/wp-content/uploads/2010/06/image_2.png"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="image" src="http://templecoding.com/wp-content/uploads/2010/06/image_thumb.png" alt="image" width="609" height="516" border="0" /></a>
+{% img aligncenter /images/2010/06/image_2.png %}
 
 Além disso, se você olhar um pouco mais acima na tela do prompt verá o resultado da execução dos testes unitários:
 
-<a href="http://templecoding.com/wp-content/uploads/2010/06/image_4.png"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="image" src="http://templecoding.com/wp-content/uploads/2010/06/image_thumb_1.png" alt="image" width="630" height="96" border="0" /></a>
+{% img aligncenter /images/2010/06/image_4.png %}
 
 Pronto, seus testes unitários são sempre executados e você já sabe quanto falta para testar seu código.

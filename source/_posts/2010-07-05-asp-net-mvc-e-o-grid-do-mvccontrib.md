@@ -3,29 +3,14 @@ layout: post
 title: ASP.NET MVC e o Grid do MvcContrib
 categories:
 - Desenvolvimento
-tags:
 - asp.net mvc
 - grid
 - mvccontrib
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  dsq_thread_id: '162422262'
-  _edit_last: '2'
-  _yoast_wpseo_linkdex: '0'
-  _yoast_wpseo_focuskw: ''
-  _yoast_wpseo_title: ''
-  _yoast_wpseo_metadesc: ''
-  _yoast_wpseo_meta-robots-noindex: '0'
-  _yoast_wpseo_meta-robots-nofollow: '0'
-  _yoast_wpseo_meta-robots-adv: none
-  _yoast_wpseo_sitemap-include: ! '-'
-  _yoast_wpseo_sitemap-prio: ! '-'
-  _yoast_wpseo_canonical: ''
-  _yoast_wpseo_redirect: ''
-  _yoast_wpseo_opengraph-description: ''
-  _yoast_wpseo_google-plus-description: ''
+alias: 
 ---
 Uma das coisas que eu sempre gostei do ASP.NET Web Forms era a produtividade que a gente ganhava com os controles, entre eles, um dos que eu mais usava sempre foi o GridView. E devo admitir que esse foi também um fator de resistência para eu começar a usar o ASP.NET MVC.
 
@@ -36,7 +21,9 @@ Isso é claro, até eu me aventurar com o Grid do <a href="http://mvccontrib.cod
 Pra começar é só baixar o assembly do site do projeto e adicionar uma referência para o assembly MvcContrib.dll
 
 Eu fiz uma action bem simples que retorna uns dados estáticos para a página:
-<pre class="brush: csharp;">public ViewResult Index()
+
+{% codeblock lang:csharp %}
+public ViewResult Index()
 {
 	var produtos = new List
 	{
@@ -64,9 +51,13 @@ Eu fiz uma action bem simples que retorna uns dados estáticos para a página:
 	};
 
 	return View(produtos);
-}</pre>
+}
+{% endcodeblock %}
+
 E na view é muito simples também:
-<pre class="brush: html;"><%@ Import Namespace="MvcContrib.UI.Grid" %>
+
+{% codeblock lang:html %}
+<%@ Import Namespace="MvcContrib.UI.Grid" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Lista de Produtos
 </asp:Content>
@@ -83,13 +74,17 @@ E na view é muito simples também:
 	})
 	%>
 
-</asp:Content></pre>
+</asp:Content>
+{% endcodeblock %}
+
 Isso gera um grid simples na página:
 
-<a href="http://templecoding.com/wp-content/uploads/2010/07/ScreenHunter_01_07_11.gif"><img style="display: inline; border-width: 0px;" title="ScreenHunter_01 Jul. 05 11.55" src="http://templecoding.com/wp-content/uploads/2010/07/ScreenHunter_01_07_11_thumb.gif" alt="ScreenHunter_01 Jul. 05 11.55" width="297" height="178" border="0" /></a>
+{% img aligncenter /images/2010/07/ScreenHunter_01_07_11.gif %}
 
 Agora vamos permitir uma ordenação, primeiro eu altero a view para exibir os links de ordenação:
-<pre class="brush: html;"><%= Html.Grid(Model)
+
+{% codeblock lang:html %}
+<%= Html.Grid(Model)
 	.Sort(ViewData["sort"] as GridSortOptions)
 	.Columns(coluna =>
 	{
@@ -97,9 +92,13 @@ Agora vamos permitir uma ordenação, primeiro eu altero a view para exibir os l
 		coluna.For(x => x.Valor);
 		coluna.For(x => x.Categoria.Nome).Named("Categoria");
 	})
-%></pre>
+%>
+{% endcodeblock %}
+
 E na action do controller eu faço seguinte:
-<pre class="brush: csharp;">using MvcContrib.Sorting;
+
+{% codeblock lang:csharp %}
+using MvcContrib.Sorting;
 // ...
 public ViewResult Index(GridSortOptions sort)
 {
@@ -111,11 +110,15 @@ public ViewResult Index(GridSortOptions sort)
 	ViewData["sort"] = sort;
 
 	return View(produtos);
-}</pre>
+}
+{% endcodeblock %}
+
 Para ficar mais claro eu movi a inicialização dos produtos para um outro método. Mas como você pode ver no código acima, é muito simples adicionar ordenação.
 
 Por fim, para paginar alteramos a action:
-<pre class="brush: csharp;">using MvcContrib.Pagination;
+
+{% codeblock lang:csharp %}
+using MvcContrib.Pagination;
 // ...
 public ViewResult Index(GridSortOptions sort, int? pagina)
 {
@@ -127,9 +130,13 @@ public ViewResult Index(GridSortOptions sort, int? pagina)
     ViewData["sort"] = sort;
 
     return View(produtos.AsPagination(pagina ?? 1, 10));
-}</pre>
+}
+{% endcodeblock %}
+
 E na view usamos um helper para exibir as páginas:
-<pre class="brush: html;"><%= Html.Grid(Model)
+
+{% codeblock lang:html %}
+<%= Html.Grid(Model)
     .Sort(ViewData["sort"] as GridSortOptions)
     .Columns(coluna =>
     {
@@ -139,7 +146,9 @@ E na view usamos um helper para exibir as páginas:
     })
 %>
 
-<%= Html.Pager((IPagination)Model).Format("Exibindo {0} - {1} de {2}") %></pre>
+<%= Html.Pager((IPagination)Model).Format("Exibindo {0} - {1} de {2}") %>
+{% endcodeblock %}
+
 <strong>Conclusão</strong>
 
 Fazer paginação e ordenação manualmente em grids pode ser bem complicado às vezes. Pela simplicidade da solução hoje o Grid do MvcContrib é a minha primeira opção.
