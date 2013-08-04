@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://templecoding.com/sitemap.xml 
