@@ -4,6 +4,7 @@ title: Criando Snippets para o Visual Studio 2010
 categories:
 - Desenvolvimento
 - Visual Studio
+comments: true
 status: publish
 type: post
 published: true
