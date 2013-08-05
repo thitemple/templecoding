@@ -3,17 +3,11 @@ layout: post
 title: O livro eletrônico é só vantagem
 categories:
 - Leitura
-tags:
-- ebook
-- leitura
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  _edit_last: '2'
-  dsq_thread_id: '256016981'
-  _wp_old_slug: ''
-  _yoast_wpseo_linkdex: '0'
+alias: /o-livro-eletronico-e-so-vantagem/index.html
 ---
 Se você ainda não se convenceu de que os livros eletrônicos são uma boa opção ou mesmo uma realidade hoje em dia, quem sabe a lista de vantagens abaixo possa te ajudar.
 
