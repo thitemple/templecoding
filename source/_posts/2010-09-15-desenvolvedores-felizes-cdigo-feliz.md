@@ -3,30 +3,14 @@ layout: post
 title: Desenvolvedores felizes, código feliz!
 categories:
 - Desenvolvimento
-tags: []
 status: publish
 type: post
 published: true
-meta:
-  dsq_thread_id: '159346238'
-  _edit_last: '2'
-  _yoast_wpseo_linkdex: '0'
-  _yoast_wpseo_focuskw: ''
-  _yoast_wpseo_title: ''
-  _yoast_wpseo_metadesc: ''
-  _yoast_wpseo_meta-robots-noindex: '0'
-  _yoast_wpseo_meta-robots-nofollow: '0'
-  _yoast_wpseo_meta-robots-adv: none
-  _yoast_wpseo_sitemap-include: ! '-'
-  _yoast_wpseo_sitemap-prio: ! '-'
-  _yoast_wpseo_canonical: ''
-  _yoast_wpseo_redirect: ''
-  _yoast_wpseo_opengraph-description: ''
-  _yoast_wpseo_google-plus-description: ''
+comments: true
 ---
 <a href="http://www.gladwell.com/" target="_blank">Malcolm Gladwell</a> em sem livro <a href="http://www.submarino.com.br/produto/1/21542774/ponto+da+virada,+o" target="_blank">O Ponto da Virada</a>, entre outras coisas, conta a história de como a cidade de Nova Iorque nos anos 90 praticamente refez as suas linhas de metrô, transformando-as de um local sujo onde o crime era uma constante para um dos mais modernos e organizados metrôs do mundo. Além disso nessa mesma época a cidade que tinha uma alta taxa de criminalidade viu o crime cair em grandes proporções.
 
-<a href="http://templecoding.com/wp-content/uploads/2010/09/Comparacao_metro_2.png"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="Comparacao_metro" src="http://templecoding.com/wp-content/uploads/2010/09/Comparacao_metro_thumb.png" border="0" alt="Comparacao_metro" width="552" height="346" /></a>
+{% img aligncenter /images/2010/09/Comparacao_metro_2.png Comparação metrô %}
 
 O segredo? Não deixar janelas quebradas!
 
@@ -37,8 +21,12 @@ Na segunda etapa, como haviam muitos crimes no sistema metroviário, eles resolv
 Claro, não foi somente isso que gerou toda essa mudança, mas isso iniciou o processo.
 
 Enfim, qual o segredo? Atenção aos detalhes do ambiente. Ainda no ponto da virada, uma pesquisa é citada dizendo que muitas vezes nossas atitudes são influenciadas pelo ambiente em que estamos, ou seja, aquela máxima de "A ocasião faz o ladrão" é válida para outras coisas também, como, por exemplo, em ambientes agressivos pessoas se tornam mais agressivas.
-<blockquote>"O Poder do Contexto estabelece que não precisamos resolver grandes problemas para encontrar a solução para a criminalidade. Podemos previnir a ocorrência de delitos apenas limpando a sujeira das paredes e prendendo os caloteiros."</blockquote>
-O ponto que eu quero chegar é se você quer exigir qualidade no software que você e sua equipe fazem,<a href="http://templecoding.com/wp-content/uploads/2010/09/messy-office-03_4.jpg"><img style="border-width: 0px; display: inline; margin-left: 0px; margin-right: 0px;" title="messy-office-03" src="http://templecoding.com/wp-content/uploads/2010/09/messy-office-03_thumb_1.jpg" border="0" alt="messy-office-03" width="354" height="253" align="right" /></a> garanta qualidade de ambiente de trabalho. Não espere que num ambiente que ninguém se importa com a imagem, com o conforto, com a limpeza, com o silêncio, etc, seus desenvolvedores farão o mesmo. Num local onde a máxima é algo como "um canto pra eles trabalharem" provavelmente vai gerar um software do tipo "só faz funcionar que tá valendo".
+
+{% blockquote %}
+"O Poder do Contexto estabelece que não precisamos resolver grandes problemas para encontrar a solução para a criminalidade. Podemos previnir a ocorrência de delitos apenas limpando a sujeira das paredes e prendendo os caloteiros."
+{% endblockquote %}
+
+O ponto que eu quero chegar é se você quer exigir qualidade no software que você e sua equipe fazem,{% img alignright /images/2010/09/messy-office-03_4.jpg Messy office %} garanta qualidade de ambiente de trabalho. Não espere que num ambiente que ninguém se importa com a imagem, com o conforto, com a limpeza, com o silêncio, etc, seus desenvolvedores farão o mesmo. Num local onde a máxima é algo como "um canto pra eles trabalharem" provavelmente vai gerar um software do tipo "só faz funcionar que tá valendo".
 
 <strong>Desenvolvedores realizam atividades criativas. Ponto! Você tem que pensar pra criar código e se quiser criar um código bem feito precisa pensar mais ainda. </strong>
 
@@ -46,7 +34,7 @@ Não insista! Não ache que criar software é igual levantar uma parede. Não! A
 
 Construir software está muito mais parecido com um profissional que constrói instrumentos musicais manualmente. Quanto melhor ele puder se dedicar a isso, tiver ferramentas, espaço e ambiente propício, melhor será o som do instrumento. Qual o resultado disso? Quanto melhor o instrumento, melhor o som.
 
-<a href="http://templecoding.com/wp-content/uploads/2010/09/2010-09-14_16-03-27_933_Piracicaba_2.jpg"><img style="border-width: 0px; display: block; float: none; margin-left: auto; margin-right: auto;" title="2010-09-14_16-03-27_933_Piracicaba" src="http://templecoding.com/wp-content/uploads/2010/09/2010-09-14_16-03-27_933_Piracicaba_thumb.jpg" border="0" alt="2010-09-14_16-03-27_933_Piracicaba" width="504" height="285" /></a>
+{% img aligncenter /images/2010/09/2010-09-14_16-03-27_933_Piracicaba_2.jpg %}
 
 Da mesma forma se você quer que seus desenvolvedores produzam bem e com qualidade, comece pelo ambiente de trabalho. Um ambiente onde ninguém consegue sentar devidamente porque suas pernas não cabem embaixo da mesa, ou onde não há espaço para apoiar os braços, ou cadeiras tão desconfortáveis que dão dores nas costas, na <span style="text-decoration: underline;">melhor das hipóteses</span> diz "não nos importamos como, apenas faça o que tem que ser feito". Além disso, como dois desenvolvedores poderão parear ou colaborar um com outro se não podem sentar um ao lado do outro?
 
