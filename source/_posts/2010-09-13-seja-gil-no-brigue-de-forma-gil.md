@@ -3,31 +3,15 @@ layout: post
 title: Seja Ágil, não brigue de forma ágil
 categories:
 - Carreira
-tags:
 - agilidade
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  dsq_thread_id: '159127964'
-  _edit_last: '2'
-  _yoast_wpseo_linkdex: '0'
-  _yoast_wpseo_focuskw: ''
-  _yoast_wpseo_title: ''
-  _yoast_wpseo_metadesc: ''
-  _yoast_wpseo_meta-robots-noindex: '0'
-  _yoast_wpseo_meta-robots-nofollow: '0'
-  _yoast_wpseo_meta-robots-adv: none
-  _yoast_wpseo_sitemap-include: ! '-'
-  _yoast_wpseo_sitemap-prio: ! '-'
-  _yoast_wpseo_canonical: ''
-  _yoast_wpseo_redirect: ''
-  _yoast_wpseo_opengraph-description: ''
-  _yoast_wpseo_google-plus-description: ''
 ---
 Durante o <a href="http://www.qconsp.com/" target="_blank">QConSP</a> (que por sinal foi muito bom), uma discussão muito recorrente foi sobre as divergências entre as metodologias ágeis, tivemos inclusive uma palestra falando sobre a Guerra das Metodologias Ágeis 2.0.
 
-<a href="http://templecoding.com/wp-content/uploads/2010/09/tratamento-de-choque-poster02_2.jpg"><img style="border: 0px currentColor; margin-right: 0px; margin-left: 0px; display: inline;" title="Tratamento de Choque" src="http://templecoding.com/wp-content/uploads/2010/09/tratamento-de-choque-poster02_thumb.jpg" alt="Tratamento de Choque" width="275" height="404" align="right" border="0" /></a>
+{% img alignright /images/2010/09/tratamento-de-choque-poster02_2.jpg Tratamento de Choque %}
 
 Uma constante foram algumas críticas ao SCRUM, suas lacunas e falhas.
 
