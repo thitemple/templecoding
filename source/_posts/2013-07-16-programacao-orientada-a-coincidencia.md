@@ -4,29 +4,11 @@ title: Programação orientada à coincidência
 categories:
 - Desenvolvimento
 tags: []
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  _yoast_wpseo_metadesc: ''
-  _yoast_wpseo_title: ''
-  _yoast_wpseo_focuskw: ''
-  _edit_last: '2'
-  _yoast_wpseo_linkdex: '0'
-  _yoast_wpseo_metakeywords: ''
-  _yoast_wpseo_meta-robots-noindex: '0'
-  _yoast_wpseo_meta-robots-nofollow: '0'
-  _yoast_wpseo_meta-robots-adv: none
-  _yoast_wpseo_sitemap-include: ! '-'
-  _yoast_wpseo_sitemap-prio: ! '-'
-  _yoast_wpseo_sitemap-html-include: ! '-'
-  _yoast_wpseo_canonical: ''
-  _yoast_wpseo_redirect: ''
-  _yoast_wpseo_opengraph-description: ''
-  _yoast_wpseo_google-plus-description: ''
-  _wpas_done_all: '1'
-  _clicky_goal: a:2:{s:2:"id";s:0:"";s:5:"value";s:0:"";}
-  dsq_thread_id: '1504279327'
+alias: /programacao-orientada-a-coincidencia/index.html
 ---
 Eu gosto muito de programar, gosto dos desafios técnicos que programar que traz. Mas o que eu mais gosto é do constante aprendizado que faz parte da profissão de programador.
 
@@ -38,14 +20,14 @@ NADA esta escondido de você, enfase no NADA.
 
 No livro <a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=020161622X&amp;linkCode=as2&amp;tag=tempcodi0f-20">The Pragmatic Programmer</a>, Andrew Hunt e David Thomas dedicam um capitulo à programação por coincidência e eles abrem o capitulo com uma metáfora muito interessante. Eles comparam um programador que codifica por tentativa e erro, resolvendo problemas de forma aleatórias e sem conhecimento sobre o assunto à um soldado andando em um campo minado. O soldado pode dar um, dois, vários passos sem pisar em uma mina, achar que esta fazendo algo correto, mas é somente uma caminhada aleatória, uma hora ele pode pisar em uma mina e explodir.
 
-<a href="http://templecoding.com/programacao-orientada-a-coincidencia/falklands-minefield1/" rel="attachment wp-att-1335"><img class="aligncenter size-full wp-image-1335" title="falklands-minefield1" src="http://templecoding.com/wp-content/uploads/2013/07/falklands-minefield1.jpg" alt="" width="426" height="282" /></a>
+{% img aligncenter /images/2013/07/falklands-minefield1.jpg Campo minado %}
 
 Outra coisa bem comum quando não se entende do problema, é a tendencia de resolver as coisas sempre do mesmo jeito, ou seja é o velho caso daquela frase "se você só tem um martelo todo o problema é um prego". Parece que é uma formula magica, funcionou para um problema não se sabe como, deve funcionar para os outros.
 
 Ainda nesse sentido, pode ser que um problema seja resolvido passando dados inválidos
 para um método e que isso resulte numa resposta inesperada do programa. Mas se a sua unica fonte de analise for a resposta daquela chamada com dados inválidos, quando aquele programa for corrigido, sua chamada não vai mais funcionar porque aquela coincidência foi modificada.
 
-[caption id="attachment_1329" align="aligncenter" width="265"]<a href="http://templecoding.com/programacao-orientada-a-coincidencia/coincidence1/" rel="attachment wp-att-1329"><img class="wp-image-1329     " title="coincidence" src="http://templecoding.com/wp-content/uploads/2013/07/coincidence1.jpg" alt="" width="265" height="235" /></a> Parece um coelho, mas...[/caption]
+{% img aligncenter /images/2013/07/coincidence1.jpg Parece um coelho, mas... %}
 
 E o pior na minha opinião, é a ignorância que isso gera. Até hoje ainda vejo gente que acha que POST é mais seguro do que GET só porque os dados não são enviados na URL!
 
