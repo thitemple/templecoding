@@ -33,7 +33,7 @@ E o pior na minha opinião, é a ignorância que isso gera. Até hoje ainda vejo
 
 <strong>Escolhendo a pilula vermelha</strong>
 
-<iframe src="//www.youtube.com/embed/xFhn_GUAhGU" frameborder="0" width="420" height="315"></iframe>
+<iframe src="http://www.youtube.com/embed/xFhn_GUAhGU" frameborder="0" width="420" height="315"></iframe>
 
 E sim, entender e aprender as coisas dá trabalho, toma tempo, tomar a pilula vermelha às vezes quer dizer por em prática para aprender, ou, como já disse um Yogi Berra:
 <blockquote>Mastering knowledge alone, without experience isn't effective</blockquote>
