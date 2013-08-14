@@ -3,41 +3,19 @@ layout: post
 title: Quatro bons livros para mudar a forma como você vê/escreve JavaScript
 categories:
 - Leitura
-tags:
-- javascript
-- leitura
+- JavaScript
+comments: true
 status: publish
 type: post
 published: true
-meta:
-  _yoast_wpseo_linkdex: '67'
-  _edit_last: '2'
-  _yoast_wpseo_focuskw: livros sobre javascript
-  _yoast_wpseo_title: ''
-  _yoast_wpseo_metadesc: ! 'Aqui vai uma pequena lista de quatro livros sobre JavaScript
-    que vão ajudar a aprofundar seu conhecimento sobre: a linguagem, browsers e mais.'
-  _yoast_wpseo_metakeywords: ''
-  _yoast_wpseo_meta-robots-noindex: '0'
-  _yoast_wpseo_meta-robots-nofollow: '0'
-  _yoast_wpseo_meta-robots-adv: none
-  _yoast_wpseo_sitemap-include: ! '-'
-  _yoast_wpseo_sitemap-prio: ! '-'
-  _yoast_wpseo_canonical: ''
-  _yoast_wpseo_redirect: ''
-  _yoast_wpseo_opengraph-description: ''
-  _yoast_wpseo_google-plus-description: ''
-  _wpas_skip_2089821: '1'
-  dsq_thread_id: '1386270957'
-  _wpas_skip_2089817: '1'
-  _wpas_done_all: '1'
-  _clicky_goal: a:2:{s:2:"id";s:0:"";s:5:"value";s:0:"";}
-  _wpas_skip_2089827: '1'
+alias: /quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/index.html
+description: Aqui vai uma pequena lista de quatro livros sobre JavaScript que vão ajudar a aprofundar seu conhecimento sobre a linguagem, browsers e mais.
 ---
 A maioria dos programadores que eu conheço dizem que não gostam de JavaScript. Eu entendo que a linguagem tem muitas coisas que são "meio bizarras", mas eu também tenho certeza que não gostar de JavaScript, vem do fato de que as pessoas não conhecem a linguagem além da sintaxe básica e, de copy/paste de scripts prontos encontrados na internet.
 
 JavaScript tem chaves {}, ponto e virgula, tem Java no nome mas seu funcionamento não tem nada a ver nem com Java ou com qualquer outra linguagem derivada de C, como o C#. Por isso, para usar o JavaScript de uma maneira correta e até para começar a gostar da linguagem a gente tem que entender seu funcionamento.
 
-[caption id="attachment_1310" align="aligncenter" width="319"]<a href="http://templecoding.com/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/java-javascript-sm/" rel="attachment wp-att-1310"><img class="size-full wp-image-1310" title="Java e JavaScript" src="http://templecoding.com/wp-content/uploads/2013/06/java-javascript-sm.png" alt="" width="319" height="186" /></a> Java esta para JavaScript assim como presunto esta para hamster.[/caption]
+{% img aligncenter /images/2013/06/java-javascript-sm.png Java e JavaScript %}
 
 Aqui vai uma pequena lista de quatro livros que li sobre JavaScript que vão ajudar a aprofundar seu conhecimento sobre: a linguagem, sobre as interações com o browser e até como escrever um código mais rápido, organizado e elegante usando o que o JavaScript tem de melhor.
 
