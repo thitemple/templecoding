@@ -15,13 +15,13 @@ Muita gente que reclama de JavaScript mas não se dá ao mínimo trabalho de ent
 
 Mas esse é só uma das razões de boa parte dos problemas enfrentados quando a gente tem que dar manutenção em um código já existente. O bom e velho spaguetti de código.
 
-{% img aligncenter /images/2013/07/spagett.jpg Código spaghetti %}
+{% img aligncenter /images/2013/07/spagett.jpg 'Código spaghetti' 'Código spaghetti' %}
 
 Tenho que admitir que eu já contribui para bastante código spaguetti (como do exemplo que vou mostrar aqui). Exatamente porque não tratei esse código como um programa sério e não apliquei princípios básicos como o da <a href="http://robsoncastilho.com.br/2013/02/06/principios-solid-principio-da-responsabilidade-unica-srp/" target="_blank">responsabilidade única</a>.
 
 Vamos imaginar uma cesta de compras como a da imagem abaixo, que tem um link para atualizar a quantidade de itens do carrinho. O código que vou mostrar, captura o click no link usando o jQuery e faz uma validação de que o valor informado no campo é numérico. A regra de negócio diz ainda que tem que ser uma quantidade entre 0 e 10. Não posso vender mais do que 10 unidades de um mesmo item.
 
-{% img aligncenter /images/2013/07/shopping_basket.png Carrinho de compras %}
+{% img aligncenter /images/2013/07/shopping_basket.png 'Carrinho de compras' 'Carrinho de compras' %}
 
 Um código que faria isso é esse:
 
@@ -140,4 +140,4 @@ Os benefícios de um código como esse (comparado com o anterior) são muitos, e
 </ol>
 Para concluir, temos um código muito mais organizado, de fácil manutenção e com responsabilidades claras. Para chegar nesse resultado, fiz uso apenas de técnicas já conhecidas de outras linguagens e sem inventar muita coisa. Então da próxima vez que você for dizer que é muito difícil dar manutenção em código JavaScript, pense se você está contribuindo para um código sustentável ou só preparando o almoço do próximo domingo.
 
-{% img aligncenter /images/2013/07/Spaghetti.gif Spaghetti %}
+{% img aligncenter /images/2013/07/Spaghetti.gif 'Spaghetti' 'Spaghetti' %}
