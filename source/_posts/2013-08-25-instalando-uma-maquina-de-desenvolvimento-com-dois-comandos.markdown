@@ -4,6 +4,8 @@ title: "Instalando uma máquina de desenvolvimento com dois comandos"
 date: 2013-08-25 12:11
 comments: true
 categories: Desenvolvimento
+description: Um script para instalacao de aplicacoes em um ambiente Windows usando PowerShell e Chocolatey
+keywords: Windows, PowerShell, Chocolatey, Instalacao, Setup
 ---
 Recentemente eu tive que preparar duas máquinas de desenvolvimento, um novo notebook Windows 8 e uma VM Windows 7 e, honestamente, por mais que eu goste de uma máquina nova, perder tempo instalando uma porção de aplicações e configurar tantas outras não é algo que eu ache divertido. Além do mais, sempre tem algumas coisas que eu não faço todo dia e, na hora que eu preciso eu não lembro. Por exemplo, como é que eu gero uma chave RSA para usar com ssh mesmo? 
 
