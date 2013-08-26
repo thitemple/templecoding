@@ -75,6 +75,6 @@ E é isso, você tem todas as aplicações instaladas. Em algum momento da execu
 
 PS: Eu tentei fazer com que o Visual Studio 2012 fosse instalado automaticamente também, mas honestamente, não existe muita documentação sobre o assunto e achei que não valia o trabalho. Afinal, nesse caso é só montar um ISO e seguir os passos da instalação. Para uma aplicação só tá valendo.
 
-Se você ficou com preguiça, veja aqui o script completo:
+Se você ficou com preguiça de ir lá olhar o script, veja ele aqui completo:
 
 {%  gist 6334646 dev_setup.ps1 %}
