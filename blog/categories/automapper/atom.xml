@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: automapper | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/automapper/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Mapeamentos condicionais usando o AutoMapper]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper/"/>
+    <updated>2010-10-28T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper</id>
+    <content type="html"><![CDATA[<p>Eu me deparei com um problema diferente usando o AutoMapper. Eu precisava mapear um atributo do tipo DateTime de um web service para uma classe de negócio.</p>
+
+<p>Se você já fez isso, provavelmente sabe que quando tem um atributo do tipo DateTime, você terá na sua classe de proxy dois atributos. Um do tipo DateTime e um booleano que informa se o seu DateTime está preenchido ou não.</p>
+
+<p>Assim, supondo que no seu web service exista um atributo do tipo DateTime chamado CriadoEm, então você terá em sua classe de proxy dois atributos assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="n">DateTime</span> <span class="n">CriadoEm</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="k">public</span> <span class="kt">bool</span> <span class="n">CriadoEmSpecified</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Bom, nesse caso, eu queria que o AutoMapper mapeasse esse atributo apenas se CriadoEmSpecified fosse = true.</p>
+
+<p>Eu resolvi isso dessa forma:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">classeOrigemWs</span><span class="p">,</span> <span class="n">MinhaClasseNeg</span><span class="p">&gt;()</span>
+</span><span class='line'>  <span class="p">.</span><span class="n">ForMember</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">CriadoEm</span><span class="p">,</span> <span class="n">opt</span> <span class="p">=&gt;</span> <span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="n">opt</span><span class="p">.</span><span class="n">Condition</span><span class="p">(</span><span class="n">x</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">x</span><span class="p">.</span><span class="n">CriadoEmSpecified</span><span class="p">);</span>
+</span><span class='line'><span class="n">opt</span><span class="p">.</span><span class="n">MapFrom</span><span class="p">(</span><span class="n">x</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">x</span><span class="p">.</span><span class="n">CriadoEm</span><span class="p">);</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>É claro que isso vale para qualquer condição que você queira, então, agora é só aproveitar. <img src="/images/2010/10/wlEmoticon-smile.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mapeando suas classes com o AutoMapper]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/"/>
+    <updated>2010-09-29T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper</id>
+    <content type="html"><![CDATA[<p>Um framework que eu tenho usado com frequência ultimamente é o <a href="http://automapper.codeplex.com/" target="_blank">AutoMapper</a>, e pra quem não conhece ele, bom, ele faz.. mapeamento de objetos. Iupi!</p>
+
+<p>Existem vários cenários onde isso é feito, no meu caso, principalmente, eu tenho usado para mapear estruturas de web services que eu consumo para objetos dentro da minha aplicação. Mas outro cenário comum é, quando usamos o padrão ViewModel, mapear objetos de negócio para a ViewModel.</p>
+
+<p>A motivação para o uso do AutoMapper é manter as responsabilidades separadas, assim, temos um framework só para fazer isso e não precisamos colocar esse mapeamento no meio das nossas classes.</p>
+
+<p>O uso do AutoMapper é bem simples, apenas um assembly que deve ser referenciado no projeto, depois disso devemos criar/definir os mapeamentos.</p>
+
+<p>Vamos imaginar um cenário onde eu tenho um Web Service e quero mapear uma classe PedidoWs para a minha classe Pedido e para manter simples, digamos que as propriedades tem os mesmos nomes. Veja o diagrama abaixo:</p>
+
+<p><img class="aligncenter" src="/images/2010/09/Classes.png" title="Classes" ></p>
+
+<p>Para fazer um mapeamento num cenário desses é bem simples, criamos o mapeamento assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;();</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E depois para usarmos o mapeamento basta executar:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;(</span><span class="n">meuObjetoDoTipoPedidoWs</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Esse é o padrão que vamos usar para mapear todos os objetos independentemente de como o mapeamento for criado.</p>
+
+<p>Agora imagine que existam propriedades iguais, mas com nomes diferentes. Por exemplo, imagine que no PedidoWs existe uma propriedade chamada Cliente_ID ao invés de ClienteId, o mapeamento ficaria assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;()&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span> <span class="p">.</span><span class="n">ForMember</span><span class="p">(</span><span class="n">c</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">c</span><span class="p">.</span><span class="n">ClienteId</span><span class="p">,</span> <span class="n">opt</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">opt</span><span class="p">.</span><span class="n">MapFrom</span><span class="p">(</span><span class="n">x</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">x</span><span class="p">.</span><span class="n">Cliente_ID</span><span class="p">));</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Veja, todos os outros atributos serão mapeados normalmente, apenas o ClienteId que foi declarado de forma explícita de onde vem.</p>
+
+<p>Um outro caso importante é quando temos que fazer alguma conversão. Por exemplo, digamos que no nosso caso a data vem do web service em formato de string e temos que converter para DateTime. Faríamos assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;()&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span> <span class="p">.</span><span class="n">ForMember</span><span class="p">(</span><span class="n">c</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">c</span><span class="p">.</span><span class="n">DataPedido</span><span class="p">,</span> <span class="n">opt</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">opt</span><span class="p">.</span><span class="n">ResolveUsing</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">dateTimeResolver</span><span class="p">&amp;</span><span class="n">gt</span><span class="p">;()</span>
+</span><span class='line'>     <span class="p">.</span><span class="n">FromMember</span><span class="p">(</span><span class="n">x</span> <span class="p">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">x</span><span class="p">.</span><span class="n">DataPedido</span><span class="p">);</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Para usar o ResolveUsing precisamos definir a classe DateTimeResover e eu fiz dessa forma:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">DateTimeResolver</span> <span class="p">:</span> <span class="n">ValueResolver</span><span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">string</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">&gt;</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">protected</span> <span class="k">override</span> <span class="n">DateTime</span> <span class="n">ResolveCore</span><span class="p">(</span><span class="kt">string</span> <span class="n">source</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Para finalizar, vale dizer que essa configuração dos mapeamentos pode ser demorada, então não é uma boa idéia executar as configurações toda a vez. O que eu faço, já que uso isso para a web a maior parte do tempo, é no meu Application_Start dentro do global.asax, executar essas configurações, assim elas são feitas apenas uma vez.</p>
+
+<p>Existem várias outras opções de configuração para o AutoMapper e no site deles tem vários exemplos, vale a pena conferir. Aqui, foi só pra dar um gostinho.</p>
+]]></content>
+  </entry>
+  
+</feed>

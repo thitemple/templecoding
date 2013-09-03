@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iis | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/iis/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Publicando um site em ASP.NET MVC no IIS 6]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6/"/>
+    <updated>2010-05-18T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6</id>
+    <content type="html"><![CDATA[<p>Publicar um site feito usando o ASP.NET MVC no servidor IIS não é tão simples como apenas copiar os arquivos, algumas configurações são necessárias:</p>
+
+<p>1) Dentro do IIS abra as propriedades no seu site e na aba Home Directory, clique no botão Configuration. Dentro de Application Extensions, selecione a extensão .aspx e clique em Edit. Copie o conteúdo da caixa Executable como na figura abaixo e clique em Cancel.</p>
+
+<p><img class="aligncenter" src="/images/2010/05/Extension.png" title="Extension" ></p>
+
+<p>2) Clique no botão INSERT e cole o texto na caixa Executable e desmarque a opção Verify that file exists como na figura abaixo.</p>
+
+<p><img class="aligncenter" src="/images/2010/05/Adicionar%20Extension.png" title="Adicionar Extension" ></p>
+
+<p>3) Por último temos que &ldquo;adicionar uma extensão&rdquo; para as urls já que o IIS 6 exite que exista uma extensão. O jeito mais fácil de fazer é isso dentro do Global.asax.cs. Altere a rota padrão e suas outras rotas para que fiquem assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">RegisterRoutes</span><span class="p">(</span><span class="n">RouteCollection</span> <span class="n">routes</span><span class="p">)</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="n">routes</span><span class="p">.</span><span class="n">IgnoreRoute</span><span class="p">(</span><span class="s">&quot;{resource}.axd/{*pathInfo}&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">routes</span><span class="p">.</span><span class="n">MapRoute</span><span class="p">(</span><span class="s">&quot;Default&quot;</span><span class="p">,</span> <span class="s">&quot;{controller}.mvc/{action}/{id}&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="k">new</span> <span class="p">{</span><span class="n">action</span> <span class="p">=</span> <span class="s">&quot;Index&quot;</span><span class="p">,</span> <span class="n">id</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">});</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Veja que depois do controller adicionei a extensão .mvc, agora todas as rotas funcionarão com o caminho /controler.mvc/action. É importante que para isso não existam urls fixas em suas páginas, apenas urls criadas usando os html helpers.</p>
+]]></content>
+  </entry>
+  
+</feed>

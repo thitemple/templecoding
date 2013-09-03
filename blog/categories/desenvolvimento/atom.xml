@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Desenvolvimento | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/desenvolvimento/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Publicando um site Octopress usando GitHub pages a partir de um novo computador]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/"/>
+    <updated>2013-08-26T11:36:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev</id>
+    <content type="html"><![CDATA[<p>OK, eu admito, esse post é bem específico e ele serve mais para que eu <strong>nunca mais</strong> esqueça como fazer isso.</p>
+
+<p>Esse blog é hospedado no <a href="http://pages.github.com">GitHub Pages</a> e é feito só com HTML, não tem nenhum CMS por trás. Mas eu uso o <a href="http://octopress.org">Octopress</a> para gerar os arquivos HTML pra mim.</p>
+
+<p>Tudo funciona muito bem, e esse post não é sobre como usar nem o Octopress, nem o GitHub pages, suas documentações são bem claras e não são necessários muitos passos para ter um site no GitHub pages de forma gratuita.</p>
+
+<p>De qualquer forma, quando se publica um site no GitHub pages, o código fica hospedado e visível no GitHub no branch master e as páginas processadas e geradas ficam em um branch chamado gh-pages.</p>
+
+<h2>O problema</h2>
+
+<p>Tudo funcionava perfeitamente até eu ter que fazer um clone do repositório em uma outra máquina (já que troquei de computador) e publicar uma atualização do site.</p>
+
+<p>Os passos que executei foram:</p>
+
+<p>``` bash
+git clone git@github.com:usuario/repositorio.git</p>
+
+<p>bundle install #para instalar as dependências do ruby
+```</p>
+
+<p><code>bash
+rake setup_github_pages
+</code></p>
+
+<p>O comando acima cria o diretório _deploy e também um branch local <code>gh-pages</code>.</p>
+
+<p>Após as minhas modificações quando fui fazer o deploy:</p>
+
+<p><code>bash
+rake gen_deploy
+</code></p>
+
+<p>Eu recebia o seguinte erro:</p>
+
+<p><code>bash
+! [rejected]     gh-pages -&gt; gh-pages (non-fast-forward)
+</code></p>
+
+<p>E ainda dizia que o repositório não estava atualizado.</p>
+
+<h2>A solução</h2>
+
+<p>Enfim, depois de muito procurar, porque um <code>git pull</code> não resolveu, eu resolvi fazer um <code>force push</code> no momento do deploy.</p>
+
+<p>Para isso eu abri o arquivo <code>Rakefile</code> e editei a tarefa push. Onde estava:</p>
+
+<p><code>ruby
+system "git push origin #{deploy_branch}"
+</code></p>
+
+<p>Eu troquei para:</p>
+
+<p><code>ruby
+system "git push origin +#{deploy_branch}"
+</code></p>
+
+<p>Perceba o sinal de + ali, isso fará um force push e resolve o problema. Depois de um deploy usando o force push, eu voltei a tarefa para como ela estava antes e tudo passou a funcionar normalmente mais uma vez.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Instalando uma máquina de desenvolvimento com dois comandos]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/"/>
+    <updated>2013-08-25T12:11:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos</id>
+    <content type="html"><![CDATA[<p>Recentemente eu tive que preparar duas máquinas de desenvolvimento, um novo notebook Windows 8 e uma VM Windows 7 e, honestamente, por mais que eu goste de uma máquina nova, perder tempo instalando uma porção de aplicações e configurar tantas outras não é algo que eu ache divertido. Além do mais, sempre tem algumas coisas que eu não faço todo dia e, na hora que eu preciso eu não lembro. Por exemplo, como é que eu gero uma chave RSA para usar com ssh mesmo?</p>
+
+<p>Enfim, dessa vez, ao invés de instalar tudo manualmente, eu decidi fazer um script que faz todas essas coisas automaticamente para mim. Usando <a href="http://technet.microsoft.com/en-us/scriptcenter/dd742419.aspx">PowerShell</a> e <a href="http://chocolatey.org">Chocolatey</a>.</p>
+
+<p><img class="alignleft" src="/images/2013/08/chocolateyicon.gif" title="&lsquo;Chocolatey&rsquo; &lsquo;Chocolatey&rsquo;" > Acho que o PowerShell é bem conhecido, então não vou perder muito tempo com ele. Sobre o Chocolatey, ele é um gerenciador de pacotes para linha de comando do Windows. Ele funciona mais ou menos como funciona o apt-get no linux ou o brew no Mac. É um projeto open source e gratuito bem interessante, é relativamente recente se comparado com as outras plataformas, mas ele funciona muito bem no Windows e é muito prático para evitar ficar procurando instaladores. Já existe uma grande <a href="http://chocolatey.org/packages">variedade de aplicações disponíveis para serem instaladas através dele</a>. Mas também, se precisar, é muito fácil criar um pacote e publicar lá, eu mesmo <a href="http://chocolatey.org/packages/ruby.devkit.ruby193">criei um pacote para instalar o DevKit do Ruby na versão 1.9.3 do Ruby</a>.</p>
+
+<p>Ok, chega de história. O script completo que eu criei <a href="https://gist.github.com/vintem/6334646">está disponível em um gist</a>. Ele é até que bem simples e suas principais partes estão comentadas (em inglês). Fique a vontade para baixar e modificar a gosto.</p>
+
+<h2>Mas o que ele faz?</h2>
+
+<h3>Instala as seguintes aplicações usando o Chocolatey</h3>
+
+<ul>
+<li>Git</li>
+<li>Poshgit</li>
+<li>Ruby (1.9.3)</li>
+<li>Node.js</li>
+<li>WebPI</li>
+<li>Notepad++</li>
+<li>Sublime Text</li>
+<li>ConEmu</li>
+<li>Python</li>
+<li>.NET Framework (4.0 e 4.5)</li>
+<li>Putty</li>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Fiddler</li>
+<li>Filezilla</li>
+<li>Winrar</li>
+<li>MongoDB</li>
+<li>Nuget Package Explorer</li>
+<li>Skydrive</li>
+<li>Evernote</li>
+<li>Windows Installer (3.1 e 4.5)</li>
+</ul>
+
+
+<p>Opcionalmente, no meio da execução do script ele pergunta se quer instalar o SQL Express 2012 (também utilizando o Chocolatey).</p>
+
+<h3>Customização do PowerShell e Git Bash</h3>
+
+<p>Eu tenho alguns atalhos criados tanto para o shell do PowerShell como o do Git, então eu baixo automaticamente essas customizações e adiciono nos respectivos arquivos de customização.</p>
+
+<h3>Configuração do Git</h3>
+
+<p>Na maior parte do tempo eu uso o Git como repositório de código ou o <a href="http://git-scm.com/book/ch8-1.html">git svn</a> e eu tenho algumas configurações globais que eu gosto de usar, como alguns arquivos que geralmente eu ignoro, ou alguns atalhos específicos para o git. Então eu também baixo essas configurações de dois outros gists que que tenho.</p>
+
+<h3>Gems e pacotes Node</h3>
+
+<p>Algumas gems para o Ruby que eu sempre uso são instaladas automaticamente, depois disso alguns pacotes do Node.js também são instalados.</p>
+
+<h3>Geração da chave RSA</h3>
+
+<p>Por fim, a última coisa que eu faço é gerar uma chave RSA que eu vou usar para me conectar via SSH em outros terminais, ou no GitHub.</p>
+
+<h2>Executando o script</h2>
+
+<p>Para executar o script são necessários dois comandos, mas primeiro, <a href="https://gist.github.com/vintem/6334646">baixe o script do gist</a>. Depois disso, <strong>abra o PowerShell como Administrador</strong> e, para executar um script baixado da internet é preciso modificar a política de execução do PowerShell, então digite:</p>
+
+<p><code>bash
+Set-ExecutionPolicy Unrestricted
+</code></p>
+
+<p>Depois disso, é só executar o script. Supondo que ele esteja no desktop, execute:</p>
+
+<p><code>bash
+~/Desktop/dev_setup.ps1
+</code></p>
+
+<p>E é isso, você tem todas as aplicações instaladas. Em algum momento da execução do script ele vai perguntar se você quer instalar o SQL Express e também uma senha para a chave RSA, mas no mais você tem uma máquina instalada com apenas dois comandos.</p>
+
+<p>PS: Eu tentei fazer com que o Visual Studio 2012 fosse instalado automaticamente também, mas honestamente, não existe muita documentação sobre o assunto e achei que não valia o trabalho. Afinal, nesse caso é só montar um ISO e seguir os passos da instalação. Para uma aplicação só tá valendo.</p>
+
+<p>Se você ficou com preguiça de ir lá olhar o script, veja ele aqui completo:</p>
+
+<p><div><script src='https://gist.github.com/6334646.js?file=dev_setup.ps1'></script>
+<noscript><pre><code>function Add-Path() {
+    [Cmdletbinding()]
+    param([parameter(Mandatory=$True,ValueFromPipeline=$True,Position=0)][String[]]$AddedFolder)
+    # Get the current search path from the environment keys in the registry.
+    $OldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
+    # See if a new folder has been supplied.
+    if (!$AddedFolder) {
+        Return 'No Folder Supplied. $ENV:PATH Unchanged'
+    }
+    # See if the new folder exists on the file system.
+    if (!(TEST-PATH $AddedFolder))
+    { Return 'Folder Does not Exist, Cannot be added to $ENV:PATH' }cd
+    # See if the new Folder is already in the path.
+    if ($ENV:PATH | Select-String -SimpleMatch $AddedFolder)
+    { Return 'Folder already within $ENV:PATH' }
+    # Set the New Path
+    $NewPath=$OldPath+’;’+$AddedFolder
+    Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $newPath
+    # Show our results back to the world
+    Return $NewPath
+}
+
+######################################################
+# Install apps using Chocolatey
+######################################################
+Write-Host &quot;Installing Chocolatey&quot;
+iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))
+Write-Host
+
+Write-Host &quot;Installing applications from Chocolatey&quot;
+cinst git
+cinst ruby -Version 1.9.3.44800
+cinst nodejs.install
+cinst PhantomJS
+cinst webpi
+cinst poshgit
+cinst notepadplusplus
+cinst sublimetext2
+cinst SublimeText2.PackageControl
+cinst SublimeText2.PowershellAlias
+cinst ConEmu
+cinst python
+cinst DotNet4.0
+cinst DotNet4.5
+cinst putty
+cinst Firefox
+cinst GoogleChrome
+cinst fiddler4
+cinst filezilla
+cinst dropbox
+cinst winmerge
+cinst kdiff3
+cinst winrar -Version 4.20.0
+cinst mongodb
+cinst NugetPackageExplorer
+cinst SkyDrive
+cinst Evernote
+Write-Host
+
+######################################################
+# Set environment variables
+######################################################
+Write-Host &quot;Setting home variable&quot;
+[Environment]::SetEnvironmentVariable(&quot;HOME&quot;, $HOME, &quot;User&quot;)
+[Environment]::SetEnvironmentVariable(&quot;CHROME_BIN&quot;, &quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot;, &quot;User&quot;)
+[Environment]::SetEnvironmentVariable(&quot;PHANTOMJS_BIN&quot;, &quot;C:\tools\PhanomJS\phantomjs.exe&quot;, &quot;User&quot;)
+Write-Host
+
+######################################################
+# Download custom .bashrc file
+######################################################
+Write-Host &quot;Creating .bashrc file for use with Git Bash&quot;
+$filePath = $HOME + &quot;\.bashrc&quot;
+New-Item $filePath -type file -value ((new-object net.webclient).DownloadString('http://vintem.me/winbashrc'))
+Write-Host
+
+######################################################
+# Install Windows installer through WebPI
+######################################################
+Write-Host &quot;Installing apps from WebPI&quot;
+cinst WindowsInstaller31 -source webpi
+cinst WindowsInstaller45 -source webpi
+Write-Host
+
+######################################################
+# Install SQL Express 2012
+######################################################
+Write-Host
+do {
+    $createSiteData = Read-Host &quot;Do you want to install SQLExpress? (Y/N)&quot;
+} while ($createSiteData -ne &quot;Y&quot; -and $createSiteData -ne &quot;N&quot;)
+if ($createSiteData -eq &quot;Y&quot;) {
+    cinst SqlServer2012Express
+}
+Write-Host
+
+######################################################
+# Add Git to the path
+######################################################
+Write-Host &quot;Adding Git\bin to the path&quot;
+Add-Path &quot;C:\Program Files (x86)\Git\bin&quot;
+Write-Host
+
+######################################################
+# Configure Git globals
+######################################################
+Write-Host &quot;Configuring Git globals&quot;
+$userName = Read-Host 'Enter your name for git configuration'
+$userEmail = Read-Host 'Enter your email for git configuration'
+
+&amp; 'C:\Program Files (x86)\Git\bin\git' config --global user.email $userEmail
+&amp; 'C:\Program Files (x86)\Git\bin\git' config --global user.name $userName
+
+$gitConfig = $home + &quot;\.gitconfig&quot;
+Add-Content $gitConfig ((new-object net.webclient).DownloadString('http://vintem.me/mygitconfig'))
+
+$gitexcludes = $home + &quot;\.gitexcludes&quot;
+Add-Content $gitexcludes ((new-object net.webclient).DownloadString('http://vintem.me/gitexcludes'))
+Write-Host
+
+$env:Path = [System.Environment]::GetEnvironmentVariable(&quot;Path&quot;,&quot;Machine&quot;)
+
+######################################################
+# Update RubyGems and install some gems
+######################################################
+Write-Host &quot;Update RubyGems&quot;
+C:\Chocolatey\bin\cinst ruby.devkit.ruby193
+gem update --system
+gem install bundler compass
+Write-Host
+
+######################################################
+# Install npm packages
+######################################################
+Write-Host &quot;Install NPM packages&quot;
+npm install -g yo grunt-cli karma bower jshint coffee-script nodemon generator-webapp generator-angular
+Write-Host
+
+######################################################
+# Generate public/private rsa key pair
+######################################################
+Write-Host &quot;Generating public/private rsa key pair&quot;
+Set-Location $home
+$dirssh = &quot;$home\.ssh&quot;
+mkdir $dirssh
+$filersa = $dirssh + &quot;\id_rsa&quot;
+ssh-keygen -t rsa -f $filersa -q -C $userEmail
+Write-Host
+
+######################################################
+# Add MongoDB to the path
+######################################################
+Write-Host &quot;Adding MongoDB to the path&quot;
+Add-Path &quot;C:\MongoDB\bin&quot;
+Write-Host
+
+######################################################
+# Download custom PowerShell profile file
+######################################################
+Write-Host &quot;Creating custom $profile for Powershell&quot;
+if (!(test-path $profile)) {
+    New-Item -path $profile -type file -force
+}
+Add-Content $profile ((new-object net.webclient).DownloadString('http://vintem.me/profileps'))
+Write-Host</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Só é uma bagunça se você deixar. Responsabilidade única com JavaScript]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
+    <updated>2013-07-30T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
+    <content type="html"><![CDATA[<p>Muita gente que reclama de JavaScript mas não se dá ao mínimo trabalho de entender a linguagem e, boa parte das vezes, não trata o código desenvolvido como um código de verdade, afinal de contas &ldquo;é só JavaScript mesmo&rdquo;.</p>
+
+<p>Mas esse é só uma das razões de boa parte dos problemas enfrentados quando a gente tem que dar manutenção em um código já existente. O bom e velho spaguetti de código.</p>
+
+<p><img class="aligncenter" src="/images/2013/07/spagett.jpg" title="&lsquo;Código spaghetti&rsquo; &lsquo;Código spaghetti&rsquo;" ></p>
+
+<p>Tenho que admitir que eu já contribui para bastante código spaguetti (como do exemplo que vou mostrar aqui). Exatamente porque não tratei esse código como um programa sério e não apliquei princípios básicos como o da <a href="http://robsoncastilho.com.br/2013/02/06/principios-solid-principio-da-responsabilidade-unica-srp/" target="_blank">responsabilidade única</a>.</p>
+
+<p>Vamos imaginar uma cesta de compras como a da imagem abaixo, que tem um link para atualizar a quantidade de itens do carrinho. O código que vou mostrar, captura o click no link usando o jQuery e faz uma validação de que o valor informado no campo é numérico. A regra de negócio diz ainda que tem que ser uma quantidade entre 0 e 10. Não posso vender mais do que 10 unidades de um mesmo item.</p>
+
+<p><img class="aligncenter" src="/images/2013/07/shopping_basket.png" title="&lsquo;Carrinho de compras&rsquo; &lsquo;Carrinho de compras&rsquo;" ></p>
+
+<p>Um código que faria isso é esse:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.update_cart&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">itemsCount</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s2">&quot;td&quot;</span><span class="p">).</span><span class="nx">prev</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">.</span><span class="nx">children</span><span class="p">(</span><span class="s2">&quot;.quantity&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">itemsCount</span><span class="p">)</span> <span class="o">||</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">itemsCount</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="mi">0</span> <span class="o">||</span>
+</span><span class='line'>      <span class="nb">parseInt</span><span class="p">(</span><span class="nx">itemsCount</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">showError</span><span class="p">(</span><span class="s2">&quot;Nao é numero valido&quot;</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">return</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/updatecart&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// lógica para formatar os dados a serem enviados para o servidor</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// update table with cart data</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// handle error</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Embora esse seja um código simples &ndash; e que está pouco mais curto do que realmente seria já que eu omiti alguns detalhes da implementação &ndash; ele viola um dos princípios de desenvolvimento mais importantes na minha opinião, que é o princípio da responsabilidade única. Mas, é um código que nós vemos com bastante facilidade em muitos aplicações na web.</p>
+
+<p>Mesmo que a gente não tenha classes em JavaScript, as funções são usadas para fazer separações de responsabilidades. Veja, no exemplo acima, a função responsável por responder ao evento de click de atualização faz a validação, faz a chamada ajax e também atualiza a página após o resultado, seja com sucesso ou não.</p>
+
+<p>Fazendo uma breve analogia, a chamada ajax como essa acima, pode ser comparada a uma chamada de um web service feito por um código C# ou Java. Ou seja, é um serviço externo ao código que está sendo executado, ou melhor ainda, é uma dependência externa que está gerando acoplamento no código. Taí a primeira separação que a gente pode fazer.</p>
+
+<p>Outra ponto, o script acima lê informações da página (DOM) e depois atualiza informações nessa mesma página de acordo com o retorno do processamento. Então, em uma outra analogia, pode-se dizer que o DOM nesse caso, é uma forma de banco de dados do programa, portanto, é outra dependência externa que a gente pode separar no código.</p>
+
+<p>Então vamos ver o que seria um código melhor estruturado para esse caso.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span> <span class="nx">BasketUpdater</span> <span class="p">(</span><span class="nx">basketView</span><span class="p">,</span> <span class="nx">basketService</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">basketView</span><span class="p">.</span><span class="nx">handleUpdate</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">update</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">isValid</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">quantity</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">quantity</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">itemsCount</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span>
+</span><span class='line'>    <span class="nb">parseInt</span><span class="p">(</span><span class="nx">itemsCount</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">itemsCount</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isValid</span><span class="p">(</span><span class="nx">item</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">basketService</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span>
+</span><span class='line'>      <span class="nx">basketView</span><span class="p">.</span><span class="nx">refreshViewSuccess</span><span class="p">,</span> <span class="nx">basketView</span><span class="p">.</span><span class="nx">refreshViewError</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span> <span class="nx">BasketView</span><span class="p">()</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">handleUpdate</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.update_cart&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+</span><span class='line'>    <span class="c1">// logica para formatar um objeto com os dados do item no formulario</span>
+</span><span class='line'>    <span class="nx">callback</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">refreshViewSuccess</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// </span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">this</span><span class="p">.</span><span class="nx">refreshViewError</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// </span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">function</span> <span class="nx">BasketService</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">callbackSuccess</span><span class="p">,</span> <span class="nx">callbackError</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">url</span><span class="o">:</span> <span class="nx">url</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">data</span><span class="o">:</span> <span class="nx">item</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">algum</span> <span class="nx">codigo</span> <span class="nx">para</span> <span class="nx">formatar</span> <span class="nx">os</span> <span class="nx">dados</span> <span class="nx">de</span> <span class="nx">retorno</span>
+</span><span class='line'>      <span class="nx">callbackSuccess</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">xhr</span><span class="p">,</span> <span class="nx">status</span><span class="p">,</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="c1">// algum codigo para tratar a mensagem de erro</span>
+</span><span class='line'>      <span class="nx">callbackError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="kd">var</span> <span class="nx">basketService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BasketService</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lsquo</span><span class="p">;</span><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;http://localhost/updateCart&quot;</span><span class="o">&gt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost/updateCart&lt;/a&gt;&amp;rsquo;);</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">basketView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BasketView</span><span class="p">();</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">basketUpdater</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BasketUpdater</span><span class="p">(</span><span class="nx">basketView</span><span class="p">,</span> <span class="nx">basketService</span><span class="p">);</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>  <span class="nx">basketUpdater</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Mesmo que esse código seja um tanto quanto mais extenso que o anterior, fica bem clara a divisão de responsabilidades. Temos uma função para atualizar a view <em>BasketView</em>, uma para fazer a chamada ajax <em>BasketService</em> e uma com a lógica de negócio necessária para a página <em>BasketUpdater</em>.</p>
+
+<p>Os benefícios de um código como esse (comparado com o anterior) são muitos, e bem semelhantes aos que a gente vê em códigos &ldquo;servidor&rdquo; bem estruturados.</p>
+
+<ol>
+    <li>As dependências necessárias para que um objeto funcione (sim, uma função em JavaScript é um objeto) estão claras e definidas já no construtor.</li>
+    <li>Uma função não depende explicitamente de outra, ela apenas espera um objeto que implemente determinados métodos</li>
+    <li>É possível testar as funções isoladamente com um framework de testes</li>
+    <li>É possível utilizar injeção de dependência e no caso dos testes, usar mocks</li>
+    <li>É possível alterar uma função sem interferir na outra (desde que os nomes dos métodos se mantenham os mesmos)</li>
+</ol>
+
+
+<p>Para concluir, temos um código muito mais organizado, de fácil manutenção e com responsabilidades claras. Para chegar nesse resultado, fiz uso apenas de técnicas já conhecidas de outras linguagens e sem inventar muita coisa. Então da próxima vez que você for dizer que é muito difícil dar manutenção em código JavaScript, pense se você está contribuindo para um código sustentável ou só preparando o almoço do próximo domingo.</p>
+
+<p><img class="aligncenter" src="/images/2013/07/Spaghetti.gif" title="&lsquo;Spaghetti&rsquo; &lsquo;Spaghetti&rsquo;" ></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Programação orientada à coincidência]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2013/07/16/programacao-orientada-a-coincidencia/"/>
+    <updated>2013-07-16T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2013/07/16/programacao-orientada-a-coincidencia</id>
+    <content type="html"><![CDATA[<p>Eu gosto muito de programar, gosto dos desafios técnicos que programar que traz. Mas o que eu mais gosto é do constante aprendizado que faz parte da profissão de programador.</p>
+
+<p>Por causa de tudo isso eu nunca entendi ou gostei de frases como &ldquo;se esta funcionando não mexe&rdquo; ou &ldquo;não encosta nesse código porque senão para de funcionar&rdquo;. Como alguém que gosta de aprender, minha primeira pergunta é: porque para de funcionar? Ou, porque não pode mexer? Ou, o que vai estragar?</p>
+
+<p>Informações sobre os mais diversos assuntos estão disponíveis de forma muito fácil (para uns até um pouco mais que para outros, não é NSA?) então não vejo sentido de não buscar se aprofundar nos assuntos. <a href="http://www.hanselman.com/">Scott Hanselman</a>, em um ótimo post, já disse que <a href="http://vintem.me/1dAms6P" target="_blank">a internet não é uma caixa preta</a>. Citando uma frase desse post que resume o que eu quero dizer:</p>
+
+<blockquote>When coding on the web, remember that effectively NOTHING is hidden from you.</blockquote>
+
+
+<p>NADA esta escondido de você, enfase no NADA.</p>
+
+<p>No livro <a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=020161622X&amp;linkCode=as2&amp;tag=tempcodi0f-20">The Pragmatic Programmer</a>, Andrew Hunt e David Thomas dedicam um capitulo à programação por coincidência e eles abrem o capitulo com uma metáfora muito interessante. Eles comparam um programador que codifica por tentativa e erro, resolvendo problemas de forma aleatórias e sem conhecimento sobre o assunto à um soldado andando em um campo minado. O soldado pode dar um, dois, vários passos sem pisar em uma mina, achar que esta fazendo algo correto, mas é somente uma caminhada aleatória, uma hora ele pode pisar em uma mina e explodir.</p>
+
+<p><img class="aligncenter" src="/images/2013/07/falklands-minefield1.jpg" title="Campo minado" ></p>
+
+<p>Outra coisa bem comum quando não se entende do problema, é a tendencia de resolver as coisas sempre do mesmo jeito, ou seja é o velho caso daquela frase &ldquo;se você só tem um martelo todo o problema é um prego&rdquo;. Parece que é uma formula magica, funcionou para um problema não se sabe como, deve funcionar para os outros.</p>
+
+<p>Ainda nesse sentido, pode ser que um problema seja resolvido passando dados inválidos
+para um método e que isso resulte numa resposta inesperada do programa. Mas se a sua unica fonte de analise for a resposta daquela chamada com dados inválidos, quando aquele programa for corrigido, sua chamada não vai mais funcionar porque aquela coincidência foi modificada.</p>
+
+<p><img class="aligncenter" src="/images/2013/07/coincidence1.jpg" title="Parece um coelho, mas&hellip;" ></p>
+
+<p>E o pior na minha opinião, é a ignorância que isso gera. Até hoje ainda vejo gente que acha que POST é mais seguro do que GET só porque os dados não são enviados na URL!</p>
+
+<p><strong>Escolhendo a pilula vermelha</strong></p>
+
+<iframe src="http://www.youtube.com/embed/xFhn_GUAhGU" frameborder="0" width="420" height="315"></iframe>
+
+
+<p>E sim, entender e aprender as coisas dá trabalho, toma tempo, tomar a pilula vermelha às vezes quer dizer por em prática para aprender, ou, como já disse um Yogi Berra:</p>
+
+<blockquote>Mastering knowledge alone, without experience isn't effective</blockquote>
+
+
+<p>Ou, numa tradução livre e direta: <em>Dominar um assunto sem a pratica não é efetivo.</em></p>
+
+<p><strong>Mas até onde ir?</strong></p>
+
+<p>Essa é uma linha difícil de traçar. De uma forma geral eu tento entender o suficiente para resolver o problema que eu estou enfrentando, e qualquer outra coisa, eu deixo para ler mais tarde.</p>
+
+<p>Por exemplo, eu estava estudando Backbone.js usando <a href="http://vintem.me/12QNKkh" target="_blank">esse tutorial</a>, e nele é usado o <a href="http://vintem.me/15yM296" target="_blank">padrão AMD</a> implementado pelo <a href="http://requirejs.org/" target="_blank">Require.JS</a>. Eu podia simplesmente seguir o tutorial que isso resolveria o problema, mas o que eu decidi fazer foi ler um pouco sobre o Require.JS no seu site para entender o seu funcionamento e depois ler sobre o padrão AMD quando eu tivesse um pouco mais de tempo. Esse tutorial, também usa o Node.js, ou seja, depois eu ainda fui explorar um pouco sobre o Node.js :)</p>
+
+<p>É claro, não existe uma regra, e ninguém pode dizer até onde cada um deve ir, você é quem tem que traçar a linha entre o que é informação necessária e o que é procrastinação, sempre tentando ser pragmático.</p>
+
+<p>O mais importante de tudo é deixar a preguiça de lado e entender o que você faz. Não basta pegar a primeira resposta no StackOverflow. Afinal de contas, você também não ia gostar que um médico te receitasse um medicamento só porque esse remédio funciona para a dor de barriga de outra pessoa, você quer que ele te examine e te diga porque esse remédio vai funcionar, não é?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Integrar é traduzir, não é reproduzir]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/"/>
+    <updated>2013-03-21T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir</id>
+    <content type="html"><![CDATA[<p>Eu trabalho fazendo integrações de aplicações web com o SAP há alguns anos já. E existem &ldquo;alguns padrões&rdquo; (vou chamar de padrões), que existem no SAP que são bem particulares à esse ERP.</p>
+
+<p>Só para ambientar aqueles que não conhecem nada de SAP, o SAP é um grande ERP e ele possui todo um ecossistema próprio para customização e criação de soluções de negócio. Por exemplo, ele tem uma linguagem própria o <a href="https://en.wikipedia.org/wiki/Abap">ABAP</a>, tem um protocolo de comunicações proprietário, o <a href="https://en.wikipedia.org/wiki/Remote_function_call">RFC</a>, entre outras coisas. Fora isso, existe também toda uma cultura particular de desenvolvimento, que honestamente, eu não conheço muito, já que nunca fui um programador ABAP.</p>
+
+<p><img class="alignleft" src="/images/2013/03/system_integration.jpeg" title="System integration" >A minha questão aqui é, independente do porque, e se esta certo ou não, geralmente quando faço integrações com o SAP encontro coisas que não estou acostumado a ver quando desenvolvo minhas soluções usando outras tecnologias, como por exemplo, .NET e C#.</p>
+
+<p>Por exemplo, em muitas integrações que fiz com o SAP quando chamo uma função remota e essa gera um erro, ao invés de receber um exceção, a chamada é executada com sucesso e uma estrutura de dados (como na imagem abaixo) é retornada preenchida contendo um tipo de erro, um código e possivelmente algumas mensagens. Esse é um padrão usado e que já vi várias vezes.</p>
+
+<p><img class="aligncenter" src="/images/2013/03/sap_return.png" title="Retorno de erros no SAP" ></p>
+
+<p>Obs.: <a href="http://cc2e.com/Page.aspx?hid=147" target="_blank">Steven McConnell deve ficar tão orgulhoso disso</a>.</p>
+
+<p>OK, mas qual é o problema disso e o que tem a ver com o que eu faço?</p>
+
+<p>Bom, o problema na minha opinião, é quando esse tipo de padrão começa a vazar para outras aplicações. Tenho que admitir que eu já fiz a minha parte de permitir que isso vazasse. Shame on me!</p>
+
+<p>Mas voltando, se estamos fazendo uma integração com uma aplicação terceira, não importa qual, e ela tem uma particularidade, não precisamos expor essa particularidade, podemos encapsulá-la e mudar o padrão para algo mais genérico, ou que faça sentido para a nossa plataforma de desenvolvimento. Por exemplo, no caso de um Web Service, lançar um SoapException.</p>
+
+<p>Outro padrão comum ao SAP é a nomenclatura de estruturas. Não sei porque, mas encontramos muitas estruturas com esse tipo de nomenclatura.</p>
+
+<p><img class="aligncenter" src="/images/2013/03/nomes_sap.png" title="Nomenclatura no SAP" ></p>
+
+<p>Talvez isso faça sentido na cabeça de algum alemão louco, mas, voltando ao C#, um nome de variável pode ter até 1023 bytes, isso quer dizer que podemos ser bem mais descritivos que isso. E no caso de um Web Service também, não ha uma limitação especifica para o nome de uma tag XML.</p>
+
+<p>Mais uma vez o ponto é, no momento em que estamos fazendo uma integração, seja qual for a tecnologia utilizada (no meu caso é o BizTalk), esse é o momento de abstrair particularidades, de aplicar boas práticas para quem vai consumir essa integração.<img class="alignright" src="/images/2013/03/images_boo.jpeg"></p>
+
+<p>Eu vejo uma integração como uma tradutora. Ela ouve em alemão e traduz para português, ela não traduz algumas partes para português e mantém outras no formato original. Para mim, que não falo nada de alemão, isso só me atrapalharia.</p>
+
+<p>E nem sempre é uma questão de certo ou errado, mas sim de pontos que são mais idiomáticos em uma tecnologia do que em outra. Nesse caso o problema são as traduções literais que muitas vezes não fazem sentido, temos que contextualizar para a tecnologia que estamos usando.</p>
+
+<p><img class="aligncenter" src="/images/2013/03/slip.png" title="slip" >
+Mais uma vez usando o SAP como <del>bode expiatório</del> exemplo, existem alguns casos em que as strings não podem ter mais do 132 caracteres, por isso vemos estruturas como a anterior que tem campos message1, message2, message3, etc., e, embora isso funcione, é uma limitação daquela plataforma/tecnologia. Esse não é o caso de um XML ou do próprio C#, portanto, passar uma estrutura dessas adiante é simplesmente fazer uma tradução literal e não olhar para o contexto.</p>
+
+<p>Concluindo, quando for integrar duas ou mais aplicações, tenha em mente os limites tecnológicos, funcionais e semânticos de cada ponta. Leve em consideração o que é um padrão proprietário e deve ser transformado do que realmente é um padrão de integração e deve ser mantido. <a href="http://www.amazon.com/gp/product/0321200683/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321200683&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Existem inclusive livros que podem nos ajudar com isso</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

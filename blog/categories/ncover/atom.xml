@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ncover | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/ncover/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Selecionando o código que será contabilizado pelo NCover]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/06/16/selecionando-o-cdigo-que-ser-contabilizado-pelo-ncover/"/>
+    <updated>2010-06-16T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/06/16/selecionando-o-cdigo-que-ser-contabilizado-pelo-ncover</id>
+    <content type="html"><![CDATA[<p><a href="http://vintem.github.io/templecoding/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/">No meu post anterior sobre build automático com MSBuild e NCover</a> e usei uma opção do NCover chamada ExcludeAttributes como pode ser visto na linha 7 abaixo:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>ncover ToolPath=<span class="ni">&amp;ldquo;</span>$(CaminhoNCover)<span class="ni">&amp;rdquo;</span><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span>CommandLineExe=&quot;$(ComandoNUnit)&quot;
+</span><span class='line'>CommandLineArgs=&quot;$(TestFolder)bin$(Configuration)UnitTests.dll&quot;
+</span><span class='line'>WorkingDirectory=&quot;$(TestFolder)bin$(Configuration)&quot;
+</span><span class='line'>CoverageFile=&quot;$(ResultsFolder)$(ArquivoNCover)&quot;
+</span><span class='line'>LogFile=&quot;$(ArquivoLogNCover)&quot;
+</span><span class='line'>ExcludeAttributes=&quot;MSBuildDemo.Common.CoverageExcludeAttribute&quot;
+</span><span class='line'>AssemblyList=&quot;@(CodeProjects-<span class="ni">&amp;gt;</span>&#39;%(FileName)&#39;)&quot; <span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>O que isso quer dizer e por que isso importa?</strong></p>
+
+<p>Isso importa porque, nem todo o código que temos em nossos projetos vamos querer testar e porque esse código pode atrapalhar a métrica de percentual de código coberto pelos testes.</p>
+
+<p>Usando como exemplo o projeto que fiz no modelo anterior que <a href="https://github.com/vintem/MSBuildDemo" target="_blank">pode ser visto aqui</a>, podemos ver que em todo projeto ASP.NET MVC algumas classes são criadas automaticamente e essas classes não precisam ser testadas (assumindo que elas funcionam e não vamos modificá-las). Outro exemplo que temos nesse projeto, são as classes geradas automaticamente pelo LINQ to SQL para mapear a base de dados.</p>
+
+<p><strong>Como resolver?</strong></p>
+
+<p>Para resolver esse problema eu criei a classe MSBuildDemo.Common.CoverageExcludeAttribute e configurei na tarefa do NCover como visto acima. Veja como ficou a classe:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[AttributeUsage(AttributeTargets.All)]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">CoverageExcludeAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Bem simples não? Agora é só colocar esse atributo nas classes ou métodos que não queremos contar para a cobertura do código. Como nesse exemplo, veja a linha 2:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[HandleError]</span>
+</span><span class='line'><span class="na">[CoverageExclude]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">AccountController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="c1">// ...</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Builds automáticos com MSBuild, NUnit e NCover]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/"/>
+    <updated>2010-06-14T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover</id>
+    <content type="html"><![CDATA[<p>O MSBuild é a ferramenta da Microsoft usada em conjunto com o Visual Studio para compilar os projetos. Toda vez que compilamos um projeto no Visual Studio (a partir da versão 2005 pelo menos), o que acontece é que o VS chama o MSBuild para executar a tarefa de compilar os projetos da solução.</p>
+
+<p>O bom disso é que podemos customizar a compilação/deploy para executar diversas tarefas nesse momento, entre essas atividades existem algumas como zipar o projeto compilado, enviar por email, publicar no IIS, etc. Mas eu queria falar sobre duas que tenho usado que são: executar os testes unitários e executar uma ferramenta de cobertura de código para ver qual a porcentagem de código coberto pelos testes unitários.</p>
+
+<p><strong>O projeto demo</strong></p>
+
+<p>Para começar, criei um solução usando o ASP.NET MVC, com um componente para acesso a dados separado do projeto de Web. Apenas como forma de mostrar o MSBuild compilando projetos diferentes.</p>
+
+<p><img class="aligncenter" src="/images/2010/06/Diagrama%20Componentes_2.png" title="Diagrama Componentes" ></p>
+
+<p>O projeto é bem simples, a idéia mesmo é conectar no intergalaxialmente famoso banco de dados Northwind e exibir os dados da tabela de categorias. Uau!!! Uma tarefa que consumirá horas, mas, como eu disse o foco é mostrar um pouco do funcionamento do MSBuild. <a href="https://github.com/vintem/MSBuildDemo" target="_blank">O código da aplicação está disponível aqui.</a></p>
+
+<p><strong>Pré-requisitos</strong></p>
+
+<p>O MSBuild é instalado junto com o Visual Studio, mas existem algumas coisas que você vai precisar para rodar esse demo. Espero que você já tenha o <a href="http://www.nunit.org/index.php?p=download" target="_blank">NUnit</a> instalado, eu estou usando a versão 2.5.3. Além do NUnit você vai precisar:</p>
+
+<ul>
+    <li><a href="http://www.ncover.com/download/file?filename=NCover-1.5.8.zip" target="_blank">NCover</a> - eles pedem um cadastro e existem versões pagas, mas a versão 1.5.8 é gratuita e serve para os nossos propósitos.</li>
+    <li><a href="http://www.kiwidude.com/dotnet/NCoverExplorer-1.4.0.7.zip" target="_blank">NCoverExplorer</a> - para gerar um relatório mais amigável do NCover.</li>
+    <li><a href="http://www.kiwidude.com/dotnet/NCoverExplorer.Extras-1.4.0.5.zip" target="_blank">NCoverExplorer Extras</a> - possui tarefas customizadas para o MSBuild executar o NCoverExplorer.</li>
+    <li><a href="http://msbuildtasks.tigris.org/" target="_blank">MSBuild Community Tasks</a> - tarefas customizadas feitas para o MSBuild.</li>
+</ul>
+
+
+<p>O NUnit, NCover e o MSBuild Community Tasks possuem instaladores próprios.O NCoverExplorer e o NCoverExplorer Extras são um pouco diferentes. O NCoverExplorer não precisa de instalação, por isso eu já inclui dentro do zip com o código, na pasta tools.</p>
+
+<p>Quando você baixar o NCoverExplorer Extras terá uma pasta zip e dentro dela uma dll chamada NCoverExplorer.MSBuildTasks.dll, eu, apenas por uma questão de organização criei uma pasta c:Program FilesNCoverBuild Task Plugins e copiei essa dll lá dentro.</p>
+
+<p>Pronto, isso é tudo o que é necessário para rodar o MSBuild.</p>
+
+<p><strong>Entenda o arquivo do MSBuild</strong></p>
+
+<p>Depois de baixar, olhar o código e os testes unitários abra o arquivo MSBuildDemo.proj.</p>
+
+<p><img class="aligncenter" src="/images/2010/06/ScreenHunter_01%20Jun.%2011%2018.09_2.gif"></p>
+
+<p>O arquivo MSBuildDemo.proj nada mais é do que um arquivo xml. Então vamos começar a entendê-lo.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Project</span> <span class="na">DefaultTargets=</span><span class="s">&quot;Build&quot;</span>
+</span><span class='line'><span class="na">ToolsVersion=</span><span class="s">&quot;3.5&quot;</span>
+</span><span class='line'><span class="na">InitialTargets=</span><span class="s">&quot;BuscaProjetos&quot;</span>
+</span><span class='line'><span class="na">xmlns=</span><span class="s">&quot;http://schemas.microsoft.com/developer/msbuild/2003&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!--</span>
+</span><span class='line'><span class="c">Baixar MSBuildCommunity tasks de http://msbuildtasks.tigris.org/</span>
+</span><span class='line'><span class="c">--&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;Import</span> <span class="na">Project=</span><span class="s">&quot;$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets&quot;</span><span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;PropertyGroup&gt;</span>
+</span><span class='line'><span class="nt">&lt;SolutionName&gt;</span>MSBuildDemo.sln<span class="nt">&lt;/SolutionName&gt;</span>
+</span><span class='line'><span class="nt">&lt;CodeFolder&gt;</span>$(MSBuildProjectDirectory)<span class="nt">&lt;/CodeFolder&gt;</span><span class="c">&lt;!-- Variavel do MSBuild com diretorio do projeto --&gt;</span>
+</span><span class='line'><span class="nt">&lt;TestFolder&gt;</span>$(MSBuildProjectDirectory)\tests\UnitTests<span class="nt">&lt;/TestFolder&gt;</span>
+</span><span class='line'><span class="nt">&lt;ResultsFolder&gt;</span>$(MSBuildProjectDirectory)\Results<span class="nt">&lt;/ResultsFolder&gt;</span>
+</span><span class='line'><span class="nt">&lt;Configuration</span> <span class="na">Condition=</span><span class="s">&quot; &#39;$(Configuration)&#39; == &#39;&#39; &quot;</span><span class="nt">&gt;</span>Debug<span class="nt">&lt;/Configuration&gt;</span>
+</span><span class='line'><span class="nt">&lt;Platform</span> <span class="na">Condition=</span><span class="s">&quot; &#39;$(Platform)&#39; == &#39;&#39; &quot;</span><span class="nt">&gt;</span>AnyCPU<span class="nt">&lt;/Platform&gt;</span>
+</span><span class='line'><span class="nt">&lt;/PropertyGroup&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;PropertyGroup&gt;</span>
+</span><span class='line'><span class="nt">&lt;CaminhoNUnit&gt;</span>C:\Program Files\NUnit 2.5.3\bin\net-2.0<span class="ni">&amp;lt;</span>/CaminhoNUnit&gt;
+</span><span class='line'><span class="nt">&lt;ComandoNUnit&gt;</span>$(CaminhoNUnit)nunit-console.exe<span class="nt">&lt;/ComandoNUnit&gt;</span>
+</span><span class='line'><span class="nt">&lt;ArquivoNUnit&gt;</span>ResultadosTestes.xml<span class="nt">&lt;/ArquivoNUnit&gt;</span>
+</span><span class='line'><span class="nt">&lt;CaminhoNCover&gt;</span>C:\Program Files\NCover<span class="nt">&lt;/CaminhoNCover&gt;</span>
+</span><span class='line'><span class="nt">&lt;ArquivoNCover&gt;</span>ResultadoNCover.xml<span class="nt">&lt;/ArquivoNCover&gt;</span>
+</span><span class='line'><span class="nt">&lt;ArquivoLogNCover&gt;</span>Coverage.log<span class="nt">&lt;/ArquivoLogNCover&gt;</span>
+</span><span class='line'><span class="nt">&lt;CaminhoNCoverExplorer&gt;</span>$(MSBuildProjectDirectory)\tools\NCoverExplorer<span class="nt">&lt;/CaminhoNCoverExplorer&gt;</span>
+</span><span class='line'><span class="nt">&lt;/PropertyGroup&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Primeiro, veja que na linha 9 apontamos para a nossa dll instalada pelo MSBuild Community Tasks.</p>
+
+<p>O resto do código acima é bem fácil de entender, estamos definindo variáveis que vamos usar depois nas tarefas de deploy, algumas coisas que valem mencionar.</p>
+
+<ul>
+    <li>Definição do arquivo .sln na linha 12</li>
+    <li>Definição dos caminhos das ferramentas no bloco que vai da linha 20 a 28</li>
+</ul>
+
+
+<p>Agora precisamos identificar os projetos da solução que serão compilados e os projetos de testes, faremos assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;BuscaProjetos&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- Busca todos os projetos da solucao --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;GetSolutionProjects</span> <span class="na">Solution=</span><span class="s">&quot;$(CodeFolder)\$(SolutionName)&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Output</span> <span class="na">TaskParameter=</span><span class="s">&quot;Output&quot;</span> <span class="na">ItemName=</span><span class="s">&quot;ProjetosSolucao&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/GetSolutionProjects&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- Busca os projetos de Testes --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;RegexMatch</span> <span class="na">Input=</span><span class="s">&quot;@(ProjetosSolucao)&quot;</span> <span class="na">Expression=</span><span class="s">&quot;.*?[\.]?(Test[s]{0,1}|IntegrationTest)[\.]csproj$&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Output</span> <span class="na">TaskParameter=</span><span class="s">&quot;Output&quot;</span> <span class="na">ItemName=</span><span class="s">&quot;ProjetosTeste&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/RegexMatch&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- Separa somente os projetos da solução sem os testes --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;CreateItem</span> <span class="na">Include=</span><span class="s">&quot;@(ProjetosSolucao)&quot;</span>
+</span><span class='line'><span class="na">Exclude=</span><span class="s">&quot;@(ProjetosTeste)&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Output</span> <span class="na">TaskParameter=</span><span class="s">&quot;Include&quot;</span> <span class="na">ItemName=</span><span class="s">&quot;CodeProjects&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/CreateItem&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/Target&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Vale mencionar aqui que a propriedade ItemName de cada tag Output é uma váriavel criada que pode ser utilizada depois. Basicamente estamos buscando todos os projetos da solução, usando uma Expressão Regular para encontrar os Projetos que tenham a palavra Test ou IntegrationTest para encontrar os projetos de testes e separando os dois tipos de projetos. Agora vamos compilar os projetos que não são testes.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;Build&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;#--------- Compilando Projetos ---------#&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- Compila os assemblies --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&quot;@(CodeProjects)&quot;</span>
+</span><span class='line'><span class="na">Targets=</span><span class="s">&quot;$(BuildTargets)&quot;</span>
+</span><span class='line'><span class="na">Properties=</span><span class="s">&quot;Configuration=$(Configuration);Platform=$(Platform)&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Output</span> <span class="na">TaskParameter=</span><span class="s">&quot;TargetOutputs&quot;</span>
+</span><span class='line'><span class="na">ItemName=</span><span class="s">&quot;CodeAssemblies&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/MSBuild&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Target&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E agora compilamos os projetos de Testes</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;BuildTests&quot;</span> <span class="na">DependsOnTargets=</span><span class="s">&quot;Build&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;#--------- Compilando Testes ---------#&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;MSBuild</span> <span class="na">Projects=</span><span class="s">&quot;@(ProjetosTeste)&quot;</span>
+</span><span class='line'><span class="na">Targets=</span><span class="s">&quot;$(BuildTargets)&quot;</span>
+</span><span class='line'><span class="na">Properties=</span><span class="s">&quot;Configuration=$(Configuration);Platform=$(Platform)&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Output</span> <span class="na">TaskParameter=</span><span class="s">&quot;TargetOutputs&quot;</span>
+</span><span class='line'><span class="na">ItemName=</span><span class="s">&quot;AssembliesTeste&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/MSBuild&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Target&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E a última etapa é rodar o NCover e o NCoverExplorer</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;Tests&quot;</span> <span class="na">DependsOnTargets=</span><span class="s">&quot;BuildTests&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;#--------- Executando NUnit ---------#&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;NUnit</span> <span class="na">Assemblies=</span><span class="s">&quot;@(AssembliesTeste)&quot;</span>
+</span><span class='line'><span class="na">ToolPath=</span><span class="s">&quot;$(CaminhoNUnit)&quot;</span>
+</span><span class='line'><span class="na">WorkingDirectory=</span><span class="s">&quot;%(AssembliesTeste.RootDir)%(AssembliesTeste.Directory)&quot;</span>
+</span><span class='line'><span class="na">OutputXmlFile=</span><span class="s">&quot;@(AssembliesTeste-&gt;&amp;lsquo;%(FullPath).$(ArquivoNUnit)&amp;rsquo;)&amp;ldquo;</span>
+</span><span class='line'><span class="s">ContinueOnError=&quot;</span><span class="err">true&amp;rdquo;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Output</span> <span class="na">TaskParameter=</span><span class="s">&quot;ExitCode&quot;</span> <span class="na">ItemName=</span><span class="s">&quot;NUnitExitCodes&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/NUnit&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Target&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;UsingTask</span> <span class="na">TaskName=</span><span class="s">&quot;NCoverExplorer.MSBuildTasks.NCover&quot;</span> <span class="na">AssemblyFile=</span><span class="s">&quot;$(CaminhoNCover)\Build Task Plugins\NCoverExplorer.MSBuildTasks.dll&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;UsingTask</span> <span class="na">TaskName=</span><span class="s">&quot;NCoverExplorer.MSBuildTasks.NCoverExplorer&quot;</span> <span class="na">AssemblyFile=</span><span class="s">&quot;$(CaminhoNCover)\Build Task Plugins\NCoverExplorer.MSBuildTasks.dll&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;Target</span> <span class="na">Name=</span><span class="s">&quot;CoberturaTestes&quot;</span> <span class="na">DependsOnTargets=</span><span class="s">&quot;Tests&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">&quot;#--------- Executando NCover ---------#&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;MakeDir</span> <span class="na">Directories=</span><span class="s">&quot;$(ResultsFolder)&quot;</span> <span class="na">Condition=</span><span class="s">&quot;!Exists(&#39;$(ResultsFolder)&#39;)&quot;</span> <span class="nt">/&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;NCover</span> <span class="na">ToolPath=</span><span class="s">&quot;$(CaminhoNCover)&quot;</span>
+</span><span class='line'><span class="na">CommandLineExe=</span><span class="s">&quot;$(ComandoNUnit)&quot;</span>
+</span><span class='line'><span class="na">CommandLineArgs=</span><span class="s">&quot;$(TestFolder)\bin\$(Configuration)\UnitTests.dll&quot;</span>
+</span><span class='line'><span class="na">WorkingDirectory=</span><span class="s">&quot;$(TestFolder)\bin\$(Configuration)&quot;</span>
+</span><span class='line'><span class="na">CoverageFile=</span><span class="s">&quot;$(ResultsFolder)\$(ArquivoNCover)&quot;</span>
+</span><span class='line'><span class="na">LogFile=</span><span class="s">&quot;$(ArquivoLogNCover)&quot;</span>
+</span><span class='line'><span class="na">ExcludeAttributes=</span><span class="s">&quot;MSBuildDemo.Common.CoverageExcludeAttribute&quot;</span>
+</span><span class='line'><span class="na">AssemblyList=</span><span class="s">&quot;@(CodeProjects-&gt;&amp;lsquo;%(FileName)&amp;rsquo;)&amp;ldquo; /&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;!-- Resumo da Cobertura --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="s">&lt;p&gt;&lt;NCoverExplorer ToolPath=&quot;</span><span class="err">$(CaminhoNCoverExplorer)&quot;</span>
+</span><span class='line'><span class="na">ProjectName=</span><span class="s">&quot;$(ProjectName)&quot;</span>
+</span><span class='line'><span class="na">OutputDir=</span><span class="s">&quot;$(ResultsFolder)&quot;</span>
+</span><span class='line'><span class="na">CoverageFiles=</span><span class="s">&quot;$(ResultsFolder)\$(ArquivoNCover)&quot;</span>
+</span><span class='line'><span class="na">SatisfactoryCoverage=</span><span class="s">&quot;80&quot;</span>
+</span><span class='line'><span class="na">ReportType=</span><span class="s">&quot;3&quot;</span>
+</span><span class='line'><span class="na">XmlReportName=</span><span class="s">&quot;ResumoCobertura.xml&quot;</span>
+</span><span class='line'><span class="na">HtmlReportName=</span><span class="s">&quot;ResumoCobertura.html&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;NCoverExplorer</span> <span class="na">ToolPath=</span><span class="s">&quot;$(CaminhoNCoverExplorer)&quot;</span>
+</span><span class='line'><span class="na">ProjectName=</span><span class="s">&quot;$(ProjectName)&quot;</span>
+</span><span class='line'><span class="na">OutputDir=</span><span class="s">&quot;$(ResultsFolder)&quot;</span>
+</span><span class='line'><span class="na">CoverageFiles=</span><span class="s">&quot;$(ResultsFolder)\$(ArquivoNCover)&quot;</span>
+</span><span class='line'><span class="na">SatisfactoryCoverage=</span><span class="s">&quot;80&quot;</span>
+</span><span class='line'><span class="na">ReportType=</span><span class="s">&quot;4&quot;</span>
+</span><span class='line'><span class="na">XmlReportName=</span><span class="s">&quot;RelatorioCoberturaPorClasse.xml&quot;</span>
+</span><span class='line'><span class="na">HtmlReportName=</span><span class="s">&quot;RelatorioCoberturaPorClasse.html&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/Target&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>No código acima mandamos gerar dois relatórios e, entre outras coisas, definimos que queremos que nosso código tenha 80% de cobertura. Pronto, temos aqui um script para compilar, executar os testes e a cobertura de testes. Agora, como rodamos isso? Abra o Visual Studio Command Prompt, pra quem não sabe, veja onde ele está:</p>
+
+<p><img class="aligncenter" src="/images/2010/06/ScreenHunter_02%20Jun.%2011%2018.53_2.gif"></p>
+
+<p>Vá até a pasta onde está o arquivo MSBuildDemo.proj e digite MSBuild MSBuildDemo.proj Se você executar isso, os projetos serão apenas compilados porque no início do script definimos como atividade padrão a target Build.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'> 1: DefaultTargets=<span class="ni">&amp;ldquo;</span>Build<span class="ni">&amp;rdquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Targets, são tarefas ou conjuntos de tarefas que podem ser definidas. Queremos executar a tarefa CoberturaTestes, porque se você prestar atenção no script ela depende da tarefa Tests que por sua vez depende de BuildTests que depende de Build, ou seja executando CoberturaTestes todo o script será executado, então rode o comando:</p>
+
+<p>MSBuild MSBuildDemo.proj /target:CoberturaTestes</p>
+
+<p>Se tudo der certo e sob as condições ideais de temperatura você deve ver algo como:</p>
+
+<p><img src="/images/2010/06/ScreenHunter_03%20Jun.%2011%2019.01_2.gif"></p>
+
+<p>Além disso, de acordo com nosso script foi criada uma pasta dentro do diretório da solução chamada Results, ali você pode ver o resultado da cobertura de testes. Abrindo o arquivo RelatorioCobertura.html veremos:</p>
+
+<p><img class="aligncenter" src="/images/2010/06/image_2.png"></p>
+
+<p>Além disso, se você olhar um pouco mais acima na tela do prompt verá o resultado da execução dos testes unitários:</p>
+
+<p><img class="aligncenter" src="/images/2010/06/image_4.png"></p>
+
+<p>Pronto, seus testes unitários são sempre executados e você já sabe quanto falta para testar seu código.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: grid | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/grid/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ASP.NET MVC e o Grid do MvcContrib]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/07/05/asp-net-mvc-e-o-grid-do-mvccontrib/"/>
+    <updated>2010-07-05T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/07/05/asp-net-mvc-e-o-grid-do-mvccontrib</id>
+    <content type="html"><![CDATA[<p>Uma das coisas que eu sempre gostei do ASP.NET Web Forms era a produtividade que a gente ganhava com os controles, entre eles, um dos que eu mais usava sempre foi o GridView. E devo admitir que esse foi também um fator de resistência para eu começar a usar o ASP.NET MVC.</p>
+
+<p>Resistência vencida, toda a vez que eu precisava de um Grid, ou seja, de dados tabulares, eu usava o bom e velho e um loop através dos meus objetos da collection.</p>
+
+<p>Isso é claro, até eu me aventurar com o Grid do <a href="http://mvccontrib.codeplex.com/" target="_blank">MvcContrib</a>. O MvcContrib é um projeto open source que, entre outras coisas, possui esse Grid que é muito prático e simples.</p>
+
+<p>Pra começar é só baixar o assembly do site do projeto e adicionar uma referência para o assembly MvcContrib.dll</p>
+
+<p>Eu fiz uma action bem simples que retorna uns dados estáticos para a página:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="n">ViewResult</span> <span class="nf">Index</span><span class="p">()</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="kt">var</span> <span class="n">produtos</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">new</span> <span class="n">Produto</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Chaveiro&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Valor</span> <span class="p">=</span> <span class="m">11.50</span><span class="n">m</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Categoria</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Categoria</span> <span class="p">{</span><span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Utilitários&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="k">new</span> <span class="n">Produto</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Mouse&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Valor</span> <span class="p">=</span> <span class="m">100</span><span class="n">m</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Categoria</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Categoria</span> <span class="p">{</span><span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Informática&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="k">new</span> <span class="n">Produto</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Id</span> <span class="p">=</span> <span class="m">3</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Pen-Drive 8GB&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Valor</span> <span class="p">=</span> <span class="m">150.99</span><span class="n">m</span><span class="p">,</span>
+</span><span class='line'>        <span class="n">Categoria</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Categoria</span> <span class="p">{</span><span class="n">Id</span> <span class="p">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">Nome</span> <span class="p">=</span> <span class="s">&quot;Informática&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">produtos</span><span class="p">);</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E na view é muito simples também:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>%@ Import Namespace=<span class="ni">&amp;ldquo;</span>MvcContrib.UI.Grid<span class="ni">&amp;rdquo;</span> %&gt;
+</span><span class='line'><span class="ni">&amp;lt;</span>asp:Content ID=<span class="ni">&amp;ldquo;</span>Content1<span class="ni">&amp;rdquo;</span> ContentPlaceHolderID=<span class="ni">&amp;ldquo;</span>TitleContent<span class="ni">&amp;rdquo;</span> runat=<span class="ni">&amp;ldquo;</span>server<span class="ni">&amp;rdquo;</span>&gt;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span>Lista de Produtos
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>/asp:Content&gt;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>asp:Content ID=<span class="ni">&amp;ldquo;</span>Content2<span class="ni">&amp;rdquo;</span> ContentPlaceHolderID=<span class="ni">&amp;ldquo;</span>MainContent<span class="ni">&amp;rdquo;</span> runat=<span class="ni">&amp;ldquo;</span>server<span class="ni">&amp;rdquo;</span>&gt;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>h2<span class="ni">&amp;gt;</span>Lista de Produtosh2<span class="ni">&amp;gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="ni">&amp;lt;</span>%= Html.Grid(Model).Columns(coluna =<span class="ni">&amp;gt;</span>
+</span><span class='line'>{
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Nome);
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Valor);
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Categoria.Nome);
+</span><span class='line'>})
+</span><span class='line'>%<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>/asp:Content&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Isso gera um grid simples na página:</p>
+
+<p><img class="aligncenter" src="/images/2010/07/ScreenHunter_01_07_11.gif"></p>
+
+<p>Agora vamos permitir uma ordenação, primeiro eu altero a view para exibir os links de ordenação:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>%= Html.Grid(Model)<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span>.Sort(ViewData[&quot;sort&quot;] as GridSortOptions)
+</span><span class='line'>.Columns(coluna =<span class="ni">&amp;gt;</span>
+</span><span class='line'>{
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Nome);
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Valor);
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Categoria.Nome).Named(&quot;Categoria&quot;);
+</span><span class='line'>})
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>%&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E na action do controller eu faço seguinte:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">MvcContrib.Sorting</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// &amp;hellip;</span>
+</span><span class='line'><span class="k">public</span> <span class="n">ViewResult</span> <span class="nf">Index</span><span class="p">(</span><span class="n">GridSortOptions</span> <span class="n">sort</span><span class="p">)</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="kt">var</span> <span class="n">produtos</span> <span class="p">=</span> <span class="n">GetProdutos</span><span class="p">();</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">sort</span><span class="p">.</span><span class="n">Column</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">sort</span><span class="p">.</span><span class="n">Column</span> <span class="p">=</span> <span class="s">&quot;Nome&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">produtos</span> <span class="p">=</span> <span class="n">produtos</span><span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">sort</span><span class="p">.</span><span class="n">Column</span><span class="p">,</span> <span class="n">sort</span><span class="p">.</span><span class="n">Direction</span><span class="p">);</span>
+</span><span class='line'><span class="n">ViewData</span><span class="p">[</span><span class="s">&quot;sort&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">sort</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">produtos</span><span class="p">);</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Para ficar mais claro eu movi a inicialização dos produtos para um outro método. Mas como você pode ver no código acima, é muito simples adicionar ordenação.</p>
+
+<p>Por fim, para paginar alteramos a action:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">MvcContrib.Pagination</span><span class="p">;</span>
+</span><span class='line'><span class="c1">// &amp;hellip;</span>
+</span><span class='line'><span class="k">public</span> <span class="n">ViewResult</span> <span class="nf">Index</span><span class="p">(</span><span class="n">GridSortOptions</span> <span class="n">sort</span><span class="p">,</span> <span class="kt">int?</span> <span class="n">pagina</span><span class="p">)</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="kt">var</span> <span class="n">produtos</span> <span class="p">=</span> <span class="n">GetProdutos</span><span class="p">();</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">sort</span><span class="p">.</span><span class="n">Column</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">sort</span><span class="p">.</span><span class="n">Column</span> <span class="p">=</span> <span class="s">&quot;Nome&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">produtos</span> <span class="p">=</span> <span class="n">produtos</span><span class="p">.</span><span class="n">OrderBy</span><span class="p">(</span><span class="n">sort</span><span class="p">.</span><span class="n">Column</span><span class="p">,</span> <span class="n">sort</span><span class="p">.</span><span class="n">Direction</span><span class="p">);</span>
+</span><span class='line'><span class="n">ViewData</span><span class="p">[</span><span class="s">&quot;sort&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">sort</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">produtos</span><span class="p">.</span><span class="n">AsPagination</span><span class="p">(</span><span class="n">pagina</span> <span class="p">??</span> <span class="m">1</span><span class="p">,</span> <span class="m">10</span><span class="p">));</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E na view usamos um helper para exibir as páginas:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>%= Html.Grid(Model)<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span>.Sort(ViewData[&quot;sort&quot;] as GridSortOptions)
+</span><span class='line'>.Columns(coluna =<span class="ni">&amp;gt;</span>
+</span><span class='line'>{
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Nome);
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Valor);
+</span><span class='line'>    coluna.For(x =<span class="ni">&amp;gt;</span> x.Categoria.Nome).Named(&quot;Categoria&quot;);
+</span><span class='line'>})
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>%&gt;<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>%= Html.Pager((IPagination)Model).Format(<span class="ni">&amp;ldquo;</span>Exibindo {0} <span class="ni">&amp;ndash;</span> {1} de {2}<span class="ni">&amp;rdquo;</span>) %&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Conclusão</strong></p>
+
+<p>Fazer paginação e ordenação manualmente em grids pode ser bem complicado às vezes. Pela simplicidade da solução hoje o Grid do MvcContrib é a minha primeira opção.</p>
+]]></content>
+  </entry>
+  
+</feed>

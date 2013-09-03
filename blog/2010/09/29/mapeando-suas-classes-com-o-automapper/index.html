@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Mapeando suas classes com o AutoMapper - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Um framework que eu tenho usado com frequência ultimamente é o AutoMapper, e pra quem não conhece ele, bom, ele faz.. mapeamento de objetos. Iupi! &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Mapeando suas classes com o AutoMapper</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-29T00:00:00-04:00"  data-updated="true">29/09/2010</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Um framework que eu tenho usado com frequência ultimamente é o <a href="http://automapper.codeplex.com/" target="_blank">AutoMapper</a>, e pra quem não conhece ele, bom, ele faz.. mapeamento de objetos. Iupi!</p>
+
+<p>Existem vários cenários onde isso é feito, no meu caso, principalmente, eu tenho usado para mapear estruturas de web services que eu consumo para objetos dentro da minha aplicação. Mas outro cenário comum é, quando usamos o padrão ViewModel, mapear objetos de negócio para a ViewModel.</p>
+
+<p>A motivação para o uso do AutoMapper é manter as responsabilidades separadas, assim, temos um framework só para fazer isso e não precisamos colocar esse mapeamento no meio das nossas classes.</p>
+
+<p>O uso do AutoMapper é bem simples, apenas um assembly que deve ser referenciado no projeto, depois disso devemos criar/definir os mapeamentos.</p>
+
+<p>Vamos imaginar um cenário onde eu tenho um Web Service e quero mapear uma classe PedidoWs para a minha classe Pedido e para manter simples, digamos que as propriedades tem os mesmos nomes. Veja o diagrama abaixo:</p>
+
+<p><img class="aligncenter" src="/images/2010/09/Classes.png" title="Classes" ></p>
+
+<p>Para fazer um mapeamento num cenário desses é bem simples, criamos o mapeamento assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E depois para usarmos o mapeamento basta executar:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;(</span><span class="n">meuObjetoDoTipoPedidoWs</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Esse é o padrão que vamos usar para mapear todos os objetos independentemente de como o mapeamento for criado.</p>
+
+<p>Agora imagine que existam propriedades iguais, mas com nomes diferentes. Por exemplo, imagine que no PedidoWs existe uma propriedade chamada Cliente_ID ao invés de ClienteId, o mapeamento ficaria assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;()</span>
+</span><span class='line'>     <span class="p">.</span><span class="n">ForMember</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">ClienteId</span><span class="p">,</span> <span class="n">opt</span> <span class="p">=&gt;</span> <span class="n">opt</span><span class="p">.</span><span class="n">MapFrom</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Cliente_ID</span><span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Veja, todos os outros atributos serão mapeados normalmente, apenas o ClienteId que foi declarado de forma explícita de onde vem.</p>
+
+<p>Um outro caso importante é quando temos que fazer alguma conversão. Por exemplo, digamos que no nosso caso a data vem do web service em formato de string e temos que converter para DateTime. Faríamos assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="n">Mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">pedidoWs</span><span class="p">,</span> <span class="n">Pedido</span><span class="p">&gt;()</span>
+</span><span class='line'>     <span class="p">.</span><span class="n">ForMember</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">c</span><span class="p">.</span><span class="n">DataPedido</span><span class="p">,</span> <span class="n">opt</span> <span class="p">=&gt;</span> <span class="n">opt</span><span class="p">.</span><span class="n">ResolveUsing</span><span class="p">&lt;</span><span class="n">dateTimeResolver</span><span class="p">&gt;()</span>
+</span><span class='line'>         <span class="p">.</span><span class="n">FromMember</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">DataPedido</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Para usar o ResolveUsing precisamos definir a classe DateTimeResover e eu fiz dessa forma:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">DateTimeResolver</span> <span class="p">:</span> <span class="n">ValueResolver</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">&gt;</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">protected</span> <span class="k">override</span> <span class="n">DateTime</span> <span class="nf">ResolveCore</span><span class="p">(</span><span class="kt">string</span> <span class="n">source</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Para finalizar, vale dizer que essa configuração dos mapeamentos pode ser demorada, então não é uma boa idéia executar as configurações toda a vez. O que eu faço, já que uso isso para a web a maior parte do tempo, é no meu Application_Start dentro do global.asax, executar essas configurações, assim elas são feitas apenas uma vez.</p>
+
+<p>Existem várias outras opções de configuração para o AutoMapper e no site deles tem vários exemplos, vale a pena conferir. Aqui, foi só pra dar um gostinho.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-29T00:00:00-04:00"  data-updated="true">29/09/2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>, <a class='category' href='/blog/categories/automapper/'>automapper</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/09/21/o-controle-de-verso-e-o-delorean/" title="Previous Post: O Controle de Versão e o DeLorean">&laquo; O Controle de Versão e o DeLorean</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper/" title="Next Post: Mapeamentos condicionais usando o AutoMapper">Mapeamentos condicionais usando o AutoMapper &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

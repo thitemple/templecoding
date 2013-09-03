@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Segurança | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/seguranca/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[003 - VideoCast - Autenticação com SimpleMembership]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2012/10/11/003-videocast-autenticacao-com-simplemembership/"/>
+    <updated>2012-10-11T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2012/10/11/003-videocast-autenticacao-com-simplemembership</id>
+    <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/6HupO5Jype0" frameborder="0" width="640" height="360"></iframe>
+
+
+<p>O SimpleMembership é um novo provider que foi incluido no ASP.NET MVC 4 que simplifica a forma de fazer autenticação e autorização em aplicações web, seja fazendo o cadastro, manutenção e autenticação de usuários de uma forma customizada, ou mesmo utilizando padrões como o OAuth.</p>
+
+<p>O código está disponível em: <a href="https://github.com/vintem/MeAnota" target="_blank"><a href="https://github.com/vintem/MeAnota">https://github.com/vintem/MeAnota</a></a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Existe vida além do debug - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Fico impressionado a cada vez que resolvo falar com algum desenvolvedor sobre testes unitários. Na maioria das vezes em que faço isso a resposta que &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Existe vida além do debug</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-01T00:00:00-04:00"  data-updated="true">01/11/2009</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Fico impressionado a cada vez que resolvo falar com algum desenvolvedor sobre testes unitários. Na maioria das vezes em que faço isso a resposta que ouço é que eles não os fazem, não sabem como, ou em muitos casos acham que fazer testes unitários vai simplesmente aumentar o trabalho e o tempo de desenvolvimento, coisas que eles não podem alegar dentro de cronogramas apertados.</p>
+
+<p>Ultimamente, tenho tomado como regra sempre fazer testes unitários e em alguns projetos já tenho até exercitado práticas como Test Driven Development (TDD) e Behavior Driven Development (BDD) &ndash; embora essas práticas não sejam obrigatórias para se ter testes unitários e no caso do TDD, este é mais focado em design, os testes são apenas uma consequência.</p>
+
+<p>De qualquer forma, a prática dos testes unitários tem me trazido vários benefícios e comparar com projetos onde não existem os testes me ajuda a perceber esses benefícios e eu gostaria de compartilhá-los aqui.</p>
+
+<p>Antes de falar dos benefícios gostaria apenas de citar que sim, fazer testes unitários vai tomar mais tempo da codificação da sua funcionalidade, alguns estudos indicam que esse tempo pode até dobrar. Mas como vamos ver mais adiante, esse tempo é depois recuperado em outras atividades.</p>
+
+<p>1) Testes unitários são mais rápidos de serem executados</p>
+
+<p style="padding-left: 30px;">Considerando que você está desenvolvendo algo com uma interface gráfica e na maioria das vezes estamos, se você é um desenvolvedor que se preocupa o mínimo com o código que produz, toda vez que você vai testar o que fez, você tem que entrar no seu ambiente gráfico (seja ele web ou desktop), navegar nas opções até chegar no ponto onde deseja realmente testar. Imagine se para corrigir um defeito ou implementar uma nova funcionalidade você tiver que fazer isso várias vezes. Esse tempo nunca é contado no seu desenvolvimento e muitas vezes não aparece em estatísticas principalmente se for uma correção de um bug.</p>
+
+
+<p style="padding-left: 30px;">No caso dos testes unitários, utilizando a variedade de ferramentas que temos, escrevemos o teste uma vez apenas e podemos executá-los com a dificuldade de apenas um clique!</p>
+
+
+<p>2) Testes unitários ajudam a documentar o seu sistema</p>
+
+<p style="padding-left: 30px;">A maioria dos desenvolvedores não gosta de fazer documentos e eu me incluo nesse grupo. Agora se você encontrar um método que diz:</p>
+
+
+
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[Test]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">ListaTarefas_recebeIdProjeto1_DeveRetornarTarefasDoProjeto</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">//validação</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ou assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="s2">&quot;deve ter um cliente válido associado&quot;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="c1">#validação</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<p style="padding-left: 30px;">Na hora já sabemos qual a característica do código sob teste. Ou seja, um teste unitário <strong>(bem escrito)</strong> nos ajuda a entender o que o código faz ou deveria fazer, mais uma vez poupando tempo de leitura de código para entender ou lembrar o que ele faz. Porque eu não lembro com precisão o que fiz no mês passado, o que dirá de código que escrevi seis meses atrás.</p>
+
+
+<p style="padding-left: 30px;">Pra ficar claro, há alguns dias atrás fomos testar uma funcionalidade de um sistema que não tem testes unitários e depois de algumas horas de debug achamos um if que deveria retornar dados de uma tabela em um caso e de outra tabela no else. E a pergunta surgiu &#8220;por que esse if está ai?&#8221;. Ninguém sabia responder de imediato porque aquilo foi feito há muito tempo, e que poderia ser facilmente respondido se tivesse um teste unitário com um nome claro, bastava comentar o código, esperar algum teste falhar e ver o porquê daquele if. Muito mais simples e rápido do que ter que mais uma vez gastar tempo em debug que ninguém soma no tempo total do projeto.</p>
+
+
+<p>3) Testes unitários podem ser executados por qualquer desenvolvedor</p>
+
+<p style="padding-left: 30px;">Quantos vezes não temos que alterar código que não fizemos ou que fizemos há muito tempo e que não nos lembramos mais dele direito? Nessas vezes eu sempre fico com aquela sensação de &#8220;será que eu realmente podia alterar isso&#8221;?</p>
+
+
+<p style="padding-left: 30px;">Se o código tiver testes unitários e alterarmos algo que não devia, um teste irá falhar e se ele tiver um nome apropriado como vimos acima, será muito fácil saber o que foi feito de errado, trazendo confiança para alteração, mais tempo economizado, já que não vamos ter que debugar, analisar variáveis, ou realizar execuções linha a linha até descobrirmos o que parou. Isso, obviamente, se descobrirmos, porque muitas vezes é o usuário quem descobre, naquela situação de &#8220;você corrigiu uma coisa e quebrou outra&#8221;.</p>
+
+
+<p>4) Testes unitários nos ajudam a melhorar o design do software</p>
+
+<p style="padding-left: 30px;">Esse argumento é válido principalmente para as linguagens estaticamente tipadas como java e C#, mas não somente para elas.</p>
+
+
+<p style="padding-left: 30px;">Um dos princípios do teste unitário é que ele deve testar uma unidade de código. Se um teste unitário é escrito de forma que ele começa testando sua camada de interface com o usuário, passa pelo camada de negócios, camada de dados e vai até o banco de dados (assumindo que o software seja divido em camadas), ele não é mais um teste unitário e sim um teste de integração - não há nada de errado com testes de integração, eles só servem para um propósito diferente. Bom, partindo desse princípio, quando escrevemos testes unitários estamos isolando as camadas do nosso sistema e se fizermos isso seguindo as orientações do <a href="http://pt.wikipedia.org/wiki/Gang_of_Four" target="_self">GOF</a> estaremos isolando as camadas, desenvolvendo orientado à interface, o que além do isolamento em si trás mais um benefício. Imagine o seguinte cenário:</p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">Você desenvolve um um software/produto que pode ser utilizado por vários clientes e na maioria dos casos esse produto deve se comportar de forma igual em todos os clientes, mas em um cliente específico uma das partes do sistema pede um comportamento diferente, o que você faz: (a) faz um if dentro daquela funcionalidade, (b) faz um build específico para aquele cliente ou (c) faz uma nova classe que implementa aquela interface especificamente para aquele cliente, não muda o código já existente e ainda mantém um único build?</span></span></p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">É claro pra mim que e a terceira opção é a melhor, e isso pode ser discutido em um outro post. Então voltemos ao teste unitário, e o benefício do desenvolvimento separado em camadas :-). Se o sistema tiver testes unitários e mais uma vez, testes unitários bem feitos, seu sistema consequentemente será mais isolado e terá uma manutenção muito mais fácil.</span></span></p>
+
+
+<p><span style="color: #3366ff;"><span style="color: #000000;">5) Testes unitários auxiliam na produção de código com menos defeito</span></span></p>
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">Parece óbvia a afirmação, mas muitas pessoas só percebem a diferença quando começam a fazer os testes unitários. </span></span></p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">A lógica é simples, mas só se aplica quando decidimos fazer os testes porque queremos melhorar a qualidade do código e não porque fomos obrigados a fazê-los.</span></span></p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">A partir do momento que começamos a escrever testes unitários, olhamos para uma pequena porção isolada de código e pensamos em como ela pode falhar, somente então escrevemos o teste. É muito mais fácil pensar em como um método de 10 linhas pode falhar e testá-lo, do que executar um monte de telas para chegar no ponto que queremos testar.</span> </span></p>
+
+
+<p><span style="color: #3366ff;"><span style="color: #000000;">Com certeza existem outros argumentos que caberiam para justificar os testes unitários, mas honestamente esses tem sido os principais que eu tenho visto desde que comecei a adotar a prática dos testes unitários. Espero que esse post lhe anime a estudar e iniciar essa prática, eu tenho convicção de que a sua vida será bem melhor no momento que você reduzir o seu tempo de debug. :&ndash;)</span></span></p>
+
+<p>Ainda em tempo, existem diversos livros sobre testes unitários, um que eu li e realmente gostei foi esse <a href="http://www.amazon.com/Art-Unit-Testing-Examples-NET/dp/1933988274/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1257083405&amp;sr=8-1" target="_blank">The Art of Unit Testing</a>, infelizmente, apenas em inglês.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-01T00:00:00-04:00"  data-updated="true">01/11/2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>, <a class='category' href='/blog/categories/testes/'>testes</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/10/25/adicionando-foreign-keys-no-rails/" title="Previous Post: Adicionando Foreign Keys no Rails">&laquo; Adicionando Foreign Keys no Rails</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/" title="Next Post: Testes integrados e automáticos com Selenium">Testes integrados e automáticos com Selenium &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

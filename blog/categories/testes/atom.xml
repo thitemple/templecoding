@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: testes | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/testes/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[004 - VideoCast - BDD com SpecFlow]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2012/11/11/bdd-com-specflow/"/>
+    <updated>2012-11-11T00:00:00-05:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2012/11/11/bdd-com-specflow</id>
+    <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/oNs7fmGzMfY" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>BDD com SpecFlow</h2>
+
+
+<p>Behavior Driven Development (BDD) é uma forma diferente de desenvolver aplicações onde programamos com base em uma especificação orientado ao comportamento esperado da aplicação.</p>
+
+<p>O SpecFlow é uma ferramenta Open Source para .NET que auxilia no processo de transformação das especificações em testes automatizados, permitindo esse modelo de desenvolvimento com BDD.</p>
+
+<p>Nesse vídeo apresento um pouco de BDD com SpecFlow funcionando juntos.</p>
+
+<p>O código usado no vídeo está disponível no meu GitHub em: <a href="https://github.com/vintem/BDDSpecFlow"><a href="https://github.com/vintem/BDDSpecFlow">https://github.com/vintem/BDDSpecFlow</a></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Testes integrados com o Selenium II]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/01/04/testes-integrados-com-o-selenium-ii/"/>
+    <updated>2010-01-04T00:00:00-05:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/01/04/testes-integrados-com-o-selenium-ii</id>
+    <content type="html"><![CDATA[<p><a href="http://vintem.github.io/templecoding/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/">Eu já falei anteriormente do Selenium</a> mas usando um outro enfoque, hoje eu queria falar sobre uma prática que adotamos na <a href="http://www.golive.com.br" target="_blank">GoLive</a> para testar os aplicativos web.</p>
+
+<p>Nada muito complicado, nem do outro mundo, mas ao invés de longos documentos com print screens de telas, ou formulários que são mal preenchidos, estamos gravando os testes de aplicações web com o Selenium. Quando um erro é encontrado, o bug é registrado no relatório de bugs e o arquivo do Selenium é anexado (na verdade hoje ele ainda é enviado por email).</p>
+
+<p>Pra reproduzir o erro, basta abrir o arquivo no firefox e debugar :&ndash;).</p>
+
+<p>Uma mudança simples no processo, mas que na minha opinião facilitou bastante a correção de erros.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[O Firebug é seu amigo]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2009/12/14/o-firebug-e-seu-amigo/"/>
+    <updated>2009-12-14T00:00:00-05:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2009/12/14/o-firebug-e-seu-amigo</id>
+    <content type="html"><![CDATA[<p>Se você, assim como eu, redescobriu o javascript ultimamente (por mim principalmente por causa do jQuery), então você vai gostar de usar (se ainda não usa) o <a href="https://addons.mozilla.org/en-US/firefox/addon/1843" target="_blank">Firebug</a>.<br /><br />O Firebug é um add-on para o Firefox que permite debugar o javascript, analisar o que foi enviado em Requests e Responses de chamada ajax.<br /><br />É só instalar o add-on e abrir o console dentro do Firefox e pronto. Na aba Script é onde coloca-se os breakpoints e faz a execução do script passo a passo, inclusive com a janela Watch para ver o valor das variáveis.<br /><br />Na aba console é possível executar comandos javascript em tempo de execução. Uma mão na roda pra quem usa o javascript. E ele ainda exibe a árvore DOM, o HTML gerado, o CSS, enfim, uma série de funcionalidades que fazem dele uma ferramenta obrigatória.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Testes integrados e automáticos com Selenium]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/"/>
+    <updated>2009-11-08T00:00:00-05:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium</id>
+    <content type="html"><![CDATA[<p>Existem muitas maneiras de testarmos nossos sistemas, uma delas é o teste integrado, que nada mais é do que testar o sistema passando por todos os módulos do mesmo. Imaginando um sistema que acessa um banco de dados ou um web service por exemplo, o teste deve cobrir a chamada pela interface de usuário, passando pelas camadas de negócio até chegar no banco ou no web service.</p>
+
+<p>Existem várias maneiras de se realizar testes integrados, a mais comum que eu tenho visto é o teste manual, onde um usuário faz o teste de ponta a ponta. Mas e se houver uma mudança no sistema? Deve-se fazer todos os testes manualmente de novo? Isso com certeza tomaria muito tempo e trabalho. É para esse tipo de caso que existem ferramentas como o <a href="http://seleniumhq.org/" target="_blank">Selenium</a>.</p>
+
+<p>O Selenium é uma ferramenta bem simples e muito fácil de usar. Primeiro, no site do Selenium é possível baixar a IDE e ela roda como um plugin do firefox. Eu não vou falar muito sobre como gravar o teste com o Selenium, porque ele é muito simples e tem um ótimo vídeo no site explicando como gravar teste. Mas neste momento, basta saber que ao abrir a IDE do Selenium, ela começa a gravar todas as ações realizadas no browser, que podem ser salvas e executadas a qualquer momento.</p>
+
+<p>A parte que mais me interessou, é que ao final da gravação do teste é possível exportar esse teste para ser executado dentro de ferramentas de teste unitário, como o nUnit ou o jUnit.</p>
+
+<p><img class="aligncenter" src="/images/2009/11/Screen-shot-2009-11-08-at-20.18.26.png" title="&lsquo;Exportando o teste para o nunit&rsquo;" ></p>
+
+<p>Como é  possível ver, ele gera o código (nesse caso em C#) para rodar dentro do nUnit.</p>
+
+<p>Para rodar esse teste dentro do nUnit, primeiro é preciso baixar o Selenium RC (Remote Control), no próprio site do Selenium. Ao descompactá-lo, você vai ver que ele tem diversas pastas com clients e um server. No caso do .Net, basta adicionar os assemblies como referência ao projeto de teste, criar uma nova classe para o teste, copiar e colar o código.</p>
+
+<p>Antes de testar é preciso iniciar o server do Remote Control. Junto com as pastas de client existe uma de server. Para iniciar o servidor basta ir no prompt e executar <em>java -jar selenium-server.jar</em>. Se possível, faça isso em uma máquina de servidor para que todos possam executar os testes.</p>
+
+<p>Com o servidor rodando, nós voltamos para o código e ajustamos apenas o método SetupTest com as configurações do servidor e do endereço do site que iremos testar:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[SetUp]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">SetupTest</span><span class="p">()</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="n">selenium</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DefaultSelenium</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="m">4444</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;*firefox&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s">&quot;http://localhost:1220/&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="n">selenium</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+</span><span class='line'><span class="n">verificationErrors</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>No caso acima, eu iniciei o servidor na minha máquina, localhost, na porta 4444 que é a padrão, o browser que está usando para testes, no meu caso o firefox (no site tem uma lista dos browsers suportados) e depois o endereço do servidor onde está o site que eu vou testar.</p>
+
+<p>Pronto, isso é tudo o que é necessário para rodar o teste no nUnit. Depois disso, basta o servidor do Remote Control estar ligado e você pode rodar os testes quando e quantas vezes quiser.</p>
+
+<p><strong>Refatorando seu código</strong></p>
+
+<p>Pensando em sistemas que não tem testes unitários ou tem um código muito acoplado e de difícil manutenção (ou qualquer outra boa razão para refatorar o código), essa é uma ótima solução para refatorar o código com mais segurança.</p>
+
+<p>A idéia é gerar diversos testes usando o Selenium e gravar esses testes para serem rodados em um framework de testes, como o nUnit, fazer as mudanças no código que achamos necessárias, por exemplo desacoplar o código para permitir que testes unitários sejam criados. Após as modificações rodamos os testes feitos com o Selenium para ver se nada parou de funcionar.</p>
+
+<p>Você pode se perguntar então, por que fazer testes unitários se posso testar todo o sistema só gravando minhas ações no browser? A principal razão é que testes integrados, por passarem por todo o sistema, tendem a ser mais lentos para executar do que testes unitários que devem testar pequenas unidades de código. Se esses testes integrados envolverem chamadas a sistemas de terceiros como Web Services, chamadas via socket, chamadas a ERPs, etc., podem ficar ainda mais lentos. Imagine se você fizer testes para o sistema todo. A tendência é que você não fique esperando que o teste rode, por exemplo, em 10 minutos para saber se cada modificação feita funcionou. Por isso testes unitários devem sempre ser feitos.</p>
+
+<p><strong>Agende seus testes integrados para rodar periodicamente</strong></p>
+
+<p>Você pode usar os testes integrados para auxiliar na refatoração de código, principalmente se você não tem testes unitários (e então começar a criá-los). Mas outra questão importante é testar se o sistema/funcionalidade estão funcionando de acordo com o esperado como um todo, ou mais obviamente, integralmente. Mas se o teste demora muito para rodar e você não quer ficar esperando, você sempre pode agendar para que o teste rode de madrugada, por exemplo. Para isso existem ferramentas como o <a href="http://cruisecontrol.sourceforge.net/" target="_blank">CruiseControl</a> e o <a href="http://wiki.hudson-ci.org/display/HUDSON/Meet+Hudson" target="_blank">Hudson</a>, só para citar duas. Essas são ferramentas de Integração Contínua (vou falar sobre isso num outro post) que além de outras coisas, podem rodar os testes integrados em um horário determinado.</p>
+
+<p>Como eu disse anteriormente, existem muitas formas e ferramentas para realizar testes integrados, essa é apenas uma delas, que achei muito prática e fácil, além do que o Selenium é uma ferramenta gratuita.</p>
+
+<p>Site do Selenium &ndash; <a href="http://seleniumhq.org/" target="_self"><a href="http://seleniumhq.org/">http://seleniumhq.org/</a></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Existe vida além do debug]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug/"/>
+    <updated>2009-11-01T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug</id>
+    <content type="html"><![CDATA[<p>Fico impressionado a cada vez que resolvo falar com algum desenvolvedor sobre testes unitários. Na maioria das vezes em que faço isso a resposta que ouço é que eles não os fazem, não sabem como, ou em muitos casos acham que fazer testes unitários vai simplesmente aumentar o trabalho e o tempo de desenvolvimento, coisas que eles não podem alegar dentro de cronogramas apertados.</p>
+
+<p>Ultimamente, tenho tomado como regra sempre fazer testes unitários e em alguns projetos já tenho até exercitado práticas como Test Driven Development (TDD) e Behavior Driven Development (BDD) &ndash; embora essas práticas não sejam obrigatórias para se ter testes unitários e no caso do TDD, este é mais focado em design, os testes são apenas uma consequência.</p>
+
+<p>De qualquer forma, a prática dos testes unitários tem me trazido vários benefícios e comparar com projetos onde não existem os testes me ajuda a perceber esses benefícios e eu gostaria de compartilhá-los aqui.</p>
+
+<p>Antes de falar dos benefícios gostaria apenas de citar que sim, fazer testes unitários vai tomar mais tempo da codificação da sua funcionalidade, alguns estudos indicam que esse tempo pode até dobrar. Mas como vamos ver mais adiante, esse tempo é depois recuperado em outras atividades.</p>
+
+<p>1) Testes unitários são mais rápidos de serem executados</p>
+
+<p style="padding-left: 30px;">Considerando que você está desenvolvendo algo com uma interface gráfica e na maioria das vezes estamos, se você é um desenvolvedor que se preocupa o mínimo com o código que produz, toda vez que você vai testar o que fez, você tem que entrar no seu ambiente gráfico (seja ele web ou desktop), navegar nas opções até chegar no ponto onde deseja realmente testar. Imagine se para corrigir um defeito ou implementar uma nova funcionalidade você tiver que fazer isso várias vezes. Esse tempo nunca é contado no seu desenvolvimento e muitas vezes não aparece em estatísticas principalmente se for uma correção de um bug.</p>
+
+
+<p style="padding-left: 30px;">No caso dos testes unitários, utilizando a variedade de ferramentas que temos, escrevemos o teste uma vez apenas e podemos executá-los com a dificuldade de apenas um clique!</p>
+
+
+<p>2) Testes unitários ajudam a documentar o seu sistema</p>
+
+<p style="padding-left: 30px;">A maioria dos desenvolvedores não gosta de fazer documentos e eu me incluo nesse grupo. Agora se você encontrar um método que diz:</p>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="na">[Test]</span>
+</span><span class='line'><span class="k">public</span> <span class="k">void</span> <span class="nf">ListaTarefas_recebeIdProjeto1_DeveRetornarTarefasDoProjeto</span><span class="p">()</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="c1">//validação</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Ou assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">it</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">deve</span> <span class="n">ter</span> <span class="n">um</span> <span class="n">cliente</span> <span class="n">v</span><span class="err">á</span><span class="n">lido</span> <span class="n">associado</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span> <span class="k">do</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;#validação</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p style="padding-left: 30px;">Na hora já sabemos qual a característica do código sob teste. Ou seja, um teste unitário <strong>(bem escrito)</strong> nos ajuda a entender o que o código faz ou deveria fazer, mais uma vez poupando tempo de leitura de código para entender ou lembrar o que ele faz. Porque eu não lembro com precisão o que fiz no mês passado, o que dirá de código que escrevi seis meses atrás.</p>
+
+
+<p style="padding-left: 30px;">Pra ficar claro, há alguns dias atrás fomos testar uma funcionalidade de um sistema que não tem testes unitários e depois de algumas horas de debug achamos um if que deveria retornar dados de uma tabela em um caso e de outra tabela no else. E a pergunta surgiu "por que esse if está ai?". Ninguém sabia responder de imediato porque aquilo foi feito há muito tempo, e que poderia ser facilmente respondido se tivesse um teste unitário com um nome claro, bastava comentar o código, esperar algum teste falhar e ver o porquê daquele if. Muito mais simples e rápido do que ter que mais uma vez gastar tempo em debug que ninguém soma no tempo total do projeto.</p>
+
+
+<p>3) Testes unitários podem ser executados por qualquer desenvolvedor</p>
+
+<p style="padding-left: 30px;">Quantos vezes não temos que alterar código que não fizemos ou que fizemos há muito tempo e que não nos lembramos mais dele direito? Nessas vezes eu sempre fico com aquela sensação de "será que eu realmente podia alterar isso"?</p>
+
+
+<p style="padding-left: 30px;">Se o código tiver testes unitários e alterarmos algo que não devia, um teste irá falhar e se ele tiver um nome apropriado como vimos acima, será muito fácil saber o que foi feito de errado, trazendo confiança para alteração, mais tempo economizado, já que não vamos ter que debugar, analisar variáveis, ou realizar execuções linha a linha até descobrirmos o que parou. Isso, obviamente, se descobrirmos, porque muitas vezes é o usuário quem descobre, naquela situação de "você corrigiu uma coisa e quebrou outra".</p>
+
+
+<p>4) Testes unitários nos ajudam a melhorar o design do software</p>
+
+<p style="padding-left: 30px;">Esse argumento é válido principalmente para as linguagens estaticamente tipadas como java e C#, mas não somente para elas.</p>
+
+
+<p style="padding-left: 30px;">Um dos princípios do teste unitário é que ele deve testar uma unidade de código. Se um teste unitário é escrito de forma que ele começa testando sua camada de interface com o usuário, passa pelo camada de negócios, camada de dados e vai até o banco de dados (assumindo que o software seja divido em camadas), ele não é mais um teste unitário e sim um teste de integração - não há nada de errado com testes de integração, eles só servem para um propósito diferente. Bom, partindo desse princípio, quando escrevemos testes unitários estamos isolando as camadas do nosso sistema e se fizermos isso seguindo as orientações do <a href="http://pt.wikipedia.org/wiki/Gang_of_Four" target="_self">GOF</a> estaremos isolando as camadas, desenvolvendo orientado à interface, o que além do isolamento em si trás mais um benefício. Imagine o seguinte cenário:</p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">Você desenvolve um um software/produto que pode ser utilizado por vários clientes e na maioria dos casos esse produto deve se comportar de forma igual em todos os clientes, mas em um cliente específico uma das partes do sistema pede um comportamento diferente, o que você faz: (a) faz um if dentro daquela funcionalidade, (b) faz um build específico para aquele cliente ou (c) faz uma nova classe que implementa aquela interface especificamente para aquele cliente, não muda o código já existente e ainda mantém um único build?</span></span></p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">É claro pra mim que e a terceira opção é a melhor, e isso pode ser discutido em um outro post. Então voltemos ao teste unitário, e o benefício do desenvolvimento separado em camadas :-). Se o sistema tiver testes unitários e mais uma vez, testes unitários bem feitos, seu sistema consequentemente será mais isolado e terá uma manutenção muito mais fácil.</span></span></p>
+
+
+<p><span style="color: #3366ff;"><span style="color: #000000;">5) Testes unitários auxiliam na produção de código com menos defeito</span></span></p>
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">Parece óbvia a afirmação, mas muitas pessoas só percebem a diferença quando começam a fazer os testes unitários. </span></span></p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">A lógica é simples, mas só se aplica quando decidimos fazer os testes porque queremos melhorar a qualidade do código e não porque fomos obrigados a fazê-los.</span></span></p>
+
+
+<p style="padding-left: 30px;"><span style="color: #3366ff;"><span style="color: #000000;">A partir do momento que começamos a escrever testes unitários, olhamos para uma pequena porção isolada de código e pensamos em como ela pode falhar, somente então escrevemos o teste. É muito mais fácil pensar em como um método de 10 linhas pode falhar e testá-lo, do que executar um monte de telas para chegar no ponto que queremos testar.</span> </span></p>
+
+
+<p><span style="color: #3366ff;"><span style="color: #000000;">Com certeza existem outros argumentos que caberiam para justificar os testes unitários, mas honestamente esses tem sido os principais que eu tenho visto desde que comecei a adotar a prática dos testes unitários. Espero que esse post lhe anime a estudar e iniciar essa prática, eu tenho convicção de que a sua vida será bem melhor no momento que você reduzir o seu tempo de debug. :&ndash;)</span></span></p>
+
+<p>Ainda em tempo, existem diversos livros sobre testes unitários, um que eu li e realmente gostei foi esse <a href="http://www.amazon.com/Art-Unit-Testing-Examples-NET/dp/1933988274/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1257083405&amp;sr=8-1" target="_blank">The Art of Unit Testing</a>, infelizmente, apenas em inglês.</p>
+]]></content>
+  </entry>
+  
+</feed>

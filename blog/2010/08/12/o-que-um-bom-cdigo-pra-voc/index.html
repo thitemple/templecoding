@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>O que é um bom código pra você? - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Já ouvi e li muita gente dizer que um bom código é subjetivo, sujeito a interpretação e coisas do gênero. Eu acredito que alguns aspectos do código &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2010/08/12/o-que-um-bom-cdigo-pra-voc">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">O que é um bom código pra você?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-12T00:00:00-04:00"  data-updated="true">12/08/2010</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Já ouvi e li muita gente dizer que um bom código é subjetivo, sujeito a interpretação e coisas do gênero. Eu acredito que alguns aspectos do código podem ser definidos de uma forma mais prática e não tão subjetiva.</p>
+
+
+<p>  <p>É claro, os padrões de projeto que usamos, as linguagens, quantidade de linhas que tem um método, essas coisas são realmente subjetivas e devem ser analisadas de acordo com o projeto/cliente/equipe, etc.</p>  <p>Mas quando eu codifico eu tenho algumas regras, que acredito que sejam bem claras, que ajudam a definir um bom código, claro, não são as únicas, mas essas são as primeiras que eu tomo por padrão. Pra mim um bom código começa com:</p>  <p><strong>1) Dar um bom nome</strong></p>  <p>Um classe, método ou variável deve ter um nome que documente e principalmente determine o que faz. Se você tiver uma classe que chama Gerenciador e um método chamado Executar, você está abrindo o escopo do que a classe e método podem fazer. O nome não restringe e pior não indica nada que o código deve fazer. Classes e métodos devem ter um próposito único e o nome deve refletir esse propósito.</p>  <p>Da mesma forma uma váriavel que chama simples &ldquo;data&rdquo; ou &ldquo;valor&rdquo; não dizem muita coisa. Prefira um nome como dataNascimento ou valorFaturado. </p>  <p><strong>2) Códigos devem ser de fácil manutenção/modificação</strong></p>  <p>Existe uma razão muito simples porque eu não concordo com a metáfora da construção civil para o desenvolvimento de software. Se você se sente quebrando uma parede quando está alterando ou adicionando uma melhoria para sua aplicação, com certeza você fez alguma coisa errada.</p>  <p>Existem diversos <a href="http://pt.wikipedia.org/wiki/Padr%C3%A3o_de_projeto_de_software" target="_blank">padrões de projetos</a> e princípios que nos ajudam a fazer códigos que são mais fáceis de se manter. Comece sempre evitando repetições, se quando você tem que alterar uma funcionalidade, tem de mexer em mais de um local, provavelmente existe uma solução melhor pra isso.</p>  <p>Mas acima de tudo use o que a orientação a objeto tem de melhor para facilitar a alteração do sistema, afinal de contas, qual foi o projeto que você fez do início ao fim e que não teve nenhuma modificação?</p>  <p><strong>3) Testes, testes e mais testes</strong></p>  <p>Na verdade esse item poderia ser um complemento do anterior, testes ajudam a dar segurança e credibilidade na manutenção do código. Honestamente, eu não consigo mais me ver escrevendo um código novo sem teste unitário. O simples fato de fazer uma alteração e saber que nada quebrou porque tenho testes unitários já me convence de que eu preciso deles. </p>  <p><strong>Conclusão</strong></p>  <p>São 3 regras simples, somente elas não garantem um bom código, com certeza não. Mas para mim essas são as 3 regras que iniciam o desenvolvimento de um bom código, não consigo me ver escrevendo código sem pensar nessas regras e principalmente não acredito que um desenvolvedor que se considere sênior, seja realmente sênior se não tem essas 3 regras básicas.</p>  <p>E pra você, quais são as suas regras?</p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-12T00:00:00-04:00"  data-updated="true">12/08/2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2010/08/12/o-que-um-bom-cdigo-pra-voc/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2010/08/12/o-que-um-bom-cdigo-pra-voc/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/08/02/ser-um-especialista-saber-o-que-voc-faz/" title="Previous Post: Ser um especialista é saber o que você faz">&laquo; Ser um especialista é saber o que você faz</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/08/29/anlise-tdc2010/" title="Next Post: Análise TDC2010">Análise TDC2010 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2010/08/12/o-que-um-bom-cdigo-pra-voc/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2010/08/12/o-que-um-bom-cdigo-pra-voc/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Instalando uma máquina de desenvolvimento com dois comandos - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Um script para instalacao de aplicacoes em um ambiente Windows usando PowerShell e Chocolatey">
+  <meta name="keywords" content="Windows, PowerShell, Chocolatey, Instalacao, Setup">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Instalando uma máquina de desenvolvimento com dois comandos</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-25T12:11:00-04:00"  data-updated="true">25/08/2013</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recentemente eu tive que preparar duas máquinas de desenvolvimento, um novo notebook Windows 8 e uma VM Windows 7 e, honestamente, por mais que eu goste de uma máquina nova, perder tempo instalando uma porção de aplicações e configurar tantas outras não é algo que eu ache divertido. Além do mais, sempre tem algumas coisas que eu não faço todo dia e, na hora que eu preciso eu não lembro. Por exemplo, como é que eu gero uma chave RSA para usar com ssh mesmo?</p>
+
+<p>Enfim, dessa vez, ao invés de instalar tudo manualmente, eu decidi fazer um script que faz todas essas coisas automaticamente para mim. Usando <a href="http://technet.microsoft.com/en-us/scriptcenter/dd742419.aspx">PowerShell</a> e <a href="http://chocolatey.org">Chocolatey</a>.</p>
+
+<p><img class="alignleft" src="/images/2013/08/chocolateyicon.gif" title="Chocolatey" alt="Chocolatey"> Acho que o PowerShell é bem conhecido, então não vou perder muito tempo com ele. Sobre o Chocolatey, ele é um gerenciador de pacotes para linha de comando do Windows. Ele funciona mais ou menos como funciona o apt-get no linux ou o brew no Mac. É um projeto open source e gratuito bem interessante, é relativamente recente se comparado com as outras plataformas, mas ele funciona muito bem no Windows e é muito prático para evitar ficar procurando instaladores. Já existe uma grande <a href="http://chocolatey.org/packages">variedade de aplicações disponíveis para serem instaladas através dele</a>. Mas também, se precisar, é muito fácil criar um pacote e publicar lá, eu mesmo <a href="http://chocolatey.org/packages/ruby.devkit.ruby193">criei um pacote para instalar o DevKit do Ruby na versão 1.9.3 do Ruby</a>.</p>
+
+<p>Ok, chega de história. O script completo que eu criei <a href="https://gist.github.com/vintem/6334646">está disponível em um gist</a>. Ele é até que bem simples e suas principais partes estão comentadas (em inglês). Fique a vontade para baixar e modificar a gosto.</p>
+
+<h2>Mas o que ele faz?</h2>
+
+<h3>Instala as seguintes aplicações usando o Chocolatey</h3>
+
+<ul>
+<li>Git</li>
+<li>Poshgit</li>
+<li>Ruby (1.9.3)</li>
+<li>Node.js</li>
+<li>WebPI</li>
+<li>Notepad++</li>
+<li>Sublime Text</li>
+<li>ConEmu</li>
+<li>Python</li>
+<li>.NET Framework (4.0 e 4.5)</li>
+<li>Putty</li>
+<li>Firefox</li>
+<li>Chrome</li>
+<li>Fiddler</li>
+<li>Filezilla</li>
+<li>Winrar</li>
+<li>MongoDB</li>
+<li>Nuget Package Explorer</li>
+<li>Skydrive</li>
+<li>Evernote</li>
+<li>Windows Installer (3.1 e 4.5)</li>
+</ul>
+
+
+<p>Opcionalmente, no meio da execução do script ele pergunta se quer instalar o SQL Express 2012 (também utilizando o Chocolatey).</p>
+
+<h3>Customização do PowerShell e Git Bash</h3>
+
+<p>Eu tenho alguns atalhos criados tanto para o shell do PowerShell como o do Git, então eu baixo automaticamente essas customizações e adiciono nos respectivos arquivos de customização.</p>
+
+<h3>Configuração do Git</h3>
+
+<p>Na maior parte do tempo eu uso o Git como repositório de código ou o <a href="http://git-scm.com/book/ch8-1.html">git svn</a> e eu tenho algumas configurações globais que eu gosto de usar, como alguns arquivos que geralmente eu ignoro, ou alguns atalhos específicos para o git. Então eu também baixo essas configurações de dois outros gists que que tenho.</p>
+
+<h3>Gems e pacotes Node</h3>
+
+<p>Algumas gems para o Ruby que eu sempre uso são instaladas automaticamente, depois disso alguns pacotes do Node.js também são instalados.</p>
+
+<h3>Geração da chave RSA</h3>
+
+<p>Por fim, a última coisa que eu faço é gerar uma chave RSA que eu vou usar para me conectar via SSH em outros terminais, ou no GitHub.</p>
+
+<h2>Executando o script</h2>
+
+<p>Para executar o script são necessários dois comandos, mas primeiro, <a href="https://gist.github.com/vintem/6334646">baixe o script do gist</a>. Depois disso, <strong>abra o PowerShell como Administrador</strong> e, para executar um script baixado da internet é preciso modificar a política de execução do PowerShell, então digite:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Set-ExecutionPolicy Unrestricted
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Depois disso, é só executar o script. Supondo que ele esteja no desktop, execute:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>~/Desktop/dev_setup.ps1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E é isso, você tem todas as aplicações instaladas. Em algum momento da execução do script ele vai perguntar se você quer instalar o SQL Express e também uma senha para a chave RSA, mas no mais você tem uma máquina instalada com apenas dois comandos.</p>
+
+<p>PS: Eu tentei fazer com que o Visual Studio 2012 fosse instalado automaticamente também, mas honestamente, não existe muita documentação sobre o assunto e achei que não valia o trabalho. Afinal, nesse caso é só montar um ISO e seguir os passos da instalação. Para uma aplicação só tá valendo.</p>
+
+<p>Se você ficou com preguiça de ir lá olhar o script, veja ele aqui completo:</p>
+
+<div><script src='https://gist.github.com/6334646.js?file=dev_setup.ps1'></script>
+<noscript><pre><code>function Add-Path() {
+    [Cmdletbinding()]
+    param([parameter(Mandatory=$True,ValueFromPipeline=$True,Position=0)][String[]]$AddedFolder)
+    # Get the current search path from the environment keys in the registry.
+    $OldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
+    # See if a new folder has been supplied.
+    if (!$AddedFolder) {
+        Return 'No Folder Supplied. $ENV:PATH Unchanged'
+    }
+    # See if the new folder exists on the file system.
+    if (!(TEST-PATH $AddedFolder))
+    { Return 'Folder Does not Exist, Cannot be added to $ENV:PATH' }cd
+    # See if the new Folder is already in the path.
+    if ($ENV:PATH | Select-String -SimpleMatch $AddedFolder)
+    { Return 'Folder already within $ENV:PATH' }
+    # Set the New Path
+    $NewPath=$OldPath+’;’+$AddedFolder
+    Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $newPath
+    # Show our results back to the world
+    Return $NewPath
+}
+
+######################################################
+# Install apps using Chocolatey
+######################################################
+Write-Host &quot;Installing Chocolatey&quot;
+iex ((new-object net.webclient).DownloadString('http://bit.ly/psChocInstall'))
+Write-Host
+
+Write-Host &quot;Installing applications from Chocolatey&quot;
+cinst git
+cinst ruby -Version 1.9.3.44800
+cinst nodejs.install
+cinst PhantomJS
+cinst webpi
+cinst poshgit
+cinst notepadplusplus
+cinst sublimetext2
+cinst SublimeText2.PackageControl
+cinst SublimeText2.PowershellAlias
+cinst ConEmu
+cinst python
+cinst DotNet4.0
+cinst DotNet4.5
+cinst putty
+cinst Firefox
+cinst GoogleChrome
+cinst fiddler4
+cinst filezilla
+cinst dropbox
+cinst winmerge
+cinst kdiff3
+cinst winrar -Version 4.20.0
+cinst mongodb
+cinst NugetPackageExplorer
+cinst SkyDrive
+cinst Evernote
+Write-Host
+
+######################################################
+# Set environment variables
+######################################################
+Write-Host &quot;Setting home variable&quot;
+[Environment]::SetEnvironmentVariable(&quot;HOME&quot;, $HOME, &quot;User&quot;)
+[Environment]::SetEnvironmentVariable(&quot;CHROME_BIN&quot;, &quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot;, &quot;User&quot;)
+[Environment]::SetEnvironmentVariable(&quot;PHANTOMJS_BIN&quot;, &quot;C:\tools\PhanomJS\phantomjs.exe&quot;, &quot;User&quot;)
+Write-Host
+
+######################################################
+# Download custom .bashrc file
+######################################################
+Write-Host &quot;Creating .bashrc file for use with Git Bash&quot;
+$filePath = $HOME + &quot;\.bashrc&quot;
+New-Item $filePath -type file -value ((new-object net.webclient).DownloadString('http://vintem.me/winbashrc'))
+Write-Host
+
+######################################################
+# Install Windows installer through WebPI
+######################################################
+Write-Host &quot;Installing apps from WebPI&quot;
+cinst WindowsInstaller31 -source webpi
+cinst WindowsInstaller45 -source webpi
+Write-Host
+
+######################################################
+# Install SQL Express 2012
+######################################################
+Write-Host
+do {
+    $createSiteData = Read-Host &quot;Do you want to install SQLExpress? (Y/N)&quot;
+} while ($createSiteData -ne &quot;Y&quot; -and $createSiteData -ne &quot;N&quot;)
+if ($createSiteData -eq &quot;Y&quot;) {
+    cinst SqlServer2012Express
+}
+Write-Host
+
+######################################################
+# Add Git to the path
+######################################################
+Write-Host &quot;Adding Git\bin to the path&quot;
+Add-Path &quot;C:\Program Files (x86)\Git\bin&quot;
+Write-Host
+
+######################################################
+# Configure Git globals
+######################################################
+Write-Host &quot;Configuring Git globals&quot;
+$userName = Read-Host 'Enter your name for git configuration'
+$userEmail = Read-Host 'Enter your email for git configuration'
+
+&amp; 'C:\Program Files (x86)\Git\bin\git' config --global user.email $userEmail
+&amp; 'C:\Program Files (x86)\Git\bin\git' config --global user.name $userName
+
+$gitConfig = $home + &quot;\.gitconfig&quot;
+Add-Content $gitConfig ((new-object net.webclient).DownloadString('http://vintem.me/mygitconfig'))
+
+$gitexcludes = $home + &quot;\.gitexcludes&quot;
+Add-Content $gitexcludes ((new-object net.webclient).DownloadString('http://vintem.me/gitexcludes'))
+Write-Host
+
+$env:Path = [System.Environment]::GetEnvironmentVariable(&quot;Path&quot;,&quot;Machine&quot;)
+
+######################################################
+# Update RubyGems and install some gems
+######################################################
+Write-Host &quot;Update RubyGems&quot;
+C:\Chocolatey\bin\cinst ruby.devkit.ruby193
+gem update --system
+gem install bundler compass
+Write-Host
+
+######################################################
+# Install npm packages
+######################################################
+Write-Host &quot;Install NPM packages&quot;
+npm install -g yo grunt-cli karma bower jshint coffee-script nodemon generator-webapp generator-angular
+Write-Host
+
+######################################################
+# Generate public/private rsa key pair
+######################################################
+Write-Host &quot;Generating public/private rsa key pair&quot;
+Set-Location $home
+$dirssh = &quot;$home\.ssh&quot;
+mkdir $dirssh
+$filersa = $dirssh + &quot;\id_rsa&quot;
+ssh-keygen -t rsa -f $filersa -q -C $userEmail
+Write-Host
+
+######################################################
+# Add MongoDB to the path
+######################################################
+Write-Host &quot;Adding MongoDB to the path&quot;
+Add-Path &quot;C:\MongoDB\bin&quot;
+Write-Host
+
+######################################################
+# Download custom PowerShell profile file
+######################################################
+Write-Host &quot;Creating custom $profile for Powershell&quot;
+if (!(test-path $profile)) {
+    New-Item -path $profile -type file -force
+}
+Add-Content $profile ((new-object net.webclient).DownloadString('http://vintem.me/profileps'))
+Write-Host</code></pre></noscript></div>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-25T12:11:00-04:00"  data-updated="true">25/08/2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/30/responsabilidade-unica-com-javascript/" title="Previous Post: Só é uma bagunça se você deixar. Responsabilidade única com JavaScript">&laquo; Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/" title="Next Post: Publicando um site Octopress usando GitHub pages a partir de um novo computador">Publicando um site Octopress usando GitHub pages a partir de um novo computador &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

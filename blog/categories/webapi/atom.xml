@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: WebAPI | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/webapi/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[001 - VideoCast - Produtividade com ASP.NET MVC 4]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4/"/>
+    <updated>2012-09-25T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4</id>
+    <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/Zp_cLt69ee8" frameborder="0" width="640" height="360"></iframe>
+
+
+<h2>Produtividade com ASP.NET MVC 4</h2>
+
+
+<p>Nesse video eu mostro um pouco de como é possível obter Produtividade com ASP.NET MVC 4. O ASP.NET MVC vem melhorando a cada versão, e na versão quatro a nossa vida como programadores web ficou ainda mais fácil. E quem não gosta disso, não é?</p>
+
+<h2>Alguns itens que falo no video</h2>
+
+
+<ul>
+    <li>Scaffolding de controllers e views</li>
+    <li>Integração com o Entity Framework</li>
+    <li>Autenticação usando OAuth</li>
+    <li>WebAPI</li>
+</ul>
+
+
+<p>O código desse vídeo <a href="https://github.com/vintem/MVC4BlogDemo">está disponível no meu GitHub</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

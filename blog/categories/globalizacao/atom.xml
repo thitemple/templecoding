@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Globalização | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/globalizacao/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Globalização de validação do jQuery com o ASP.NET MVC 3]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3/"/>
+    <updated>2011-09-17T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3</id>
+    <content type="html"><![CDATA[<p>O Asp.Net MVC 3 tem uma ótima funcionalidade que é a validação no cliente usando o plugin do <a href="http://docs.jquery.com/Plugins/Validation" target="_blank">jQuery validations</a> e usando um script da própria Microsoft a validação é feita sem que seja necessário nenhum codificação especial. Basta usar os atributos do namespace <em>System.ComponentModel.DataAnnotations.</em></p>
+
+<p>Pra quem não sabe, para fazer essa validação basta adicionar os seguintes scripts (que já estão no template padrão de um novo site Asp.Net Mvc 3):</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">”/Scripts/jquery-1.6.2.min.js”</span> <span class="na">type=</span><span class="s">”text/javascript”</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">”/Scripts/jquery.validate.min.js”</span> <span class="na">type=</span><span class="s">”text/javascript”</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">”/Scripts/jquery.validate.unobtrusive.min.js”</span> <span class="na">type=</span><span class="s">”text/javascript”</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Muito simples de verdade! Mas existe um problema, esse script não é globalizado, então digamos que você tenha que usar uma data na sua classe e você gostaria de validá-la, por exemplo eu tinha uma classe que entre outras coisas tinha que salvar uma data, para simplificar, algo como isso:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">Pessoa</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">public</span> <span class="kt">string</span> <span class="n">Nome</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="k">public</span> <span class="kt">string</span> <span class="n">Sexo</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="k">public</span> <span class="kt">string</span> <span class="n">Rg</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">[DataType(DataType.EmailAddress)]</span>
+</span><span class='line'><span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">[DataType(DataType.Date)]</span>
+</span><span class='line'><span class="k">public</span> <span class="n">DateTime</span><span class="p">?</span> <span class="n">DataNascimento</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Quando eu informava a data 16/09/1980, por exemplo, automaticamente era detectado uma data inválida, já que o esperado é que a data estivesse no padrão mm/dd/aaaa, mas é claro que no Brasil o padrão é outro. Então como corrigir? Primeiro fazer uso do plugin <a href="https://github.com/jquery/globalize">Globalize do jQuery</a>, adicione referências a dois scripts (que é claro, podem ser baixados no site do projeto).</p>
+
+<p>Depois disso, tudo o que precisa ser feito é determinar qual a cultura que quer usar e indicar o parser do globalize para validar a data:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">Globalize</span><span class="p">.</span><span class="nx">culture</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">pt</span><span class="o">-</span><span class="nx">BR</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;);</span>
+</span><span class='line'><span class="nx">$</span><span class="p">.</span><span class="nx">validator</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">date</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">optional</span><span class="p">(</span><span class="nx">element</span><span class="p">)</span> <span class="o">||</span> <span class="nx">Globalize</span><span class="p">.</span><span class="nx">parseDate</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Não podia ser mais simples!</p>
+]]></content>
+  </entry>
+  
+</feed>

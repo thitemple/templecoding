@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Análises | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/analises/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Análise do livro Pragmatic Thinking and Learning]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
+    <updated>2013-06-04T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
+    <content type="html"><![CDATA[<p>Alguns livros são tão bons que você tem vontade de falar deles para todo mundo antesmesmo de terminar. Esse é um deles.</p>
+
+<p><a href="http://vintem.me/18LjWdg"><img class="aligncenter" src="/images/2013/06/ahptl_xlargecover.jpg" title="Pragmatic Thinking and Learning" ></a></p>
+
+<p>Numa tradução livre e amadora do resumo do livro no site, diz o seguinte:</p>
+
+<blockquote>Nesse livro escrito por Andy Hunt, você vai aprender nosso cérebro é conectado e, como tirar proveito d arquitetura do seu cérebro. Você vai aprender novas dicas e truques para aprender mais, mais rápido e guardar mais do que você aprende.</blockquote>
+
+
+<p>Eu posso resumir a minha avaliação desse livro em uma frase bem curta. <strong>Eu queira ter lido antes</strong>.</p>
+
+<p>Realmente o livro traz diversas informações sobre o funcionamento do nosso cérebro, informações que, pelo menos para mim, eram novas. Ou então eram informações que eu tinha obtido e não tinha guardado. É muito interessante (e útil) as analogias que autor usa para explicar o nosso cérebro fazendo referências à arquitetura de computadores e a programação assíncrona.</p>
+
+<p>O livro não fica só na parte teórica do funcionamento de cérebro. É interessante entender o que é o modelo Dreyfus e os estágios que passamos na obtenção de conhecimento. São eles: iniciante, iniciante avançado, competente, proficiente e expert. Embora eu não ache que as pessoas possam ser categorizadas em níveis, ou melhor, só em cinco níveis, eu acho também que é uma forma de feedback e uma forma de termos parâmetros para nos guiar em como alcançar um nível mais alto de conhecimento.</p>
+
+<p>Que as pessoas aprendem de forma diferente já é bem divulgado, mas o que eu achei interessante sobre as formas que aprendemos (relacionado com o funcionamento do nosso cérebro), foi que o livro expõe de forma bem clara e, sempre usando ótimas métaforas, como podemos explorar essas diferenças com técnicas práticas.</p>
+
+<p>Uma das técnicas passadas no livro é a técnica de definição de objetivos de aprendizado</p>
+
+<p><img class="alignright" src="/images/2013/06/smart2.jpg" title="SMART" > chamada S.M.A.R.T. Que é o acrônimo para Specific, Measurable, Attainable, Relevant e Time-Bound. Outras incluem, carregar sempre um livro de notas, criar um wiki pessoal,desenhar mapas mentais, entre outros. Tudo sempre com um ótimo embasamento teórico.</p>
+
+<p>Eu, como leio muito, gostei muito do livro e tenho tentado por em práticas coisas que já aprendi. Espero que você aproveite a dica e leia o livro, eu gostei muito.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Se você tem ou quer ter um blog, você precisa ler esse livro]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
+    <updated>2012-12-03T00:00:00-05:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging</id>
+    <content type="html"><![CDATA[<p>Eu terminei de ler há alguns dias e resolvi fazer uma análise do livro <a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Technical Blogging: </a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="attachment wp-att-1024" target="_blank"><img class="alignright" src="/images/2012/11/actb_xlargecover.jpg" title="Technica Blogging" ></a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Turn Your Expertise into a Remarkable Online Presence</a> por <a href="http://antoniocangiano.com/" target="_blank">Antonio Cangiano</a>. Ainda estou digerindo tudo que aprendi nesse livro e já pondo em prática <del>algumas</del> várias coisas.</p>
+
+<p>É um dos livros com a maior quantidade de dicas praticas que já li. Diversas dicas e ideias de uso imediato. Para quem usa, ou planeja usar, o WordPress como plataforma é ainda mais útil. O livro apresenta vários plug-ins que vão facilitar a vida na hora de escrever, ajudar a trazer mais performance para o site, trazer mais facilidade e valor para os usuários que vão ler o blog.</p>
+
+<h2>Produzindo conteúdo</h2>
+
+
+<p>Os capitulos 5 e 6 &ldquo;Creating Remarkable Content&rdquo; e &ldquo;Producing Content Regularly&rdquo; são ótimos para dar ideias e abrir a mente para a produção de conteúdo diversificado e com regularidade.</p>
+
+<h2>Promovendo seu blog</h2>
+
+
+<p>As dicas para promover o blog do capitulo 7 foram extremamente valiosas. Eu sempre tive pra mim que <a href="https://pt.wikipedia.org/wiki/Otimiza%C3%A7%C3%A3o_para_motores_de_busca">SEO</a> era uma daquelas coisas irrelevantes, que simplesmente funciona e pronto, bom, não é exatamente assim. Além disso, eu passei a olhar as estatísticas de visita do site de uma outra forma.</p>
+
+<h2>Para empresas e blogs em grupo</h2>
+
+
+<p>Se você faz um blog para sua empresa ou grupo, essa parte também não foi esquecida, embora, para blogs como esse isso não faça tanta diferença.</p>
+
+<p>Para concluir essa breve análise do livro Technical Blogging; esse foi um livro que eu comprei sem esperar muita coisa dele, achando que não ia tirar muito proveito. Me enganei. Eu comecei a ler e não parei enquanto não terminei. Ótimo, eu recomendo.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[O menu iniciar no Windows 8 mudou, você pode mudar também]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2012/11/26/menu-iniciar-no-windows-8/"/>
+    <updated>2012-11-26T00:00:00-05:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2012/11/26/menu-iniciar-no-windows-8</id>
+    <content type="html"><![CDATA[<p>Na semana passada eu estava ouvindo um podcast (não me lembro qual, escutei vários) e no meio do podcast o entrevistado cita que algumas pessoas tem reclamado da falta do menu iniciar no Windows 8. O que me parece é que alguém andou <a href="http://www.amazon.com/gp/product/B002ALFT6C/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B002ALFT6C&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">mexendo no queijo dos outros</a>.</p>
+
+<p>Honestamente eu não tinha me dado conta direito que ele não estava lá. Claro, pude ver que ele não estava presente. É que eu uso ele tão pouco que eu nem sinto falta.</p>
+
+<p>O Windows 8 acabou de ser lançado, não tem nem um mês. Eu atualizei o meu notebook no final de semana seguinte ao lançamento e, posso dizer que foi a atualização mais tranquila que eu já fiz. Baixei um executável pequeno, ele analisou o computador, paguei a atualização por ali mesmo e pronto. Foi só esperar ele baixar o Windows 8 e instalar.</p>
+
+<p>Eu gostei tanto que até já comprei também um <a href="http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface/">Tablet Surface e fiz uma análise sobre ele</a>.</p>
+
+<p><img class="alignleft" src="/images/2012/11/evol-windows_thumb.jpg" title="Evolução do Windows" > Na minha opinião o Windows 8 é a melhor novidade em termos de sistemas operacionais desde o Windows 95, quando a gente saiu do Windows 3.11. Olha só, me entendam bem, eu uso Windows, mas eu tenho um Mac há quase 5 anos e gosto muito do Mac OS X. Também uso ocasionalmente o Linux e gosto do Ubuntu (menos que os outros). Ah sim, e por enquanto, pelo menos, eu ainda tenho um celular com Android.</p>
+
+<p>Eu acho que todos esses sistemas operacionais tem seus pontos fortes, no caso do Mac OS, mais precisamente, eu acho que ele sempre foi o mais intuitivo dos sistemas operacionais. Foi.</p>
+
+<p>Nesse mundo de aparelhos e <a href="http://www.codinghorror.com/blog/2012/11/touch-laptops.html" target="_blank">notebooks com suporte ao toque</a> e, especificamente, num mundo onde a computação deixa de ser voltada para nós &ndash; os nerds e técnicos, e o foco está no consumidor final, a Microsoft acertou em cheio fazendo um sistema operacional voltado para o cliente e principalmente beneficiando esse novo mercado de toque.</p>
+
+<h2>Ok, mas o que isso tem a ver com o meu menu iniciar no Windows 8?</h2>
+
+
+<p>Quando estou com meu tablet na mão, ou simplesmente usando a internet, eu praticamente só uso o modo &ldquo;metro&rdquo; do Windows 8 e para isso ele está perfeito. Mas quando estou trabalhando, ou seja, usando o Visual Studio, o SQL, outros editores de texto, etc., eu estou no modo desktop, ou, o modo que teria o menu iniciar.</p>
+
+<p>Só que nesse &ldquo;modo trabalho&rdquo;, eu quero ser o mais produtivo possível e pra mim ser produtivo significa ficar com os mãos no teclado. O que me traz para o seguinte ponto: para que usamos o menu iniciar? Só para abrir aplicações, certo? Aplicações, o Painel de Controle, Configurações do Computador, etc…</p>
+
+<p>Bom, eu faço isso tudo com um pequeno aplicativo <strong>gratuito</strong> chamado <a href="http://www.launchy.net/" target="_blank">Launchy</a>. Com o Launchy instalado, eu pressiono Alt + Espaço, digito o nome da aplicação e abro. Por exemplo, se eu quiser abrir o Google Chrome, eu digito Alt + Espaço e ch.</p>
+
+<p><img class="aligncenter" src="/images/2012/11/Launchy-Chrome.png" title="Launchy Chrome" ></p>
+
+<p>Ou então para abrir o SQL Management Studio, Alt + Espaço e sql.</p>
+
+<p><img class="aligncenter" src="/images/2012/11/Launchy-Sql.png" title="Launchy SQL Management Studio" ></p>
+
+<p>Muito mais rápido do que navegar por qualquer menu iniciar.</p>
+
+<p>Além disso, o Windows tem diversas teclas de atalho muito úteis. Por exemplo a tecla Windows + E, abre o Windows Explorer, Windows + R, abre o Run, Windows + F, abre a Procura e existem vários outros atalhos. Um atalho bem útil para nós, usuários avançados, é o Windows + X que abre um menu no lugar do menu iniciar. De uma olhada aqui se você quer uma <a href="http://darktips.com/windows-8-keyboard-shortcuts/" target="_blank">lista mais completada dos atalhos do Windows 8</a>.</p>
+
+<p><img class="aligncenter" src="/images/2012/11/windowsx_menu.png" title="Menu Windows + X" ></p>
+
+<p>Então ok, se você não gosta dele por outras razões diga quais são elas, mas não venha reclamar que não tem um menu iniciar no Windows 8.</p>
+
+<p>Nota: Se você absolutamente quer o menu iniciar no Windows 8, <a href="http://tecnoblog.net/112123/windows-8-menu-iniciar-classico/" target="_blank">existem já alternativas pra isso disponíveis na internet</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[O Surface é um ótimo Tablet e um bom Notebook]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface/"/>
+    <updated>2012-11-14T00:00:00-05:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface</id>
+    <content type="html"><![CDATA[<h2>Uma análise do Surface (de um humilde proprietário)</h2>
+
+
+<p>Eu comprei e estou usando o novo <a href="http://www.amazon.com/gp/product/B009XKJ4H8/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B009XKJ4H8&amp;linkCode=as2&amp;tag=tempcodi0f-20">Tablet da Microsoft, o Surface</a>, já faz pouco mais de uma semana. Como algumas pessoas me perguntaram o que eu estava achando, eu resolvi escrever um post fazendo uma pequena análise do Surface.</p>
+
+
+
+
+<h2><img class="alignleft" src="/images/2012/11/surface.jpg" title="Surface" ></h2>
+
+
+<p>Como eu nunca tive um outro Tablet antes (mas já usei outros), eu não vou me incomodar de fazer comparações com outros da concorrência (ainda mais quando a única novidade é só um tamanho de Tablet menor), vou apenas passar as minhas opiniões de novo usuário de Tablet.</p>
+
+
+<p>A primeira impressão que eu tive, logo que peguei meu Surface foi de um produto com um ótimo acabamento, do corpo do Tablet, à bela tela widescreen e o teclado que é também capa do Tablet, tudo parece ser feito para durar.</p>
+
+
+
+
+<h2>O melhor</h2>
+
+
+<p>A melhor parte com certeza é o Touch Cover, uma capa de 3 milímetros que é também um teclado. É impressionante como algo tão fino pode funcionar tão bem como um teclado. Honestamente, foi isso que me vendeu o Surface, eu queria um Tablet onde eu fosse capaz de escrever textos (como este que estou fazendo agora). É bem verdade que o teclado exige um período de adaptação, mas ele funciona muito bem!</p>
+
+
+<p><img class="alignleft" src="/images/2012/11/72059170-d819-46bb-a458-73a8e271501d.jpg" title="Surface Touch Cover" > A nova versão do Windows foi feita com a intenção de funcionar bem com o toque. E como funciona! Dos tiles, à maneira como fazemos alt+tab, aos charms, tudo é muito intuitivo.</p>
+
+
+<p>O Internet Explorer 10 funciona muito bem! É rápido e aproveita muito bem as capacidades full screen do Tablet.</p>
+
+
+<p>Não é só um Tablet pra internet, vem com o a nova versão do Office 2013, pelo menos com o Word, Excel, PowerPoint e OneNote.</p>
+
+
+<p><img class="alignright" src="/images/2012/11/Surface_multitarefa.png" title="Surface multitarefa" ></p>
+
+
+<p>É realmente multitarefa, eu consigo ouvir música, usar o twitter, ver vídeo, trabalhar com o Office, tudo ao mesmo tempo. Mas o melhor disso é que eu consigo ver duas aplicações rodando ao mesmo tempo na mesma tela. Como na foto ao lado que mostra o Excel e o Twitter abertos ao mesmo tempo.</p>
+
+
+<p>Entrada de cartão MicroSD. Atualmente existem duas versões do Surface, de 32 GB e 64 GB, eu comprei a de 32 GB porque com uma entrada de cartão MicroSD, eu posso comprar um cartão desses por menos dinheiro do que comprar o Surface 64GB.</p>
+
+
+<p>Porta USB
+Bluetooth
+Saída de vídeo em HD</p>
+
+
+
+
+<h2>O pior</h2>
+
+
+<p>Ainda existem poucas aplicações disponíveis, muitas delas a gente vê, foram entregues às pressas, ou seja, não são muito boas. E o fato de (pelo menos nessa versão) não poder instalar aplicações nativas do Windows (a versão atual do Surface roda o Windows RT) também reduz a variedade de aplicativos.</p>
+
+
+<p>O som dos auto-falantes não é aquelas coisas, a gente consegue escutar, mas se o ambiente tiver algum barulho a compreensão vai ficar prejudicada.</p>
+
+
+<p>As duas câmeras (frontal e traseira) são razoáveis, dá pro gasto, mas existem celulares com câmeras melhores.</p>
+
+
+
+
+<h2>Veredito</h2>
+
+
+<p>Se fosse para eu ter um Surface como único computador da casa, ele não serviria. Apesar de muito versátil, ainda faltam aplicações, e é claro, se trata de uma tela de 10 polegadas com um teclado do mesmo tamanho.</p>
+
+
+<p>Dito isso, onde fica claro o seu uso é na portabilidade. A bateria, com um uso regular, que no meu caso quer dizer usar à noite e às vezes durante o almoço dura de 2 a 3 dias. Ter o Office e também o teclado de toque faz com seja um dispositivo pra uso no trabalho também. É possível comprar um sem o teclado, mas honestamente eu não consigo imaginar porque alguém faria isso.</p>
+
+
+<p>Por fim, não é uma máquina para programar, não acho que 2 GB de RAM serviria para isso. Agora, se você quer usar a internet, escrever textos e planilhas e carregar um computador leve com você, na minha opinião, não tem como errar com o Surface.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Análise: Growing Object-Oriented Software, Guided by Tests]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/"/>
+    <updated>2011-05-29T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests</id>
+    <content type="html"><![CDATA[<p>Eu acabei de ler <a href="http://www.amazon.com/gp/product/0321503627/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321503627&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="nofollow">Growing Object-Oriented Software, Guided by Tests</a> e posso dizer que é um livro altamente recomendável.</p>
+
+<p><a href="http://www.amazon.com/gp/product/0321503627/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321503627&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="nofollow"><img class="alignright" src="/images/2011/05/51VI2SgJRwL._SL205.jpg" title="Growing Object-Oriented Software, Guided by Tests" ></a></p>
+
+<p>Para quem está interessado em começar, ou já começou e quer apefeiçoar a prática de desenvolver software usando testes antes de escrever o &ldquo;código de produção&rdquo;, é um ótimo livro.</p>
+
+<blockquote><em>Testing is no longer just about keeping defects from the users; instead, it's about helping the team to understand the features that users need and to deliver those features reliably and predictably.</em></blockquote>
+
+
+<p>Após duas partes teóricas, o livro, na terceira parte, começa a ficar mais prático.</p>
+
+<p>A terceira parte do livro se passa toda desenvolvendo um exemplo e realmente evoluindo uma aplicação aos poucos. Exemplo feito em Java, mas que nada atrabalha para quem não conhece muito da linguagem. Além disso, é ótimo seguir a linha de pensamento dos autores e ver como eles enxergam a evolução de um software orientado a objetos. E uma das melhores partes de sistema de exemplo, é que ele não fica no básico, muito pelo contrário, traz problemas do &ldquo;mundo real&rdquo;, como interação com serviços externos e testes de interface de usuário.</p>
+
+<p>Embora a terceira parte seja ótima, é na quarta parte onde o livro realmente mostra seu valor. A quarta parte fala de desenvolvimento orientado a testes de forma sustentável, tratando de assuntos como: quando usar objetos mock ou não, facilitar a leitura e o entendimento dos testes, construção de objetos complexos necessários aos testes, entre outros.</p>
+
+<p>Ainda existe um capítulo muito interessante que fala sobre testes na camada de persistência a dados, uma parte que eu sempre achei complexa de se testar. Ali, encontrei dicas valiosas.</p>
+
+<p>Uma ótima leitura, recomendo!</p>
+]]></content>
+  </entry>
+  
+</feed>

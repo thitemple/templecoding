@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: encoding | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/encoding/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Convertendo um texto ISO-8859-1 para UTF-8 em Ruby]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby/"/>
+    <updated>2010-11-01T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby</id>
+    <content type="html"><![CDATA[<p>No Ruby 1.9 uma coisa que você pode ter certeza é que terá dor de cabeça é com Encoding. Faça uma busca rápida no google por &ldquo;ruby 1.9 encoding&rdquo; e você vai entender do que eu estou falando.</p>
+
+<p>Hoje eu tive que converter um conteúdo que estava em iso-8859-1 para utf-8 e recebi o seguinte erro:</p>
+
+<p>incompatible character encodings: UTF-8 and ISO-8859-1</p>
+
+<p>Para resolver isso eu usei:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">meu</span> <span class="n">texto</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="no">UTF</span><span class="o">-</span><span class="mi">8</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="k">undef</span><span class="p">:</span> <span class="ss">:replace</span><span class="p">,</span> <span class="ss">invalid</span><span class="p">:</span> <span class="ss">:replace</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E o problema foi resolvido. Segundo a <a href="http://ruby-doc.org/ruby-1.9/classes/String.html#M000553" target="_blank">documentação do Ruby 1.9</a> o parâmetro :invalid com o valor :replace, faz com que o método encode substitua o carácter inválido. O padrão é gerar uma exceção.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nova sintaxe para fazer Html Encoding com Asp.Net 4 e Asp.Net MVC 2]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2/"/>
+    <updated>2010-04-19T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2</id>
+    <content type="html"><![CDATA[<p>Html Encoding faz parte de todo desenvolvimento web, principalmente para previnir ataques de <a href="http://imasters.uol.com.br/artigo/9879/seguranca/xss_cross_site_scripting/" target="_blank">Cross Site Scripting (XSS)</a> &ndash; quem não sabe o que é, recomendo ler esse artigo.</p>
+
+<p>Até a versão 3.5 no Asp.Net para fazer Html Enconding tinhamos que fazer algo assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>%= Server.HtmlEncode(algum_valor) %&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E no Asp.Net MVC algo assim:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>%= Html.Encode(model.Valor) %&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Isso sempre funcionou, mas agora existe uma nova possibilidade, que na minha opinião torna isso ainda mais simples:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>%: mode.Valor %&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>É só trocar o sinal de = pelo sinal : e automaticamente o encoding será realizado.</p>
+
+<p>E isso vale também para os outros Html helpers do MVC, por exemplo:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>%: Html.TexboxFor(m =&gt; m.Valor) %&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>No código acima, o texto dentro do textbox já sairá codificado.</p>
+]]></content>
+  </entry>
+  
+</feed>

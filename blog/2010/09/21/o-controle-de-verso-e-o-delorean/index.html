@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>O Controle de Versão e o DeLorean - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Um cenário que é comumente visto em equipes de desenvolvimento que usam ferramentas de controle de versão como Subversion, Source Safe, CVS, Git, etc &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">O Controle de Versão e o DeLorean</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-21T00:00:00-04:00"  data-updated="true">21/09/2010</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Um cenário que é comumente visto em equipes de desenvolvimento que usam ferramentas de controle de versão como Subversion, Source Safe, CVS, Git, etc, é aquele onde o desenvolvedor faz um checkout no código, altera o que tem que alterar e na sequência faz o commit (check-in se vc ainda é um infeliz usuário do VSS).</p>
+
+<p>Qual o problema desse cenário? Você consegue dizer? O código está num repositório central disponível para todos os desenvolvedores da equipe, não está?</p>
+
+<p>O problema, nesse caso, é que na grande maioria das vezes o que se faz é simplesmente esse procedimento de check-out e commit, não é efetivamente um <strong>Controle de Versão</strong>, existe apenas um <strong>repositório central de código</strong>.</p>
+
+<p>Existem diversas razões as quais eu poderia dizer que você não quer fazer apenas um repositório central, desde a mais simples, que é o fato de você controlar o que é efetivamente disponibilizado a cada versão, até o<img class="alignright" src="/images/2010/09/DeLorean-DeVoltaparaoFuturo-1_thumb.jpg"> que acho que é o maior benefício e que aqui vou chamar de a possibilidade de &ldquo;viajar no tempo&rdquo;.</p>
+
+<p>Digamos que você disponibilizou a versão 1.0 do seu mais novo cliente do Twitter. Software no ar, milhares de downloads em poucas horas. Hora de preparar a inovadora versão 2.0 que vai ler as mensagens em voz alta e que você vai poder ditar as mensagens também. Ótimo para não perder nada do Twitter quando você está dirigindo.</p>
+
+<p>Check-out feito, algumas alterações, novas funcionalidades e uns commits, afinal de contas, você é um praticante de <a href="/blog/2010/06/20/integracao-continua-com-cruise-control-net/">Integração Contínua</a>. De repente, seu telefone toca e aquela versão 1.0 tem um bug que trava o aplicativo e você precisa corrigir. O que você faz? Fala que não pode porque o código da versão 2.0 está no meio e ainda não foi testado? Desfaz o que foi feito?</p>
+
+<p>Voltemos para o dia em que a versão 1.0 foi lançada, o código está no repositório e você decide iniciar a versão 2.0, que é um ponto no futuro onde você gostaria de chegar. É para isso que existe uma coisa chamada branch, ele é uma cópia separada da sua versão 1.0 onde você pode fazer alterações e ainda por cima manter a versão 1.0 disponível do jeito que você deixou. Quando esse bug chega, você altera o código do branch principal, o da versão em produção (no caso 1.0), e pode mandar essa versão, digamos, 1.0.1 com a correção sem se preocupar com o código da versão 2.</p>
+
+<p>Parece simples, e realmente é, mas é um hábito muito pouco comum em equipes de desenvolvimento, esse de criar branches de versões.</p>
+
+<p>Ferramentas de controle de versão são para isso, para dar esse poder a desenvolvedores, o poder de viajar entre as versões, as modificações, etc. Mas para isso é preciso, no mínimo, deixar um rastro do caminho a ser percorrido.</p>
+
+<p><img class="aligncenter" src="/images/2010/09/de-volta-para-o-futuro_2.jpg" title="De volta para o futuro" ></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-21T00:00:00-04:00"  data-updated="true">21/09/2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/controle-de-versoes/'>Controle de versões</a>, <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/09/15/desenvolvedores-felizes-cdigo-feliz/" title="Previous Post: Desenvolvedores felizes, código feliz!">&laquo; Desenvolvedores felizes, código feliz!</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/" title="Next Post: Mapeando suas classes com o AutoMapper">Mapeando suas classes com o AutoMapper &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

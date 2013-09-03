@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ruby para desenvolvedores .NET–parte 2 - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Esta é uma série de artigos sobre Ruby para desenvolvedores .NET, confira os outros em: Ruby para desenvolvedores .NET – parte 1 Ruby, é uma &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ruby para desenvolvedores .NET–parte 2</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-05T00:00:00-04:00"  data-updated="true">05/11/2010</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div style="padding-left: 10px; border: 1px dashed;">
+
+Esta é uma série de artigos sobre Ruby para desenvolvedores .NET, confira os outros em:
+
+<a href="/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/">Ruby para desenvolvedores .NET – parte 1</a>
+
+</div>
+
+
+<p>Ruby, é uma linguagem orientada a objetos. É  possível reconhecer, apenas com pequenas diferenças na sintaxe, algumas similaridades e diferenças de funcionamento, se comparado com o C#.</p>
+
+<p>Podemos ver no código abaixo, a definição de uma classe(Usuario), a definição de um construtor (initialize), a definição de um método (autorizar_acesso) e a criação de 2 atributos, nome e email.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Usuario</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:nome</span><span class="p">,</span> <span class="ss">:email</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">nome</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@nome</span> <span class="o">=</span> <span class="n">nome</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">autorizar_acesso</span>
+</span><span class='line'>    <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O que podemos ver de diferente aqui, é que quando chamamos o método attr_accessor para criar as propriedades nome e email, internamente o Ruby cria duas variáveis de instância chamadas @nome e @email e essas variáveis podem, obviamente, ser acessadas por qualquer método daquele objeto.’</p>
+
+<p>A propósito, instanciar a class Usuario é tão simples quanto:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">usuario</span> <span class="o">=</span> <span class="no">Usuario</span><span class="o">.</span><span class="n">new</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Retorno de valores</strong></p>
+
+<p>Uma outra coisa importante de lembrar no Ruby, é que a última instrução de um método sempre é retornada. Portanto dentro do método autorizar_acesso, estamos retornando o valor false. Colocar false como última instrução (e nesse caso, a única) é o mesmo que dizer return false.</p>
+
+<p>Por exemplo, os dois métodos abaixo fazem a mesma coisa:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">soma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># faz um monte de coisa desnecessaria aqui</span>
+</span><span class='line'>  <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">soma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># faz um monte de coisa desnecessaria aqui</span>
+</span><span class='line'>  <span class="n">resultado_soma</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">resultado_soma</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Nos dois casos, x é somado a y e o resultado da soma é retornado.</p>
+
+<p><strong>Herança</strong></p>
+
+<p>Assim como em C#, Ruby também tem <a href="http://pt.wikipedia.org/wiki/Heran%C3%A7a_(inform%C3%A1tica)">herança</a> como podemos ver no exemplo abaixo:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Usuario</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:nome</span><span class="p">,</span> <span class="ss">:email</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">nome</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@nome</span> <span class="o">=</span> <span class="n">nome</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">autorizar_acesso</span>
+</span><span class='line'>    <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">UsuarioEspecial</span> <span class="o">&lt;</span> <span class="no">Usuario</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">autorizar_acesso</span>
+</span><span class='line'>    <span class="kp">true</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No código acima a classe UsuarioEspecial herda da classe Usuario e sobrescreve o método autorizar_acesso. Assim já podemos ver que é possível usar também o polimorfismo.</p>
+
+<p><strong>Métodos Estáticos</strong></p>
+
+<p>Ruby não tem métodos estáticos realmente, mas ele tem, o que é conhecido como <span style="text-decoration: underline;">métodos de classe</span> e funcionam de forma similar aos métodos estáticos do C#. Para  usar métodos de classe basta que na declaração do método seja colocada a palavra chave <span style="text-decoration: underline;">self</span>, como podemos ver:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">UsuarioEspecial</span> <span class="o">&lt;</span> <span class="no">Usuario</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">salvar</span>
+</span><span class='line'>    <span class="n">enviar_email</span><span class="p">(</span><span class="s2">&quot;texto do email&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">#salvar os dados do usuario</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">autorizar_acesso</span>
+</span><span class='line'>    <span class="kp">true</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">enviar_email</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1"># envia email</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O método salvar pode ser chamado diretamente na classe UsuarioEspecial, não é necessário criar uma instância.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">UsuarioEspecial</span><span class="o">.</span><span class="n">salvar</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ainda no código acima podemos ver que para declarar um método privado pasta adicionar a palavra chave <span style="text-decoration: underline;">private</span> e qualquer método declarado abaixo dela será considerado privado.</p>
+
+<p><strong>Interfaces</strong></p>
+
+<p>Interfaces são um artifício  das linguagens estáticas para dizer ao compilador que uma classe tem um ou mais métodos.</p>
+
+<p>No Ruby não existe um compilador e portanto não existe essa checagem prévia. Também existe a questão de que podemos alterar uma classe Ruby mesmo depois que ela já foi declarada, mas vamos falar disso depois. Portanto não existe a necessidade de interfaces.</p>
+
+<p>Digamos que exista a seguinte situação feita em C#:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">interface</span> <span class="n">IControlePagamento</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">void</span> <span class="nf">Pagar</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Pagamento</span> <span class="p">:</span> <span class="n">IControlePagamento</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">void</span> <span class="nf">Pagar</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// logica de pagamento</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>O que esse código bem simples faz, é dizer ao compilador que a classe Pagamento implementa os métodos da Interface IControlePagamento. Em Ruby a única coisa que temos que fazer é efetivamente implementar o método Pagar()</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ControlePagamento</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">pagar</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Isso tem vantagens e desvantagens.</p>
+
+<p>A vantagem é que o código em Ruby é muito mais sucinto e objetivo, não é preciso escrever código para satisfazer o compilador. Existe apenas código para resolver o problema do negócio.</p>
+
+<p>A desvantagem é que você não tem o aviso imediato do compilador caso o método não seja implementado.</p>
+
+<p>Ainda assim, se você é adepto de técnicas como <a href="http://pt.wikipedia.org/wiki/Test_Driven_Development">TDD</a>, esse é um problema fácil de resolver, já que seus testes ficariam responsáveis por isso.</p>
+
+<p>Outro recurso disponível no Ruby é que, toda classe automaticamente herda da classe Class, na classe Class existe um método chamado <span style="text-decoration: underline;">respond_to?</span>. Esse método verifica se um objeto responde/contém a um determinado método.</p>
+
+<p><img class="aligncenter" src="/images/2010/11/respond_to_false.png"></p>
+
+<p>No exemplo acima a classe ControlePagamento foi definida sem o método pagar, veja que quando foi chamado o método respond_to? o retorno foi false.</p>
+
+<p>Já abaixo o método foi definido e a resposta foi true.</p>
+
+<p><img class="aligncenter" src="/images/2010/11/respond_to_true.png"></p>
+
+<p>Enfim, existem opções para controlar isso e há gente que faça, mas vale dizer que pelo que tenho visto, o mais comum é simplesmente seguir uma convenção.</p>
+
+<p><strong>Conclusão</strong></p>
+
+<p>Nesse artigo já vimos mais algumas diferenças mais marcantes do Ruby, no próximo vou falar um pouco do Object Model do Ruby.</p>
+
+<p>Duvidas, criticas ou sugestões? Deixe um comentário.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-05T00:00:00-04:00"  data-updated="true">05/11/2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>, <a class='category' href='/blog/categories/ironruby/'>ironruby</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/" title="Previous Post: Ruby para desenvolvedores .NET–parte 1">&laquo; Ruby para desenvolvedores .NET–parte 1</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/11/10/salvando-alteraes-inacabadas-com-git/" title="Next Post: Salvando alterações inacabadas com Git">Salvando alterações inacabadas com Git &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

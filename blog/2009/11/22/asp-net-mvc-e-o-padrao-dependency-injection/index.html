@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Asp.Net MVC e o padrão Dependency Injection - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="O padrão Dependency Injection (DI) é  utilizado para diminuir o acoplamento entre as partes de um sistema. Vou demonstrar em duas partes como fazer &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Asp.Net MVC e o padrão Dependency Injection</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-22T00:00:00-05:00"  data-updated="true">22/11/2009</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>O padrão Dependency Injection (DI) é  utilizado para diminuir o acoplamento entre as partes de um sistema.</p>
+
+<p>Vou demonstrar em duas partes como fazer Dependency Injection, na primeira parte vou fazer a injeção de forma manual e depois vou utilizar o framework Structuremap para isso.</p>
+
+<p>Existem algumas razões para se fazer isso, mas na minha opinião as principais são: facilitar a criação de testes unitários e a possibilidade de se estender uma aplicação sem comprometer as partes que dependem do funcionamento daquela aplicação.</p>
+
+<p>Imagine o seguinte cenário:</p>
+
+<p><img class="aligncenter" src="/images/2009/11/Cenario.jpg" title="'Cenário de Dependência'" ></p>
+
+<p>No caso acima, temos uma classe ClienteController (já pensando no MVC), que usa/depende uma classe ClienteService, que é a classe responsável por todas as regras de negócio relativas a Cliente mas que usa/depende da classe ClienteRepository, que é a classe responsável por todas as atividades no banco de dados relacionadas a Cliente.</p>
+
+<p>Uma implementação das classes ClienteController e ClienteService poderia ser feita assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Novo</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">cliente</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="kt">var</span> <span class="n">service</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClienteService</span><span class="p">();</span>
+</span><span class='line'>        <span class="n">service</span><span class="p">.</span><span class="n">Salvar</span><span class="p">(</span><span class="n">cliente</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteService</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">void</span> <span class="nf">Salvar</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">c</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">ValidarCliente</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="kt">var</span> <span class="n">rep</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClienteRepository</span><span class="p">();</span>
+</span><span class='line'>            <span class="n">rep</span><span class="p">.</span><span class="n">Salvar</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">bool</span> <span class="nf">ValidarCliente</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">cliente</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Veja na linha 5 que a classe ClienteController faz uma referência direta à classe ClienteService e na linha 17 a classe ClienteService faz uma referência direta à classe ClienteRepository. Isso não seria um problema se a) você não estiver considerando fazer testes unitários e b) se o seu sistema for um sistema pequeno com poucas classes e que não vá lhe gerar muitos problemas de manutenção.</p>
+
+<p>No caso do teste unitário isso é um problema porque assim que for criado um teste para o método Salvar na classe ClienteController esse teste irá testar toda a sequência de atividades, inclusive as classes de Service e Repository.</p>
+
+<p>Outro problema é o seguinte, imagine que esse é um sistema que você distribui para os seus clientes e que você tem uma outra classe ContasPagarService, a regra de negócio de contas a pagar varia de acordo com cada cliente que você tem. Se o código estivesse com o nível de dependência acima, talvez a única forma (ou a mais comum) de se resolver essa diferença seria implementando uma série de ifs dentro do código da classe de Service.</p>
+
+<p>Como resolver esse problema então? 1o temos que começar quebrando as dependências criando interfaces.  Assim temos:</p>
+
+<figure class='code'><figcaption><span>IClienteService.cs </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">interface</span> <span class="n">IClienteService</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">void</span> <span class="nf">Salvar</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">c</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Depois disso, precisamos alterar as nossas classes para implementar as interfaces:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteRepository</span> <span class="p">:</span> <span class="n">IClienteRepository</span>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteService</span> <span class="p">:</span> <span class="n">IClienteService</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Agora já estamos prontos pra fazer um pouco de Dependency Injection.</p>
+
+<p>Vamos começar reconhecendo as dependências em nossas classes, sabemos que a classe Controller depende da classe Service que por sua vez depende da classe Repository. Vamos trocar essas dependências para as interfaces que criamos e teremos a classe ClienteController assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="n">IClienteService</span> <span class="n">_service</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">ClienteController</span><span class="p">(</span><span class="n">IClienteService</span> <span class="n">service</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">_service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Novo</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">cliente</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">_service</span><span class="p">.</span><span class="n">Salvar</span><span class="p">(</span><span class="n">cliente</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Veja que agora a classe ClienteController está esperando qualquer objeto que implemente a interface IClienteService e não temos mais uma dependência direta para a classe ClienteService.</p>
+
+<p>Agora veja como ficou a classe ClienteService:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteService</span> <span class="p">:</span> <span class="n">IClienteService</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="n">IClienteRepository</span> <span class="n">_repository</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">public</span>  <span class="nf">ClienteService</span><span class="p">(</span><span class="n">IClienteRepository</span> <span class="n">repository</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">_repository</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">void</span> <span class="nf">Salvar</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">c</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span><span class="p">(</span><span class="n">ValidarCliente</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">_repository</span><span class="p">.</span><span class="n">Salvar</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">private</span> <span class="kt">bool</span> <span class="nf">ValidarCliente</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">cliente</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A classe ClienteService ficou muito parecida com a classe ClienteController. Agora ela espera um objeto que implemente a interface IClienteRepository no construtor e depois usa esse objeto nas chamadas do repository.</p>
+
+<p>Agora só falta ligar os pontos. Como dizer para as classes que ClienteController e ClienteService qual objeto elas realmente vão usar.</p>
+
+<p>Para isso vamos utilizar um outro padrão chamado Abstract Factory para centralizar todas as nossas dependências em uma única classe. A nossa classe de abstract factory ficou assim:</p>
+
+<figure class='code'><figcaption><span>MeuProjetoFactory.cs </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">MeuProjetoFactory</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="k">static</span> <span class="n">IClienteService</span> <span class="nf">CriaClienteService</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span>  <span class="k">new</span> <span class="nf">ClienteService</span><span class="p">(</span><span class="n">CriaClienteRepository</span><span class="p">());</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span>  <span class="k">static</span> <span class="n">IClienteRepository</span> <span class="nf">CriaClienteRepository</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span>  <span class="k">new</span> <span class="nf">ClienteRepository</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Como vemos, nessa classe sabemos como criar um objeto de cada interface que precisamos. Qual a vantagem disso? Todas as dependências estão centralizadas em único local, muito mais fácil para dar manutenção, não é?</p>
+
+<p>Agora na nossa classe de Controller, precisamos fazer mais uma modificação:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">ClienteController</span> <span class="p">:</span> <span class="n">Controller</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">private</span> <span class="n">IClienteService</span> <span class="n">_service</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">ClienteController</span><span class="p">():</span> <span class="k">this</span><span class="p">(</span><span class="n">MeuProjetoFactory</span><span class="p">.</span><span class="n">CriaClienteService</span><span class="p">())</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">ClienteController</span><span class="p">(</span><span class="n">IClienteService</span> <span class="n">service</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">_service</span> <span class="p">=</span> <span class="n">service</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">Novo</span><span class="p">(</span><span class="n">Cliente</span> <span class="n">cliente</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">_service</span><span class="p">.</span><span class="n">Salvar</span><span class="p">(</span><span class="n">cliente</span><span class="p">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pronto, agora toda vez que uma classe ClienteController for criada, se no momento da criação não for informado um IClienteService e for utilizado o construtor padrão, automaticamente iremos buscar da nossa classe de factory.</p>
+
+<p>Isso deve ser feito dessa forma porque o Asp.Net MVC por padrão não consegue criar controllers sem ser pelo construtor padrão.</p>
+
+<p>Pronto, agora já temos um sistema com as nossas camadas bem separadas e utilizando o padrão Dependency Injection.</p>
+
+<p>Agora se quisermos testar a nossa classe ClienteController é só passar uma classe de mock que implemente a interface IClienteService para o construtor.</p>
+
+<p>E no caso que falei sobre as regras de negócio diferentes no contas a pagar? Bom, uma das soluções para isso nesse caso seria ter várias classes que implementassem IContasPagarService por exemplo, ContasPagarCliente1Service, ContasPagarClienteXptoService e assim por diante. Então, dentro do abstract factory, poderíamos ter um método assim:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">public</span> <span class="k">static</span> <span class="n">IContasPagarService</span> <span class="nf">CriaContasPagarService</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">switch</span> <span class="p">(</span><span class="n">ConfigurationManager</span><span class="p">.</span><span class="n">AppSettings</span><span class="p">[</span><span class="s">&quot;Cliente&quot;</span><span class="p">])</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>       <span class="k">case</span> <span class="s">&quot;Cliente1&quot;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="k">new</span> <span class="nf">ContasPagarCliente1Service</span><span class="p">();</span>
+</span><span class='line'>       <span class="k">case</span> <span class="s">&quot;ClienteXpto&quot;</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="k">new</span> <span class="nf">ContasPagarClienteXptoService</span><span class="p">();</span>
+</span><span class='line'>       <span class="k">default</span><span class="p">:</span>
+</span><span class='line'>            <span class="k">return</span> <span class="k">new</span> <span class="nf">ContasPagarService</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>De novo, estamos centralizando tudo na classe de abstract factory e utilizando o web.config para configurarmos qual classe de negócio utilizaremos. Um código bem mais simples e limpo. E ainda, a cada vez que tivermos que mudar uma regra de negócio de um cliente específico, não precisamos nos preocupar se afetamos ou não a regra de negócio de outro.</p>
+
+<p>No próximo post eu vou falar sobre como fazer Dependency Injection de uma forma ainda mais fácil que essa. Espero que nesse ponto pelo menos a teoria esteja clara.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-22T00:00:00-05:00"  data-updated="true">22/11/2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>, <a class='category' href='/blog/categories/asp-dot-net-mvc/'>asp.net mvc</a>, <a class='category' href='/blog/categories/dependency-injection/'>dependency injection</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/11/14/utilizando-o-asp-net-mvc-junto-com-asp-net-webforms/" title="Previous Post: Utilizando o Asp.Net MVC junto com Asp.Net WebForms">&laquo; Utilizando o Asp.Net MVC junto com Asp.Net WebForms</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/12/09/dependency-injection-com-structuremap-e-asp-net-mvc/" title="Next Post: Dependency Injection com StructureMap e Asp.Net MVC">Dependency Injection com StructureMap e Asp.Net MVC &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

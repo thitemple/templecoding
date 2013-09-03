@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CodeTemplates com ASP.NET MVC - Temple Coding</title>
+  <meta name="author" content="Thiago Temple">
+
+  
+  <meta name="description" content="Toda a vez que você vai adicionar uma View usando o assistente do Visual Studio Uma nova página é adiciona com um código pré-definido e baseado na &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Temple Coding" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><h1><a href="/">Temple Coding</a></h1>
+
+<h2>código, tecnologia e outras nerdices</h2>
+
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vintem.github.io/templecoding" />
+    <input class="search" type="text" name="q" placeholder="Procurar"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Arquivos</a></li>
+  <li><a href="/blog/categories/videocast">Videocast</a></li>
+  <li><a href="/sobre">Sobre</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">CodeTemplates com ASP.NET MVC</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-03T00:00:00-04:00"  data-updated="true">03/05/2010</time>
+        
+         | <a href="#disqus_thread">Comentários</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Toda a vez que você vai adicionar uma View usando o assistente do Visual Studio</p>
+
+<p><img class="aligncenter" src="/images/2010/05/ScreenHunter_01-May.-03-15.23.gif" title="Adicionar View" ></p>
+
+<p>Uma nova página é adiciona com um código pré-definido e baseado na opção que você escolheu  em &ldquo;View Content&rdquo;, o que muita gente não sabe é que dá para customizar todos esses modelos de página e é muito simples fazer isso.</p>
+
+<h3>Adicionando os arquivos ao projeto</h3>
+
+
+<p>Primeiro vá em <em>C:Program Files\Microsoft Visual Studio 9.0\Common7\IDE\ItemTemplates\CSharpWeb</em></p>
+
+<p><span style="color: #808080;">Obs.: Veja que esse caminho vai variar de acordo com sua instalação e com a linguagem escolhida.</span></p>
+
+<p><span>Se você tiver o ASP.NET MVC 1 e 2 instalados você deve encontrar duas pastas ali dentro chamadas respectivamente MVC e MVC2. Entre na pasta da versão escolhida copie a pasta CodeTemplates e cole na raíz do seu projeto web. Você deve acabar com um projeto assim:</span></p>
+
+<p><img class="aligncenter" src="/images/2010/05/ScreenHunter_03-May.-03-15.47.gif"></p>
+
+<p>O Visual Studio sempre vai procurar por esses arquivos localmente no projeto e se não encontrar buscará os arquivos na pasta informada acima.</p>
+
+<h3>Configurando os arquivos</h3>
+
+
+<p><span>Você já deve ter percebido não é? Existe um arquivo para cada template. Todas com uma extensão .tt que é a extensão do T4 (Text Template Transformation Toolkit).</span></p>
+
+<p><span>O T4 é uma ferramenta de geração de código baseada em templates que vem nativa junto com o Visual Studio desde a versão 2005. Aliás, vale para o T4 um investimento de estudos já que é uma ferramenta muito útil.</span></p>
+
+<p><span>A primeira coisa que precisa ser feita é selecionar todos os arquivos .tt ir na janela de propriedades e limpar o campo Custom Tool. Deixe em branco.</span></p>
+
+<p><img class="aligncenter" src="/images/2010/05/ScreenHunter_05-May.-03-16.01.gif" title="T4 Custom Tool" ></p>
+
+<h3>Alterando um template</h3>
+
+
+<p>Agora vamos realmente alterar um template. Vamos supor que eu queira, ao exibir o detalhe de uma classe que ela fosse exibida dentro de uma tabela. Originalmente, as propriedades são exibidas em divs ao invés de tabelas (que na minha opinião, é a melhor opção).</p>
+
+<p>Veja como ficou o arquivo Details.tt</p>
+
+<p><img class="aligncenter" src="/images/2010/05/ScreenHunter_07-May.-03-19.02.gif" title="Details com tabela" ></p>
+
+<p>Outra modificação que eu fiz na modelo de Details, foi, ao invés de exibir o título dentro de uma tag h2, eu exibo dentro da tag h1.</p>
+
+<p><img class="aligncenter" src="/images/2010/05/ScreenHunter_08-May.-03-19.06.gif" title="Details com título H1" ></p>
+
+<p>Pronto! Agora toda vez que for adiciona uma View com base no modelo Details ele seguirá esse padrão.</p>
+
+<p>Uma outra coisa que pode ser feita é salvar um novo modelo dentro daquela pasta com outro nome, por exemplo, eu fiz essas alterações e salvei o arquivo como DetailsVintem.tt. Agora quando eu tento adicionar uma View essa opção fica disponível para mim.</p>
+
+<p><img class="aligncenter" src="/images/2010/05/ScreenHunter_09-May.-03-19.09.gif"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Postado por <span class="fn">Thiago Temple</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-03T00:00:00-04:00"  data-updated="true">03/05/2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>Desenvolvimento</a>, <a class='category' href='/blog/categories/asp-dot-net-mvc/'>asp.net mvc</a>, <a class='category' href='/blog/categories/code-templates/'>code templates</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc/" data-via="vintem12" data-counturl="http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/04/26/postando-um-objeto-json-para-uma-action-mvc2-com-jquery/" title="Previous Post: Postando um objeto JSON para uma Action MVC2 com jQuery">&laquo; Postando um objeto JSON para uma Action MVC2 com jQuery</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6/" title="Next Post: Publicando um site em ASP.NET MVC no IIS 6">Publicando um site em ASP.NET MVC no IIS 6 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comentários</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/">Publicando um site Octopress usando GitHub pages a partir de um novo computador</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/">Instalando uma máquina de desenvolvimento com dois comandos</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/30/responsabilidade-unica-com-javascript/">Só é uma bagunça se você deixar. Responsabilidade única com JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/23/meu-ted-talk-favorito/">Meu TED Talk favorito</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/16/programacao-orientada-a-coincidencia/">Programação orientada à coincidência</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Thiago Temple -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+
+<script type="text/javascript">
+var sc_project=5357260;
+var sc_invisible=1;
+var sc_security="14d7610a";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="web stats"
+href="http://statcounter.com/free-web-stats/" target="_blank"><img
+class="statcounter" src="http://c.statcounter.com/5357260/0/14d7610a/1/"
+alt="web stats"></a></div></noscript>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'templecoding';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc/';
+        var disqus_url = 'http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby para desenvolvedores .NET–parte 2]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/"/>
+    <updated>2010-11-05T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2</id>
+    <content type="html"><![CDATA[<div style="padding-left: 10px; border: 1px dashed;">
+
+Esta é uma série de artigos sobre Ruby para desenvolvedores .NET, confira os outros em:
+
+<a href="http://vintem.github.io/templecoding/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/">Ruby para desenvolvedores .NET – parte 1</a>
+
+</div>
+
+
+<p>Ruby, é uma linguagem orientada a objetos. É  possível reconhecer, apenas com pequenas diferenças na sintaxe, algumas similaridades e diferenças de funcionamento, se comparado com o C#.</p>
+
+<p>Podemos ver no código abaixo, a definição de uma classe(Usuario), a definição de um construtor (initialize), a definição de um método (autorizar_acesso) e a criação de 2 atributos, nome e email.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Usuario</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:nome</span><span class="p">,</span> <span class="ss">:email</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def initialize(nome)&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="vi">@nome</span> <span class="o">=</span> <span class="n">nome</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def autorizar_acesso&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kp">false</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>O que podemos ver de diferente aqui, é que quando chamamos o método attr_accessor para criar as propriedades nome e email, internamente o Ruby cria duas variáveis de instância chamadas @nome e @email e essas variáveis podem, obviamente, ser acessadas por qualquer método daquele objeto.’</p>
+
+<p>A propósito, instanciar a class Usuario é tão simples quanto:
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">usuario</span> <span class="o">=</span> <span class="no">Usuario</span><span class="o">.</span><span class="n">new</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Retorno de valores</strong></p>
+
+<p>Uma outra coisa importante de lembrar no Ruby, é que a última instrução de um método sempre é retornada. Portanto dentro do método autorizar_acesso, estamos retornando o valor false. Colocar false como última instrução (e nesse caso, a única) é o mesmo que dizer return false.</p>
+
+<p>Por exemplo, os dois métodos abaixo fazem a mesma coisa:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">soma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># faz um monte de coisa desnecessaria aqui</span>
+</span><span class='line'>  <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span><span class='line'><span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;def soma(x, y)</span>
+</span><span class='line'><span class="sr">  # faz um monte de coisa desnecessaria aqui</span>
+</span><span class='line'><span class="sr">  resultado_soma = x + y</span>
+</span><span class='line'><span class="sr">  return resultado_soma</span>
+</span><span class='line'><span class="sr">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Nos dois casos, x é somado a y e o resultado da soma é retornado.</p>
+
+<p><strong>Herança</strong></p>
+
+<p>Assim como em C#, Ruby também tem <a href="http://pt.wikipedia.org/wiki/Heran%C3%A7a_(inform%C3%A1tica)">herança</a> como podemos ver no exemplo abaixo:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Usuario</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:nome</span><span class="p">,</span> <span class="ss">:email</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def initialize(nome)&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="vi">@nome</span> <span class="o">=</span> <span class="n">nome</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def autorizar_acesso&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kp">false</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;class UsuarioEspecial &amp;lt; Usuario</span>
+</span><span class='line'><span class="sr">  def autorizar_acesso&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kp">true</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>No código acima a classe UsuarioEspecial herda da classe Usuario e sobrescreve o método autorizar_acesso. Assim já podemos ver que é possível usar também o polimorfismo.</p>
+
+<p><strong>Métodos Estáticos</strong></p>
+
+<p>Ruby não tem métodos estáticos realmente, mas ele tem, o que é conhecido como <span style="text-decoration: underline;">métodos de classe</span> e funcionam de forma similar aos métodos estáticos do C#. Para  usar métodos de classe basta que na declaração do método seja colocada a palavra chave <span style="text-decoration: underline;">self</span>, como podemos ver:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">UsuarioEspecial</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="no">Usuario</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def self.salvar&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">enviar_email</span><span class="p">(</span><span class="s2">&quot;texto do email&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#salvar os dados do usuario</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  def autorizar_acesso&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kp">true</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;private&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">def</span> <span class="nf">enviar_email</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;# envia email</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  end</span>
+</span><span class='line'><span class="sr">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>O método salvar pode ser chamado diretamente na classe UsuarioEspecial, não é necessário criar uma instância.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">UsuarioEspecial</span><span class="o">.</span><span class="n">salvar</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Ainda no código acima podemos ver que para declarar um método privado pasta adicionar a palavra chave <span style="text-decoration: underline;">private</span> e qualquer método declarado abaixo dela será considerado privado.</p>
+
+<p><strong>Interfaces</strong></p>
+
+<p>Interfaces são um artifício  das linguagens estáticas para dizer ao compilador que uma classe tem um ou mais métodos.</p>
+
+<p>No Ruby não existe um compilador e portanto não existe essa checagem prévia. Também existe a questão de que podemos alterar uma classe Ruby mesmo depois que ela já foi declarada, mas vamos falar disso depois. Portanto não existe a necessidade de interfaces.</p>
+
+<p>Digamos que exista a seguinte situação feita em C#:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">interface</span> <span class="n">IControlePagamento</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">void</span> <span class="n">Pagar</span><span class="p">();</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="k">class</span> <span class="nc">Pagamento</span> <span class="p">:</span> <span class="n">IControlePagamento</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">public</span> <span class="k">void</span> <span class="n">Pagar</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// logica de pagamento</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>O que esse código bem simples faz, é dizer ao compilador que a classe Pagamento implementa os métodos da Interface IControlePagamento. Em Ruby a única coisa que temos que fazer é efetivamente implementar o método Pagar()</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ControlePagamento</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">pagar</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Isso tem vantagens e desvantagens.</p>
+
+<p>A vantagem é que o código em Ruby é muito mais sucinto e objetivo, não é preciso escrever código para satisfazer o compilador. Existe apenas código para resolver o problema do negócio.</p>
+
+<p>A desvantagem é que você não tem o aviso imediato do compilador caso o método não seja implementado.</p>
+
+<p>Ainda assim, se você é adepto de técnicas como <a href="http://pt.wikipedia.org/wiki/Test_Driven_Development">TDD</a>, esse é um problema fácil de resolver, já que seus testes ficariam responsáveis por isso.</p>
+
+<p>Outro recurso disponível no Ruby é que, toda classe automaticamente herda da classe Class, na classe Class existe um método chamado <span style="text-decoration: underline;">respond_to?</span>. Esse método verifica se um objeto responde/contém a um determinado método.</p>
+
+<p><img class="aligncenter" src="/images/2010/11/respond_to_false.png"></p>
+
+<p>No exemplo acima a classe ControlePagamento foi definida sem o método pagar, veja que quando foi chamado o método respond_to? o retorno foi false.</p>
+
+<p>Já abaixo o método foi definido e a resposta foi true.</p>
+
+<p><img class="aligncenter" src="/images/2010/11/respond_to_true.png"></p>
+
+<p>Enfim, existem opções para controlar isso e há gente que faça, mas vale dizer que pelo que tenho visto, o mais comum é simplesmente seguir uma convenção.</p>
+
+<p><strong>Conclusão</strong></p>
+
+<p>Nesse artigo já vimos mais algumas diferenças mais marcantes do Ruby, no próximo vou falar um pouco do Object Model do Ruby.</p>
+
+<p>Duvidas, criticas ou sugestões? Deixe um comentário.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby para desenvolvedores .NET–parte 1]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/"/>
+    <updated>2010-11-03T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1</id>
+    <content type="html"><![CDATA[<p>Eu tenho usado Ruby já há algum tempo, principalmente em alguns desenvolvimentos pessoais usando o Rails. Mas eu trabalho com C# já há mais de 8 anos e vivi fechado nesse mundo .NET por muito tempo, muito mais do que eu gostaria. De qualquer forma, ruby já tem feito parte do meu dia a dia, então eu gostaria de compartilhar algumas coisas que já aprendi sobre ruby, para aqueles, que como eu, vivem no mundo .NET.</p>
+
+
+<p>  <p><strong>Motivação</strong></p>  <p>Ruby é e deve ser considerada uma linguagem de primeira classe, é possível hoje realizar aplicativos de diversos fins com Ruby e não somente aplicações web usando Rails. Mas, muitas vezes as empresas preferem ficar com linguagens mais conhecidas no mercado como Java ou C# para suas aplicações.</p>  <p>Ok, se você não pode usar Ruby para construir suas aplicações é bem provável que possa usar Ruby como uma linguagem de scripting (que ela é), para ajudar em trabalhos marginais porém importantes que muitas vezes não são feitos, ou são feitos usando outras coisas como XML, como por exemplo realizar Builds e Deploys, fazer testes de aplicativos, entre outros.</p>  <p>Se você pode escolher qual a linguagem quer usar, melhor pra você, Ruby pode ser uma ótima escolha, como veremos.</p>  <p><strong>Interpretador</strong></p>  <p>A primeira coisa que precisamos para usar Ruby é um interpretador de Ruby. Existem vários interpretadores por ai, o que eu vou usar aqui é o <a href="http://ironruby.codeplex.com/" target="_blank">IronRuby</a>. O IronRuby é um interpretador do Ruby que permite usar Ruby sobre a plataforma .NET, ou seja, vai permitir que você use os assemblies que já está costumado. É Ruby, segue a especificação de Ruby, com o adicional do .NET. Ótimo não é?</p>  <p>Eu recomento instalar a versão 1.0 que é compatível com o Ruby 1.8.7, andei fazendo uns testes com a versão 1.1 do IronRuby e ainda dá vários paus (pelo menos na data atual). A vantagem dessa versão 1.1 é que ela já vem com <a href="http://viniciusquaiato.com/blog/ironruby-tools-for-visual-studio-2010/" target="_blank">ferramentas para o Visual Studio 2010</a>.</p>  <p><strong>O Console</strong></p>  <p>Uma vez com o IronRuby instalado, você deve ter o IronRuby Console no seu menu iniciar, ou então pode executar o console a partir de um prompt padrão com o comando iirb.</p>  <p>O console permite que você execute qualquer instrução ruby, vá e faça um teste simples:</p></p>
+
+<p><img class="aligncenter" src="/images/2010/11/console.png" title="Console" ></p>
+
+<p>Uma outra vantagem do Ruby é a “falta de cerimônia” no código como os {}, ;, () e afins. Aliando isso ao fato de ser uma linguagem interpretada, veja a diferença de um Hello World feito em C# para uma aplicação console e uma em Ruby.</p>
+
+
+<p></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span><span class='line'><span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">class</span> <span class="nc">Program</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;</span><span class="n">Hello</span> <span class="n">World</span><span class="p">,</span> <span class="p">{</span><span class="m">0</span><span class="p">}&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">quot</span><span class="p">;,</span> <span class="n">args</span><span class="p">[</span><span class="m">0</span><span class="p">]));</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E agora em Ruby:</p>
+
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="no">Hello</span> <span class="no">World</span><span class="p">,</span> <span class="c1">#{ARGV[0]}&amp;rdquo;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Considere, que além da diferença da linguagem, para rodar o aplicativo no .NET é preciso compilar, gerar um executável e então rodá-lo. E para rodar o script Ruby, considerando que ele foi salvo num arquivo chamado hello_world.rb basta executar o comando:</p>
+
+
+<p><img class="aligncenter" src="/images/2010/11/comando_ruby.png" title="Comando ruby" ></p>
+
+<p><strong>Fortemente, Estaticamente e Dinamicamente tipado</strong></p>
+
+
+
+
+<p>Falando da linguagem realmente, Ruby é uma linguagem fortemente e dinamicamente tipada. O que isso quer dizer?</p>
+
+
+
+
+<p>Quer dizer as variáveis tem um tipo bem definido, por exemplo uma variável do tipo String não pode ser somada a uma variável do tipo Fixnum veja:</p>
+
+
+<p><img class="aligncenter" src="/images/2010/11/tipos.png" title="Tipos" ></p>
+
+<p>Veja que apenas por atribuir um valor às variáveis os tipos foram definidos como Fixnum e String, isso é definir uma tipagem dinamicamente, ou seja, no seu primeiro uso. Nos casos acima as variáveis texto e numero são instâncias das classes String e Fixnum respectivamente e por isso tem acessos aos seus métodos, então se você quiser concatenar as duas variáveis em uma string pode fazer o seguinte:</p>
+
+
+<p><img class="aligncenter" src="/images/2010/11/concat.png"></p>
+
+<p>Veja que chamei o método to_s que converte para string e então foi gerado o texto “VinTem12”</p>
+
+
+
+
+<p>Linguagens, estaticamente tipadas, como o C#, tem seu tipo definido em tempo de compilação, ou seja, antes da execução.</p>
+
+
+
+
+<p><strong>Usando o .NET</strong></p>
+
+
+
+
+<p>Como um exemplo simples de como é possível usar as classes do .NET a partir do IronRuby, vou mostrar um código básico de um MessageBox do Windows Forms.</p>
+
+
+<p><img class="aligncenter" src="/images/2010/11/clr.png" title="CLR" ></p>
+
+<p>O princípio é o mesmo para qualquer classe do .NET Framework.</p>
+
+
+
+
+<p><strong>Concluindo</strong></p>
+
+
+
+
+<p>Essa foi apenas uma apresentação inicial de como instalar um ambiente Ruby no Windows, do console do Ruby e da diferença mais básica entre Ruby e C# que é a tipagem.</p>
+
+
+
+
+<p>Nos próximos vou falar um pouco mais a fundo das características do Ruby e quais as diferenças para o C#.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Convertendo um texto ISO-8859-1 para UTF-8 em Ruby]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby/"/>
+    <updated>2010-11-01T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby</id>
+    <content type="html"><![CDATA[<p>No Ruby 1.9 uma coisa que você pode ter certeza é que terá dor de cabeça é com Encoding. Faça uma busca rápida no google por &ldquo;ruby 1.9 encoding&rdquo; e você vai entender do que eu estou falando.</p>
+
+<p>Hoje eu tive que converter um conteúdo que estava em iso-8859-1 para utf-8 e recebi o seguinte erro:</p>
+
+<p>incompatible character encodings: UTF-8 and ISO-8859-1</p>
+
+<p>Para resolver isso eu usei:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">meu</span> <span class="n">texto</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="no">UTF</span><span class="o">-</span><span class="mi">8</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="k">undef</span><span class="p">:</span> <span class="ss">:replace</span><span class="p">,</span> <span class="ss">invalid</span><span class="p">:</span> <span class="ss">:replace</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>E o problema foi resolvido. Segundo a <a href="http://ruby-doc.org/ruby-1.9/classes/String.html#M000553" target="_blank">documentação do Ruby 1.9</a> o parâmetro :invalid com o valor :replace, faz com que o método encode substitua o carácter inválido. O padrão é gerar uma exceção.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adicionando Foreign Keys no Rails]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2009/10/25/adicionando-foreign-keys-no-rails/"/>
+    <updated>2009-10-25T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2009/10/25/adicionando-foreign-keys-no-rails</id>
+    <content type="html"><![CDATA[<p>Existem várias formas de se adicionar foreign keys no rails, mais uma das que eu acho mais simples é utilizando o plugin <a href="http://github.com/patientslikeme/migration_helpers">migration_helpers</a>.</p>
+
+<p>A instalação funciona como qualquer outro plugin do rails:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>script/plugin install git://github.com/patientslikeme/migration_helpers.git
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Depois disso edite seu arquivo de migração. Por exemplo, supondo que você tenha uma classe/tabela chamada Aluno e que esta tabela está relacionada a uma classe/tabela turma , para adicionar uma foreign key deve-se fazer o seguinte:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">CreateAlunos</span> <span class="o">&gt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Migration</span>
+</span><span class='line'> <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">up</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt; create_table :alunos do |t|</span>
+</span><span class='line'><span class="sr">  t.string :nome, :null =&amp;gt; false</span>
+</span><span class='line'><span class="sr">  t.date :datanascimento, :null =&amp;gt; false</span>
+</span><span class='line'><span class="sr">  t.integer :turma_id, :null =&amp;gt; false</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">  t.timestamps</span>
+</span><span class='line'><span class="sr">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">add_foreign_key :alunos, :turma_id, :turmas</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">down</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;drop_table :sprints</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;</span><span class="sr">/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;  end</span>
+</span><span class='line'><span class="sr">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Quando rodar o rake db:migrate já será gerado o código SQL para a criação da foreign key no banco de dados.</p>
+
+<p>Essa é somente uma funcionalidade do plugin migrate_helpers. Ele tem uma série de outros métodos muito legais como por exemplo para gravar dados para uma tabela.</p>
+
+<p>Espero que tenha ajudado.</p>
+]]></content>
+  </entry>
+  
+</feed>

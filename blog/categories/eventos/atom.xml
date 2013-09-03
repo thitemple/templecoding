@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: eventos | Temple Coding]]></title>
+  <link href="http://vintem.github.io/templecoding/blog/categories/eventos/atom.xml" rel="self"/>
+  <link href="http://vintem.github.io/templecoding/"/>
+  <updated>2013-09-03T10:42:11-04:00</updated>
+  <id>http://vintem.github.io/templecoding/</id>
+  <author>
+    <name><![CDATA[Thiago Temple]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Análise TDC2010]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/08/29/anlise-tdc2010/"/>
+    <updated>2010-08-29T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/08/29/anlise-tdc2010</id>
+    <content type="html"><![CDATA[<p>No último final de semana dos dias 21 e 22 de agosto, tive a oportunidade de participar do TDC2010. Estava inscrito nas trilhas de .NET e Arduino para sábado e domingo, respectivamente.</p>
+
+
+<p>  <p>Estava inscrito, porém, ao chegar lá, logo na abertura fico sabendo do &ldquo;Lado B&rdquo;, que eram trilhas alternativas criadas de maneira espontânea e sem muita programação, ou seja, meu sábado foi inteiro B. :)</p>  <p>Passei a manhã numa conversa descontraída sobre empreendedorismo com gente que deu as caras a tapa e abriram suas empresas, gente como o <a href="http://twitter.com/alegomes" target="_blank">Alexandre Gomes</a>, o <a href="http://twitter.com/felipero" target="_blank">Felipe Rodrigues</a> e o <a href="http://twitter.com/vsenger" target="_blank">Vinicius Senger</a>, além de outros participantes da conferência. Posso dizer com certeza que foram algumas poucas horas de muita informação e ainda muito divertimento. À tarde, pra completar o Felipe Rodrigues ainda falou sobre trabalhos como Freelancer no mundo Rails. </p>  <p>Enfim, foi um dia em que eu não vi muito de .NET, embora eu tenha conversado com gente que foi nas palestras de .NET e me disse que foram ótimas, mas foi um dia de grande crescimento.</p>  <p>No domingo eu participei o dia todo na trilha de Arduino (pra quem não sabe o que é o Arduino, deêm uma olhada <a href="http://projeto39.wordpress.com/o-arduino/" target="_blank">nesse post</a>), um dia de robótica, de automação para a casa, para o carro etc. O que eu posso dizer sobre o Arduino é que ele abre portas para uma área com grande potencial comercial a ser explorado, e no TDC2010 pude ver muitas idéias nessa área.</p>  <p>Concluindo, o TDC2010 foi uma conferência bem diferente das que eu já participei e talvez por isso tenha sido também bem especial. Uma coisa posso dizer, foi um tempo ótimo e muito bem organizado!</p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[QCon São Paulo, eu vou!]]></title>
+    <link href="http://vintem.github.io/templecoding/blog/2010/07/12/qcon-so-paulo-eu-vou/"/>
+    <updated>2010-07-12T00:00:00-04:00</updated>
+    <id>http://vintem.github.io/templecoding/blog/2010/07/12/qcon-so-paulo-eu-vou</id>
+    <content type="html"><![CDATA[<p><img class="alignleft" src="/images/2010/07/qcon_3.png" title="QCON" > Nos dias 11 e 12 de setembro vai acontecer em São Paulo, mais precisamente no Centro Fecomercio de Eventos a QCon, um dos principais eventos de arquitetos e desenvolvedores da América Latina. Falando sobre assuntos como .NET, Java, Ruby, Rails, Agile, Arquitetura, etc.</p>
+
+<p>Vários nomes de peso estarão falando sobre diversos assuntos, sem contar que é mais uma oportunidade para melhorar o networking.</p>
+
+<p>Eu estarei lá, minha inscrição já está garantida, espero encontrar você por lá também. :)</p>
+]]></content>
+  </entry>
+  
+</feed>
