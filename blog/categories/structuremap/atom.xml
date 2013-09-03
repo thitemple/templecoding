@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: structuremap | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/structuremap/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/structuremap/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Dependency Injection com StructureMap e Asp.Net MVC]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2009/12/09/dependency-injection-com-structuremap-e-asp-net-mvc/"/>
+    <link href="http://templecoding.com/blog/2009/12/09/dependency-injection-com-structuremap-e-asp-net-mvc/"/>
     <updated>2009-12-09T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2009/12/09/dependency-injection-com-structuremap-e-asp-net-mvc</id>
-    <content type="html"><![CDATA[<p>Ok, então você começou a usar o Dependency Injection e viu que dava <a target="_self" href="http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/">muito trabalho</a>. A boa notícia é que existem vários frameworks por aí que ajudam a diminuir o trabalho e ainda a ter um código muito mais limpo.<br /></p>
+    <id>http://templecoding.com/blog/2009/12/09/dependency-injection-com-structuremap-e-asp-net-mvc</id>
+    <content type="html"><![CDATA[<p>Ok, então você começou a usar o Dependency Injection e viu que dava <a target="_self" href="http://templecoding.com/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/">muito trabalho</a>. A boa notícia é que existem vários frameworks por aí que ajudam a diminuir o trabalho e ainda a ter um código muito mais limpo.<br /></p>
 
 <br />
 
@@ -28,7 +28,7 @@
 <br />
 
 
-<p>Bom, dando sequência no <a href="http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/">post anterior</a>, vamos modificar aquele código para utilizar o StructureMap. A primeira coisa a fazer obviamente é baixar o framework e adicionar uma referência para o assembly StructureMap.dll.<br /></p>
+<p>Bom, dando sequência no <a href="http://templecoding.com/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/">post anterior</a>, vamos modificar aquele código para utilizar o StructureMap. A primeira coisa a fazer obviamente é baixar o framework e adicionar uma referência para o assembly StructureMap.dll.<br /></p>
 
 <br />
 

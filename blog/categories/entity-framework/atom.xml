@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Entity Framework | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/entity-framework/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/entity-framework/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ASP.NET MVC Model Binding]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/05/20/asp-net-mvc-model-binding/"/>
+    <link href="http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding/"/>
     <updated>2013-05-20T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/05/20/asp-net-mvc-model-binding</id>
+    <id>http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/BjmRewB7tY4" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[002 - VideoCast - Entity Framework]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/10/01/002-videocast-entity-framework/"/>
+    <link href="http://templecoding.com/blog/2012/10/01/002-videocast-entity-framework/"/>
     <updated>2012-10-01T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/10/01/002-videocast-entity-framework</id>
+    <id>http://templecoding.com/blog/2012/10/01/002-videocast-entity-framework</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/OMFHnWWUPGI" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -48,9 +48,9 @@
   
   <entry>
     <title type="html"><![CDATA[001 - VideoCast - Produtividade com ASP.NET MVC 4]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4/"/>
+    <link href="http://templecoding.com/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4/"/>
     <updated>2012-09-25T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4</id>
+    <id>http://templecoding.com/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/Zp_cLt69ee8" frameborder="0" width="640" height="360"></iframe>
 
 

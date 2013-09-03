@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: asp.net | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/asp-dot-net/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/asp-dot-net/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Localização de mensagem de erro no ASP.NET MVC]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/07/22/localizao-de-mensagem-de-erro-no-asp-net-mvc/"/>
+    <link href="http://templecoding.com/blog/2010/07/22/localizao-de-mensagem-de-erro-no-asp-net-mvc/"/>
     <updated>2010-07-22T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/07/22/localizao-de-mensagem-de-erro-no-asp-net-mvc</id>
+    <id>http://templecoding.com/blog/2010/07/22/localizao-de-mensagem-de-erro-no-asp-net-mvc</id>
     <content type="html"><![CDATA[<p>Sabe quando você preenche uma data inválida em uma página usando o ASP.NET MVC e o erro vem em inglês assim:</p>
 
 <p><img class="aligncenter" src="/images/2010/07/ErroIngles_thumb.png" title="Erro em inglês" ></p>
@@ -64,9 +64,9 @@
   
   <entry>
     <title type="html"><![CDATA[Utilizando o Asp.Net MVC junto com Asp.Net WebForms]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2009/11/14/utilizando-o-asp-net-mvc-junto-com-asp-net-webforms/"/>
+    <link href="http://templecoding.com/blog/2009/11/14/utilizando-o-asp-net-mvc-junto-com-asp-net-webforms/"/>
     <updated>2009-11-14T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2009/11/14/utilizando-o-asp-net-mvc-junto-com-asp-net-webforms</id>
+    <id>http://templecoding.com/blog/2009/11/14/utilizando-o-asp-net-mvc-junto-com-asp-net-webforms</id>
     <content type="html"><![CDATA[<p>Para aqueles que como eu, gostaram muito da implementação do MVC para o Asp.Net (eu relutei no início, mas tive que ceder, ficou muito bom) e gostariam de começar a usá-lo já, mas não tem nenhum projeto novo pra implementá-lo, existe uma forma de utilizar o Asp.Net MVC junto com os costumeiros Web Forms.</p>
 
 <p>A 1a coisa que você precisa verificar, obviamente, é se o servidor onde roda o seu site suporta o .Net Framework 3.5, já que o Asp.Net MVC precisa dessa versão.</p>

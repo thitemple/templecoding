@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: encoding | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/encoding/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/encoding/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Convertendo um texto ISO-8859-1 para UTF-8 em Ruby]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby/"/>
+    <link href="http://templecoding.com/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby/"/>
     <updated>2010-11-01T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby</id>
+    <id>http://templecoding.com/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby</id>
     <content type="html"><![CDATA[<p>No Ruby 1.9 uma coisa que você pode ter certeza é que terá dor de cabeça é com Encoding. Faça uma busca rápida no google por &ldquo;ruby 1.9 encoding&rdquo; e você vai entender do que eu estou falando.</p>
 
 <p>Hoje eu tive que converter um conteúdo que estava em iso-8859-1 para utf-8 e recebi o seguinte erro:</p>
@@ -36,9 +36,9 @@
   
   <entry>
     <title type="html"><![CDATA[Nova sintaxe para fazer Html Encoding com Asp.Net 4 e Asp.Net MVC 2]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2/"/>
+    <link href="http://templecoding.com/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2/"/>
     <updated>2010-04-19T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2</id>
+    <id>http://templecoding.com/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2</id>
     <content type="html"><![CDATA[<p>Html Encoding faz parte de todo desenvolvimento web, principalmente para previnir ataques de <a href="http://imasters.uol.com.br/artigo/9879/seguranca/xss_cross_site_scripting/" target="_blank">Cross Site Scripting (XSS)</a> &ndash; quem não sabe o que é, recomendo ler esse artigo.</p>
 
 <p>Até a versão 3.5 no Asp.Net para fazer Html Enconding tinhamos que fazer algo assim:</p>

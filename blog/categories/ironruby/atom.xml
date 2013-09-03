@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ironruby | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/ironruby/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/ironruby/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby para desenvolvedores .NET–parte 2]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/"/>
+    <link href="http://templecoding.com/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/"/>
     <updated>2010-11-05T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2</id>
+    <id>http://templecoding.com/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2</id>
     <content type="html"><![CDATA[<div style="padding-left: 10px; border: 1px dashed;">
 
 Esta é uma série de artigos sobre Ruby para desenvolvedores .NET, confira os outros em:
 
-<a href="http://vintem.github.io/templecoding/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/">Ruby para desenvolvedores .NET – parte 1</a>
+<a href="http://templecoding.com/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/">Ruby para desenvolvedores .NET – parte 1</a>
 
 </div>
 
@@ -318,9 +318,9 @@ Esta é uma série de artigos sobre Ruby para desenvolvedores .NET, confira os o
   
   <entry>
     <title type="html"><![CDATA[Ruby para desenvolvedores .NET–parte 1]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/"/>
+    <link href="http://templecoding.com/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/"/>
     <updated>2010-11-03T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1</id>
+    <id>http://templecoding.com/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1</id>
     <content type="html"><![CDATA[<p>Eu tenho usado Ruby já há algum tempo, principalmente em alguns desenvolvimentos pessoais usando o Rails. Mas eu trabalho com C# já há mais de 8 anos e vivi fechado nesse mundo .NET por muito tempo, muito mais do que eu gostaria. De qualquer forma, ruby já tem feito parte do meu dia a dia, então eu gostaria de compartilhar algumas coisas que já aprendi sobre ruby, para aqueles, que como eu, vivem no mundo .NET.</p>
 
 

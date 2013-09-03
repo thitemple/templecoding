@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Análises | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/analises/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/analises/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Análise do livro Pragmatic Thinking and Learning]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
+    <link href="http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
     <updated>2013-06-04T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
+    <id>http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
     <content type="html"><![CDATA[<p>Alguns livros são tão bons que você tem vontade de falar deles para todo mundo antesmesmo de terminar. Esse é um deles.</p>
 
 <p><a href="http://vintem.me/18LjWdg"><img class="aligncenter" src="/images/2013/06/ahptl_xlargecover.jpg" title="Pragmatic Thinking and Learning" ></a></p>
@@ -45,9 +45,9 @@
   
   <entry>
     <title type="html"><![CDATA[Se você tem ou quer ter um blog, você precisa ler esse livro]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
+    <link href="http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
     <updated>2012-12-03T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging</id>
+    <id>http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging</id>
     <content type="html"><![CDATA[<p>Eu terminei de ler há alguns dias e resolvi fazer uma análise do livro <a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Technical Blogging: </a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="attachment wp-att-1024" target="_blank"><img class="alignright" src="/images/2012/11/actb_xlargecover.jpg" title="Technica Blogging" ></a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Turn Your Expertise into a Remarkable Online Presence</a> por <a href="http://antoniocangiano.com/" target="_blank">Antonio Cangiano</a>. Ainda estou digerindo tudo que aprendi nesse livro e já pondo em prática <del>algumas</del> várias coisas.</p>
 
 <p>É um dos livros com a maior quantidade de dicas praticas que já li. Diversas dicas e ideias de uso imediato. Para quem usa, ou planeja usar, o WordPress como plataforma é ainda mais útil. O livro apresenta vários plug-ins que vão facilitar a vida na hora de escrever, ajudar a trazer mais performance para o site, trazer mais facilidade e valor para os usuários que vão ler o blog.</p>
@@ -73,16 +73,16 @@
   
   <entry>
     <title type="html"><![CDATA[O menu iniciar no Windows 8 mudou, você pode mudar também]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/11/26/menu-iniciar-no-windows-8/"/>
+    <link href="http://templecoding.com/blog/2012/11/26/menu-iniciar-no-windows-8/"/>
     <updated>2012-11-26T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/11/26/menu-iniciar-no-windows-8</id>
+    <id>http://templecoding.com/blog/2012/11/26/menu-iniciar-no-windows-8</id>
     <content type="html"><![CDATA[<p>Na semana passada eu estava ouvindo um podcast (não me lembro qual, escutei vários) e no meio do podcast o entrevistado cita que algumas pessoas tem reclamado da falta do menu iniciar no Windows 8. O que me parece é que alguém andou <a href="http://www.amazon.com/gp/product/B002ALFT6C/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B002ALFT6C&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">mexendo no queijo dos outros</a>.</p>
 
 <p>Honestamente eu não tinha me dado conta direito que ele não estava lá. Claro, pude ver que ele não estava presente. É que eu uso ele tão pouco que eu nem sinto falta.</p>
 
 <p>O Windows 8 acabou de ser lançado, não tem nem um mês. Eu atualizei o meu notebook no final de semana seguinte ao lançamento e, posso dizer que foi a atualização mais tranquila que eu já fiz. Baixei um executável pequeno, ele analisou o computador, paguei a atualização por ali mesmo e pronto. Foi só esperar ele baixar o Windows 8 e instalar.</p>
 
-<p>Eu gostei tanto que até já comprei também um <a href="http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface/">Tablet Surface e fiz uma análise sobre ele</a>.</p>
+<p>Eu gostei tanto que até já comprei também um <a href="http://templecoding.com/blog/2012/11/14/analise-do-surface/">Tablet Surface e fiz uma análise sobre ele</a>.</p>
 
 <p><img class="alignleft" src="/images/2012/11/evol-windows_thumb.jpg" title="Evolução do Windows" > Na minha opinião o Windows 8 é a melhor novidade em termos de sistemas operacionais desde o Windows 95, quando a gente saiu do Windows 3.11. Olha só, me entendam bem, eu uso Windows, mas eu tenho um Mac há quase 5 anos e gosto muito do Mac OS X. Também uso ocasionalmente o Linux e gosto do Ubuntu (menos que os outros). Ah sim, e por enquanto, pelo menos, eu ainda tenho um celular com Android.</p>
 
@@ -119,9 +119,9 @@
   
   <entry>
     <title type="html"><![CDATA[O Surface é um ótimo Tablet e um bom Notebook]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface/"/>
+    <link href="http://templecoding.com/blog/2012/11/14/analise-do-surface/"/>
     <updated>2012-11-14T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface</id>
+    <id>http://templecoding.com/blog/2012/11/14/analise-do-surface</id>
     <content type="html"><![CDATA[<h2>Uma análise do Surface (de um humilde proprietário)</h2>
 
 
@@ -202,9 +202,9 @@ Saída de vídeo em HD</p>
   
   <entry>
     <title type="html"><![CDATA[Análise: Growing Object-Oriented Software, Guided by Tests]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/"/>
+    <link href="http://templecoding.com/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/"/>
     <updated>2011-05-29T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests</id>
+    <id>http://templecoding.com/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests</id>
     <content type="html"><![CDATA[<p>Eu acabei de ler <a href="http://www.amazon.com/gp/product/0321503627/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321503627&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="nofollow">Growing Object-Oriented Software, Guided by Tests</a> e posso dizer que é um livro altamente recomendável.</p>
 
 <p><a href="http://www.amazon.com/gp/product/0321503627/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321503627&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="nofollow"><img class="alignright" src="/images/2011/05/51VI2SgJRwL._SL205.jpg" title="Growing Object-Oriented Software, Guided by Tests" ></a></p>

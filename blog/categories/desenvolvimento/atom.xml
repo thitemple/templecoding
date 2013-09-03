@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Desenvolvimento | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/desenvolvimento/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Publicando um site Octopress usando GitHub pages a partir de um novo computador]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/"/>
+    <link href="http://templecoding.com/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/"/>
     <updated>2013-08-26T11:36:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev</id>
+    <id>http://templecoding.com/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev</id>
     <content type="html"><![CDATA[<p>OK, eu admito, esse post é bem específico e ele serve mais para que eu <strong>nunca mais</strong> esqueça como fazer isso.</p>
 
 <p>Esse blog é hospedado no <a href="http://pages.github.com">GitHub Pages</a> e é feito só com HTML, não tem nenhum CMS por trás. Mas eu uso o <a href="http://octopress.org">Octopress</a> para gerar os arquivos HTML pra mim.</p>
@@ -80,9 +80,9 @@ system "git push origin +#{deploy_branch}"
   
   <entry>
     <title type="html"><![CDATA[Instalando uma máquina de desenvolvimento com dois comandos]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/"/>
+    <link href="http://templecoding.com/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/"/>
     <updated>2013-08-25T12:11:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos</id>
+    <id>http://templecoding.com/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos</id>
     <content type="html"><![CDATA[<p>Recentemente eu tive que preparar duas máquinas de desenvolvimento, um novo notebook Windows 8 e uma VM Windows 7 e, honestamente, por mais que eu goste de uma máquina nova, perder tempo instalando uma porção de aplicações e configurar tantas outras não é algo que eu ache divertido. Além do mais, sempre tem algumas coisas que eu não faço todo dia e, na hora que eu preciso eu não lembro. Por exemplo, como é que eu gero uma chave RSA para usar com ssh mesmo?</p>
 
 <p>Enfim, dessa vez, ao invés de instalar tudo manualmente, eu decidi fazer um script que faz todas essas coisas automaticamente para mim. Usando <a href="http://technet.microsoft.com/en-us/scriptcenter/dd742419.aspx">PowerShell</a> e <a href="http://chocolatey.org">Chocolatey</a>.</p>
@@ -330,9 +330,9 @@ Write-Host</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Só é uma bagunça se você deixar. Responsabilidade única com JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
     <updated>2013-07-30T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
+    <id>http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
     <content type="html"><![CDATA[<p>Muita gente que reclama de JavaScript mas não se dá ao mínimo trabalho de entender a linguagem e, boa parte das vezes, não trata o código desenvolvido como um código de verdade, afinal de contas &ldquo;é só JavaScript mesmo&rdquo;.</p>
 
 <p>Mas esse é só uma das razões de boa parte dos problemas enfrentados quando a gente tem que dar manutenção em um código já existente. O bom e velho spaguetti de código.</p>
@@ -580,9 +580,9 @@ Write-Host</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Programação orientada à coincidência]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/07/16/programacao-orientada-a-coincidencia/"/>
+    <link href="http://templecoding.com/blog/2013/07/16/programacao-orientada-a-coincidencia/"/>
     <updated>2013-07-16T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/07/16/programacao-orientada-a-coincidencia</id>
+    <id>http://templecoding.com/blog/2013/07/16/programacao-orientada-a-coincidencia</id>
     <content type="html"><![CDATA[<p>Eu gosto muito de programar, gosto dos desafios técnicos que programar que traz. Mas o que eu mais gosto é do constante aprendizado que faz parte da profissão de programador.</p>
 
 <p>Por causa de tudo isso eu nunca entendi ou gostei de frases como &ldquo;se esta funcionando não mexe&rdquo; ou &ldquo;não encosta nesse código porque senão para de funcionar&rdquo;. Como alguém que gosta de aprender, minha primeira pergunta é: porque para de funcionar? Ou, porque não pode mexer? Ou, o que vai estragar?</p>
@@ -633,9 +633,9 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
   
   <entry>
     <title type="html"><![CDATA[Integrar é traduzir, não é reproduzir]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/"/>
+    <link href="http://templecoding.com/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/"/>
     <updated>2013-03-21T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir</id>
+    <id>http://templecoding.com/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir</id>
     <content type="html"><![CDATA[<p>Eu trabalho fazendo integrações de aplicações web com o SAP há alguns anos já. E existem &ldquo;alguns padrões&rdquo; (vou chamar de padrões), que existem no SAP que são bem particulares à esse ERP.</p>
 
 <p>Só para ambientar aqueles que não conhecem nada de SAP, o SAP é um grande ERP e ele possui todo um ecossistema próprio para customização e criação de soluções de negócio. Por exemplo, ele tem uma linguagem própria o <a href="https://en.wikipedia.org/wiki/Abap">ABAP</a>, tem um protocolo de comunicações proprietário, o <a href="https://en.wikipedia.org/wiki/Remote_function_call">RFC</a>, entre outras coisas. Fora isso, existe também toda uma cultura particular de desenvolvimento, que honestamente, eu não conheço muito, já que nunca fui um programador ABAP.</p>

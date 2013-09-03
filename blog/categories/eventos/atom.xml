@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: eventos | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/eventos/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/eventos/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Análise TDC2010]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/08/29/anlise-tdc2010/"/>
+    <link href="http://templecoding.com/blog/2010/08/29/anlise-tdc2010/"/>
     <updated>2010-08-29T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/08/29/anlise-tdc2010</id>
+    <id>http://templecoding.com/blog/2010/08/29/anlise-tdc2010</id>
     <content type="html"><![CDATA[<p>No último final de semana dos dias 21 e 22 de agosto, tive a oportunidade de participar do TDC2010. Estava inscrito nas trilhas de .NET e Arduino para sábado e domingo, respectivamente.</p>
 
 
@@ -27,9 +27,9 @@
   
   <entry>
     <title type="html"><![CDATA[QCon São Paulo, eu vou!]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/07/12/qcon-so-paulo-eu-vou/"/>
+    <link href="http://templecoding.com/blog/2010/07/12/qcon-so-paulo-eu-vou/"/>
     <updated>2010-07-12T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/07/12/qcon-so-paulo-eu-vou</id>
+    <id>http://templecoding.com/blog/2010/07/12/qcon-so-paulo-eu-vou</id>
     <content type="html"><![CDATA[<p><img class="alignleft" src="/images/2010/07/qcon_3.png" title="QCON" > Nos dias 11 e 12 de setembro vai acontecer em São Paulo, mais precisamente no Centro Fecomercio de Eventos a QCon, um dos principais eventos de arquitetos e desenvolvedores da América Latina. Falando sobre assuntos como .NET, Java, Ruby, Rails, Agile, Arquitetura, etc.</p>
 
 <p>Vários nomes de peso estarão falando sobre diversos assuntos, sem contar que é mais uma oportunidade para melhorar o networking.</p>

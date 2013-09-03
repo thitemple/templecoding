@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: build automatico | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/build-automatico/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/build-automatico/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Builds automáticos com MSBuild, NUnit e NCover]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/"/>
+    <link href="http://templecoding.com/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/"/>
     <updated>2010-06-14T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover</id>
+    <id>http://templecoding.com/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover</id>
     <content type="html"><![CDATA[<p>O MSBuild é a ferramenta da Microsoft usada em conjunto com o Visual Studio para compilar os projetos. Toda vez que compilamos um projeto no Visual Studio (a partir da versão 2005 pelo menos), o que acontece é que o VS chama o MSBuild para executar a tarefa de compilar os projetos da solução.</p>
 
 <p>O bom disso é que podemos customizar a compilação/deploy para executar diversas tarefas nesse momento, entre essas atividades existem algumas como zipar o projeto compilado, enviar por email, publicar no IIS, etc. Mas eu queria falar sobre duas que tenho usado que são: executar os testes unitários e executar uma ferramenta de cobertura de código para ver qual a porcentagem de código coberto pelos testes unitários.</p>

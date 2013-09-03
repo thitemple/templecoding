@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: testes | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/testes/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/testes/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[004 - VideoCast - BDD com SpecFlow]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/11/11/bdd-com-specflow/"/>
+    <link href="http://templecoding.com/blog/2012/11/11/bdd-com-specflow/"/>
     <updated>2012-11-11T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/11/11/bdd-com-specflow</id>
+    <id>http://templecoding.com/blog/2012/11/11/bdd-com-specflow</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/oNs7fmGzMfY" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -36,10 +36,10 @@
   
   <entry>
     <title type="html"><![CDATA[Testes integrados com o Selenium II]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/01/04/testes-integrados-com-o-selenium-ii/"/>
+    <link href="http://templecoding.com/blog/2010/01/04/testes-integrados-com-o-selenium-ii/"/>
     <updated>2010-01-04T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/01/04/testes-integrados-com-o-selenium-ii</id>
-    <content type="html"><![CDATA[<p><a href="http://vintem.github.io/templecoding/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/">Eu já falei anteriormente do Selenium</a> mas usando um outro enfoque, hoje eu queria falar sobre uma prática que adotamos na <a href="http://www.golive.com.br" target="_blank">GoLive</a> para testar os aplicativos web.</p>
+    <id>http://templecoding.com/blog/2010/01/04/testes-integrados-com-o-selenium-ii</id>
+    <content type="html"><![CDATA[<p><a href="http://templecoding.com/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/">Eu já falei anteriormente do Selenium</a> mas usando um outro enfoque, hoje eu queria falar sobre uma prática que adotamos na <a href="http://www.golive.com.br" target="_blank">GoLive</a> para testar os aplicativos web.</p>
 
 <p>Nada muito complicado, nem do outro mundo, mas ao invés de longos documentos com print screens de telas, ou formulários que são mal preenchidos, estamos gravando os testes de aplicações web com o Selenium. Quando um erro é encontrado, o bug é registrado no relatório de bugs e o arquivo do Selenium é anexado (na verdade hoje ele ainda é enviado por email).</p>
 
@@ -51,18 +51,18 @@
   
   <entry>
     <title type="html"><![CDATA[O Firebug é seu amigo]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2009/12/14/o-firebug-e-seu-amigo/"/>
+    <link href="http://templecoding.com/blog/2009/12/14/o-firebug-e-seu-amigo/"/>
     <updated>2009-12-14T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2009/12/14/o-firebug-e-seu-amigo</id>
+    <id>http://templecoding.com/blog/2009/12/14/o-firebug-e-seu-amigo</id>
     <content type="html"><![CDATA[<p>Se você, assim como eu, redescobriu o javascript ultimamente (por mim principalmente por causa do jQuery), então você vai gostar de usar (se ainda não usa) o <a href="https://addons.mozilla.org/en-US/firefox/addon/1843" target="_blank">Firebug</a>.<br /><br />O Firebug é um add-on para o Firefox que permite debugar o javascript, analisar o que foi enviado em Requests e Responses de chamada ajax.<br /><br />É só instalar o add-on e abrir o console dentro do Firefox e pronto. Na aba Script é onde coloca-se os breakpoints e faz a execução do script passo a passo, inclusive com a janela Watch para ver o valor das variáveis.<br /><br />Na aba console é possível executar comandos javascript em tempo de execução. Uma mão na roda pra quem usa o javascript. E ele ainda exibe a árvore DOM, o HTML gerado, o CSS, enfim, uma série de funcionalidades que fazem dele uma ferramenta obrigatória.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Testes integrados e automáticos com Selenium]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/"/>
+    <link href="http://templecoding.com/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/"/>
     <updated>2009-11-08T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium</id>
+    <id>http://templecoding.com/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium</id>
     <content type="html"><![CDATA[<p>Existem muitas maneiras de testarmos nossos sistemas, uma delas é o teste integrado, que nada mais é do que testar o sistema passando por todos os módulos do mesmo. Imaginando um sistema que acessa um banco de dados ou um web service por exemplo, o teste deve cobrir a chamada pela interface de usuário, passando pelas camadas de negócio até chegar no banco ou no web service.</p>
 
 <p>Existem várias maneiras de se realizar testes integrados, a mais comum que eu tenho visto é o teste manual, onde um usuário faz o teste de ponta a ponta. Mas e se houver uma mudança no sistema? Deve-se fazer todos os testes manualmente de novo? Isso com certeza tomaria muito tempo e trabalho. É para esse tipo de caso que existem ferramentas como o <a href="http://seleniumhq.org/" target="_blank">Selenium</a>.</p>
@@ -133,9 +133,9 @@
   
   <entry>
     <title type="html"><![CDATA[Existe vida além do debug]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug/"/>
+    <link href="http://templecoding.com/blog/2009/11/01/existe-vida-alem-do-debug/"/>
     <updated>2009-11-01T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug</id>
+    <id>http://templecoding.com/blog/2009/11/01/existe-vida-alem-do-debug</id>
     <content type="html"><![CDATA[<p>Fico impressionado a cada vez que resolvo falar com algum desenvolvedor sobre testes unitários. Na maioria das vezes em que faço isso a resposta que ouço é que eles não os fazem, não sabem como, ou em muitos casos acham que fazer testes unitários vai simplesmente aumentar o trabalho e o tempo de desenvolvimento, coisas que eles não podem alegar dentro de cronogramas apertados.</p>
 
 <p>Ultimamente, tenho tomado como regra sempre fazer testes unitários e em alguns projetos já tenho até exercitado práticas como Test Driven Development (TDD) e Behavior Driven Development (BDD) &ndash; embora essas práticas não sejam obrigatórias para se ter testes unitários e no caso do TDD, este é mais focado em design, os testes são apenas uma consequência.</p>

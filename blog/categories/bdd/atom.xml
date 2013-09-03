@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: BDD | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/bdd/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/bdd/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[004 - VideoCast - BDD com SpecFlow]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/11/11/bdd-com-specflow/"/>
+    <link href="http://templecoding.com/blog/2012/11/11/bdd-com-specflow/"/>
     <updated>2012-11-11T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/11/11/bdd-com-specflow</id>
+    <id>http://templecoding.com/blog/2012/11/11/bdd-com-specflow</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/oNs7fmGzMfY" frameborder="0" width="640" height="360"></iframe>
 
 

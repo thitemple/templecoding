@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: windsor | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/windsor/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/windsor/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Injeção de Dependência em Atributos/Filtros do MVC]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc/"/>
+    <link href="http://templecoding.com/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc/"/>
     <updated>2011-09-26T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc</id>
+    <id>http://templecoding.com/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc</id>
     <content type="html"><![CDATA[<p>É muito comum termos dropdowns/combos que contém o mesmo tipo de dados em páginas diferentes. Por exemplo digamos que seja necessário um combo com status em diferente páginas do projeto e que esses diferentes status tenham que vir do banco de dados.</p>
 
 <p>Uma forma de mostrar isso na página, é salvar uma lista com os status que você pega do banco de dados na propriedade ViewData e exibir na página.</p>

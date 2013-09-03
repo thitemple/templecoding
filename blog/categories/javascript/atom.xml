@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: JavaScript | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Só é uma bagunça se você deixar. Responsabilidade única com JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
     <updated>2013-07-30T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
+    <id>http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
     <content type="html"><![CDATA[<p>Muita gente que reclama de JavaScript mas não se dá ao mínimo trabalho de entender a linguagem e, boa parte das vezes, não trata o código desenvolvido como um código de verdade, afinal de contas &ldquo;é só JavaScript mesmo&rdquo;.</p>
 
 <p>Mas esse é só uma das razões de boa parte dos problemas enfrentados quando a gente tem que dar manutenção em um código já existente. O bom e velho spaguetti de código.</p>
@@ -265,9 +265,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quatro bons livros para mudar a forma como você vê/escreve JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/"/>
     <updated>2013-06-10T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript</id>
+    <id>http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript</id>
     <content type="html"><![CDATA[<p>A maioria dos programadores que eu conheço dizem que não gostam de JavaScript. Eu entendo que a linguagem tem muitas coisas que são &ldquo;meio bizarras&rdquo;, mas eu também tenho certeza que não gostar de JavaScript, vem do fato de que as pessoas não conhecem a linguagem além da sintaxe básica e, de copy/paste de scripts prontos encontrados na internet.</p>
 
 <p>JavaScript tem chaves {}, ponto e virgula, tem Java no nome mas seu funcionamento não tem nada a ver nem com Java ou com qualquer outra linguagem derivada de C, como o C#. Por isso, para usar o JavaScript de uma maneira correta e até para começar a gostar da linguagem a gente tem que entender seu funcionamento.</p>
@@ -317,9 +317,9 @@
   
   <entry>
     <title type="html"><![CDATA[JavaScript is Sexy - dica rápida]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/25/javascript-is-sexy-dica-rapida/"/>
+    <link href="http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida/"/>
     <updated>2013-03-25T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/25/javascript-is-sexy-dica-rapida</id>
+    <id>http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida</id>
     <content type="html"><![CDATA[<p>Uma dica bem rápida. Hoje (não sei exatamente como), fui parar nesse site <a href="http://javascriptissexy.com/" target="_blank">JavaScript is Sexy</a>. E achei o site excelente, com vários &ldquo;roadmaps&rdquo; para aprender assuntos diferentes mas relacionados ao JavaScript.</p>
 
 <p>Por exemplo, tem um bom roadmap para aprender <a href="http://javascriptissexy.com/learn-node-js-completely-and-with-confidence/" target="_blank">Node.js com confiança</a> ou então, um outro para aprender <a href="http://javascriptissexy.com/learn-intermediate-and-advanced-javascript/" target="_blank">JavaScript avançado</a>.</p>
@@ -330,9 +330,9 @@
   
   <entry>
     <title type="html"><![CDATA[Loops for in no JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/"/>
     <updated>2013-03-11T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript</id>
+    <id>http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript</id>
     <content type="html"><![CDATA[<p>O JavaScript tem o suporte nativo a loops do tipo <em>for in</em> e, ele funciona de uma forma muito semelhante ao <em>foreach</em> do C# (por exemplo), mas temos que tomar alguns cuidados, por que como tudo no JavaScript, sempre temos uma pegadinha.</p>
 
 <div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
@@ -340,14 +340,14 @@
 <strong>Sofrendo menos com JavaScript</strong>
 Esse post faz parte de uma série, confira os outros já feitos:
 <ol>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
     <li>Loops for in</li>
 </ol>
 </div>
@@ -503,9 +503,9 @@ Esse post faz parte de uma série, confira os outros já feitos:
   
   <entry>
     <title type="html"><![CDATA[Construtores de Arrays do JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/"/>
     <updated>2013-02-18T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript</id>
+    <id>http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript</id>
     <content type="html"><![CDATA[<p>Bom, o ano começou, lá se foi o carnaval e agora sim podemos dizer que o ano começou. Pelo menos aqui no blog.</p>
 
 <p>Bora falar um pouco mais de JavaScript e o que existe de estranho com os <strong>construtores de Arrays do JavaScript</strong>.</p>
@@ -515,15 +515,15 @@ Esse post faz parte de uma série, confira os outros já feitos:
 <strong>Sofrendo menos com JavaScript</strong>
 Esse post faz parte de uma série, confira os outros já feitos:
 <ol>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
     <li>Construtores de Arrays</li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
+    <li><a href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
 </ol>
 </div>
 

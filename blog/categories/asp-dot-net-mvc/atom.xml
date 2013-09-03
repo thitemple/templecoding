@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: asp.net mvc | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/asp-dot-net-mvc/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/asp-dot-net-mvc/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ASP.NET MVC Model Binding]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/05/20/asp-net-mvc-model-binding/"/>
+    <link href="http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding/"/>
     <updated>2013-05-20T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/05/20/asp-net-mvc-model-binding</id>
+    <id>http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/BjmRewB7tY4" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[Inversão de Controle com Castle Windsor e ASP.NET MVC]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc/"/>
+    <link href="http://templecoding.com/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc/"/>
     <updated>2013-03-07T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc</id>
+    <id>http://templecoding.com/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/zRoYsC6TkRE" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -51,9 +51,9 @@
   
   <entry>
     <title type="html"><![CDATA[001 - VideoCast - Produtividade com ASP.NET MVC 4]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4/"/>
+    <link href="http://templecoding.com/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4/"/>
     <updated>2012-09-25T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4</id>
+    <id>http://templecoding.com/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/Zp_cLt69ee8" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -79,9 +79,9 @@
   
   <entry>
     <title type="html"><![CDATA[Injeção de Dependência em Atributos/Filtros do MVC]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc/"/>
+    <link href="http://templecoding.com/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc/"/>
     <updated>2011-09-26T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc</id>
+    <id>http://templecoding.com/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc</id>
     <content type="html"><![CDATA[<p>É muito comum termos dropdowns/combos que contém o mesmo tipo de dados em páginas diferentes. Por exemplo digamos que seja necessário um combo com status em diferente páginas do projeto e que esses diferentes status tenham que vir do banco de dados.</p>
 
 <p>Uma forma de mostrar isso na página, é salvar uma lista com os status que você pega do banco de dados na propriedade ViewData e exibir na página.</p>
@@ -159,9 +159,9 @@
   
   <entry>
     <title type="html"><![CDATA[Globalização de validação do jQuery com o ASP.NET MVC 3]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3/"/>
+    <link href="http://templecoding.com/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3/"/>
     <updated>2011-09-17T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3</id>
+    <id>http://templecoding.com/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3</id>
     <content type="html"><![CDATA[<p>O Asp.Net MVC 3 tem uma ótima funcionalidade que é a validação no cliente usando o plugin do <a href="http://docs.jquery.com/Plugins/Validation" target="_blank">jQuery validations</a> e usando um script da própria Microsoft a validação é feita sem que seja necessário nenhum codificação especial. Basta usar os atributos do namespace <em>System.ComponentModel.DataAnnotations.</em></p>
 
 <p>Pra quem não sabe, para fazer essa validação basta adicionar os seguintes scripts (que já estão no template padrão de um novo site Asp.Net Mvc 3):</p>

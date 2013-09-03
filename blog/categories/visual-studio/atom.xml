@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Visual Studio | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/visual-studio/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/visual-studio/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Criando Snippets para o Visual Studio 2010]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010/"/>
+    <link href="http://templecoding.com/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010/"/>
     <updated>2011-08-04T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010</id>
+    <id>http://templecoding.com/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010</id>
     <content type="html"><![CDATA[<p><strong>Motivação</strong></p>
 
 <p>Apesar de ser e gostar muito de ser um desenvolvedor, sou totalmente a favor de escrever a menor quantidade de código possível. Porque menos código, geralmente quer dizer menos erros. Com isso em mente eu resolvi criar Snippets de código no Visual Studio 2010. Você pode até não saber o que é um snippet mas com certeza já usou um. Um snippet é uma pequena porção de código que é reutilizável. Por exemplo, entre no seu Visual Studio, e dentro de um método digite <em>foreach</em> e aperte <strong>Tab</strong>. Pronto, isso é um snippet.</p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: code templates | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/code-templates/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/code-templates/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[CodeTemplates com ASP.NET MVC]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc/"/>
+    <link href="http://templecoding.com/blog/2010/05/03/codetemplates-com-asp-net-mvc/"/>
     <updated>2010-05-03T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc</id>
+    <id>http://templecoding.com/blog/2010/05/03/codetemplates-com-asp-net-mvc</id>
     <content type="html"><![CDATA[<p>Toda a vez que você vai adicionar uma View usando o assistente do Visual Studio</p>
 
 <p><img class="aligncenter" src="/images/2010/05/ScreenHunter_01-May.-03-15.23.gif" title="Adicionar View" ></p>

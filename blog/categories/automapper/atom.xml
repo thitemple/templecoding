@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: automapper | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/automapper/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/automapper/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mapeamentos condicionais usando o AutoMapper]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper/"/>
+    <link href="http://templecoding.com/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper/"/>
     <updated>2010-10-28T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper</id>
+    <id>http://templecoding.com/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper</id>
     <content type="html"><![CDATA[<p>Eu me deparei com um problema diferente usando o AutoMapper. Eu precisava mapear um atributo do tipo DateTime de um web service para uma classe de negócio.</p>
 
 <p>Se você já fez isso, provavelmente sabe que quando tem um atributo do tipo DateTime, você terá na sua classe de proxy dois atributos. Um do tipo DateTime e um booleano que informa se o seu DateTime está preenchido ou não.</p>
@@ -58,9 +58,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mapeando suas classes com o AutoMapper]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/"/>
+    <link href="http://templecoding.com/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/"/>
     <updated>2010-09-29T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper</id>
+    <id>http://templecoding.com/blog/2010/09/29/mapeando-suas-classes-com-o-automapper</id>
     <content type="html"><![CDATA[<p>Um framework que eu tenho usado com frequência ultimamente é o <a href="http://automapper.codeplex.com/" target="_blank">AutoMapper</a>, e pra quem não conhece ele, bom, ele faz.. mapeamento de objetos. Iupi!</p>
 
 <p>Existem vários cenários onde isso é feito, no meu caso, principalmente, eu tenho usado para mapear estruturas de web services que eu consumo para objetos dentro da minha aplicação. Mas outro cenário comum é, quando usamos o padrão ViewModel, mapear objetos de negócio para a ViewModel.</p>

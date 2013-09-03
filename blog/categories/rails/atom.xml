@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rails | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/rails/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Adicionando Foreign Keys no Rails]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2009/10/25/adicionando-foreign-keys-no-rails/"/>
+    <link href="http://templecoding.com/blog/2009/10/25/adicionando-foreign-keys-no-rails/"/>
     <updated>2009-10-25T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2009/10/25/adicionando-foreign-keys-no-rails</id>
+    <id>http://templecoding.com/blog/2009/10/25/adicionando-foreign-keys-no-rails</id>
     <content type="html"><![CDATA[<p>Existem várias formas de se adicionar foreign keys no rails, mais uma das que eu acho mais simples é utilizando o plugin <a href="http://github.com/patientslikeme/migration_helpers">migration_helpers</a>.</p>
 
 <p>A instalação funciona como qualquer outro plugin do rails:</p>

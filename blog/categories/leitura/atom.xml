@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Leitura | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/leitura/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/leitura/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quatro bons livros para mudar a forma como você vê/escreve JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/"/>
     <updated>2013-06-10T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript</id>
+    <id>http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript</id>
     <content type="html"><![CDATA[<p>A maioria dos programadores que eu conheço dizem que não gostam de JavaScript. Eu entendo que a linguagem tem muitas coisas que são &ldquo;meio bizarras&rdquo;, mas eu também tenho certeza que não gostar de JavaScript, vem do fato de que as pessoas não conhecem a linguagem além da sintaxe básica e, de copy/paste de scripts prontos encontrados na internet.</p>
 
 <p>JavaScript tem chaves {}, ponto e virgula, tem Java no nome mas seu funcionamento não tem nada a ver nem com Java ou com qualquer outra linguagem derivada de C, como o C#. Por isso, para usar o JavaScript de uma maneira correta e até para começar a gostar da linguagem a gente tem que entender seu funcionamento.</p>
@@ -67,9 +67,9 @@
   
   <entry>
     <title type="html"><![CDATA[Análise do livro Pragmatic Thinking and Learning]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
+    <link href="http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
     <updated>2013-06-04T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
+    <id>http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
     <content type="html"><![CDATA[<p>Alguns livros são tão bons que você tem vontade de falar deles para todo mundo antesmesmo de terminar. Esse é um deles.</p>
 
 <p><a href="http://vintem.me/18LjWdg"><img class="aligncenter" src="/images/2013/06/ahptl_xlargecover.jpg" title="Pragmatic Thinking and Learning" ></a></p>
@@ -97,9 +97,9 @@
   
   <entry>
     <title type="html"><![CDATA[JavaScript is Sexy - dica rápida]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/25/javascript-is-sexy-dica-rapida/"/>
+    <link href="http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida/"/>
     <updated>2013-03-25T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/25/javascript-is-sexy-dica-rapida</id>
+    <id>http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida</id>
     <content type="html"><![CDATA[<p>Uma dica bem rápida. Hoje (não sei exatamente como), fui parar nesse site <a href="http://javascriptissexy.com/" target="_blank">JavaScript is Sexy</a>. E achei o site excelente, com vários &ldquo;roadmaps&rdquo; para aprender assuntos diferentes mas relacionados ao JavaScript.</p>
 
 <p>Por exemplo, tem um bom roadmap para aprender <a href="http://javascriptissexy.com/learn-node-js-completely-and-with-confidence/" target="_blank">Node.js com confiança</a> ou então, um outro para aprender <a href="http://javascriptissexy.com/learn-intermediate-and-advanced-javascript/" target="_blank">JavaScript avançado</a>.</p>
@@ -110,9 +110,9 @@
   
   <entry>
     <title type="html"><![CDATA[Se você tem ou quer ter um blog, você precisa ler esse livro]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
+    <link href="http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
     <updated>2012-12-03T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging</id>
+    <id>http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging</id>
     <content type="html"><![CDATA[<p>Eu terminei de ler há alguns dias e resolvi fazer uma análise do livro <a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Technical Blogging: </a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="attachment wp-att-1024" target="_blank"><img class="alignright" src="/images/2012/11/actb_xlargecover.jpg" title="Technica Blogging" ></a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Turn Your Expertise into a Remarkable Online Presence</a> por <a href="http://antoniocangiano.com/" target="_blank">Antonio Cangiano</a>. Ainda estou digerindo tudo que aprendi nesse livro e já pondo em prática <del>algumas</del> várias coisas.</p>
 
 <p>É um dos livros com a maior quantidade de dicas praticas que já li. Diversas dicas e ideias de uso imediato. Para quem usa, ou planeja usar, o WordPress como plataforma é ainda mais útil. O livro apresenta vários plug-ins que vão facilitar a vida na hora de escrever, ajudar a trazer mais performance para o site, trazer mais facilidade e valor para os usuários que vão ler o blog.</p>
@@ -138,9 +138,9 @@
   
   <entry>
     <title type="html"><![CDATA[Análise: Growing Object-Oriented Software, Guided by Tests]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/"/>
+    <link href="http://templecoding.com/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/"/>
     <updated>2011-05-29T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests</id>
+    <id>http://templecoding.com/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests</id>
     <content type="html"><![CDATA[<p>Eu acabei de ler <a href="http://www.amazon.com/gp/product/0321503627/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321503627&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="nofollow">Growing Object-Oriented Software, Guided by Tests</a> e posso dizer que é um livro altamente recomendável.</p>
 
 <p><a href="http://www.amazon.com/gp/product/0321503627/ref=as_li_tf_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0321503627&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="nofollow"><img class="alignright" src="/images/2011/05/51VI2SgJRwL._SL205.jpg" title="Growing Object-Oriented Software, Guided by Tests" ></a></p>

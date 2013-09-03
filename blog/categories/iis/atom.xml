@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iis | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/iis/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/iis/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Publicando um site em ASP.NET MVC no IIS 6]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6/"/>
+    <link href="http://templecoding.com/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6/"/>
     <updated>2010-05-18T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6</id>
+    <id>http://templecoding.com/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6</id>
     <content type="html"><![CDATA[<p>Publicar um site feito usando o ASP.NET MVC no servidor IIS não é tão simples como apenas copiar os arquivos, algumas configurações são necessárias:</p>
 
 <p>1) Dentro do IIS abra as propriedades no seu site e na aba Home Directory, clique no botão Configuration. Dentro de Application Extensions, selecione a extensão .aspx e clique em Edit. Copie o conteúdo da caixa Executable como na figura abaixo e clique em Cancel.</p>

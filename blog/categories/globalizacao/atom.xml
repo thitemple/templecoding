@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Globalização | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/globalizacao/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/globalizacao/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Globalização de validação do jQuery com o ASP.NET MVC 3]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3/"/>
+    <link href="http://templecoding.com/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3/"/>
     <updated>2011-09-17T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3</id>
+    <id>http://templecoding.com/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3</id>
     <content type="html"><![CDATA[<p>O Asp.Net MVC 3 tem uma ótima funcionalidade que é a validação no cliente usando o plugin do <a href="http://docs.jquery.com/Plugins/Validation" target="_blank">jQuery validations</a> e usando um script da própria Microsoft a validação é feita sem que seja necessário nenhum codificação especial. Basta usar os atributos do namespace <em>System.ComponentModel.DataAnnotations.</em></p>
 
 <p>Pra quem não sabe, para fazer essa validação basta adicionar os seguintes scripts (que já estão no template padrão de um novo site Asp.Net Mvc 3):</p>

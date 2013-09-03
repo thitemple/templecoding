@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Publicando um site Octopress usando GitHub pages a partir de um novo computador]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/"/>
+    <link href="http://templecoding.com/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/"/>
     <updated>2013-08-26T11:36:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev</id>
+    <id>http://templecoding.com/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev</id>
     <content type="html"><![CDATA[<p>OK, eu admito, esse post é bem específico e ele serve mais para que eu <strong>nunca mais</strong> esqueça como fazer isso.</p>
 
 <p>Esse blog é hospedado no <a href="http://pages.github.com">GitHub Pages</a> e é feito só com HTML, não tem nenhum CMS por trás. Mas eu uso o <a href="http://octopress.org">Octopress</a> para gerar os arquivos HTML pra mim.</p>
@@ -92,14 +92,14 @@
   
   <entry>
     <title type="html"><![CDATA[Instalando uma máquina de desenvolvimento com dois comandos]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/"/>
+    <link href="http://templecoding.com/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/"/>
     <updated>2013-08-25T12:11:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos</id>
+    <id>http://templecoding.com/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos</id>
     <content type="html"><![CDATA[<p>Recentemente eu tive que preparar duas máquinas de desenvolvimento, um novo notebook Windows 8 e uma VM Windows 7 e, honestamente, por mais que eu goste de uma máquina nova, perder tempo instalando uma porção de aplicações e configurar tantas outras não é algo que eu ache divertido. Além do mais, sempre tem algumas coisas que eu não faço todo dia e, na hora que eu preciso eu não lembro. Por exemplo, como é que eu gero uma chave RSA para usar com ssh mesmo?</p>
 
 <p>Enfim, dessa vez, ao invés de instalar tudo manualmente, eu decidi fazer um script que faz todas essas coisas automaticamente para mim. Usando <a href="http://technet.microsoft.com/en-us/scriptcenter/dd742419.aspx">PowerShell</a> e <a href="http://chocolatey.org">Chocolatey</a>.</p>
 
-<p><img class="alignleft" src="http://vintem.github.io/templecoding/images/2013/08/chocolateyicon.gif" title="Chocolatey" alt="Chocolatey"> Acho que o PowerShell é bem conhecido, então não vou perder muito tempo com ele. Sobre o Chocolatey, ele é um gerenciador de pacotes para linha de comando do Windows. Ele funciona mais ou menos como funciona o apt-get no linux ou o brew no Mac. É um projeto open source e gratuito bem interessante, é relativamente recente se comparado com as outras plataformas, mas ele funciona muito bem no Windows e é muito prático para evitar ficar procurando instaladores. Já existe uma grande <a href="http://chocolatey.org/packages">variedade de aplicações disponíveis para serem instaladas através dele</a>. Mas também, se precisar, é muito fácil criar um pacote e publicar lá, eu mesmo <a href="http://chocolatey.org/packages/ruby.devkit.ruby193">criei um pacote para instalar o DevKit do Ruby na versão 1.9.3 do Ruby</a>.</p>
+<p><img class="alignleft" src="http://templecoding.com/images/2013/08/chocolateyicon.gif" title="Chocolatey" alt="Chocolatey"> Acho que o PowerShell é bem conhecido, então não vou perder muito tempo com ele. Sobre o Chocolatey, ele é um gerenciador de pacotes para linha de comando do Windows. Ele funciona mais ou menos como funciona o apt-get no linux ou o brew no Mac. É um projeto open source e gratuito bem interessante, é relativamente recente se comparado com as outras plataformas, mas ele funciona muito bem no Windows e é muito prático para evitar ficar procurando instaladores. Já existe uma grande <a href="http://chocolatey.org/packages">variedade de aplicações disponíveis para serem instaladas através dele</a>. Mas também, se precisar, é muito fácil criar um pacote e publicar lá, eu mesmo <a href="http://chocolatey.org/packages/ruby.devkit.ruby193">criei um pacote para instalar o DevKit do Ruby na versão 1.9.3 do Ruby</a>.</p>
 
 <p>Ok, chega de história. O script completo que eu criei <a href="https://gist.github.com/vintem/6334646">está disponível em um gist</a>. Ele é até que bem simples e suas principais partes estão comentadas (em inglês). Fique a vontade para baixar e modificar a gosto.</p>
 
@@ -346,20 +346,20 @@ Write-Host</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Só é uma bagunça se você deixar. Responsabilidade única com JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript/"/>
     <updated>2013-07-30T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
+    <id>http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript</id>
     <content type="html"><![CDATA[<p>Muita gente que reclama de JavaScript mas não se dá ao mínimo trabalho de entender a linguagem e, boa parte das vezes, não trata o código desenvolvido como um código de verdade, afinal de contas &ldquo;é só JavaScript mesmo&rdquo;.</p>
 
 <p>Mas esse é só uma das razões de boa parte dos problemas enfrentados quando a gente tem que dar manutenção em um código já existente. O bom e velho spaguetti de código.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/07/spagett.jpg" title="Código spaghetti" alt="Código spaghetti"></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/07/spagett.jpg" title="Código spaghetti" alt="Código spaghetti"></p>
 
 <p>Tenho que admitir que eu já contribui para bastante código spaguetti (como do exemplo que vou mostrar aqui). Exatamente porque não tratei esse código como um programa sério e não apliquei princípios básicos como o da <a href="http://robsoncastilho.com.br/2013/02/06/principios-solid-principio-da-responsabilidade-unica-srp/" target="_blank">responsabilidade única</a>.</p>
 
 <p>Vamos imaginar uma cesta de compras como a da imagem abaixo, que tem um link para atualizar a quantidade de itens do carrinho. O código que vou mostrar, captura o click no link usando o jQuery e faz uma validação de que o valor informado no campo é numérico. A regra de negócio diz ainda que tem que ser uma quantidade entre 0 e 10. Não posso vender mais do que 10 unidades de um mesmo item.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/07/shopping_basket.png" title="Carrinho de compras" alt="Carrinho de compras"></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/07/shopping_basket.png" title="Carrinho de compras" alt="Carrinho de compras"></p>
 
 <p>Um código que faria isso é esse:</p>
 
@@ -568,15 +568,15 @@ Write-Host</code></pre></noscript></div>
 
 <p>Para concluir, temos um código muito mais organizado, de fácil manutenção e com responsabilidades claras. Para chegar nesse resultado, fiz uso apenas de técnicas já conhecidas de outras linguagens e sem inventar muita coisa. Então da próxima vez que você for dizer que é muito difícil dar manutenção em código JavaScript, pense se você está contribuindo para um código sustentável ou só preparando o almoço do próximo domingo.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/07/Spaghetti.gif" title="Spaghetti" alt="Spaghetti"></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/07/Spaghetti.gif" title="Spaghetti" alt="Spaghetti"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Meu TED Talk favorito]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/07/23/meu-ted-talk-favorito/"/>
+    <link href="http://templecoding.com/blog/2013/07/23/meu-ted-talk-favorito/"/>
     <updated>2013-07-23T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/07/23/meu-ted-talk-favorito</id>
+    <id>http://templecoding.com/blog/2013/07/23/meu-ted-talk-favorito</id>
     <content type="html"><![CDATA[<p>Ainda hoje, depois de muitos TEDs ouvidos e assistidos, o meu favorito ainda é um de 2007.</p>
 
 <p><strong><a href="http://vintem.me/12Hzg5h" target="_blank">Ben Dunlap</a> fala sobre uma vida apaixonada.</strong></p>
@@ -600,9 +600,9 @@ Write-Host</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[Programação orientada à coincidência]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/07/16/programacao-orientada-a-coincidencia/"/>
+    <link href="http://templecoding.com/blog/2013/07/16/programacao-orientada-a-coincidencia/"/>
     <updated>2013-07-16T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/07/16/programacao-orientada-a-coincidencia</id>
+    <id>http://templecoding.com/blog/2013/07/16/programacao-orientada-a-coincidencia</id>
     <content type="html"><![CDATA[<p>Eu gosto muito de programar, gosto dos desafios técnicos que programar que traz. Mas o que eu mais gosto é do constante aprendizado que faz parte da profissão de programador.</p>
 
 <p>Por causa de tudo isso eu nunca entendi ou gostei de frases como &ldquo;se esta funcionando não mexe&rdquo; ou &ldquo;não encosta nesse código porque senão para de funcionar&rdquo;. Como alguém que gosta de aprender, minha primeira pergunta é: porque para de funcionar? Ou, porque não pode mexer? Ou, o que vai estragar?</p>
@@ -616,14 +616,14 @@ Write-Host</code></pre></noscript></div>
 
 <p>No livro <a href="http://www.amazon.com/gp/product/020161622X/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=020161622X&amp;linkCode=as2&amp;tag=tempcodi0f-20">The Pragmatic Programmer</a>, Andrew Hunt e David Thomas dedicam um capitulo à programação por coincidência e eles abrem o capitulo com uma metáfora muito interessante. Eles comparam um programador que codifica por tentativa e erro, resolvendo problemas de forma aleatórias e sem conhecimento sobre o assunto à um soldado andando em um campo minado. O soldado pode dar um, dois, vários passos sem pisar em uma mina, achar que esta fazendo algo correto, mas é somente uma caminhada aleatória, uma hora ele pode pisar em uma mina e explodir.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/07/falklands-minefield1.jpg" title="Campo minado" ></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/07/falklands-minefield1.jpg" title="Campo minado" ></p>
 
 <p>Outra coisa bem comum quando não se entende do problema, é a tendencia de resolver as coisas sempre do mesmo jeito, ou seja é o velho caso daquela frase &ldquo;se você só tem um martelo todo o problema é um prego&rdquo;. Parece que é uma formula magica, funcionou para um problema não se sabe como, deve funcionar para os outros.</p>
 
 <p>Ainda nesse sentido, pode ser que um problema seja resolvido passando dados inválidos
 para um método e que isso resulte numa resposta inesperada do programa. Mas se a sua unica fonte de analise for a resposta daquela chamada com dados inválidos, quando aquele programa for corrigido, sua chamada não vai mais funcionar porque aquela coincidência foi modificada.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/07/coincidence1.jpg" title="Parece um coelho, mas..." ></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/07/coincidence1.jpg" title="Parece um coelho, mas..." ></p>
 
 <p>E o pior na minha opinião, é a ignorância que isso gera. Até hoje ainda vejo gente que acha que POST é mais seguro do que GET só porque os dados não são enviados na URL!</p>
 
@@ -653,14 +653,14 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
   
   <entry>
     <title type="html"><![CDATA[Quatro bons livros para mudar a forma como você vê/escreve JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/"/>
     <updated>2013-06-10T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript</id>
+    <id>http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript</id>
     <content type="html"><![CDATA[<p>A maioria dos programadores que eu conheço dizem que não gostam de JavaScript. Eu entendo que a linguagem tem muitas coisas que são &ldquo;meio bizarras&rdquo;, mas eu também tenho certeza que não gostar de JavaScript, vem do fato de que as pessoas não conhecem a linguagem além da sintaxe básica e, de copy/paste de scripts prontos encontrados na internet.</p>
 
 <p>JavaScript tem chaves {}, ponto e virgula, tem Java no nome mas seu funcionamento não tem nada a ver nem com Java ou com qualquer outra linguagem derivada de C, como o C#. Por isso, para usar o JavaScript de uma maneira correta e até para começar a gostar da linguagem a gente tem que entender seu funcionamento.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/06/java-javascript-sm.png" title="Java e JavaScript" ></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/06/java-javascript-sm.png" title="Java e JavaScript" ></p>
 
 <p>Aqui vai uma pequena lista de quatro livros que li sobre JavaScript que vão ajudar a aprofundar seu conhecimento sobre: a linguagem, sobre as interações com o browser e até como escrever um código mais rápido, organizado e elegante usando o que o JavaScript tem de melhor.</p>
 
@@ -705,12 +705,12 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
   
   <entry>
     <title type="html"><![CDATA[Análise do livro Pragmatic Thinking and Learning]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
+    <link href="http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/"/>
     <updated>2013-06-04T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
+    <id>http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning</id>
     <content type="html"><![CDATA[<p>Alguns livros são tão bons que você tem vontade de falar deles para todo mundo antesmesmo de terminar. Esse é um deles.</p>
 
-<p><a href="http://vintem.me/18LjWdg"><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/06/ahptl_xlargecover.jpg" title="Pragmatic Thinking and Learning" ></a></p>
+<p><a href="http://vintem.me/18LjWdg"><img class="aligncenter" src="http://templecoding.com/images/2013/06/ahptl_xlargecover.jpg" title="Pragmatic Thinking and Learning" ></a></p>
 
 <p>Numa tradução livre e amadora do resumo do livro no site, diz o seguinte:</p>
 
@@ -727,7 +727,7 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
 
 <p>Uma das técnicas passadas no livro é a técnica de definição de objetivos de aprendizado</p>
 
-<p><img class="alignright" src="http://vintem.github.io/templecoding/images/2013/06/smart2.jpg" title="SMART" > chamada S.M.A.R.T. Que é o acrônimo para Specific, Measurable, Attainable, Relevant e Time-Bound. Outras incluem, carregar sempre um livro de notas, criar um wiki pessoal,desenhar mapas mentais, entre outros. Tudo sempre com um ótimo embasamento teórico.</p>
+<p><img class="alignright" src="http://templecoding.com/images/2013/06/smart2.jpg" title="SMART" > chamada S.M.A.R.T. Que é o acrônimo para Specific, Measurable, Attainable, Relevant e Time-Bound. Outras incluem, carregar sempre um livro de notas, criar um wiki pessoal,desenhar mapas mentais, entre outros. Tudo sempre com um ótimo embasamento teórico.</p>
 
 <p>Eu, como leio muito, gostei muito do livro e tenho tentado por em práticas coisas que já aprendi. Espero que você aproveite a dica e leia o livro, eu gostei muito.</p>
 ]]></content>
@@ -735,9 +735,9 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
   
   <entry>
     <title type="html"><![CDATA[ASP.NET MVC Model Binding]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/05/20/asp-net-mvc-model-binding/"/>
+    <link href="http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding/"/>
     <updated>2013-05-20T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/05/20/asp-net-mvc-model-binding</id>
+    <id>http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/BjmRewB7tY4" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -754,9 +754,9 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
   
   <entry>
     <title type="html"><![CDATA[JavaScript is Sexy - dica rápida]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/25/javascript-is-sexy-dica-rapida/"/>
+    <link href="http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida/"/>
     <updated>2013-03-25T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/25/javascript-is-sexy-dica-rapida</id>
+    <id>http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida</id>
     <content type="html"><![CDATA[<p>Uma dica bem rápida. Hoje (não sei exatamente como), fui parar nesse site <a href="http://javascriptissexy.com/" target="_blank">JavaScript is Sexy</a>. E achei o site excelente, com vários &ldquo;roadmaps&rdquo; para aprender assuntos diferentes mas relacionados ao JavaScript.</p>
 
 <p>Por exemplo, tem um bom roadmap para aprender <a href="http://javascriptissexy.com/learn-node-js-completely-and-with-confidence/" target="_blank">Node.js com confiança</a> ou então, um outro para aprender <a href="http://javascriptissexy.com/learn-intermediate-and-advanced-javascript/" target="_blank">JavaScript avançado</a>.</p>
@@ -767,18 +767,18 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
   
   <entry>
     <title type="html"><![CDATA[Integrar é traduzir, não é reproduzir]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/"/>
+    <link href="http://templecoding.com/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/"/>
     <updated>2013-03-21T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir</id>
+    <id>http://templecoding.com/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir</id>
     <content type="html"><![CDATA[<p>Eu trabalho fazendo integrações de aplicações web com o SAP há alguns anos já. E existem &ldquo;alguns padrões&rdquo; (vou chamar de padrões), que existem no SAP que são bem particulares à esse ERP.</p>
 
 <p>Só para ambientar aqueles que não conhecem nada de SAP, o SAP é um grande ERP e ele possui todo um ecossistema próprio para customização e criação de soluções de negócio. Por exemplo, ele tem uma linguagem própria o <a href="https://en.wikipedia.org/wiki/Abap">ABAP</a>, tem um protocolo de comunicações proprietário, o <a href="https://en.wikipedia.org/wiki/Remote_function_call">RFC</a>, entre outras coisas. Fora isso, existe também toda uma cultura particular de desenvolvimento, que honestamente, eu não conheço muito, já que nunca fui um programador ABAP.</p>
 
-<p><img class="alignleft" src="http://vintem.github.io/templecoding/images/2013/03/system_integration.jpeg" title="System integration" >A minha questão aqui é, independente do porque, e se esta certo ou não, geralmente quando faço integrações com o SAP encontro coisas que não estou acostumado a ver quando desenvolvo minhas soluções usando outras tecnologias, como por exemplo, .NET e C#.</p>
+<p><img class="alignleft" src="http://templecoding.com/images/2013/03/system_integration.jpeg" title="System integration" >A minha questão aqui é, independente do porque, e se esta certo ou não, geralmente quando faço integrações com o SAP encontro coisas que não estou acostumado a ver quando desenvolvo minhas soluções usando outras tecnologias, como por exemplo, .NET e C#.</p>
 
 <p>Por exemplo, em muitas integrações que fiz com o SAP quando chamo uma função remota e essa gera um erro, ao invés de receber um exceção, a chamada é executada com sucesso e uma estrutura de dados (como na imagem abaixo) é retornada preenchida contendo um tipo de erro, um código e possivelmente algumas mensagens. Esse é um padrão usado e que já vi várias vezes.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/03/sap_return.png" title="Retorno de erros no SAP" ></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/03/sap_return.png" title="Retorno de erros no SAP" ></p>
 
 <p>Obs.: <a href="http://cc2e.com/Page.aspx?hid=147" target="_blank">Steven McConnell deve ficar tão orgulhoso disso</a>.</p>
 
@@ -790,17 +790,17 @@ para um método e que isso resulte numa resposta inesperada do programa. Mas se 
 
 <p>Outro padrão comum ao SAP é a nomenclatura de estruturas. Não sei porque, mas encontramos muitas estruturas com esse tipo de nomenclatura.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/03/nomes_sap.png" title="Nomenclatura no SAP" ></p>
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/03/nomes_sap.png" title="Nomenclatura no SAP" ></p>
 
 <p>Talvez isso faça sentido na cabeça de algum alemão louco, mas, voltando ao C#, um nome de variável pode ter até 1023 bytes, isso quer dizer que podemos ser bem mais descritivos que isso. E no caso de um Web Service também, não ha uma limitação especifica para o nome de uma tag XML.</p>
 
-<p>Mais uma vez o ponto é, no momento em que estamos fazendo uma integração, seja qual for a tecnologia utilizada (no meu caso é o BizTalk), esse é o momento de abstrair particularidades, de aplicar boas práticas para quem vai consumir essa integração.<img class="alignright" src="http://vintem.github.io/templecoding/images/2013/03/images_boo.jpeg"></p>
+<p>Mais uma vez o ponto é, no momento em que estamos fazendo uma integração, seja qual for a tecnologia utilizada (no meu caso é o BizTalk), esse é o momento de abstrair particularidades, de aplicar boas práticas para quem vai consumir essa integração.<img class="alignright" src="http://templecoding.com/images/2013/03/images_boo.jpeg"></p>
 
 <p>Eu vejo uma integração como uma tradutora. Ela ouve em alemão e traduz para português, ela não traduz algumas partes para português e mantém outras no formato original. Para mim, que não falo nada de alemão, isso só me atrapalharia.</p>
 
 <p>E nem sempre é uma questão de certo ou errado, mas sim de pontos que são mais idiomáticos em uma tecnologia do que em outra. Nesse caso o problema são as traduções literais que muitas vezes não fazem sentido, temos que contextualizar para a tecnologia que estamos usando.</p>
 
-<p><img class="aligncenter" src="http://vintem.github.io/templecoding/images/2013/03/slip.png" title="slip" >
+<p><img class="aligncenter" src="http://templecoding.com/images/2013/03/slip.png" title="slip" >
 Mais uma vez usando o SAP como <del>bode expiatório</del> exemplo, existem alguns casos em que as strings não podem ter mais do 132 caracteres, por isso vemos estruturas como a anterior que tem campos message1, message2, message3, etc., e, embora isso funcione, é uma limitação daquela plataforma/tecnologia. Esse não é o caso de um XML ou do próprio C#, portanto, passar uma estrutura dessas adiante é simplesmente fazer uma tradução literal e não olhar para o contexto.</p>
 
 <p>Concluindo, quando for integrar duas ou mais aplicações, tenha em mente os limites tecnológicos, funcionais e semânticos de cada ponta. Leve em consideração o que é um padrão proprietário e deve ser transformado do que realmente é um padrão de integração e deve ser mantido. <a href="http://www.amazon.com/gp/product/0321200683/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321200683&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Existem inclusive livros que podem nos ajudar com isso</a>.</p>
@@ -809,9 +809,9 @@ Mais uma vez usando o SAP como <del>bode expiatório</del> exemplo, existem algu
   
   <entry>
     <title type="html"><![CDATA[Loops for in no JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/"/>
     <updated>2013-03-11T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript</id>
+    <id>http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript</id>
     <content type="html"><![CDATA[<p>O JavaScript tem o suporte nativo a loops do tipo <em>for in</em> e, ele funciona de uma forma muito semelhante ao <em>foreach</em> do C# (por exemplo), mas temos que tomar alguns cuidados, por que como tudo no JavaScript, sempre temos uma pegadinha.</p>
 
 <div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;">
@@ -819,14 +819,14 @@ Mais uma vez usando o SAP como <del>bode expiatório</del> exemplo, existem algu
 <strong>Sofrendo menos com JavaScript</strong>
 Esse post faz parte de uma série, confira os outros já feitos:
 <ol>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
     <li>Loops for in</li>
 </ol>
 </div>
@@ -950,9 +950,9 @@ Esse post faz parte de uma série, confira os outros já feitos:
   
   <entry>
     <title type="html"><![CDATA[Inversão de Controle com Castle Windsor e ASP.NET MVC]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc/"/>
+    <link href="http://templecoding.com/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc/"/>
     <updated>2013-03-07T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc</id>
+    <id>http://templecoding.com/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/zRoYsC6TkRE" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -967,9 +967,9 @@ Esse post faz parte de uma série, confira os outros já feitos:
   
   <entry>
     <title type="html"><![CDATA[Construtores de Arrays do JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/"/>
+    <link href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/"/>
     <updated>2013-02-18T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript</id>
+    <id>http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript</id>
     <content type="html"><![CDATA[<p>Bom, o ano começou, lá se foi o carnaval e agora sim podemos dizer que o ano começou. Pelo menos aqui no blog.</p>
 
 <p>Bora falar um pouco mais de JavaScript e o que existe de estranho com os <strong>construtores de Arrays do JavaScript</strong>.</p>
@@ -979,15 +979,15 @@ Esse post faz parte de uma série, confira os outros já feitos:
 <strong>Sofrendo menos com JavaScript</strong>
 Esse post faz parte de uma série, confira os outros já feitos:
 <ol>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
     <li>Construtores de Arrays</li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
+    <li><a href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
 </ol>
 </div>
 
@@ -1050,9 +1050,9 @@ Esse post faz parte de uma série, confira os outros já feitos:
   
   <entry>
     <title type="html"><![CDATA[Validação com jQuery Validation]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/12/19/validacao-com-jquery-validation/"/>
+    <link href="http://templecoding.com/blog/2012/12/19/validacao-com-jquery-validation/"/>
     <updated>2012-12-19T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/12/19/validacao-com-jquery-validation</id>
+    <id>http://templecoding.com/blog/2012/12/19/validacao-com-jquery-validation</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/4AzSUHxW2Ww" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -1083,9 +1083,9 @@ Esse post faz parte de uma série, confira os outros já feitos:
   
   <entry>
     <title type="html"><![CDATA[Tratamento de exceções em JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/"/>
+    <link href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/"/>
     <updated>2012-12-14T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript</id>
+    <id>http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript</id>
     <content type="html"><![CDATA[<p>Sim, existe tratamento de exceções em JavaScript. Não é uma funcionalidade muito conhecida e, por isso talvez, não muito utilizada. Mas existem os blocos try/catch dentro do JavaScript e o comando throw. E funciona de uma forma bem similiar ao C#.</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1124,15 +1124,15 @@ Esse post faz parte de uma série, confira os outros já feitos:
 <strong>Sofrendo menos com JavaScript</strong>
 Esse post faz parte de uma série, confira os outros já feitos:
 <ol>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
     <li>Tratamento de exceções em JavaScript</li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
+    <li><a href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
 </ol>
 </div>
 
@@ -1225,9 +1225,9 @@ Esse post faz parte de uma série, confira os outros já feitos:
   
   <entry>
     <title type="html"><![CDATA[Ajax com jQuery]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/12/07/ajax-com-jquery/"/>
+    <link href="http://templecoding.com/blog/2012/12/07/ajax-com-jquery/"/>
     <updated>2012-12-07T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/12/07/ajax-com-jquery</id>
+    <id>http://templecoding.com/blog/2012/12/07/ajax-com-jquery</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/he2k0FZBHq8" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -1253,9 +1253,9 @@ Esse post faz parte de uma série, confira os outros já feitos:
   
   <entry>
     <title type="html"><![CDATA[Funções de callback no JavaScript]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/"/>
+    <link href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/"/>
     <updated>2012-12-05T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript</id>
+    <id>http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript</id>
     <content type="html"><![CDATA[<h2>O que são funções de callback?</h2>
 
 
@@ -1266,15 +1266,15 @@ Esse post faz parte de uma série, confira os outros já feitos:
 <strong>Sofrendo menos com JavaScript</strong>
 Esse post faz parte de uma série, confira os outros já feitos:
 <ol>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
+    <li><a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/">Escopo no JavaScript: esse this não é daqui</a></li>
     <li>Funções de callback</li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
 </ol>
 </div>
 
@@ -1630,10 +1630,10 @@ A função de callback pode ser também uma função anônima como no exemplo ab
   
   <entry>
     <title type="html"><![CDATA[Se você tem ou quer ter um blog, você precisa ler esse livro]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
+    <link href="http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging/"/>
     <updated>2012-12-03T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging</id>
-    <content type="html"><![CDATA[<p>Eu terminei de ler há alguns dias e resolvi fazer uma análise do livro <a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Technical Blogging: </a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="attachment wp-att-1024" target="_blank"><img class="alignright" src="http://vintem.github.io/templecoding/images/2012/11/actb_xlargecover.jpg" title="Technica Blogging" ></a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Turn Your Expertise into a Remarkable Online Presence</a> por <a href="http://antoniocangiano.com/" target="_blank">Antonio Cangiano</a>. Ainda estou digerindo tudo que aprendi nesse livro e já pondo em prática <del>algumas</del> várias coisas.</p>
+    <id>http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging</id>
+    <content type="html"><![CDATA[<p>Eu terminei de ler há alguns dias e resolvi fazer uma análise do livro <a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Technical Blogging: </a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" rel="attachment wp-att-1024" target="_blank"><img class="alignright" src="http://templecoding.com/images/2012/11/actb_xlargecover.jpg" title="Technica Blogging" ></a><a href="http://www.amazon.com/gp/product/1934356883/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1934356883&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">Turn Your Expertise into a Remarkable Online Presence</a> por <a href="http://antoniocangiano.com/" target="_blank">Antonio Cangiano</a>. Ainda estou digerindo tudo que aprendi nesse livro e já pondo em prática <del>algumas</del> várias coisas.</p>
 
 <p>É um dos livros com a maior quantidade de dicas praticas que já li. Diversas dicas e ideias de uso imediato. Para quem usa, ou planeja usar, o WordPress como plataforma é ainda mais útil. O livro apresenta vários plug-ins que vão facilitar a vida na hora de escrever, ajudar a trazer mais performance para o site, trazer mais facilidade e valor para os usuários que vão ler o blog.</p>
 
@@ -1658,9 +1658,9 @@ A função de callback pode ser também uma função anônima como no exemplo ab
   
   <entry>
     <title type="html"><![CDATA[Seletores jQuery]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/11/30/seletores-jquery/"/>
+    <link href="http://templecoding.com/blog/2012/11/30/seletores-jquery/"/>
     <updated>2012-11-30T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/11/30/seletores-jquery</id>
+    <id>http://templecoding.com/blog/2012/11/30/seletores-jquery</id>
     <content type="html"><![CDATA[<iframe src="http://www.youtube.com/embed/aY3aVX1mDGY" frameborder="0" width="640" height="360"></iframe>
 
 
@@ -1678,28 +1678,28 @@ A função de callback pode ser também uma função anônima como no exemplo ab
   
   <entry>
     <title type="html"><![CDATA[Escopo no JavaScript: esse this não é daqui]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/"/>
+    <link href="http://templecoding.com/blog/2012/11/28/escopo-no-javascript/"/>
     <updated>2012-11-28T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript</id>
+    <id>http://templecoding.com/blog/2012/11/28/escopo-no-javascript</id>
     <content type="html"><![CDATA[<p>Existem duas questões importantes com relação ao escopo no JavaScript.  Declaração de variáveis e o valor de this.</p>
 
 <div style="margin: 5px 0px; border: #f48432 1px dashed; padding: 5px;"><strong>Sofrendo menos com JavaScript</strong>
 Esse post faz parte de uma série, confira os outros já feitos:
 <ol>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
+    <li><a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">Declaração de variáveis com JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/05/elevao-em-javascript/">Elevação em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/">Converter números em JavaScript é uma droga</a></li>
+    <li><a href="http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/">JavaScript e o problema com o ponto e vírgula</a></li>
     <li>Escopo no JavaScript: esse this não é daqui</li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
-    <li><a href="http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/">Funções de callback</a></li>
+    <li><a href="http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/">Tratamento de exceções em JavaScript</a></li>
+    <li><a href="http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/">Construtores de Arrays</a></li>
+    <li><a href="http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/">Loops for in</a></li>
 </ol>
 </div>
 
 
-<p>A primeira parte é fácil, eu já falei um pouco disso quando falei de <a href="http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/">declaração de variáveis</a>. Toda variável declarada com a palavra chave var tem o escopo da função em que foi declarada. Portanto, na função abaixo:</p>
+<p>A primeira parte é fácil, eu já falei um pouco disso quando falei de <a href="http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/">declaração de variáveis</a>. Toda variável declarada com a palavra chave var tem o escopo da função em que foi declarada. Portanto, na função abaixo:</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

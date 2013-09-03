@@ -1,515 +1,449 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2009/10/25/adicionando-foreign-keys-no-rails/
-        </loc>
+        <loc>http://templecoding.com/blog/2009/10/25/adicionando-foreign-keys-no-rails/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2009/11/01/existe-vida-alem-do-debug/</loc>
+        <loc>http://templecoding.com/blog/2009/11/01/existe-vida-alem-do-debug/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/
+            http://templecoding.com/blog/2009/11/08/testes-integrados-e-automaticos-com-selenium/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2009/11/14/utilizando-o-asp-net-mvc-junto-com-asp-net-webforms/
+            http://templecoding.com/blog/2009/11/14/utilizando-o-asp-net-mvc-junto-com-asp-net-webforms/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/
+            http://templecoding.com/blog/2009/11/22/asp-net-mvc-e-o-padrao-dependency-injection/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2009/12/09/dependency-injection-com-structuremap-e-asp-net-mvc/
+            http://templecoding.com/blog/2009/12/09/dependency-injection-com-structuremap-e-asp-net-mvc/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2009/12/14/o-firebug-e-seu-amigo/</loc>
+        <loc>http://templecoding.com/blog/2009/12/14/o-firebug-e-seu-amigo/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2009/12/21/porque-eu-acredito-no-desenvolvedor-poliglota/
+            http://templecoding.com/blog/2009/12/21/porque-eu-acredito-no-desenvolvedor-poliglota/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2009/12/27/ha-um-ano-atras-como-voce-estava/
-        </loc>
+        <loc>http://templecoding.com/blog/2009/12/27/ha-um-ano-atras-como-voce-estava/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/01/04/testes-integrados-com-o-selenium-ii/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/01/04/testes-integrados-com-o-selenium-ii/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/01/12/lista-de-leitura-1o-trimestre-de-2010/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/01/12/lista-de-leitura-1o-trimestre-de-2010/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/01/18/requisitos-minimos-para-uma-contratacao/
+            http://templecoding.com/blog/2010/01/18/requisitos-minimos-para-uma-contratacao/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/02/01/saindo-da-media/</loc>
+        <loc>http://templecoding.com/blog/2010/02/01/saindo-da-media/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/02/07/validacao-com-asp-net-mvc2/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/02/07/validacao-com-asp-net-mvc2/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/02/10/a-historia-sem-fim/</loc>
+        <loc>http://templecoding.com/blog/2010/02/10/a-historia-sem-fim/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/02/18/validacao-com-asp-net-mvc2-parte-2-validacoes-customizadas/
+            http://templecoding.com/blog/2010/02/18/validacao-com-asp-net-mvc2-parte-2-validacoes-customizadas/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/02/22/validacao-com-asp-net-mvc2-parte-3-input-vs-model-validation/
+            http://templecoding.com/blog/2010/02/22/validacao-com-asp-net-mvc2-parte-3-input-vs-model-validation/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/03/02/templates-no-asp-net-mvc2/</loc>
+        <loc>http://templecoding.com/blog/2010/03/02/templates-no-asp-net-mvc2/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/03/06/customizando-templates-no-asp-net-mvc2/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/03/06/customizando-templates-no-asp-net-mvc2/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/03/06/porque-eu-abandonei-as-stored-procedures/
+            http://templecoding.com/blog/2010/03/06/porque-eu-abandonei-as-stored-procedures/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/03/23/sobre-janelas-quebradas/</loc>
+        <loc>http://templecoding.com/blog/2010/03/23/sobre-janelas-quebradas/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/04/05/lidando-com-excecoes/</loc>
+        <loc>http://templecoding.com/blog/2010/04/05/lidando-com-excecoes/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/04/12/lista-de-leitura-2o-trimestre-de-2010/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/04/12/lista-de-leitura-2o-trimestre-de-2010/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/04/14/vraptor-e-o-hibernate-cfg-encriptado-com-jasypt/
+            http://templecoding.com/blog/2010/04/14/vraptor-e-o-hibernate-cfg-encriptado-com-jasypt/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2/
+            http://templecoding.com/blog/2010/04/19/nova-sintaxe-para-fazer-html-encoding-com-asp-net-4-e-asp-net-mvc-2/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/04/22/o-que-voce-faz-quando-esta-no-transito-ou-no-aviao-barco-aeroporto/
+            http://templecoding.com/blog/2010/04/22/o-que-voce-faz-quando-esta-no-transito-ou-no-aviao-barco-aeroporto/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/04/26/postando-um-objeto-json-para-uma-action-mvc2-com-jquery/
+            http://templecoding.com/blog/2010/04/26/postando-um-objeto-json-para-uma-action-mvc2-com-jquery/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/05/03/codetemplates-com-asp-net-mvc/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/05/03/codetemplates-com-asp-net-mvc/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6/
+            http://templecoding.com/blog/2010/05/18/publicando-um-site-em-asp-net-mvc-no-iis-6/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/05/23/aprenda-de-forma-gil/</loc>
+        <loc>http://templecoding.com/blog/2010/05/23/aprenda-de-forma-gil/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/05/30/seu-nome-seu-legado/</loc>
+        <loc>http://templecoding.com/blog/2010/05/30/seu-nome-seu-legado/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/
+            http://templecoding.com/blog/2010/06/14/builds-automticos-com-msbuild-nunit-e-ncover/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/06/16/selecionando-o-cdigo-que-ser-contabilizado-pelo-ncover/
+            http://templecoding.com/blog/2010/06/16/selecionando-o-cdigo-que-ser-contabilizado-pelo-ncover/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/06/20/integracao-continua-com-cruise-control-net/
+            http://templecoding.com/blog/2010/06/20/integracao-continua-com-cruise-control-net/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/06/27/na-guerra-ou-na-programao-os-mais-rpidos-saem-na-frente/
+            http://templecoding.com/blog/2010/06/27/na-guerra-ou-na-programao-os-mais-rpidos-saem-na-frente/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/06/30/no-seja-um-dinossauro-do-software/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/06/30/no-seja-um-dinossauro-do-software/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/07/05/asp-net-mvc-e-o-grid-do-mvccontrib/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/07/05/asp-net-mvc-e-o-grid-do-mvccontrib/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/07/12/qcon-so-paulo-eu-vou/</loc>
+        <loc>http://templecoding.com/blog/2010/07/12/qcon-so-paulo-eu-vou/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/07/18/lista-de-leitura-3o-trimestre-2010/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/07/18/lista-de-leitura-3o-trimestre-2010/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/07/22/localizao-de-mensagem-de-erro-no-asp-net-mvc/
+            http://templecoding.com/blog/2010/07/22/localizao-de-mensagem-de-erro-no-asp-net-mvc/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/08/02/ser-um-especialista-saber-o-que-voc-faz/
+            http://templecoding.com/blog/2010/08/02/ser-um-especialista-saber-o-que-voc-faz/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/08/12/o-que-um-bom-cdigo-pra-voc/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/08/12/o-que-um-bom-cdigo-pra-voc/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2010/08/29/anlise-tdc2010/</loc>
+        <loc>http://templecoding.com/blog/2010/08/29/anlise-tdc2010/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/09/13/seja-gil-no-brigue-de-forma-gil/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/09/13/seja-gil-no-brigue-de-forma-gil/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/09/15/desenvolvedores-felizes-cdigo-feliz/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/09/15/desenvolvedores-felizes-cdigo-feliz/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/09/21/o-controle-de-verso-e-o-delorean/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/09/29/mapeando-suas-classes-com-o-automapper/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper/
+            http://templecoding.com/blog/2010/10/28/mapeamentos-condicionais-usando-o-automapper/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby/
+            http://templecoding.com/blog/2010/11/01/convertendo-um-texto-iso-8859-1-para-utf-8-em-ruby/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/11/03/ruby-para-desenvolvedores-netparte-1/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/11/05/ruby-para-desenvolvedores-netparte-2/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2010/11/10/salvando-alteraes-inacabadas-com-git/
-        </loc>
+        <loc>http://templecoding.com/blog/2010/11/10/salvando-alteraes-inacabadas-com-git/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2011/03/16/o-livro-eletronico-e-so-vantagem/
-        </loc>
+        <loc>http://templecoding.com/blog/2011/03/16/o-livro-eletronico-e-so-vantagem/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/
+            http://templecoding.com/blog/2011/05/29/analise-de-livro-growing-object-oriented-software-guided-by-tests/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010/
+            http://templecoding.com/blog/2011/08/04/criando-snippets-para-o-visual-studio-2010/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2011/08/16/tornando-o-acesso-a-dados-simples-com-o-simple-data/
+            http://templecoding.com/blog/2011/08/16/tornando-o-acesso-a-dados-simples-com-o-simple-data/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3/
+            http://templecoding.com/blog/2011/09/17/globalizacao-de-validacao-do-jquery-com-o-asp-net-mvc-3/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc/
+            http://templecoding.com/blog/2011/09/26/injecao-de-dependencia-em-atributosfiltros-do-mvc/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4/
+            http://templecoding.com/blog/2012/09/25/001-videocast-produtividade-com-asp-net-mvc-4/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/09/30/fazendo-moocs/</loc>
+        <loc>http://templecoding.com/blog/2012/09/30/fazendo-moocs/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2012/10/01/002-videocast-entity-framework/
-        </loc>
+        <loc>http://templecoding.com/blog/2012/10/01/002-videocast-entity-framework/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2012/10/11/003-videocast-autenticacao-com-simplemembership/
+            http://templecoding.com/blog/2012/10/11/003-videocast-autenticacao-com-simplemembership/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2012/10/25/declarao-de-variveis-com-javascript/
-        </loc>
+        <loc>http://templecoding.com/blog/2012/10/25/declarao-de-variveis-com-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/11/05/elevao-em-javascript/</loc>
+        <loc>http://templecoding.com/blog/2012/11/05/elevao-em-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/11/11/bdd-com-specflow/</loc>
+        <loc>http://templecoding.com/blog/2012/11/11/bdd-com-specflow/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/
+            http://templecoding.com/blog/2012/11/12/converter-numeros-em-javascript-e-uma-droga/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface/</loc>
+        <loc>http://templecoding.com/blog/2012/11/14/analise-do-surface/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/11/21/javascript-ponto-virgula/</loc>
+        <loc>http://templecoding.com/blog/2012/11/21/javascript-ponto-virgula/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2012/11/23/introducao-ao-jquery-videocast/
-        </loc>
+        <loc>http://templecoding.com/blog/2012/11/23/introducao-ao-jquery-videocast/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/11/26/menu-iniciar-no-windows-8/</loc>
+        <loc>http://templecoding.com/blog/2012/11/26/menu-iniciar-no-windows-8/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/11/28/escopo-no-javascript/</loc>
+        <loc>http://templecoding.com/blog/2012/11/28/escopo-no-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/11/30/seletores-jquery/</loc>
+        <loc>http://templecoding.com/blog/2012/11/30/seletores-jquery/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2012/12/03/analise-do-livro-technical-blogging/
-        </loc>
+        <loc>http://templecoding.com/blog/2012/12/03/analise-do-livro-technical-blogging/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2012/12/05/funes-de-callback-no-javascript/
-        </loc>
+        <loc>http://templecoding.com/blog/2012/12/05/funes-de-callback-no-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2012/12/07/ajax-com-jquery/</loc>
+        <loc>http://templecoding.com/blog/2012/12/07/ajax-com-jquery/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2012/12/14/tratamento-de-excecoes-em-javascript/
-        </loc>
+        <loc>http://templecoding.com/blog/2012/12/14/tratamento-de-excecoes-em-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2012/12/19/validacao-com-jquery-validation/
-        </loc>
+        <loc>http://templecoding.com/blog/2012/12/19/validacao-com-jquery-validation/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2013/02/18/construtores-de-arrays-do-javascript/
-        </loc>
+        <loc>http://templecoding.com/blog/2013/02/18/construtores-de-arrays-do-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc/
+            http://templecoding.com/blog/2013/03/07/inversao-de-controle-com-castle-windsor-e-asp-net-mvc/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2013/03/11/loops-for-in-no-javascript/
-        </loc>
+        <loc>http://templecoding.com/blog/2013/03/11/loops-for-in-no-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/
-        </loc>
+        <loc>http://templecoding.com/blog/2013/03/21/integrar-e-traduzir-nao-e-reproduzir/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2013/03/25/javascript-is-sexy-dica-rapida/
-        </loc>
+        <loc>http://templecoding.com/blog/2013/03/25/javascript-is-sexy-dica-rapida/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2013/05/20/asp-net-mvc-model-binding/</loc>
+        <loc>http://templecoding.com/blog/2013/05/20/asp-net-mvc-model-binding/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/
+            http://templecoding.com/blog/2013/06/04/analise-do-livro-pragmatic-thinking-and-learning/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/
+            http://templecoding.com/blog/2013/06/10/quatro-bons-livros-para-mudar-a-forma-como-voce-ve-escreve-javascript/
         </loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2013/07/16/programacao-orientada-a-coincidencia/
-        </loc>
+        <loc>http://templecoding.com/blog/2013/07/16/programacao-orientada-a-coincidencia/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/2013/07/23/meu-ted-talk-favorito/</loc>
+        <loc>http://templecoding.com/blog/2013/07/23/meu-ted-talk-favorito/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://vintem.github.io/templecoding/blog/2013/07/30/responsabilidade-unica-com-javascript/
-        </loc>
+        <loc>http://templecoding.com/blog/2013/07/30/responsabilidade-unica-com-javascript/</loc>
         <lastmod>2013-08-26T08:21:23-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/
+            http://templecoding.com/blog/2013/08/25/instalando-uma-maquina-de-desenvolvimento-com-dois-comandos/
         </loc>
         <lastmod>2013-08-26T21:15:54-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://vintem.github.io/templecoding/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/
+            http://templecoding.com/blog/2013/08/26/publicando-um-site-octopress-usando-github-pages-em-uma-nova-maquina-de-dev/
         </loc>
         <lastmod>2013-09-03T10:40:42-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/blog/archives/</loc>
+        <loc>http://templecoding.com/blog/archives/</loc>
         <lastmod>2013-09-03T10:40:42-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/</loc>
+        <loc>http://templecoding.com/</loc>
         <lastmod>2013-09-03T10:40:42-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/robots.txt</loc>
+        <loc>http://templecoding.com/robots.txt</loc>
         <lastmod>2013-08-26T08:21:24-04:00</lastmod>
     </url>
     <url>
-        <loc>http://vintem.github.io/templecoding/sobre/</loc>
+        <loc>http://templecoding.com/sobre/</loc>
         <lastmod>2013-08-26T08:21:24-04:00</lastmod>
     </url>
 </urlset>

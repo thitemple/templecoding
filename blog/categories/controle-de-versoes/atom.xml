@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Controle de versões | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/controle-de-versoes/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/controle-de-versoes/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[O Controle de Versão e o DeLorean]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean/"/>
+    <link href="http://templecoding.com/blog/2010/09/21/o-controle-de-verso-e-o-delorean/"/>
     <updated>2010-09-21T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/09/21/o-controle-de-verso-e-o-delorean</id>
+    <id>http://templecoding.com/blog/2010/09/21/o-controle-de-verso-e-o-delorean</id>
     <content type="html"><![CDATA[<p>Um cenário que é comumente visto em equipes de desenvolvimento que usam ferramentas de controle de versão como Subversion, Source Safe, CVS, Git, etc, é aquele onde o desenvolvedor faz um checkout no código, altera o que tem que alterar e na sequência faz o commit (check-in se vc ainda é um infeliz usuário do VSS).</p>
 
 <p>Qual o problema desse cenário? Você consegue dizer? O código está num repositório central disponível para todos os desenvolvedores da equipe, não está?</p>
@@ -28,7 +28,7 @@
 
 <p>Digamos que você disponibilizou a versão 1.0 do seu mais novo cliente do Twitter. Software no ar, milhares de downloads em poucas horas. Hora de preparar a inovadora versão 2.0 que vai ler as mensagens em voz alta e que você vai poder ditar as mensagens também. Ótimo para não perder nada do Twitter quando você está dirigindo.</p>
 
-<p>Check-out feito, algumas alterações, novas funcionalidades e uns commits, afinal de contas, você é um praticante de <a href="http://vintem.github.io/templecoding/blog/2010/06/20/integracao-continua-com-cruise-control-net/">Integração Contínua</a>. De repente, seu telefone toca e aquela versão 1.0 tem um bug que trava o aplicativo e você precisa corrigir. O que você faz? Fala que não pode porque o código da versão 2.0 está no meio e ainda não foi testado? Desfaz o que foi feito?</p>
+<p>Check-out feito, algumas alterações, novas funcionalidades e uns commits, afinal de contas, você é um praticante de <a href="http://templecoding.com/blog/2010/06/20/integracao-continua-com-cruise-control-net/">Integração Contínua</a>. De repente, seu telefone toca e aquela versão 1.0 tem um bug que trava o aplicativo e você precisa corrigir. O que você faz? Fala que não pode porque o código da versão 2.0 está no meio e ainda não foi testado? Desfaz o que foi feito?</p>
 
 <p>Voltemos para o dia em que a versão 1.0 foi lançada, o código está no repositório e você decide iniciar a versão 2.0, que é um ponto no futuro onde você gostaria de chegar. É para isso que existe uma coisa chamada branch, ele é uma cópia separada da sua versão 1.0 onde você pode fazer alterações e ainda por cima manter a versão 1.0 disponível do jeito que você deixou. Quando esse bug chega, você altera o código do branch principal, o da versão em produção (no caso 1.0), e pode mandar essa versão, digamos, 1.0.1 com a correção sem se preocupar com o código da versão 2.</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: jasypt | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/jasypt/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/jasypt/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[VRaptor e o Hibernate.cfg encriptado com jasypt]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2010/04/14/vraptor-e-o-hibernate-cfg-encriptado-com-jasypt/"/>
+    <link href="http://templecoding.com/blog/2010/04/14/vraptor-e-o-hibernate-cfg-encriptado-com-jasypt/"/>
     <updated>2010-04-14T00:00:00-04:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2010/04/14/vraptor-e-o-hibernate-cfg-encriptado-com-jasypt</id>
+    <id>http://templecoding.com/blog/2010/04/14/vraptor-e-o-hibernate-cfg-encriptado-com-jasypt</id>
     <content type="html"><![CDATA[<p>Essa semana eu tive que resolver esse problema. Estava eu fazendo um site em java usando o framework <a href="http://vraptor.caelum.com.br/" target="_blank">VRaptor</a> (que é muito bom por sinal) e eu precisa encriptar a senha do arquivo Hibernate.cfg.xml &ndash; acho que isso devia ser o padrão, e por sinal não é. De qualquer forma, eu gastei um tempo quebrando a cabeça pra fazer isso.</p>
 
 <p>A solução que eu encontrei foi usar o framework <a href="http://www.jasypt.org/" target="_blank">jasypt</a> que precisa de algumas configurações mas funciona muito bem.</p>

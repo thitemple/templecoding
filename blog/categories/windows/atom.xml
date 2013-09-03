@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Windows | Temple Coding]]></title>
-  <link href="http://vintem.github.io/templecoding/blog/categories/windows/atom.xml" rel="self"/>
-  <link href="http://vintem.github.io/templecoding/"/>
-  <updated>2013-09-03T10:42:11-04:00</updated>
-  <id>http://vintem.github.io/templecoding/</id>
+  <link href="http://templecoding.com/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="http://templecoding.com/"/>
+  <updated>2013-09-03T11:25:10-04:00</updated>
+  <id>http://templecoding.com/</id>
   <author>
     <name><![CDATA[Thiago Temple]]></name>
     
@@ -15,16 +15,16 @@
   
   <entry>
     <title type="html"><![CDATA[O menu iniciar no Windows 8 mudou, você pode mudar também]]></title>
-    <link href="http://vintem.github.io/templecoding/blog/2012/11/26/menu-iniciar-no-windows-8/"/>
+    <link href="http://templecoding.com/blog/2012/11/26/menu-iniciar-no-windows-8/"/>
     <updated>2012-11-26T00:00:00-05:00</updated>
-    <id>http://vintem.github.io/templecoding/blog/2012/11/26/menu-iniciar-no-windows-8</id>
+    <id>http://templecoding.com/blog/2012/11/26/menu-iniciar-no-windows-8</id>
     <content type="html"><![CDATA[<p>Na semana passada eu estava ouvindo um podcast (não me lembro qual, escutei vários) e no meio do podcast o entrevistado cita que algumas pessoas tem reclamado da falta do menu iniciar no Windows 8. O que me parece é que alguém andou <a href="http://www.amazon.com/gp/product/B002ALFT6C/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B002ALFT6C&amp;linkCode=as2&amp;tag=tempcodi0f-20" target="_blank">mexendo no queijo dos outros</a>.</p>
 
 <p>Honestamente eu não tinha me dado conta direito que ele não estava lá. Claro, pude ver que ele não estava presente. É que eu uso ele tão pouco que eu nem sinto falta.</p>
 
 <p>O Windows 8 acabou de ser lançado, não tem nem um mês. Eu atualizei o meu notebook no final de semana seguinte ao lançamento e, posso dizer que foi a atualização mais tranquila que eu já fiz. Baixei um executável pequeno, ele analisou o computador, paguei a atualização por ali mesmo e pronto. Foi só esperar ele baixar o Windows 8 e instalar.</p>
 
-<p>Eu gostei tanto que até já comprei também um <a href="http://vintem.github.io/templecoding/blog/2012/11/14/analise-do-surface/">Tablet Surface e fiz uma análise sobre ele</a>.</p>
+<p>Eu gostei tanto que até já comprei também um <a href="http://templecoding.com/blog/2012/11/14/analise-do-surface/">Tablet Surface e fiz uma análise sobre ele</a>.</p>
 
 <p><img class="alignleft" src="/images/2012/11/evol-windows_thumb.jpg" title="Evolução do Windows" > Na minha opinião o Windows 8 é a melhor novidade em termos de sistemas operacionais desde o Windows 95, quando a gente saiu do Windows 3.11. Olha só, me entendam bem, eu uso Windows, mas eu tenho um Mac há quase 5 anos e gosto muito do Mac OS X. Também uso ocasionalmente o Linux e gosto do Ubuntu (menos que os outros). Ah sim, e por enquanto, pelo menos, eu ainda tenho um celular com Android.</p>
 
