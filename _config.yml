@@ -7,12 +7,13 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://templecoding.com" # the base hostname & protocol for your site
 twitter_username: vintem12
 github_username:  vintem
-root: /
+root: /templecoding.github.io
 
 # Build settings
 markdown: kramdown
 
 subscribe_rss: /feed.xml
+root: /
 permalink: /blog/:year/:month/:day/:title/
 paginate: 5
 
