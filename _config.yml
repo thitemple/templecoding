@@ -1,10 +1,10 @@
 # Site settings
+url: http://vintem.com.br # the base hostname & protocol for your site
 title: Temple Coding
 email: vintem@gmail.com
 subtitle: código, tecnologia e outras nerdices
 description: Thiago Temple, desenvolvedor, nerd e esse é o meu site.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://templecoding.com" # the base hostname & protocol for your site
 twitter_username: vintem12
 github_username:  vintem
 root: /templecoding.github.io
